@@ -1,0 +1,104 @@
+﻿@using Entities.ViewModels;
+@model ClientViewModel
+
+
+<div class="text-danger error error-login-client-summery"></div>
+<form id="formClientRegister"
+      asp-controller="Client"
+      asp-action="Create"
+      asp-antiforgery="true"
+      data-ajax="true"
+      data-ajax-method="post"
+      data-ajax-begin="beginClientRegister"
+      data-ajax-complete="completeClientRegister">
+
+    <div class="text-danger error error-client-summery"></div>
+    <input type="hidden" asp-for="ClientId" class="form-control" name="ClientId">
+    <input type="hidden" asp-for="SourceRegisterId" class="form-control" name="SourceRegisterId">
+
+    <div class="form-group icon-visible">
+        <svg class="icon-us">
+            <use xlink:href="/images/icons/icon.svg#user"></use>
+        </svg>
+        <input type="text" asp-for="ClientName" class="form-control" placeholder="Nhập họ và tên" name="ClientName" autocomplete="off">
+        <span asp-validation-for="ClientName" class="error text-danger"></span>
+    </div>
+
+
+    <div class="form-group form-group__button icon-visible group_email_client">
+        <svg class="icon-us">
+            <use xlink:href="images/icons/icon.svg#mail"></use>
+        </svg>
+        <input type="text" class="form-control email_client" asp-for="Email" id="" placeholder="Nhập địa chỉ Email" name="Email">
+        @*<button class="btn btn_send_code" id="btn_send_code">
+            <svg class="icon-us">
+                <use xlink:href="images/icons/icon.svg#vector"></use>
+            </svg>
+            Gửi mã xác thực
+        </button>*@
+        <span asp-validation-for="Email" class="error text-danger valid-email"></span>
+    </div>
+
+    @*<div class="form-group icon-visible">
+        <svg class="icon-us">
+            <use xlink:href="/images/icons/icon.svg#smartphone"></use>
+        </svg>
+        <input type="text" asp-for="CodeVerify" class="form-control" id="" placeholder="Nhập mã xác thực đã được gửi vào email" name="CodeVerify" autocomplete="off" />
+        <span asp-validation-for="CodeVerify" class="error text-danger"></span>
+    </div>*@
+
+    <div class="form-group icon-visible">
+        <svg class="icon-us">
+            <use xlink:href="/images/icons/icon.svg#smartphone"></use>
+        </svg>
+        <input type="text" asp-for="Phone" class="form-control" id="" placeholder="Nhập số điện thoại" name="Phone">
+        <span asp-validation-for="Phone" class="error text-danger"></span>
+    </div>
+
+
+    <div class="form-group icon-visible">
+        <svg class="icon-us">
+            <use xlink:href="/images/icons/icon.svg#padlock"></use>
+        </svg>
+        <input asp-for="Password" class="form-control" placeholder="Nhập mật khẩu từ 6 đến 32 ký tự" name="Password" autocomplete="off">
+        <span asp-validation-for="Password" class="error text-danger"></span>
+    </div>
+    <div class="form-group icon-visible">
+        <svg class="icon-us">
+            <use xlink:href="/images/icons/icon.svg#padlock"></use>
+        </svg>
+        <input asp-for="ConfirmPassword" class="form-control" placeholder="Nhập lại mật khẩu" name="ConfirmPassword" autocomplete="off">
+        <span asp-validation-for="ConfirmPassword" class="error text-danger"></span>
+    </div>
+    <label class="confir_res">
+        Nhận các thông tin và chương trình khuyến mãi qua email.
+        <input type="checkbox" asp-for="IsReceiverInfoEmail" name="IsReceiverInfoEmail">
+        <span class="checkmark"></span>
+        <span asp-validation-for="IsReceiverInfoEmail" class="error text-danger"></span>
+    </label>
+
+    <button class="btn btn-create-new-client" type="submit">Tạo tài khoản</button>
+
+
+    <p class="mt10">
+        Khi bạn nhấn Đăng ký, bạn đã đồng ý thực hiện mọi giao dịch mua bán theo
+        <a style="color: #00A3FF">điều kiện sử dụng và chính sách của Chúng tôi</a>.
+    </p>
+</form>
+
+<script type="text/javascript">
+
+    var form = $("#formClientRegister").closest("form");
+    form.removeData('validator');
+    form.removeData('unobtrusiveValidation');
+    $.validator.unobtrusive.parse(form);
+
+
+    $(".btn_send_code").click(function (e) {
+        var email_client = $(".email_client").val() == null ? "" : $(".email_client").val().trim();
+        obj_client.sendCodeVerify(email_client, ".btn_send_code");
+    });
+</script>
+
+@*<script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>*@

@@ -1,0 +1,27 @@
+﻿@using WEB.UI.ViewModels;
+@model List<Entities.ViewModels.ArticleViewModel>
+
+    <h2 class="title-cate"> @ViewData["title_cate_help"]</h2>
+<ul class="list_expand" id="content_cate_help">
+    @foreach (var item in Model)
+    {
+        <li>
+            <h3 class="in-expand">@Html.Raw(item.Title)</h3>
+            <div class="out-expand">
+                @Html.Raw(item.Body)
+            </div>
+        </li>
+    }
+</ul>
+<script type="text/javascript">
+    $('.list_expand').find('h3').click(function () {
+        if (!$(this).hasClass("active")) {
+            $(this).addClass("active");
+            $(this).next('div').slideDown();
+        }
+        else {
+            $(this).removeClass("active");
+            $(this).next('div').slideUp();
+        }
+    });
+</script>

@@ -1,0 +1,61 @@
+﻿<style>
+    @@media (min-width: 992px) {
+        .list-notifi.scrollbar-inner {
+            height: calc(100vh - 460px);
+        }
+    }
+
+    .icon--v2 {
+        border: 1px solid #236852;
+        width: 24px;
+        height: 24px;
+        background: #236852;
+        padding: 0px 2px;
+        text-align: center;
+    }
+
+    .day_ship_block {
+        font-style: italic;
+        font-size: 13px;
+        margin-bottom: 1rem;
+        position: relative;
+    }
+
+        .day_ship_block > p {
+            margin-bottom: 0;
+        }
+
+    .feeling {
+        position: absolute;
+        top: 0;
+        right: 10px;
+    }
+</style>
+<div class="wrap_bg mb20">
+    <div class="line-bottom">
+        <div class="row align-center mb10">
+            <h3 class="txt_14 mb0 col-6">Thông tin xử lý đơn hàng</h3>
+            <div class="col-6 row">
+                <select id="select_order_shipping_log_filter" class="form-control shipping_log_filter">
+                    <option value="0" selected>Trễ hạn lâu nhất (Mặc định)</option>
+                    <option value="1">Đơn hàng chưa được mua</option>
+                    <option value="2">Đơn hàng chưa về kho tại Mỹ</option>
+                    <option value="12">Đơn hàng chưa về kho tại Việt Nam</option>
+                    <option value="13">Đơn hàng chưa giao cho đơn vị vận chuyển</option>
+                    <option value="3">Đơn hàng chưa đến tay khách</option>
+                    <option value="4">Đơn hàng thuộc nhãn Amazon</option>
+                    <option value="5">Đơn hàng thuộc nhãn Costco</option>
+                    <option value="8">Đơn hàng thuộc nhãn Jomashop</option>
+                </select>
+                
+            </div>
+        </div>
+    </div>
+    <ul id="order_shipping_log_loading" class="list-notifi">
+        <li class="flex" style="justify-content:center;">
+            <img src="~/images/icons/loading.gif" style=" width: 20px; height: 20px;" />
+        </li>
+    </ul>
+    <ul id="order_shipping_log" class="list-notifi scrollbar-inner" style="height: auto; margin-bottom: 0px; margin-right: 0px;">
+    </ul>
+</div>

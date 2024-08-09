@@ -1,0 +1,408 @@
+﻿@using Entities.Models
+@{
+    ViewData["Title"] = "Cài đặt thủ công V2";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var rate = (double)ViewBag.rateVietCom;
+    var LabelList = (List<Label>)ViewBag.LabelList;
+    var product_code = (string)ViewBag.product_code;
+    var label_id = (string)ViewBag.label_id;
+    var WeightUnitList = (List<AllCode>)ViewBag.WeightUnitList;
+    var IndustrySpecialList = (List<AllCode>)ViewBag.IndustrySpecialList;
+}
+<div class="container">
+    <div class="row">
+        <div class="col-xl-8 add-prodcut-popup mb20">
+            <form id="form_setupmanual_main">
+                <div class="content_lightbox bg-white">
+                    <p class="txt_16">Thêm sản phẩm</p>
+                    <div class="border-wrap mb20">
+                        <h3 class="title_down_up onclick-togle active">
+                            Thông tin
+                            <a class="down-up fa fa-angle-down"></a>
+                        </h3>
+                        <div class="wap expand" style="display: block">
+                            <div class="form-default2 row">
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label class="lbl">
+                                            Tên sản phẩm
+                                            <sup class="red">*</sup>
+                                        </label>
+                                        <div class="wrap_input">
+                                            <input type="text" class="form-control change_detail" id="form_productname" name="form_productname"
+                                                   value="">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb15">
+                                    <div class="form-group pr30">
+                                        <label class="lbl">
+                                            Mã sản phẩm
+                                            <sup class="red">*</sup>
+                                        </label>
+                                        <div class="wrap_input">
+                                            <input type="text" class="form-control change_detail error form_product_code" id="form_product_code" name="form_product_code" value="@product_code" disabled="disabled" style="background-color: #E5E5E5;">
+                                        </div>
+                                    </div>
+                                    <div class="form-group pr60">
+                                        <label class="lbl">
+                                            Trạng thái
+                                            <sup class="red">*</sup>
+                                        </label>
+                                        <div class="wrap_input">
+                                            <select id="form_productstatus" class="form-control change_detail">
+                                                <option value="0" selected="">Bình thường</option>
+                                                <option value="-1" selected="">Chặn</option>
+                                                <option value="1" selected="">Ngưng bán</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                   
+                                    <div class="form-group pr60">
+                                        <label class="lbl">
+                                            Hiệu lực
+                                        </label>
+                                        <div class="wrap_input">
+                                            <div class="row row_min">
+                                                <div class="col-md-6 mb10">
+                                                    <div class="datepicker-wrap">
+                                                        <input id="form_productlifetimestart" name="form_productlifetimestart" class="datepicker-input form-control change_detail" type="text"
+                                                               value="">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 mb10">
+                                                    <div class="datepicker-wrap">
+                                                        <input id="form_productlifetimeend" name="form_productlifetimeend" class="datepicker-input form-control change_detail" type="text"
+                                                               value="">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="form-group pr60">
+                                        <label class="lbl">
+                                            Ngày tạo
+                                        </label>
+                                        <div class="wrap_input">
+                                            <input id="form_createdate" name="form_createdate" class="form-control" type="text" disabled="disabled" value="" style="background-color: #E5E5E5;">
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                                <div class="col-md-6 mb15">
+                                    <div class="form-group pr60">
+                                        <label class="lbl">
+                                            Nhãn hàng
+                                            <sup class="red">*</sup>
+                                        </label>
+                                        <div class="wrap_input">
+                                            <select id="form_label" class="form-control change_detail form_label" disabled="disabled" style="background-color: #E5E5E5;">
+                                                @foreach (var label in LabelList)
+                                                {
+                                                    <option value="@label.Id" selected="@(label_id == label.Id.ToString() ? "selected" : "") ">@label.StoreName</option>
+                                                }
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group pr60">
+                                        <label class="lbl">
+                                            Thương hiệu
+                                            <sup class="red">*</sup>
+                                        </label>
+                                        <div class="wrap_input">
+                                            <input type="text" class="form-control change_detail error" id="form_manuafacter" name="form_manuafacter" value="">
+                                        </div>
+                                    </div>
+                                    <div class="form-group pr60">
+                                        <label class="lbl">
+                                            Star
+                                        </label>
+                                        <div class="wrap_input">
+                                            <div class="row row_min align-center">
+                                                <div class="col-md-6 mb10">
+                                                    <input type="text" class="form-control change_detail form_star" id="form_star" name="form_star" value="0">
+                                                </div>
+                                                <div class="col-md-6 mb10">
+                                                    <div class="list-star">
+                                                        <i id="star_1" class="fa fa-star disabled"></i>
+                                                        <i id="star_2" class="fa fa-star disabled"></i>
+                                                        <i id="star_3" class="fa fa-star disabled"></i>
+                                                        <i id="star_4" class="fa fa-star disabled"></i>
+                                                        <i id="star_5" class="fa fa-star disabled"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group pr60">
+                                        <label class="lbl">
+                                            Ngày cập nhật
+                                        </label>
+                                        <div class="wrap_input">
+                                            <input id="form_updatelast" name="form_updatelast" class="form-control" type="text" disabled="disabled" value="" style="background-color: #E5E5E5;">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-7 mb15">
+                                    <p>Ảnh sản phẩm <span class="gray">(Chấp nhận ảnh đuôi jpg, png, gif)</span></p>
+                                    <div class="form-group">
+                                        <div class="wrap_input">
+                                            <div id="form_imgsize" class="row list-choose">
+                                                <div id="form_imgsize_divadd" class="col-md-3 mb10">
+                                                    <div class="items import">
+                                                        <label class="choose choose-wrap">
+                                                            <input type="file" id="form_addimage" class="change_detail" onchange="_setupmanualv2.OnAddImage()" name="myFile">
+                                                            <div class="choose-content"> <img src="/images/icons/add_img.jpg"> <span>+ Thêm</span> </div>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="border-wrap mb20">
+                        <h3 class="title_down_up onclick-togle">
+                            Phí mua hộ($)
+                            <sup class="red">*</sup>
+                            <a class="down-up fa fa-angle-down"></a>
+                        </h3>
+                        <div class="wap expand">
+                            <div class="form-default">
+                                <div class="row">
+                                    <div class="col-md-6 form-group">
+                                        <label class="lbl">
+                                            Cân nặng
+                                            <sup class="red">*</sup>
+                                        </label>
+                                        <div class="wrap_input">
+                                            <input type="text" class="form-control change_detail input_fee_change" id="form_productweight" name="form_productweight" value="">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 form-group">
+                                        <label class="lbl">
+                                            Đơn vị tính
+                                            <sup class="red">*</sup>
+                                        </label>
+                                        <div class="wrap_input">
+                                            <select id="form_selectweightunit" class="form-control change_detail">
+                                                @foreach (var unit in WeightUnitList)
+                                                {
+                                                    <option value="@unit.Description.Trim().ToLower()" data-id="@unit.CodeValue">@unit.Description</option>
+                                                }
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 form-group">
+                                        <label class="lbl">
+                                            Giá sản phẩm ($)
+                                            <sup class="red">*</sup>
+                                        </label>
+                                        <div class="wrap_input">
+                                            <input type="text" class="form-control change_detail input_fee_change" id="form_price" name="form_price" value="">
+                                        </div>
+                                    </div>
+                                    <div id="div_amount_vnd" class="col-md-6 form-group" style="display:none;">
+                                        <label class="lbl">
+                                            Giá VNĐ
+                                        </label>
+                                        <div class="wrap_input">
+                                            <input type="text" class="form-control currency change_detail input_fee_change_fixed" id="form_fixed_amount_vnd" name="form_fixed_amount_vnd" value="">
+                                        </div>
+                                    </div>
+                                    <div class="col-12 form-group">
+                                        <label class="lbl">
+                                            Phí ship nội địa ($)
+                                            <sup class="red">*</sup>
+                                        </label>
+                                        <div class="wrap_input">
+                                            <input type="text" class="form-control change_detail input_fee_change" id="form_shipping_price" value="">
+                                        </div>
+                                    </div>
+                                    <div class="col-12 form-group">
+                                        <label class="lbl">
+                                            Sản phẩm đặc thù
+                                            <sup class="red">*</sup>
+                                        </label>
+                                        <div class="wrap_input">
+                                            <select id="form_industry_special_type" class="form-control change_detail">
+                                                @foreach (var unit in IndustrySpecialList)
+                                                {
+                                                    <option value="@unit.CodeValue">@unit.Description</option>
+                                                }
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 form-group" >
+                                        <label class="lbl">
+                                            Số tiền giảm ($)
+                                        </label>
+                                        <div class="wrap_input">
+                                            <input type="text" class="form-control change_detail input_fee_change" id="form_discount" name="form_discount" value="">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 form-group">
+                                        <label class="lbl">
+                                            Giá về tay (VNĐ)
+                                        </label>
+                                        <div class="wrap_input mt5">
+                                            <a href="javascript:;" id="form_amountvnd" class="bold red purchase-fee open-popup" onclick="_setupmanualv2.OpenProductFeeBox()"></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="border-wrap mb20">
+                        <h3 class="title_down_up onclick-togle">
+                            Thông số
+                            <sup class="red">*</sup>
+                            <div class="btn-right" style="position: absolute; right: 50px; top: 9px;">
+                                <a href="javascript:;" onclick="_setupmanualv2.OpenFormAddProductSpecification()" class="btn btn-default" style="background: #3D933C; font-size: 13px; height: 26px; line-height: 26px; font-weight: bold; padding: 0 10px;">Tạo thuộc tính</a>
+                            </div>
+                            <a class="down-up fa fa-angle-down"></a>
+                        </h3>
+                        <div id="form_productspecification_div" class="wap form-default2 expand">
+                            <a class="btn btn-default white form_btn_addspecification ">+ Thêm thông số</a>
+
+                        </div>
+                    </div>
+                    <div class="border-wrap mb20">
+                        <h3 class="title_down_up onclick-togle">
+                            Đặc tả
+                            <sup class="red">*</sup>
+                            <a class="down-up fa fa-angle-down"></a>
+                        </h3>
+                        <div class="wap expand">
+                            <div id="form_editor" class="center">
+                                <div id="form_productinfomationHTML" style="resize:none;height: 1000px;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="border-wrap mb20">
+                        <h3 class="title_down_up onclick-togle">
+                            Cấu hình vị trí hiển thị
+                            <a style="color: #666;" href="#" data-toggle="tooltip" data-placement="right" title=""
+                               data-original-title="Thiết lập sản phẩm sẽ hiển thị trong nhóm hàng">
+                                <i class="fa fa-exclamation-circle"></i>
+                            </a>
+                            <a class="down-up fa fa-angle-down"></a>
+                        </h3>
+                        <div id="form_groupproductposition" class="wap form-default2 expand">
+                            <a class="btn btn-default white form_btn_addpos">+ Thêm / Sửa vị trí</a>
+
+                        </div>
+                    </div>
+                    <div class="form-group align-right mt20 block pin-btn-bottom">
+                        <button type="button" class="btn btn-default  bg-main mb10"><i class="iconfont-crawl"></i>Crawler</button>
+                        <button type="button" class="btn btn-default  bg-main mb10" onclick="_setupmanualv2.SyncManualProduct()" style="display:none; background: #C3895C;"><i class="fa fa-floppy-o"></i>Sync Manual</button>
+                        <button type="button" class="btn btn-default  bg-main mb10" onclick="_setupmanualv2.SyncPrice()" style="display:none; background: #C3895C;"><i class="fa fa-floppy-o"></i>Sync Price</button>
+                        <button type="button" class="btn btn-default  bg-main mb10" onclick="_setupmanualv2.OnDoCrawl()" style="background: #C3895C;"><i class="fa fa-floppy-o"></i>Đồng bộ ES</button>
+                        <button id="btn_delete_redis" type="button" class="btn btn-danger mb10" style="color:#FFFFFF;" onclick="_setupmanualv2.DeleteProductOnRedis()">Delete from Redis</button>
+                        <button id="btn_delete" type="button" class="btn btn-danger mb10" style="color:#FFFFFF;" onclick="_setupmanualv2.DeleteProductOnES()">Delete from ES</button>
+                        <button id="btn_summit_detail" type="button" class="btn btn-default bg-main mb10" onclick="_setupmanualv2.SummitProductManual()"><i class="fa fa-floppy-o"></i>Lưu</button>
+                        <a href="/product" class="btn btn-default cancel mb10">
+                            <i class="fa fa-minus-circle"></i> Quay lại
+                        </a>
+
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="col-xl-4">
+            <div class="wrap_bg mb20" id="product_preview_after" style="display:none;">
+                <div class="head color-main mb10" id="title_review">
+                </div>
+                <div class="flex space-between mb10">
+                    <div>
+                        <div>Người bán: <span id="seller_name_review"></span></div>
+                        <div class="list-star mt10">
+                            <i class="fa fa-star" id="1star"></i>
+                            <i class="fa fa-star" id="2star"></i>
+                            <i class="fa fa-star" id="3star"></i>
+                            <i class="fa fa-star" id="4star"></i>
+                            <i class="fa fa-star" id="5star"></i>
+                            <span class="mt10 ml10" id="sales_rank"></span>
+                        </div>
+                    </div>
+                    <a href="#" target="_blank" id="link_amazon" class="color-main">Xem link</a>
+                </div>
+                <div class="box-create-api">
+                    <div class="item">
+                        <div class="tr">
+                            <div>Giá sản phẩm trên Amazon:</div>
+                            <div class="price" id="price_review"></div>
+                        </div>
+                        <div class="tr">
+                            <div>Phí ship nội địa Mỹ:</div>
+                            <div class="price" id="ship_price_us_review"></div>
+                        </div>
+                        <div class="tr">
+                            <div>Phí mua hộ từ US Express:</div>
+                            <div class="price" id="ship_buy_fee_review"></div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="tr">
+                            <div><strong>Chi tiết bảng giá phí mua hộ</strong></div>
+                        </div>
+                        <div class="tr">
+                            <div>Phí mua hộ pound đầu tiên:</div>
+                            <div class="price" id="shipping_details_first_pound"></div>
+                        </div>
+                        <div class="tr">
+                            <div>Phí mua hộ các pound tiếp theo:</div>
+                            <div class="price" id="shipping_details_next_pounds"></div>
+                        </div>
+                        <div class="tr">
+                            <div>Phụ thu hàng hóa đặc biệt:</div>
+                            <div class="price" id="shipping_details_luxury_pound"></div>
+                        </div>
+                        <div class="tr">
+                            <div>Tổng giá trị mua hộ:</div>
+                            <div class="price" id="shipping_details_total_shipping_fee"></div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="tr">
+                            <div>Tổng giá (đã bao gồm thuế, phí):</div>
+                            <div class="price" id="price_last"></div>
+                        </div>
+                        <div class="tr">
+                            <div>Tổng giá bằng VNĐ (đã bao gồm thuế, phí):</div>
+                            <div class="price red"><strong id="price_last_vnd"></strong></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="wrap_bg mb20" id="product_preview_above">
+                <div class="placeholder mb10" style="height: 40px;"></div>
+                <div class="placeholder mb10" style="height: 40px;width: 200px;"></div>
+                <div class="box-create-api" style="padding:10px;">
+                    <div class="placeholder mb10" style="height: 70px;"></div>
+                    <div class="placeholder mb10" style="height: 70px;"></div>
+                    <div class="placeholder" style="height: 70px;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts {
+    <script src="~/modules/setupmanualv2.js"></script>
+    <script>
+        var ASIN = '@product_code';
+        var label_id = '@label_id';
+        var rate = '@rate';
+        _setupmanualv2.Initialization();
+    </script>
+}

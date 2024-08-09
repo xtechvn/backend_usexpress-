@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk.Worker">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UserSecretsId>dotnet-AppLandingPage-57A14CF2-0A1F-43BB-811C-81E2EA203E85</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.14" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="3.1.14" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="3.1.8" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="4.7.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\WEB\Caching\Caching.csproj" />
+    <ProjectReference Include="..\..\WEB\DAL\DAL.csproj" />
+    <ProjectReference Include="..\..\WEB\Entities\Entities.csproj" />
+    <ProjectReference Include="..\..\WEB\Repositories\Repositories.csproj" />
+    <ProjectReference Include="..\..\WEB\Utilities\Utilities.csproj" />
+  </ItemGroup>
+</Project>

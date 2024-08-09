@@ -1,0 +1,11 @@
+﻿@using WEB.UI.ViewModels;
+@{
+    int total_carts = (int)ViewBag.total_carts;
+}
+<div class="cart cart_view" style="cursor:pointer" >
+    <svg class="icon-us">
+        <use xlink:href="/images/icons/icon.svg#cart"></use>
+    </svg>
+    <span class="count total_carts">@total_carts</span>
+    Giỏ hàng
+</div>

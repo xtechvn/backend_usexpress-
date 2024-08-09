@@ -1,0 +1,145 @@
+﻿@using WEB.UI.ViewModels
+@model OrderDetailViewModel
+@{
+    ViewData["Title"] = "Chi tiết đơn hàng";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var create_order = Convert.ToDateTime(Model.createdOn);
+    double total_hours = (DateTime.Now - create_order).TotalHours;
+}
+
+<link href="/css/user.css" rel="stylesheet" type="text/css" />
+<link href="/css/order.css" rel="stylesheet" type="text/css" />
+<input type="hidden" value="@Model.orderId" class="form-control txt_order_id">
+@section SocialMetaTags {
+    <!--Facebook Open Graph-->
+    <meta property="fb:app_id" content="892696148005813">
+    <meta property="og:site_name" content="usexpress.vn" />
+    <meta property="og:title" content="Theo dõi đơn hàng @Model.orderNo trên UsExpress" />
+    <meta property="og:description" content="Thông tin và lộ trình đơn hàng @Model.orderNo được cập nhật chi tiết trên UsExpress" />
+    <meta property="og:image" content="~/images/graphics/usexpress-logo.png" />
+    <meta property="og:site_name" content="" />
+}
+<!-- MAIN CONTAINER -->
+<section class="main-container clearfix mt30">
+    <div class="menu_control mb20">
+        <div class="container">
+            <ul class="breadcrumb">
+                <li><a href="/">Trang chủ</a></li>
+                <li class="active">Chi tiết đơn hàng</li>
+            </ul>
+        </div>
+    </div>
+    <div class="container">
+        <div class="user_management flex">
+            @{ await Html.RenderPartialAsync("PartialView/Client/MenuClientManager", new ViewDataDictionary(this.ViewData) { { "client_name", Model.receiver_name } });}
+
+            <div class="sidebar2 padding_15">
+                <div class="detail-dh">
+                    <div class="flex head-between">
+                        <a href="/quan-ly-don-hang" class="back mb20 txt_666">
+                            <svg class="icon-us">
+                                <use xlink:href="/images/icons/icon.svg#back2"></use>
+                            </svg>
+                            Quay lại đơn hàng của tôi
+                        </a>
+                        <div class="flex head-info">
+                            <div>Mã đơn hàng: <strong class="color_green medium">@Model.orderNo</strong></div>
+                            <div class="txt_666">Ngày mua : @create_order.ToString("dd/MM/yyyy hh:mm")</div>
+                            <div class="txt_666">Tổng tiền : @Model.amountVnd đ</div>
+                        </div>
+                    </div>
+                    <div class="txt_18 mb20 color_green">
+                        Lộ trình đơn hàng :
+                    </div>
+
+                    @{ await Html.RenderPartialAsync("/Views/Order/OrderProgress.cshtml", new ViewDataDictionary(this.ViewData) { { "order_status", Model.orderStatus }, { "payment_status", Model.paymentStatus } });}
+
+                    <!-- Danh sách đơn hàng -->
+                    <div class="list-dh list-dh__2 mb30">
+                        <!-- <div class="tr thead">
+                            <div class="td sp">Sản phẩm</div>
+                            <div class="td price">Giá</div>
+                            <div class="td soluong">Số lượng</div>
+                            <div class="td thanhtien">Thành tiền</div>
+                        </div> -->
+                        @foreach (var item in Model.productList)
+                        {
+                            <div class="tr">
+                                <div class="td sp">
+                                    <div class="ava">
+                                        <a target="_blank" href="@item.LinkSource">
+                                            <img class="img" src="@item.imageThumb" alt="@item.title">
+                                        </a>
+                                    </div>
+                                    <div class="content">
+                                        <h3>
+                                            <a target="_blank" href="@item.LinkSource">
+                                                @item.title
+                                            </a>
+                                        </h3>
+                                        <div class="option">Thương hiệu: <span class="black medium">@item.sellerName</span></div>
+                                        <div class="flex">
+                                            <div class="option">Giá : <span class="black medium">@item.price đ</span></div>
+                                        </div>
+                                        <div class="option">Số lượng : <span class="black medium">@item.quantity</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+
+                    <!-- Thông tin căn bản khách hàng -->
+                    <div class="customer-dh flex">
+                        <div class="item">
+                            <div class="medium mb10">@Model.clientName</div>
+                            <div class="mb10">
+                                Địa chỉ: <span class="medium">
+                                    @Model.address
+                                </span>
+                            </div>
+                            <div class="mb25">Điện thoại: <span class="medium">@Model.phone</span></div>
+                            @if (!(total_hours > 24))
+                            {
+                                if (Model.orderStatus == 3 || Model.orderStatus == 6 || Model.orderStatus == 10 || Model.orderStatus == 9)
+                                {
+                                    <a class="edit btn btn_edit_address open-popup-link pointer-event" href="#" data-addressid="@Model.addressId">Đổi địa chỉ</a>
+                                }
+                            }
+                        </div>
+                        <div class="item">
+                            <ul>
+                                <li class="flex space-between mb10">
+                                    <div>Hình thức thanh toán :</div>
+                                    <div>@Model.paymentTypeName</div>
+                                </li>
+                                <li class="flex space-between mb10">
+                                    <div>Tiền hàng :</div>
+                                    <div>@Model.priceVnd đ</div>
+                                </li>
+                                <li class="flex space-between mb10">
+                                    <div>Giảm giá :</div>
+                                    <div>@Html.Raw(Model.totalDiscount != "0" ? "-" + Model.totalDiscount : "0") đ</div>
+                                </li>
+                                <li class="flex space-between mb10">
+                                    <div>Tổng tiền:</div>
+                                    <div class="medium txt_18">@(Model.amountVnd) đ </div>
+                                </li>
+                            </ul>
+                            @if (!(total_hours > 24) && Model.orderStatus == 3)
+                            {
+                                <a class="edit btn pointer-event" href="/payment/re-checkout/@Model.orderId">Thanh toán</a>
+                            }
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+<!--POPUP ĐỔI ĐỊA CHỈ-->
+<div id="address-popup" class="address-popup white-popup mfp-hide"></div>
+<!-- END MAIN CONTAINER -->
+<script src="/js/address_manager/default.js"></script>

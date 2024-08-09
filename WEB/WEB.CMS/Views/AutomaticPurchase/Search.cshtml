@@ -1,0 +1,78 @@
+﻿@{
+    Layout = null;
+}
+@using Entities.Models
+@{
+    Layout = null;
+}
+
+@using Entities.ViewModels.AutomaticPurchase
+@using Utilities
+@using Entities.ViewModels
+@model GenericViewModel<AutomaticPurchaseAmzViewModel>
+
+<div class="table-responsive table-default">
+    <table class="table table-nowrap">
+        <thead>
+            <tr class="bg-main2">
+                <th>STT</th>
+                <th>Mã đơn hàng</th>
+                <th>Mã sản phẩm (ASIN)</th>
+                <th>Giá SP đã thanh toán</th>
+                <th>Số lượng đặt</th>
+                <th>Trạng thái mua tự động</th>
+                <th>Cập nhật lần cuối</th>
+                <th>Log mua tự động</th>
+                <th>Ghi chú</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.ListData != null && Model.ListData.Count > 0)
+            {
+                var counter = (Model.CurrentPage - 1) * Model.PageSize;
+                foreach (var item in Model.ListData)
+                {
+                    counter++;
+            <tr>
+                <td>@counter</td>
+                <td>
+                    <a href="/automaticpurchase/detail?id=@item.Id" style="color:#49b391;">
+                        @item.OrderCode 
+                    </a>
+                </td>
+                <td>
+                    <a href="/automaticpurchase/detail?id=@item.Id" style="color:#49b391;">
+                        @item.ProductCode
+                    </a>
+                </td>
+                <td>$ @item.Amount</td>
+                <td>@item.Quanity</td>
+                <td>@item.AutomaticPurchaseStatusName</td>
+                <th>@item.UpdateLast.ToString("dd/MM/yyyy HH:mm:ss")</th>
+                <td>@item.PurchaseMessage</td>
+                <td>@item.ManualNote</td>
+            </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
+<style>
+    .fa-spin {
+        line-height: 16px;
+        width: 20px;
+        height: 14px;
+    }
+</style>
+@await Component.InvokeAsync("Paging", new
+{
+    pageModel = new Paging()
+    {
+        TotalRecord = Model.TotalRecord,
+        TotalPage = Model.TotalPage,
+        CurrentPage = Model.CurrentPage,
+        PageSize = Model.PageSize,
+        RecordName = "ID Mua tự động",
+        PageAction = "automatic_purchase.OnPaging({0})"
+    }
+})

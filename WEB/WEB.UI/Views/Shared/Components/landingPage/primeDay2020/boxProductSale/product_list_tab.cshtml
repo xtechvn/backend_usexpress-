@@ -1,0 +1,71 @@
+﻿@model List<Entities.ViewModels.ProductViewModel>
+
+@if (Model != null)
+{
+    foreach (var item in Model)
+    {
+        var rd = new Random();
+        string product_name = Utilities.CommonHelper.CheckMaxLength((item.product_name).ToString(), 100);
+
+        int dc = rd.Next(20, 45);
+        int rd_buy = rd.Next(1000, 2000);
+        <div class="product-item col-5">
+            <div class="wrap">
+                <div class="sale">-@dc%</div>
+                <a class="ava" href="@item.link_product" target="_blank">
+                    <img src="@item.image_size_product[0].Larger">
+                </a>
+                <div class="content">
+                    <div class="ct_star">
+                        <svg class="icon-us">
+                            <use xlink:href="images/icons/icon.svg#star-full"></use>
+                        </svg>
+                        <svg class="icon-us">
+                            <use xlink:href="images/icons/icon.svg#star-full"></use>
+                        </svg>
+                        <svg class="icon-us">
+                            <use xlink:href="images/icons/icon.svg#star-full"></use>
+                        </svg>
+                        <svg class="icon-us">
+                            <use xlink:href="images/icons/icon.svg#star-full"></use>
+                        </svg>
+                        <svg class="icon-us">
+                            <use xlink:href="images/icons/icon.svg#star-full"></use>
+                        </svg>
+                        <span class="buy">@rd_buy đã mua</span>
+                    </div>
+                    <h3 class="title">
+                        <img src="/images/icons/prime.png" title="amz">
+                        <a href="@item.link_product" target="_blank">
+                            @item.product_name
+                        </a>
+                    </h3>
+                    <div class="flex">
+                        <div class="col-2">
+                            <span>Giá về tay</span>
+                            <strong class="price">
+                                @if (item.amount_vnd > 0)
+                                {
+                                    <strong>@Html.Raw(((item.list_product_fee.list_product_fee["PRICE_LAST"] * item.rate).ToString("N0"))) đ</strong>
+                                }
+                                else
+                                {
+                                    <strong>@Html.Raw("Hết Hàng")</strong>
+                                }
+
+                            </strong>
+                        </div>
+                    </div>
+                    <a class="brand_label" href="">
+                        <img src="/images/graphics/my.png" title="amz">Sản phẩm bán
+                        tại Amazon Mỹ
+                    </a>
+                </div>
+            </div>
+        </div>
+    }
+
+}
+
+
+

@@ -1,0 +1,282 @@
+﻿@{
+    ViewData["Title"] = "Quản lý đơn hàng";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using Entities.Models
+@{
+    var _ListOrderStatus = (List<AllCode>)ViewBag.ListOrderStatus;
+    var _ListPaymentType = (List<AllCode>)ViewBag.ListPaymentType;
+    var _ListUTMSource = (List<AllCode>)ViewBag.ListUTMSource;
+    var FilterDate = (string)ViewBag.FilterDate;
+    var FilterPaymentStatus = (int)ViewBag.FilterPaymentStatus;
+    var FilterErrorOrder = (int)ViewBag.FilterErrorOrder;
+    var FilterProductCode = (string)ViewBag.FilterProductCode;
+    var ListLabel = (List<Label>)ViewBag.LabelList;
+}
+<div class="row-main container">
+    <h2 class="title_page">Quản lý đơn hàng</h2>
+    <div class="bg-serach-main flex row-main-head">
+        <div class="search-wrapper dynamic-dom">
+            <input type="hidden" id="ip-date-search-data" value="@FilterDate" />
+            <input type="hidden" id="ip-payment-status-init-data" value="@FilterPaymentStatus" />
+            <input type="hidden" id="ip-filter-error-order" value="@FilterErrorOrder" />
+            <input type="hidden" id="ip-filter-product-code" value="@FilterProductCode" />
+
+            <input type="text" class="input_search" id="ip-orderno-data" placeholder="Mã đơn hàng" />
+            <span class="search-btn">
+                <button type="button">
+                    <svg class="icon-svg">
+                        <use xlink:href="images/icons/icon.svg#search"></use>
+                    </svg>
+                </button>
+            </span>
+        </div>
+        <button type="button" class="btn btn-default bg-main mb10 dynamic-dom" style="margin-left:10px" onclick="_order.BasicSearch();">
+            <svg class="icon-svg" style="vertical-align: sub;">
+                <use xlink:href="/images/icons/icon.svg#search"></use>
+            </svg>
+            Tìm kiếm
+        </button>
+        <div class="fillter-wrap mb10 dynamic-dom">
+            <a class="btn color-main" href="javascript:;" onclick="_order.OnOpenAdvanceSearch()" style="outline: 0;display: inline-block;">
+                Tìm kiếm nâng cao
+            </a>
+        </div>
+        <div class="fillter-search dropdown-content">
+            <form id="form-advance-search">
+                <div class="form-default row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="lbl">Mã đơn hàng</label>
+                            <div class="wrap_input">
+                                <input type="text" id="OrderNo" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="lbl">Từ ngày</label>
+                            <div class="datepicker-wrap">
+                                <input id="FromDate" class="datepicker-input form-control" type="text" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="lbl">Đến ngày</label>
+                            <div class="datepicker-wrap">
+                                <input id="ToDate" class="datepicker-input form-control" type="text" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="lbl">Tên khách hàng</label>
+                            <div class="wrap_input">
+                                <input type="text" id="ClientName" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="lbl">Số điện thoại</label>
+                            <div class="wrap_input">
+                                <input type="text" id="Phone" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="lbl">Nhãn hàng</label>
+                            <div class="wrap_input">
+                                <select class="form-control" id="LabelId">
+                                    <option value="-1">Tất cả nhãn hàng</option>
+                                    @foreach (var item in ListLabel)
+                                    {
+                                        <option value="@item.Id">@item.StoreName</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="lbl">Trạng thái đơn</label>
+                            @*  <div class="wrap_input mfp-hide">
+                                <select class="form-control" id="OrderStatus">
+                                <option value="-1">Tất cả</option>
+                                @foreach (var item in _ListOrderStatus)
+                                {
+                                <option value="@item.CodeValue">@item.Description</option>
+                                }
+                                </select>
+                                </div>*@
+                            <div class="wrap_input mt4">
+                                <div class="select--v2">
+                                    <div class="select--v2__text onclick-togle">
+                                        <span>Lựa chọn trạng thái</span>
+                                        <i class="fa fa-angle-down"></i>
+                                    </div>
+                                    <div class="select--v2__content expand">
+                                        @foreach (var item in _ListOrderStatus)
+                                        {
+                                            <label class="check-list mb10">
+                                                <input type="checkbox" class="ckb_OrderStatus" value="@item.CodeValue" />
+                                                <span class="checkmark"></span>
+                                                @item.Description
+                                            </label>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="lbl">Voucher</label>
+                            <div class="wrap_input">
+                                <input type="text" id="VoucherNo" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="lbl">Affialiate (UTM source)</label>
+                            <div class="wrap_input">
+                                @*<input type="text" id="UtmSource" class="form-control" />*@
+                                <select class="form-control" id="UtmSource">
+                                    <option value="">Tất cả</option>
+                                    @foreach (var item in _ListUTMSource)
+                                    {
+                                        <option value="@item.Description.ToLower()">@item.Description</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group utm_medium_block mfp-hide">
+                            <label class="lbl">UTM medium</label>
+                            <div class="wrap_input">
+                                <input type="text" id="UtmMedium" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="lbl">Hình thức thanh toán</label>
+                            <div class="wrap_input">
+                                <select class="form-control" id="PaymentType">
+                                    <option value="-1">Tất cả</option>
+                                    @foreach (var item in _ListPaymentType)
+                                    {
+                                        <option value="@item.CodeValue">@item.Description</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="lbl">Trạng thái thanh toán</label>
+                            <div class="wrap_input">
+                                <label class="check-list float-left mt5" style="margin-right:30px;">
+                                    <input class="ckb-PaymentStatus" type="checkbox" value="0" onclick="_order.OnChangePaymentStatus();" autocomplete="off">
+                                    <span class="checkmark"></span>
+                                    Đã thanh toán
+                                </label>
+                                <label class="check-list float-left mt5">
+                                    <input class="ckb-PaymentStatus" type="checkbox" value="1" onclick="_order.OnChangePaymentStatus();" autocomplete="off">
+                                    <span class="checkmark"></span>
+                                    Chưa thanh toán
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group mfp-hide">
+                            <label class="lbl"></label>
+                            <div class="wrap_input">
+                                <label class="check-list float-left mt5">
+                                    <input class="ckb-is-affialiate" type="checkbox" autocomplete="off">
+                                    <span class="checkmark"></span>
+                                    <span title="Chỉ lấy đơn hàng có affialiate">Affialiate</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group text-center col-12 mt20 block">
+                        <button type="button" class="btn btn-default bg-main" onclick="_order.AdvanceSearch();">
+                            <svg class="icon-svg" style="vertical-align: sub;">
+                                <use xlink:href="/images/icons/icon.svg#search"></use>
+                            </svg>
+                            Tìm kiếm
+                        </button>
+                        <a class="btn color-main" href="javascript:;" onclick="_order.OnCloseAdvanceSearch()" style="outline: 0;display: inline-block;">
+                            Bỏ tìm kiếm nâng cao
+                        </a>
+                        @*<a class="btn btn-default cancel" href="javascript:;" onclick="_order.OnCloseAdvanceSearch()">
+                            Bỏ tìm kiếm nâng cao
+                            <i class="fa fa-caret-up"></i>
+                            </a>*@
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row-main-head">
+        <div class="btn-right text-right">
+            @*<a class="btn btn-default" href="">
+        + Tạo đơn hàng
+        </a>*@
+            <a class="btn btn-default" href="#" onclick="_order.OnOpenMappingOrder()">
+                <i class="fa fa-refresh"></i>
+                Đồng bộ đơn
+            </a>
+            <a class="btn btn-default" href="#" onclick="_order.ExportExcel()">
+                <i class="fa fa-file-excel-o" id="icon-export"></i>
+                Xuất excel
+            </a>
+            <a class="btn btn-default" href="#" onclick="_order.ExportOrderExpectedExcel()">
+                <i class="fa fa-file-excel-o" id="icon-export-expected"></i>
+                Xuất excel đơn trễ hạn
+            </a>
+            <div class="down-up">
+                <a class="btn btn-default onclick" href="javascript:;">
+                    <i class="fa fa-bars"></i>
+                    <i class="fa fa-caret-down"></i>
+                </a>
+                <div class="form-down" style="min-width:352px;">
+                    <label class="check-list mb10 mr25">
+                        <input type="checkbox" class="checkbox-tb-column" data-id="3" />
+                        <span class="checkmark"></span>
+                        Mã Tracking
+                    </label>
+                    <label class="check-list mb10 mr25">
+                        <input type="checkbox" class="checkbox-tb-column" data-id="5" />
+                        <span class="checkmark"></span>
+                        Email
+                    </label>
+                    <label class="check-list mb10 mr25">
+                        <input type="checkbox" class="checkbox-tb-column" data-id="6" />
+                        <span class="checkmark"></span>
+                        Số điện thoại
+                    </label>
+                    <label class="check-list mb10 mr25">
+                        <input type="checkbox" class="checkbox-tb-column" data-id="7" />
+                        <span class="checkmark"></span>
+                        Địa chỉ
+                    </label>
+                    <label class="check-list mb10 mr25">
+                        <input type="checkbox" class="checkbox-tb-column" data-id="9" />
+                        <span class="checkmark"></span>
+                        Tỷ giá (VNĐ)
+                    </label>
+                    <label class="check-list mb10 mr25">
+                        <input type="checkbox" class="checkbox-tb-column" data-id="10" />
+                        <span class="checkmark"></span>
+                        Mã Voucher
+                    </label>
+                    <label class="check-list mb10 mr25">
+                        <input type="checkbox" class="checkbox-tb-column" data-id="11" />
+                        <span class="checkmark"></span>
+                        UTM Source
+                    </label>
+                    @*<label class="check-list mb10 mr25">
+                <input type="checkbox" class="checkbox-tb-column" data-id="16" />
+                <span class="checkmark"></span>
+                Hình thức thanh toán
+                </label>*@
+                    <label class="check-list mb10 mr25">
+                        <input type="checkbox" class="checkbox-tb-column" data-id="17" />
+                        <span class="checkmark"></span>
+                        Ngày thanh toán
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="wrap_bg wrap_bg_no-padding mb20" id="grid-data">
+    </div>
+</div>
+@section scripts {
+<script src="~/modules/order.js?v=12"></script>
+}

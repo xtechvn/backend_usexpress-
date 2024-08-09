@@ -1,0 +1,58 @@
+﻿@{
+    Layout = null;
+}
+@using Entities.ViewModels
+@using Entities.Models
+@model GenericViewModel<ClientListingModel>
+
+<table class="table table-nowrap">
+    <thead>
+        <tr class="bg-main2">
+            <th>STT</th>
+            <th width="15%">Tên khách hàng</th>
+            <th>Phone</th>
+            <th>Email</th>
+            <th width="15%">Ngày đăng ký</th>
+            <th>Địa chỉ</th>
+            <th class="text-center" width="12%">Đơn giới thiệu</th>
+            <th class="text-center" width="8%">Tổng đơn</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.ListData != null && Model.ListData.Count > 0)
+        {
+            int counter = 0;
+            foreach (var item in Model.ListData)
+            {
+                counter++;
+                <tr class="@((counter % 2 == 0)? "line-item bg-gray" : "line-item")" data-id="@item.Id" data-ajaxdetail="false">
+                    <td class="text-center">@((Model.CurrentPage-1) * Model.PageSize + counter)</td>
+                    <td>@item.ClientName</td>
+                    <td>@item.Phone</td>
+                    <td>@item.Email</td>
+                    <td>@item.JoinDate.ToString("dd/MM/yyyy HH:mm")</td>
+                    <td>@item.Address</td>
+                    <td class="text-center referral-order-counting">
+                        <strong class="line-color">@item.TotalReferralOrder.ToString("N0")</strong>
+                    </td>
+                    <td class="text-center order-counting">
+                        <strong class="line-color">@item.TotalOrder.ToString("N0")</strong>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+
+@await Component.InvokeAsync("Paging", new
+{
+    pageModel = new Paging()
+    {
+        TotalRecord = Model.TotalRecord,
+        TotalPage = Model.TotalPage,
+        CurrentPage = Model.CurrentPage,
+        PageSize = Model.PageSize,
+        RecordName = "khách hàng",
+        PageAction = "_client.OnPaging({0})"
+    }
+})

@@ -1,0 +1,45 @@
+﻿@model List<WEB.UI.ViewModels.MenuNewsViewModel>
+@{
+    int d = 0;
+}
+<section class="clearfix mt30">
+    <div class="container">
+        <div class="flex article-header">
+            <ul class="nav">
+
+                @foreach (var item in Model)
+                {
+                    item.link = "/blog/" + item.link;
+                    <li class="category_@item.id">
+                        <a href="@item.link">@item.name</a>
+
+                        @if (item.has_child)
+                        {
+                            <span class="down"></span>
+                            <div class="level2">
+                                @foreach (var item_child in item.menu_child)
+                                {
+                                    item_child.link = "/blog/" + item_child.link;
+                                    <a href="@item_child.link">@item_child.name</a>
+                                }
+                            </div>
+                        }
+                    </li>
+                    d += 1;
+                }
+            </ul>
+            <div class="search-wrapper">
+                <input type="text" class="input_search" name="" value="" placeholder="Tìm kiếm">
+                <button class="search-btn" type="submit">
+                    <svg class="icon-us">
+                        <use xlink:href="/images/icons/icon.svg#search"></use>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        @*<h1 class="title-page">Công nghệ</h1>*@
+    </div>
+</section>
+
+
+

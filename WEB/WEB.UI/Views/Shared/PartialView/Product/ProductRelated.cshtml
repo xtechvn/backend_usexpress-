@@ -1,0 +1,100 @@
+﻿@model List<Entities.ViewModels.ProductRelated>
+@{
+    bool is_waiting = this.ViewData["is_waiting"] == null ? false : true;
+}
+
+<div class="col_right">
+    <div class="bg_warp sticky ajax_waiting">
+        <h2 class="title-label">
+            Sản phẩm liên quan
+        </h2>
+        <div class="product-small">
+
+
+            @if (is_waiting)
+            {
+            <div class="product-item">
+                <a class="ava placeholder" href="">
+                </a>
+                <div class="content">
+                    <div class="ct_star placeholder" style="height: 15px;">
+                    </div>
+                    <h3 class="title placeholder" style="height: 40px;"></h3>
+                    <div class="flex placeholder" style="height:15px"></div>
+                    <a class="brand_label placeholder" style="height:15px"></a>
+                </div>
+            </div>
+            <div class="product-item">
+                <a class="ava placeholder" href="">
+                </a>
+                <div class="content">
+                    <div class="ct_star placeholder" style="height: 15px;">
+                    </div>
+                    <h3 class="title placeholder" style="height: 40px;"></h3>
+                    <div class="flex placeholder" style="height:15px"></div>
+                    <a class="brand_label placeholder" style="height:15px"></a>
+                </div>
+            </div>
+            <div class="product-item">
+                <a class="ava placeholder" href="">
+                </a>
+                <div class="content">
+                    <div class="ct_star placeholder" style="height: 15px;">
+                    </div>
+                    <h3 class="title placeholder" style="height: 40px;"></h3>
+                    <div class="flex placeholder" style="height:15px"></div>
+                    <a class="brand_label placeholder" style="height:15px"></a>
+                </div>
+            </div>
+            <div class="product-item">
+                <a class="ava placeholder" href="">
+                </a>
+                <div class="content">
+                    <div class="ct_star placeholder" style="height: 15px;">
+                    </div>
+                    <h3 class="title placeholder" style="height: 40px;"></h3>
+                    <div class="flex placeholder" style="height:15px"></div>
+                    <a class="brand_label placeholder" style="height:15px"></a>
+                </div>
+            </div>
+            <div class="product-item">
+                <a class="ava placeholder" href="">
+                </a>
+                <div class="content">
+                    <div class="ct_star placeholder" style="height: 15px;">
+                    </div>
+                    <h3 class="title placeholder" style="height: 40px;"></h3>
+                    <div class="flex placeholder" style="height:15px"></div>
+                    <a class="brand_label placeholder" style="height:15px"></a>
+                </div>
+            </div>
+            }
+            else
+            {
+            @foreach (var item in Model)
+                {
+                    string product_name = Utilities.CommonHelper.CheckMaxLength((item.product_name).ToString(), 50) + "...";
+                    string link_product = Utilities.CommonHelper.genLinkDetailProduct("amazon",  item.product_code, product_name);
+            <div class="product-item">
+                <a class="ava" href="@link_product">
+                    <img class="img_loading_pro" onclick="img_waiting(this);" src="@(item.product_image)" />
+                </a>
+                <div class="content">
+                    <h3><a href="@link_product" title="@item.product_name">@product_name</a></h3>
+
+                    @{ await Html.RenderPartialAsync("PartialView/Product/Element/star", null, new ViewDataDictionary(this.ViewData) { { "star", item.rate } });}
+                    <span>@(item.ratings > 0 ? item.ratings : 15) lượt đánh giá</span>
+
+                    <strong class="price price_product_waiting_@item.product_code"><svg class="icon-us refresh"><use xlink:href="/images/icons/icon.svg#refresh"></use></svg></strong>
+                    @*<div class="sale_old">
+                            <strong class="price old">... đ</strong>
+                            <div class="sale-up">-50%</div>
+                        </div>*@
+                </div>
+            </div>
+                }
+            }
+
+        </div>
+    </div>
+</div>

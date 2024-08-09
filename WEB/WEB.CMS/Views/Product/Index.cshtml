@@ -1,0 +1,224 @@
+﻿
+@{
+    ViewData["Title"] = "Quản lý sản phẩm";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using Entities.Models
+@using Entities.ViewModels
+
+@{
+    var ListLabel = (List<Label>)ViewBag.LabelList;
+    var _StrTreeViewCate = (string)ViewBag.StringTreeViewCate;
+}
+<style>
+    .user-hierarchy-tag ul .lever2 {
+        padding-left: 0px;
+    }
+
+    .item_cate_selected {
+        padding: 5px 0px;
+        display: flex;
+    }
+
+    .content__product_name {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 300px;
+    }
+</style>
+<div class="row-main container flex">
+    <div class="row-main_col200">
+        <a class="close-menu" href="javascrip:;">×</a>
+        <h2 class="title_page">Sản phẩm</h2>
+
+        <div class="wrap_bg wrap_bg2">
+            <div class="vai-tro">
+                <h3 class="title-margin">Tìm kiếm</h3>
+                <div class="form">
+                    <div class="form-group input-relative">
+                        <input type="text" class="form-control ip-resetable" id="ip_search_product_code" onkeyup="productManager.OnChangeInputResetable(this);" placeholder="Theo mã sản phẩm">
+                        <button type="reset" class="btn_reset mfp-hide" onclick="productManager.OnResetInput(this);">×</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="wrap_bg wrap_bg2">
+            <h3 class="title-margin">
+                Nhãn hàng
+                <a href="#popup-them-nhom" class="open-popup fa fa-plus-circle"></a>
+            </h3>
+            @foreach (var item in ListLabel)
+            {
+                <label class="check-list mb10">
+                    <input type="checkbox" class="cbk_search_label" value="@item.Id" autocomplete="off" />
+                    <span class="checkmark"></span>
+                    @item.StoreName
+                </label>
+            }
+        </div>
+
+        <div class="wrap_bg wrap_bg2">
+            <h3 class="title-margin">
+                Nhóm hàng
+            </h3>
+
+            <ul class="" id="selected_items_panel">
+            </ul>
+
+            <div class="search-wrapper">
+                <form action="" id="search">
+                    <div class="input-relative">
+                        <input type="text" class="input_search ip-resetable" id="ip_search_category" autocomplete="off" placeholder="Tìm theo nhóm hàng" />
+                        <button type="reset" class="btn_reset mfp-hide" id="ip_reset_category">×</button>
+                    </div>
+                    <span class="search-btn">
+                        <button type="button">
+                            <svg class="icon-svg">
+                                <use xlink:href="images/icons/icon.svg#search"></use>
+                            </svg>
+                        </button>
+                    </span>
+                </form>
+            </div>
+            <div class="user-hierarchy-tag" style="margin: 10px 0px 0px 0px;">
+                <ul class="user-hierarchy-ul mb0" id="panel-category-filter">
+                    @Html.Raw(_StrTreeViewCate)
+                </ul>
+            </div>
+        </div>
+
+        <div class="wrap_bg wrap_bg2" id="block_filter_date">
+            <h3 class="title-margin">Ngày tạo</h3>
+            <div class="form-group">
+                <div class="datepicker-wrap" style="width:100%">
+                    <input type="text" class="datepicker-input-range form-control" id="ip_search_fromdate" placeholder="Từ ngày" />
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="datepicker-wrap" style="width:100%">
+                    <input type="text" class="datepicker-input-range form-control" id="ip_search_todate" placeholder="Đến ngày" />
+                </div>
+            </div>
+            <div class="flex blue">
+                <a class="cur-pointer blue" onclick="productManager.OnSelectDate(1);">Hôm qua</a>
+                <span style="margin: 0 5px;">|</span>
+                <a class="cur-pointer blue" onclick="productManager.OnSelectDate(0);">Hôm nay</a>
+                <span style="margin: 0 5px;">|</span>
+                <a class="cur-pointer blue" onclick="productManager.OnSelectDate(2);">Clear date</a>
+            </div>
+        </div>
+
+        <div class="wrap_bg wrap_bg2">
+            <h3 class="title-margin">Trạng thái</h3>
+            <label class="radio radio-block">
+                <input type="radio" class="rad_trade_status" name="rad_trade_status" value="0" checked>
+                <span class="checkmark"></span>
+                Tất cả
+            </label>
+            <label class="radio radio-block">
+                <input type="radio" class="rad_trade_status" name="rad_trade_status" value="1" />
+                <span class="checkmark"></span>
+                Đang bán
+            </label>
+            <label class="radio radio-block">
+                <input type="radio" class="rad_trade_status" name="rad_trade_status" value="2">
+                <span class="checkmark"></span>
+                Ngừng bán
+            </label>
+            <div class="flex align-center">
+                <span>Số bản ghi: &nbsp;</span>
+                <div class="form-group mb0">
+                    <select class="form-control" id="cbo_page_size">
+                        <option value="10">10</option>
+                        <option value="20">20</option>
+                        <option value="30">30</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row-main_col800">
+        <a class="btn_show" href="javascrip:;">Hiển thị danh mục <i class="fa fa-caret-right"></i></a>
+        <div class="flex row-main-head">
+            <div class="search-wrapper">
+                <div class="form dropdown" action="" id="search">
+                    <input type="search" class="input_search ip-resetable" id="ip_search_product_name" onkeyup="productManager.OnChangeInputResetable(this);" placeholder="Nhập tên sản phẩm" />
+                    <button type="reset" class="btn_reset mfp-hide" onclick="productManager.OnResetInput(this);" style="right:7px!important">×</button>
+                    <span class="search-btn">
+                        <button type="button">
+                            <svg class="icon-svg">
+                                <use xlink:href="images/icons/icon.svg#search"></use>
+                            </svg>
+                        </button>
+                    </span>
+                </div>
+            </div>.
+            <div class="btn-right text-right">
+                <button type="button" class="btn btn-default" onclick="productManager.OpenDoCrawlPopup()" style="color:#FFFFFF;"><i class="iconfont-crawl"></i>Crawl Offline</button>
+                <a class="btn btn-default" href="/product/setupmanualv2">
+                    + Thêm mới
+                </a>
+                <div class="down-up">
+                    <a class="btn btn-default onclick" href="javascript:;">
+                        <i class="fa fa-bars"></i>
+                        <i class="fa fa-caret-down"></i>
+                    </a>
+                    <div class="form-down" style="display: none;">
+                        <label class="check-list mb10 mr25">
+                            <input type="checkbox" class="checkbox-tb-column" data-id="2" checked autocomplete="off">
+                            <span class="checkmark"></span>
+                            Mã sản phẩm
+                        </label>
+                        <label class="check-list mb10 mr25">
+                            <input type="checkbox" class="checkbox-tb-column" data-id="3" checked autocomplete="off">
+                            <span class="checkmark"></span>
+                            Tên sản phẩm
+                        </label>
+                        <label class="check-list mb10 mr25">
+                            <input type="checkbox" class="checkbox-tb-column" data-id="4" checked autocomplete="off">
+                            <span class="checkmark"></span>
+                            Giá về tay
+                        </label>
+                        <label class="check-list mb10 mr25">
+                            <input type="checkbox" class="checkbox-tb-column" data-id="5" checked autocomplete="off">
+                            <span class="checkmark"></span>
+                            Đã mua
+                        </label>
+                        <label class="check-list mb10 mr25">
+                            <input type="checkbox" class="checkbox-tb-column" data-id="6" checked autocomplete="off">
+                            <span class="checkmark"></span>
+                            Phí mua hộ
+                        </label>
+                        <label class="check-list mb10 mr25">
+                            <input type="checkbox" class="checkbox-tb-column" data-id="7" checked autocomplete="off">
+                            <span class="checkmark"></span>
+                            Ngành hàng
+                        </label>
+                        <label class="check-list mb10 mr25">
+                            <input type="checkbox" class="checkbox-tb-column" data-id="8" checked autocomplete="off">
+                            <span class="checkmark"></span>
+                            Nhãn hàng
+                        </label>
+                        <label class="check-list mb10 mfp-hide mr25">
+                            <input type="checkbox" class="checkbox-tb-column" data-id="9" autocomplete="off">
+                            <span class="checkmark"></span>
+                            Ngày tạo
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="wrap_bg wrap_bg_no-padding mb20" id="grid-data">
+
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    <script src="~/modules/product.js"></script>
+}

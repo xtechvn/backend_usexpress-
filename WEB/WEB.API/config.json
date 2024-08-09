@@ -1,0 +1,28 @@
+{
+  "EncryptApi": "5fDmJ8Ze",
+  "BOT_TOKEN_TELEGRAM": "1264151832:AAFKCM7CoaBerVhcYCHQba1AyY13X41rT5s",
+  "GROUP_ID_TELEGRAM": "-406438822",
+  "INDEX_ES_PRODUCT": "usexpress_products",
+  "email": "usexpressvietnam@gmail.com",
+  "password_email": "usexpress2018",
+  //"QUEUE_HOST": "103.74.121.156",
+  //"QUEUE_PORT": "5672",
+  //"QUEUE_V_HOST": "vhost_qc",
+  //"QUEUE_USERNAME": "qcenv",
+  //"QUEUE_PASSWORD": "qc123456",
+
+  "QUEUE_HOST": "103.157.218.133",
+  "QUEUE_PORT": "5672",
+  "QUEUE_V_HOST": "usexpress",
+  "QUEUE_USERNAME": "adavigolog_writer",
+  "QUEUE_PASSWORD": "adavigolog_2022",
+
+  "QUEUE_KEY_API": "AAFKCM7CoaBerVhcYCHQba1AyY13X41rT5s",
+  "Extension_Token": "kq1jnJAJShgdRPYjiMyi",
+  "DATA_FEED_FILE_PATH": "C:\\Users\\Mirrors\\Desktop\\data_feed",
+  "DATA_FEED_SERVER_PATH": "http://static.usexpress.vn/data_feed",
+  "API_IMG_UPLOAD": "https://103.74.121.155:44352",
+  "Interested_Product_Cache_Name": "interested_product_list",
+  "Kerry_Order_API_Key": "JhntAaKm7i30GI2E8Vs2RFFEHm2TwxDMRcbwFgxX",
+  "USExpressAppKey": "1oR79htCIlzyPMOsx7AEW9BpVudovhotL3xWo1U4"
+}

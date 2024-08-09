@@ -1,0 +1,25 @@
+﻿<div class="flex-head">
+    <h2 class="title_cate" id="revenu7Days">Doanh thu thuần 7 ngày qua</h2>
+    <h2 class="title_cate" id="revenu1Month">Doanh thu thuần 30 ngày qua</h2>
+    <div class="td2 color-main" id="doanhThuThuan">
+        <i class="fa fa-arrow-circle-o-right"></i>78,000,000
+    </div>
+    <div class="btn-right text-right" hidden>
+        <a class="export btn" href="">
+            <i class="fa fa-file-excel-o"></i>Xuất excel
+        </a>
+    </div>
+</div>
+<div class="tab-default cur-pointer">
+    <a onclick="menu.GetChartRevenu(1)" id="active7day">7 ngày qua</a>
+    <a onclick="menu.GetChartRevenu(2)" id="active1month">30 ngày qua</a>
+</div>
+<div class="row">
+    <div class="col-xl-12 text-center">
+        <img src="~/images/icons/loading.gif" style=" width: 100px; height: 100px; display:none;"
+             id="imgLoading" />
+    </div>
+    <div class="col-xl-12">
+        <canvas id="revenuChart" class="chartjs-render-monitor"></canvas>
+    </div>
+</div>

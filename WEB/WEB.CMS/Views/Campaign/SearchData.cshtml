@@ -1,0 +1,109 @@
+﻿@{
+    Layout = null;
+}
+@using Utilities.Contants
+@using Entities.ViewModels
+@model GenericViewModel<CampaignAdsViewModel>
+
+<table class="table table-nowrap">
+    <thead>
+        <tr class="bg-main2">
+            <th>STT</th>
+            <th class="text-nowrap">Sản phẩm</th>
+            <th class="text-nowrap">Từ ngày</th>
+            <th class="text-nowrap">Đến ngày</th>
+            <th class="text-nowrap">Tên chiến dịch</th>
+            <th class="text-nowrap">Nhóm hàng</th>
+            <th class="text-nowrap">Nhãn hàng</th>
+            <th class="text-nowrap">Trạng thái</th>
+            <th class="text-nowrap">Tác vụ</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.ListData.Count > 0)
+        {
+            int counter = 0;
+            foreach (var item in Model.ListData)
+            {
+                counter++;
+                <tr class="@((counter % 2 == 0)?"line-item bg-gray":"line-item")" data-id="@item.Id" data-ajaxdetail="false">
+                    <td>@((Model.CurrentPage-1) * Model.PageSize + counter)</td>
+                    <td>
+                        <strong title="@item.ProductName">
+                            @(!string.IsNullOrEmpty(item.ProductName) && item.ProductName.Length>20 ?
+                                 item.ProductName.Substring(0,20) + "..." : item.ProductName)
+                        </strong>
+                        <div class="flex">
+                            <a class="blue" href="@item.Link" target="_blank">Link gốc</a>
+                            @if (!string.IsNullOrEmpty(item.LinkProductTarget))
+                            {
+                                <p> 
+                                    &nbsp; &nbsp;<span class="color:#666">|</span>&nbsp; &nbsp;
+                                    <a class="blue" href="@item.LinkProductTarget" target="_blank">Link sản phẩm</a>
+                                </p>
+                            }
+                        </div>
+                    </td>
+                    <td>@item.FromDate.Value.ToString("dd/MM/yyyy")</td>
+                    <td>@item.ToDate.Value.ToString("dd/MM/yyyy")</td>
+                    <td>@item.CampaignName</td>
+                    <td>@item.GroupName</td>
+                    <td>@item.LabelName</td>
+                    @if (item.Status == (int)Constants.Status_Crawl.CHO_XU_LY)
+                    {
+                        <td>Chờ xử lý</td>
+                    }
+                    else if (item.Status == (int)Constants.Status_Crawl.HOAN_THANH)
+                    {
+                        <td>Hoàn thành</td>
+                    }
+                    else
+                    {
+                        <td>
+                            Thất bại<br />
+                            <div class="txt_12" style="color: #B40000;font-style: italic;" onclick="_menu.OnShowError(@item.Id)">(Xem Lý do)</div>
+                        </td>
+                    }
+                <td>
+                    @if (item.Status == (int)Constants.Status_Crawl.HOAN_THANH)
+                    {
+                        <a class="edit blue" href="" title="Xem chi tiết sản phẩm"><i class="fa fa-edit"></i></a>
+                    }
+                    @if (item.Status == (int)Constants.Status_Crawl.THAT_BAI)
+                    {
+                        <a class="red delete " onclick="_menu.OnDelete(@item.Id)" title="Xóa sản phẩm">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    }
+                    @if (item.Link !=null || item.Link!="")
+                    {
+                        <a class="call" style="cursor: pointer;" data-groupid="@item.GroupIdChoice" data-labelid="@item.LabelId" data-link="@item.Link" onclick="_campaign.OnDoCrawl(this);"><img src="images/icons/web-crawler.svg"></a>
+                    }
+                </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+<style>
+    .red {
+        color: #B40000 !important;
+    }
+    .call {
+        background: #3366CC;
+        border-radius: 2px;
+        text-align: center;
+    }
+</style>
+@await Component.InvokeAsync("Paging", new
+{
+    pageModel = new Paging()
+    {
+        TotalRecord = Model.TotalRecord,
+        TotalPage = Model.TotalPage,
+        CurrentPage = Model.CurrentPage,
+        PageSize = Model.PageSize,
+        RecordName = "chiến dịch",
+        PageAction = "_menu.OnPaging({0})"
+    }
+})

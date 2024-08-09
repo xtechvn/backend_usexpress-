@@ -1,0 +1,360 @@
+<!-- build:title -->Thanh toán
+<!-- /build:title -->
+<!-- build:head -->
+<link href="css/order.css" rel="stylesheet" type="text/css" />
+<!-- /build:head -->
+<!-- build:head3 -->
+
+<header class="header-block header-block-pay">
+    <div class="container flex">
+        <div class="header-block_1">
+            <a class="logo" href=""><img src="images/graphics/logo.svg" title="amz"></a>
+        </div>
+        <div class="step-pay">
+            <ul>
+                <li class="active succes">
+                    <a class="logo" href="">
+                        <img src="images/icons/icon-map.svg" title="amz">
+                        <img class="focus" src="images/icons/icon-map-active.svg" title="amz">
+                        <span>Thông tin giao hàng</span>
+                    </a>
+                </li>
+                <li class="active">
+                    <a class="logo" href="">
+                        <img src="images/icons/icon-payer.svg" title="amz">
+                        <img class="focus" src="images/icons/icon-payer-active.svg" title="amz">
+                        <span>Thanh toán</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="logo" href="">
+                        <img src="images/icons/icon-confirm.svg" title="amz">
+                        <img class="focus" src="images/icons/icon-confirm-active.svg" title="amz">
+                        <span>Xác nhận</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</header>
+
+<!-- /build:head3 -->
+
+<!-- build:content -->
+<style>
+    .header-block {
+        display: none
+    }
+
+    .header-block-pay {
+        display: block
+    }
+</style>
+
+<section class="main-container clearfix mt30">
+    <div class="container page-buy">
+        <div class="flex">
+            <div class="sidebar1">
+                <div class="bg_left step2 mb30">
+                    <div class="nav_setting">
+                        <a class="active" href="#tab-atm">
+                            <svg class="icon-us">
+                                <use xlink:href="images/icons/icon.svg#atm-card"></use>
+                            </svg>
+                            Thẻ ATM nội địa</a>
+                        <a href="#tab-tindung">
+                            <svg class="icon-us">
+                                <use xlink:href="images/icons/icon.svg#visa"></use>
+                            </svg>
+                            Thẻ tín dụng/Thẻ ghi nợ</a>
+                        <a href="#tab-vidt">
+                            <svg class="icon-us">
+                                <use xlink:href="images/icons/icon.svg#send_bank"></use>
+                            </svg>
+                            Chuyển khoản trực tiếp</a>
+                    </div>
+                    <div class="content_setting">
+                        <!-- Tab ngân hàng -->
+                        <div id="tab-atm" class="tab-content">
+                            <div class="b3_nhtt">
+                                <ul>
+                                    <li class="tc_nhtt">
+                                        <a><img src="images/nganhang/nhang_16.png" alt=""></a>
+                                    </li>
+                                    <li class="">
+                                        <a><img src="images/nganhang/nhang_6.png" alt=""></a>
+                                    </li>
+                                    <li>
+                                        <a><img src="images/nganhang/nhang_15.png" alt=""></a>
+                                    </li>
+                                    <li>
+                                        <a><img src="images/nganhang/nhang_5.png" alt=""></a>
+                                    </li>
+                                    <li>
+                                        <a><img src="images/nganhang/nhang_12.png" alt=""></a>
+                                    </li>
+                                    <li>
+                                        <a><img src="images/nganhang/nhang_4.png" alt=""></a>
+                                    </li>
+                                    <li>
+                                        <a><img src="images/nganhang/nhang_18.png" alt=""></a>
+                                    </li>
+                                    <li>
+                                        <a><img src="images/nganhang/nhang_13.png" alt=""></a>
+                                    </li>
+                                    <li>
+                                        <a><img src="images/nganhang/nhang_10.png" alt=""></a>
+                                    </li>
+                                    <li>
+                                        <a><img src="images/nganhang/nhang_17.png" alt=""></a>
+                                    </li>
+                                    <li>
+                                        <a><img src="images/nganhang/nhang_2.png" alt=""></a>
+                                    </li>
+                                    <li>
+                                        <a><img src="images/nganhang/nhang_9.png" alt=""></a>
+                                    </li>
+                                    <li>
+                                        <a><img src="images/nganhang/nhang_11.png" alt=""></a>
+                                    </li>
+                                    <li>
+                                        <a><img src="images/nganhang/nhang_14.png" alt=""></a>
+                                    </li>
+                                    <li>
+                                        <a><img src="images/nganhang/nhang_3.png" alt=""></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div id="tab-tindung" class="tab-content" style="display: none">
+                            <div class="master_choise">
+                                <div class="atm"><img src="images/nganhang/VisamasterCard.png" alt=""></div>
+                                <p>Bạn đang sử dụng hình thức thanh toán</br>Thẻ tín dụng/Thẻ ghi nợ</p>
+                            </div>
+                        </div>
+                        <div id="tab-vidt" class="tab-content" style="display: none">
+                            <div class="send_bank">
+                                <h3 class="txt_15 mb5">HƯỚNG DẪN CHUYỂN KHOẢN TRỰC TIẾP</h3>
+                                <p class="txt_666 mb20">Vui lòng chọn một ngân hàng bên dưới để chuyển khoản:</p>
+                                <div class="b3_nhtt">
+                                    <ul>
+                                        <li class="tc_nhtt">
+                                            <a><img src="images/nganhang/nhang_16.png" alt=""></a>
+                                        </li>
+                                        <li class="">
+                                            <a><img src="images/nganhang/nhang_6.png" alt=""></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="chitiet_giohang">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr class="head">
+                                    <th colspan="2">
+                                        <label class="confir_res">
+                                            Tên sản phẩm <span>(2 sản phẩm)</span>
+                                            <input type="checkbox">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </th>
+                                    <th><strong>Đơn giá</strong></th>
+                                    <th><strong>Số lượng </strong></th>
+                                    <th><strong>Thành tiền</strong></th>
+                                </tr>
+                                <tr class="line">
+                                    <th colspan="5"></th>
+                                </tr>
+                                <tr>
+                                    <th colspan="5">
+                                        <div class="text-left hangcungcap_sp">
+                                            <label class="confir_res">
+                                                <img src="images/graphics/my.png" alt="">
+                                                <span>Sản phẩm từ Mỹ</span>
+                                                <input type="checkbox" checked>
+                                                <span class="checkmark"></span>
+                                            </label>
+                                        </div>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="sp_biendong_gia">
+                                    <td class="col_anhsp">
+                                        <img src="images/graphics/sanpham2.png">
+                                    </td>
+                                    <td class="col_tensp">
+                                        <div class="ct_tensp"><a href="#">Điện Thoại iPhone XS 512GB - Hàng Chính
+                                                Hãng</a></div>
+                                        <p class="txt_12 color_666">No Brand, Nhóm màu:ĐEN, Kích thước: One size</p>
+                                        <div class="flex space-between align-center">
+                                            <p class="txt_12 color_666">Cung cấp bởi : <span class="color_green">Tiki</span></p>
+                                        </div>
+                                    </td>
+                                    <td class="col_price">
+                                        <div class="price">24.450.000 <em>đ</em></div>
+                                        <span class="old">30.000.000 đ</span><span>-20%</span>
+                                        <div class="sale">Giảm 500k</div>
+                                    </td>
+                                    <td class="sl_giohang">
+                                        <input type="text" id="qty_input" class="qty_input" value="1" min="1">
+                                    </td>
+                                    <td class="col_price">
+                                        <div><strong class="price color_green">24.450.000 <em>đ</em></strong></div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col_anhsp">
+                                        <img src="images/graphics/sanpham3.png">
+                                    </td>
+                                    <td class="col_tensp">
+                                        <div class="ct_tensp"><a href="#">Điện Thoại iPhone XS 512GB - Hàng Chính
+                                                Hãng</a></div>
+                                        <p class="txt_12 color_666">No Brand, Nhóm màu:ĐEN, Kích thước: One size</p>
+                                        <div class="flex space-between align-center">
+                                            <p class="txt_12 color_666">Cung cấp bởi : <span class="color_green">Tiki</span></p>
+                                        </div>
+                                    </td>
+                                    <td class="col_price">
+                                        <div class="price">24.450.000 <em>đ</em></div>
+                                        <span class="old">30.000.000 đ</span><span>-20%</span>
+                                        <div class="sale">Giảm 500k</div>
+                                    </td>
+                                    <td class="sl_giohang">
+                                        <input type="text" id="qty_input" class="qty_input" value="1" min="1">
+                                    </td>
+                                    <td class="col_price">
+                                        <div><strong class="price color_green">24.450.000 <em>đ</em></strong></div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th colspan="5">
+                                        <div class="text-left hangcungcap_sp">
+                                            <label class="confir_res">
+                                                <img src="images/graphics/my.png" alt="">
+                                                <span>Sản phẩm từ Mỹ</span>
+                                                <input type="checkbox" checked>
+                                                <span class="checkmark"></span>
+                                            </label>
+                                        </div>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="sp_biendong_gia">
+                                    <td class="col_anhsp">
+                                        <img src="images/graphics/sanpham2.png">
+                                    </td>
+                                    <td class="col_tensp">
+                                        <div class="ct_tensp"><a href="#">Điện Thoại iPhone XS 512GB - Hàng Chính
+                                                Hãng</a></div>
+                                        <p class="txt_12 color_666">No Brand, Nhóm màu:ĐEN, Kích thước: One size</p>
+                                        <div class="flex space-between align-center">
+                                            <p class="txt_12 color_666">Cung cấp bởi : <span class="color_green">Tiki</span></p>
+                                        </div>
+                                    </td>
+                                    <td class="col_price">
+                                        <div class="price">24.450.000 <em>đ</em></div>
+                                        <span class="old">30.000.000 đ</span><span>-20%</span>
+                                        <div class="sale">Giảm 500k</div>
+                                    </td>
+                                    <td class="sl_giohang">
+                                        <input type="text" id="qty_input" class="qty_input" value="1" min="1">
+                                    </td>
+                                    <td class="col_price">
+                                        <div><strong class="price color_green">24.450.000 <em>đ</em></strong></div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col_anhsp">
+                                        <img src="images/graphics/sanpham3.png">
+                                    </td>
+                                    <td class="col_tensp">
+                                        <div class="ct_tensp"><a href="#">Điện Thoại iPhone XS 512GB - Hàng Chính
+                                                Hãng</a></div>
+                                        <p class="txt_12 color_666">No Brand, Nhóm màu:ĐEN, Kích thước: One size</p>
+                                        <div class="flex space-between align-center">
+                                            <p class="txt_12 color_666">Cung cấp bởi : <span class="color_green">Tiki</span></p>
+                                        </div>
+                                    </td>
+                                    <td class="col_price">
+                                        <div class="price">24.450.000 <em>đ</em></div>
+                                        <span class="old">30.000.000 đ</span><span>-20%</span>
+                                        <div class="sale">Giảm 500k</div>
+                                    </td>
+                                    <td class="sl_giohang">
+                                        <input type="text" id="qty_input" class="qty_input" value="1" min="1">
+                                    </td>
+                                    <td class="col_price">
+                                        <div><strong class="price color_green">24.450.000 <em>đ</em></strong></div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="sidebar2">
+                <div class="sticky" style="top:20px;">
+                    <div class="checkout_sidebar">
+                        <a class="edit" href="#">
+                            <svg class="icon-us">
+                                <use xlink:href="images/icons/icon.svg#edit"></use>
+                            </svg>Sửa
+                        </a>
+                        <h3 class="title">THÔNG TIN GIAO HÀNG</h3>
+                        <div class="checkout_tr">
+                            <div class="item">
+                                <p class="txt_666">Họ tên khách hàng :</p>
+                                <div>Mai Văn Dinh</div>
+                            </div>
+                            <div class="item">
+                                <p class="txt_666">Số điện thoại :</p>
+                                <span>0999333666</span>
+                            </div>
+                            <div class="item">
+                                <p class="txt_666">Địa chỉ :</p>
+                                <span>17 Duy Tân, P Dịch Vọng Hâu, Q. Cầu Giấy,...</span>
+                            </div>
+                        </div>                
+                    </div>
+
+                    <div class="checkout_sidebar">
+                        <div class="checkout_tr">
+                            <div class="item">
+                                <p>Tiền hàng :</p>
+                                <span class="price">3,456,789 <em>đ</em></span>
+                            </div>
+                            <div class="item">
+                                <p>Giảm giá :</p>
+                                <span class="price">3,456,789 <em>đ</em></span>
+                            </div>
+                            <div class="item  price_all">
+                                <p><strong>TỔNG TIỀN</strong></p>
+                                <strong class="price">3,000,000 <em>đ</em></strong>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                        <a class="btn btn-order" href="">Thanh toán</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sản phẩm đã xem -->
+ 
+    </div>
+</section>
+
+
+<!-- /build:content -->

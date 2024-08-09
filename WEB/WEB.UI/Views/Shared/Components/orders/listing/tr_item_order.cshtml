@@ -1,0 +1,75 @@
+﻿@using WEB.UI.ViewModels;
+@model List<OrderItemHistoryViewModel>
+
+@if (Model != null)
+{
+    @foreach (var item in Model)
+    {
+        <tr class="tr_item_order">
+            <td class="medium"><a class="color_green" href="/chi-tiet-don-hang-@item.id">@item.orderNo</a></td>
+            <td class="list-product">
+                @if (item.product != null)
+                {
+                    <ul>
+                        @{
+                            int d = 0;
+                            foreach (var product in item.product)
+                            {
+                                <li>
+                                    <div class="img"><img src="@product.imageThumb"></div>
+                                    <div class="content">
+                                        @Html.Raw("<a href='/chi-tiet-don-hang-" + @item.id + "'>" + @product.title + "</a>")
+
+                                        @if (item.product.Count > 1)
+                                        {
+                                            <a href="/chi-tiet-don-hang-@item.id" style="cursor: pointer;">
+                                                @Html.Raw("... và " + item.product.Count + " sản phẩm khác")
+                                            </a>
+                                            break;
+                                        }
+                                        @Html.Raw("<br/>")
+                                        @Html.Raw("x " + product.quantity)
+                                    </div>
+                                    @{
+                                        if (d > 0)
+                                        {
+                                            @Html.Raw("<br/>");
+                                        }
+                                        d += 1;
+                                    }
+                                </li>
+                            }
+                        }
+                    </ul>
+                }
+            </td>
+            <td>@item.amountVnd.ToString("N0") ₫</td>
+            <td class="text-right">
+                @{
+                    if (item.orderStatus == 3)
+                    {
+                        var create_order = Convert.ToDateTime(item.createdOn);
+                        double total_hours = (DateTime.Now - create_order).TotalHours;
+                        if (total_hours > 24)
+                        {
+                            <p>@Html.Raw("Hết hạn")</p>
+                            <br />
+                            @*<a class="btn-detail" href="#" style="background-color:#FFAA00;">Mua lần nữa</a>*@
+                        }
+                        else
+                        {
+                            <p>@item.orderStatusName</p>
+                            <br />
+                            <a class="btn-detail" href="/payment/re-checkout/@item.id" style="background:var(--green1);">Thanh toán</a>
+                        }
+                    }
+                    else
+                    {
+                        @item.orderStatusName
+                    }
+                }
+            </td>
+        </tr>
+    }
+}
+

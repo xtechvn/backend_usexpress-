@@ -1,0 +1,159 @@
+/**
+iconfont Webfont
+*/
+@font-face {
+	font-family: 'iconfont';
+	src: url('fonts/iconfont/iconfont.eot?1565580198650');
+	src: url('fonts/iconfont/iconfont.eot?#iefix-1565580198650') format('embedded-opentype'),
+		url('fonts/iconfont/iconfont.woff2?1565580198650') format('woff2'),
+		url('fonts/iconfont/iconfont.woff?1565580198650') format('woff'),
+		url('fonts/iconfont/iconfont.ttf?1565580198650') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+[class^='iconfont-']:before,
+[class*=' iconfont-']:before {
+	font-family: 'iconfont';
+	display: inline-block;
+	vertical-align: middle;
+	line-height: 1;
+	font-weight: normal;
+	font-style: normal;
+	speak: none;
+	text-decoration: inherit;
+	font-size: inherit;
+	text-transform: none;
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+/*
+Glyphs list
+*/
+ .iconfont-authentication:before {
+			content: '\ea01';
+		}
+
+		 .iconfont-bar:before {
+			content: '\ea02';
+		}
+
+		 .iconfont-calendar:before {
+			content: '\ea03';
+		}
+
+		 .iconfont-cart:before {
+			content: '\ea04';
+		}
+
+		 .iconfont-check-box:before {
+			content: '\ea05';
+		}
+
+		 .iconfont-checked:before {
+			content: '\ea06';
+		}
+
+		 .iconfont-exclamation-mark:before {
+			content: '\ea07';
+		}
+
+		 .iconfont-giasoc:before {
+			content: '\ea08';
+		}
+
+		 .iconfont-gioihan:before {
+			content: '\ea09';
+		}
+
+		 .iconfont-heart:before {
+			content: '\ea0a';
+		}
+
+		 .iconfont-help:before {
+			content: '\ea0b';
+		}
+
+		 .iconfont-home:before {
+			content: '\ea0c';
+		}
+
+		 .iconfont-home2:before {
+			content: '\ea0d';
+		}
+
+		 .iconfont-language:before {
+			content: '\ea0e';
+		}
+
+		 .iconfont-mail:before {
+			content: '\ea0f';
+		}
+
+		 .iconfont-next1:before {
+			content: '\ea10';
+		}
+
+		 .iconfont-next2:before {
+			content: '\ea11';
+		}
+
+		 .iconfont-padlock:before {
+			content: '\ea12';
+		}
+
+		 .iconfont-phone:before {
+			content: '\ea13';
+		}
+
+		 .iconfont-prev1:before {
+			content: '\ea14';
+		}
+
+		 .iconfont-prev2:before {
+			content: '\ea15';
+		}
+
+		 .iconfont-review:before {
+			content: '\ea16';
+		}
+
+		 .iconfont-rss:before {
+			content: '\ea17';
+		}
+
+		 .iconfont-search:before {
+			content: '\ea18';
+		}
+
+		 .iconfont-smartphone:before {
+			content: '\ea19';
+		}
+
+		 .iconfont-sosanh:before {
+			content: '\ea1a';
+		}
+
+		 .iconfont-star-full:before {
+			content: '\ea1b';
+		}
+
+		 .iconfont-star-half:before {
+			content: '\ea1c';
+		}
+
+		 .iconfont-thutuc:before {
+			content: '\ea1d';
+		}
+
+		 .iconfont-tietkiem:before {
+			content: '\ea1e';
+		}
+
+		 .iconfont-user:before {
+			content: '\ea1f';
+		}
+
+		

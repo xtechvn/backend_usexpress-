@@ -1,0 +1,86 @@
+﻿@{
+    Layout = null;
+
+}
+@using Entities.Models
+@using Entities.ViewModels
+@model AddressModel
+@{
+    var ListProvince = (List<Province>)ViewBag.ProvinceList;
+}
+
+@if (Model != null && Model.Id > 0)
+{
+    <form id="form-data-address">
+        <div class="info-pay form form-default2">
+            <div class="form-group icon-visible">
+                <svg class="icon-us">
+                    <use xlink:href="/images/icons/icon.svg#user"></use>
+                </svg>
+                <input type="hidden" class="form-control" asp-for="@Model.Id" />
+                <input type="hidden" class="form-control" asp-for="@Model.ClientId" />
+                <input type="hidden" class="form-control" asp-for="@Model.OrderId" />
+                <input type="text" class="form-control" asp-for="@Model.ReceiverName" placeholder="Tên khách hàng" />
+            </div>
+            <div class="form-group icon-visible">
+                <svg class="icon-us">
+                    <use xlink:href="/images/icons/icon.svg#mail"></use>
+                </svg>
+                <input type="text" class="form-control" value="@Model.Email" placeholder="Email" disabled />
+            </div>
+            <div class="form-group icon-visible">
+                <svg class="icon-us">
+                    <use xlink:href="/images/icons/icon.svg#smartphone"></use>
+                </svg>
+                <input type="text" class="form-control" asp-for="@Model.Phone" placeholder="Số điện thoại" />
+            </div>
+            <div class="form-group icon-visible">
+                <svg class="icon-us">
+                    <use xlink:href="/images/icons/icon.svg#compass"></use>
+                </svg>
+                <select class="form-control select2" id="cbo-province" asp-for="@Model.ProvinceId" onchange="_orderDetail.OnChangeProvince(event.target.value,'@Model.DistrictId')">
+                    <option value="">Tỉnh / Thành phố</option>
+                    @foreach (var item in ListProvince)
+                    {
+                        <option value="@item.ProvinceId">@item.Name</option>
+                    }
+                </select>
+            </div>
+            <div class="form-group icon-visible">
+                <svg class="icon-us">
+                    <use xlink:href="/images/icons/icon.svg#map"></use>
+                </svg>
+                <select class="form-control select2" id="cbo-district" asp-for="@Model.DistrictId" onchange="_orderDetail.OnChangeDistrict(event.target.value,'@Model.WardId')">
+                    <option>Quận / Huyện</option>
+                </select>
+            </div>
+            <div class="form-group icon-visible">
+                <svg class="icon-us">
+                    <use xlink:href="/images/icons/icon.svg#vector"></use>
+                </svg>
+                <select class="form-control select2" id="cbo-ward" asp-for="@Model.WardId">
+                    <option>Phường / Xã</option>
+                </select>
+            </div>
+            <div class="form-group icon-visible">
+                <svg class="icon-us">
+                    <use xlink:href="/images/icons/icon.svg#address"></use>
+                </svg>
+                <input class="form-control" asp-for="@Model.Address" placeholder="Địa chỉ giao hàng" />
+            </div>
+            <label class="check-list mt20 mb30 mfp-hide">
+                <input type="checkbox" asp-for="@Model.IsActive">
+                <span class="checkmark"></span>
+                Sử dụng địa chỉ này làm mặc định
+            </label>
+            <div class="control_btn">
+                <button type="button" class="btn cancel agray" onclick="$.magnificPopup.close();">Hủy bỏ</button>
+                <button type="button" class="btn confirm" onclick="_orderDetail.UpdateAddress();">Giao hàng đến địa chỉ này</button>
+            </div>
+        </div>
+    </form>
+}
+else
+{
+    <p class="red" style="margin-top:30px;" >Không tìm thấy địa chỉ khách hàng </p>
+}

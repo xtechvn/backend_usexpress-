@@ -1,0 +1,117 @@
+﻿@{
+    Layout = null;
+}
+@using Utilities
+@using Utilities.Contants
+@using Entities.Models
+@using Entities.ViewModels
+@model List<OrderProgress>
+
+@if (Model != null && Model.Count > 0)
+{
+    var KerryProgressList = (List<OrderKerryProgressModel>)ViewBag.KerryProgressList;
+    var EstimatedDeliveryList = (List<AutomaticPurchaseAmz>)ViewBag.EstimatedDeliveryList;
+
+    <div class="col-md-12 mt30">
+        <ul class="list-notifi">
+            @foreach (var item in Model.Where(s => s.OrderStatus != ((int)Constants.OrderStatus.CREATED_ORDER)).OrderByDescending(s => s.CreateDate).ThenBy(s => s.OrderStatus))
+            {
+                if (item.OrderStatus == (int)Constants.OrderStatus.SUCCEED_ORDER)
+                {
+                    <li>
+                        <i class="fa fa-file-o"></i>
+                        <a href="" class="color-main2">Đơn hàng hoàn thành (Giao hàng thành công)</a>
+                        <div class="date">Ngày: @item.CreateDate.ToString("dd/MM/yyyy HH:mm")</div>
+                    </li>
+                }
+                else
+                {
+                    <li>
+                        <i class="fa fa-check"></i>
+                        <div>@EnumExtensions.GetDisplayName((Constants.OrderStatus)item.OrderStatus)</div>
+                        <div class="date">Ngày: @item.CreateDate.ToString("dd/MM/yyyy HH:mm")</div>
+
+                        @if (item.OrderStatus == (int)Constants.OrderStatus.CLIENT_TRANSPORT_ORDER)
+                        {
+                            if (KerryProgressList != null && KerryProgressList.Count > 0)
+                            {
+                                <div class="list-kerry">
+                                    <ul>
+                                        @foreach (var child in KerryProgressList)
+                                        {
+                                            @if (child.giaohangthanhcong == 0)
+                                            {
+                                                <li>
+                                                    <div class="name">@child.warehouse</div>
+                                                    <div class="date">Ngày: @child.status_date</div>
+                                                </li>
+                                            }
+                                            else
+                                            {
+                                                <li class="active">
+                                                    <div class="name">
+                                                        @child.warehouse
+                                                        <div class="nv">
+                                                            <div>Nhân viên gia hàng: @child.delivery_man</div>
+                                                            <div>Số điện thoại: @child.phone_number</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="date">Ngày: @child.status_date</div>
+                                                </li>
+                                            }
+                                        }
+                                    </ul>
+                                </div>
+                            }
+                        }
+
+                        @if (item.OrderStatus == (int)Constants.OrderStatus.BOUGHT_ORDER)
+                        {
+                            if (EstimatedDeliveryList != null && EstimatedDeliveryList.Count > 0)
+                            {
+                                <div class="list-kerry">
+                                    <ul>
+                                        @foreach (var child in EstimatedDeliveryList)
+                                        {
+                                            <li>
+                                                <div class="name">@child.DeliveryMessage</div>
+                                                <div class="date">Ngày: @(child.OrderEstimatedDeliveryDate != null ? child.OrderEstimatedDeliveryDate.Value.ToString("dd/MM/yyyy HH:mm"): string.Empty)</div>
+                                            </li>
+                                        }
+                                    </ul>
+                                </div>
+                            }
+                        }
+
+                    </li>
+                }
+            }
+
+            @{
+                var create_model = Model.FirstOrDefault(s => s.OrderStatus == (int)Constants.OrderStatus.CREATED_ORDER);
+            }
+
+            @if (create_model != null)
+            {
+                <li>
+                    <i class="fa fa-file-o"></i>
+                    <div>@EnumExtensions.GetDisplayName((Constants.OrderStatus)create_model.OrderStatus)</div>
+                    <div class="date">Ngày: @create_model.CreateDate.ToString("dd/MM/yyyy HH:mm")</div>
+                </li>
+            }
+
+        </ul>
+    </div>
+    <div class="form-default">
+        <div class="form-group align-right mt20 block">
+            <button type="submit" class="btn btn-default cancel" onclick="$.magnificPopup.close();"><i class="fa fa-minus-circle"></i>Đóng</button>
+        </div>
+    </div>
+}
+else
+{
+    <div class="col-md-12 mt30">
+        <p class="red text-center">Hệ thống không tìm thấy lịch sử trạng thái đơn hàng</p>
+    </div>
+}
+

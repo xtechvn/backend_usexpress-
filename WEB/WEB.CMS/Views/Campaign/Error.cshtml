@@ -1,0 +1,18 @@
+﻿@{
+    Layout = null;
+}
+@model Entities.Models.ProductClassification
+<div id="them-chien-dich" class="white-popup">
+    <div class="form-default">
+        <textarea rows="7" readonly>@Model.Note</textarea>
+    </div>
+    <div class="form-group align-right col-12 mt20 block">
+        <button type="button" class="btn btn-success " style="background:#236852;" onclick="$.magnificPopup.close();">OK</button>
+        <button type="button" class="btn btn-default cancel" onclick="$.magnificPopup.close();"><i class="fa fa-ban"></i>Bỏ qua</button>
+    </div>
+</div>
+<script>
+    $().ready(function () {
+        $('.mfp-close').hide();
+    });
+</script>

@@ -1,0 +1,349 @@
+﻿@using Utilities.Contants;
+@{
+    string order_no = (string)ViewBag.order_no;
+    bool is_success = (Boolean)ViewBag.is_success;
+    int is_payment_type = (int)ViewBag.payment_type;
+    string payment_msg = "";
+    switch (is_payment_type)
+    {
+        case (int)PaymentType.USEXPRESS_BANK:
+            payment_msg = "Chuyển khoản trực tiếp";
+            break;
+        case (int)PaymentType.ATM_PAYOO_PAY:
+            payment_msg = "Thanh toán online bằng thẻ ATM";
+            break;
+        case (int)PaymentType.VISA_PAYOO_PAY:
+            payment_msg = "Thanh toán online qua thẻ Visa/Master/JCB";
+            break;
+        default:
+            is_success = false;
+            break;
+    }
+    ViewData["Title"] = "Xác thực thanh toán";
+    Layout = "_Layout";
+}
+
+<style>
+    .header-block {
+        display: none
+    }
+
+    .header-block-pay {
+        display: block
+    }
+</style>
+<link href="~/css/order.css" rel="stylesheet" />
+
+@{ await Html.RenderPartialAsync("PartialView/Payment/headerPayment"); }
+<section class="main-container clearfix mt30">
+    <div class="container page-buy">
+        <div class="flex mb20">
+            <div class="sidebar1" style="width:100%">
+
+                @if (is_success)
+                {
+                    <div class="cart_empty bg_warp ">
+                        <img src="/images/graphics/success.svg" alt="">
+                        <h3 class="mt30 mb5" style="color: #37A07F;">KHỞI TẠO THÀNH CÔNG</h3>
+                        <div class="text-left">
+
+                            <p>Thông tin đơn hàng</p>
+                            <p><strong>• Mã đơn hàng</strong> : @order_no</p>
+                            <p class="mb20">
+                                <strong>• Hình thức thanh toán</strong> : @payment_msg
+                            </p>
+                            <p>Để chủ động theo dõi hành trình đơn hàng, bạn có thể truy cập vào <u><a href="/user/my-order" style="text-decoration:underline"> đây</a></u>.</p>
+                            <p><strong>Lưu ý: </strong>Trường hợp có những thắc mắc về đơn hàng, bạn có thể xem thêm mục <u> <a href="/user/faq">câu hỏi thường gặp</a></u>.</p>
+                            <p class="mb30">Nếu bạn cần được hỗ trợ ngay, hãy gọi tổng đài hỗ trợ 1900 633 600. Chúng tôi luôn sẵn sàng trả lời bạn từ 8h30 - 17h30, thứ 2 đến thứ 6 hàng tuần.</p>
+                            <p class="mb30">Ngoài thời gian trên, vui lòng kết nối tới <u> <a href="https://www.facebook.com/US.ExpressVietnam">Đội quân Mua hộ US Express</a></u> để được hỗ trợ nhanh nhất.</p>
+                        </div>
+
+                        <a class="btn" href="/">
+                            Tiếp tục mua hàng
+                            <svg class="icon-us">
+                                <use xlink:href="/images/icons/icon.svg#next"></use>
+                            </svg>
+                        </a>
+                    </div>
+                }
+                else
+                {
+                    <div class="cart_empty bg_warp ">
+                        <img src="/images/graphics/fail.svg" alt="">
+                        <h3 class="mt30 mb5">THANH TOÁN KHÔNG THÀNH CÔNG !</h3>
+                        <p class="mb5">
+                            Đơn hàng <strong>@order_no</strong> của quý khách thanh toán
+                            không thành công. Vui lòng liên hệ cskh@usexpress.vn để được hỗ trợ.
+                        </p>
+                        <p class="mb20">Hỗ trợ ngay : <strong>1900.633.600</strong></p>
+                        <a class="btn" href="/quan-ly-don-hang">
+                            <svg class="icon-us" style="width: 14px;height: 14px;margin-right: 4px;">
+                                <use xlink:href="/images/icons/icon.svg#back"></use>
+                            </svg>
+                            Kiểm tra đơn hàng
+                        </a>
+                    </div>
+                }
+
+            </div>
+
+        </div>
+
+        <!-- Sản phẩm đã xem -->
+        @*<div class="sp_daxem bg_warp mb20">
+            <h2 class="title-label">Sản phẩm bạn đã xem</h2>
+            <div class="list-product flex">
+                <div class="product-item col-5">
+                    <div class="sale">-50%</div>
+                    <a class="ava" href="">
+                        <img src="/images/graphics/sanpham1.png">
+                        <span class="like active">
+                            <svg class="icon-us">
+                                <use xlink:href="/images/icons/icon.svg#heart"></use>
+                            </svg>
+                        </span>
+                    </a>
+                    <div class="content">
+                        <div class="ct_star">
+                            <svg class="icon-us">
+                                <use xlink:href="/images/icons/icon.svg#star-full"></use>
+                            </svg>
+                            <svg class="icon-us">
+                                <use xlink:href="/images/icons/icon.svg#star-full"></use>
+                            </svg>
+                            <svg class="icon-us">
+                                <use xlink:href="/images/icons/icon.svg#star-full"></use>
+                            </svg>
+                            <svg class="icon-us">
+                                <use xlink:href="/images/icons/icon.svg#star-full"></use>
+                            </svg>
+                            <svg class="icon-us">
+                                <use xlink:href="/images/icons/icon.svg#star-full"></use>
+                            </svg>
+                            <span class="buy">1140 đã mua</span>
+                        </div>
+                        <h3 class="title">
+                            <img src="/images/icons/prime.png" title="amz"><a href="" title="">
+                                Sản Phẩm
+                                Dinh Dưỡng Nestle Nutren Junior
+                            </a>
+                        </h3>
+                        <div class="flex">
+                            <div class="col-2">
+                                <span>Giá về tay</span>
+                                <strong class="price">18.990.000 đ</strong>
+                            </div>
+                        </div>
+                        <a class="brand_label" href="">
+                            <img src="/images/graphics/my.png" title="amz">Sản phẩm bán tại
+                            Amazon Úc
+                        </a>
+                    </div>
+                </div>
+                <div class="product-item col-5">
+                    <div class="sale">-50%</div>
+                    <a class="ava" href="">
+                        <img src="/images/graphics/sanpham2.png">
+                        <span class="like">
+                            <svg class="icon-us">
+                                <use xlink:href="/images/icons/icon.svg#heart"></use>
+                            </svg>
+                        </span>
+                    </a>
+                    <div class="content">
+                        <div class="ct_star">
+                            <svg class="icon-us">
+                                <use xlink:href="/images/icons/icon.svg#star-full"></use>
+                            </svg>
+                            <svg class="icon-us">
+                                <use xlink:href="/images/icons/icon.svg#star-full"></use>
+                            </svg>
+                            <svg class="icon-us">
+                                <use xlink:href="/images/icons/icon.svg#star-full"></use>
+                            </svg>
+                            <svg class="icon-us">
+                                <use xlink:href="/images/icons/icon.svg#star-full"></use>
+                            </svg>
+                            <svg class="icon-us">
+                                <use xlink:href="/images/icons/icon.svg#star-full"></use>
+                            </svg>
+                            <span class="buy">1140 đã mua</span>
+                        </div>
+                        <h3 class="title">
+                            <img src="/images/icons/prime.png" title="amz"><a href="" title="">
+                                Sản Phẩm
+                                Dinh Dưỡng Nestle Nutren Junior
+                            </a>
+                        </h3>
+                        <div class="flex">
+                            <div class="col-2">
+                                <span>Giá về tay</span>
+                                <strong class="price">18.990.000 đ</strong>
+                            </div>
+                        </div>
+                        <a class="brand_label" href="">
+                            <img src="/images/graphics/my.png" title="amz">Sản phẩm bán tại
+                            Amazon Úc
+                        </a>
+                    </div>
+                </div>
+                <div class="product-item col-5">
+                    <div class="sale">-50%</div>
+                    <a class="ava" href="">
+                        <img src="/images/graphics/sanpham3.png">
+                        <span class="like">
+                            <svg class="icon-us">
+                                <use xlink:href="/images/icons/icon.svg#heart"></use>
+                            </svg>
+                        </span>
+                    </a>
+                    <div class="content">
+                        <div class="ct_star">
+                            <svg class="icon-us">
+                                <use xlink:href="/images/icons/icon.svg#star-full"></use>
+                            </svg>
+                            <svg class="icon-us">
+                                <use xlink:href="/images/icons/icon.svg#star-full"></use>
+                            </svg>
+                            <svg class="icon-us">
+                                <use xlink:href="/images/icons/icon.svg#star-full"></use>
+                            </svg>
+                            <svg class="icon-us">
+                                <use xlink:href="/images/icons/icon.svg#star-full"></use>
+                            </svg>
+                            <svg class="icon-us">
+                                <use xlink:href="/images/icons/icon.svg#star-full"></use>
+                            </svg>
+                            <span class="buy">1140 đã mua</span>
+                        </div>
+                        <h3 class="title">
+                            <img src="/images/icons/prime.png" title="amz"><a href="" title="">
+                                Sản Phẩm
+                                Dinh Dưỡng Nestle Nutren Junior
+                            </a>
+                        </h3>
+                        <div class="flex">
+                            <div class="col-2">
+                                <span>Giá về tay</span>
+                                <strong class="price">18.990.000 đ</strong>
+                            </div>
+                        </div>
+                        <a class="brand_label" href="">
+                            <img src="/images/graphics/my.png" title="amz">Sản phẩm bán tại
+                            Amazon Úc
+                        </a>
+                    </div>
+                </div>
+                <div class="product-item col-5">
+                    <div class="sale">-50%</div>
+                    <a class="ava" href="">
+                        <img src="/images/graphics/sanpham4.png">
+                        <span class="like">
+                            <svg class="icon-us">
+                                <use xlink:href="/images/icons/icon.svg#heart"></use>
+                            </svg>
+                        </span>
+                    </a>
+                    <div class="content">
+                        <div class="ct_star">
+                            <svg class="icon-us">
+                                <use xlink:href="/images/icons/icon.svg#star-full"></use>
+                            </svg>
+                            <svg class="icon-us">
+                                <use xlink:href="/images/icons/icon.svg#star-full"></use>
+                            </svg>
+                            <svg class="icon-us">
+                                <use xlink:href="/images/icons/icon.svg#star-full"></use>
+                            </svg>
+                            <svg class="icon-us">
+                                <use xlink:href="/images/icons/icon.svg#star-full"></use>
+                            </svg>
+                            <svg class="icon-us">
+                                <use xlink:href="/images/icons/icon.svg#star-full"></use>
+                            </svg>
+                            <span class="buy">1140 đã mua</span>
+                        </div>
+                        <h3 class="title">
+                            <img src="/images/icons/prime.png" title="amz"><a href="" title="">
+                                Sản Phẩm
+                                Dinh Dưỡng Nestle Nutren Junior
+                            </a>
+                        </h3>
+                        <div class="flex">
+                            <div class="col-2">
+                                <span>Giá về tay</span>
+                                <strong class="price">18.990.000 đ</strong>
+                            </div>
+                        </div>
+                        <a class="brand_label" href="">
+                            <img src="/images/graphics/my.png" title="amz">Sản phẩm bán tại
+                            Amazon Úc
+                        </a>
+                    </div>
+                </div>
+                <div class="product-item col-5">
+                    <div class="sale">-50%</div>
+                    <a class="ava" href="">
+                        <img src="/images/graphics/sanpham5.png">
+                        <span class="like">
+                            <svg class="icon-us">
+                                <use xlink:href="/images/icons/icon.svg#heart"></use>
+                            </svg>
+                        </span>
+                    </a>
+                    <div class="content">
+                        <div class="ct_star">
+                            <svg class="icon-us">
+                                <use xlink:href="/images/icons/icon.svg#star-full"></use>
+                            </svg>
+                            <svg class="icon-us">
+                                <use xlink:href="/images/icons/icon.svg#star-full"></use>
+                            </svg>
+                            <svg class="icon-us">
+                                <use xlink:href="/images/icons/icon.svg#star-full"></use>
+                            </svg>
+                            <svg class="icon-us">
+                                <use xlink:href="/images/icons/icon.svg#star-full"></use>
+                            </svg>
+                            <svg class="icon-us">
+                                <use xlink:href="/images/icons/icon.svg#star-full"></use>
+                            </svg>
+                            <span class="buy">1140 đã mua</span>
+                        </div>
+                        <h3 class="title">
+                            <img src="/images/icons/prime.png" title="amz"><a href="" title="">
+                                Sản Phẩm
+                                Dinh Dưỡng Nestle Nutren Junior
+                            </a>
+                        </h3>
+                        <div class="flex">
+                            <div class="col-2">
+                                <span>Giá về tay</span>
+                                <strong class="price">18.990.000 đ</strong>
+                            </div>
+                        </div>
+                        <a class="brand_label" href="">
+                            <img src="/images/graphics/my.png" title="amz">Sản phẩm bán tại
+                            Amazon Úc
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>*@
+
+    </div>
+</section>
+
+<script type="text/javascript">
+    jQuery(document).ready(function () {
+        var is_success = "@is_success";
+        $("#step_choice_address").addClass("succes");
+        $("#step_payment").addClass("active");
+        if (is_success.toLowerCase() == "true" ) {
+            $("#step_payment").addClass("succes");
+            $("#step_confirm_payment").addClass("active");
+        }
+    })
+</script>
+

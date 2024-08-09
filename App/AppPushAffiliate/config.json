@@ -1,0 +1,15 @@
+{
+  "ExcuteFromBegin": "1",
+  "EncryptApi": "5fDmJ8Ze",
+  "API_LIVE_URL": "http://api.usexpressvn.com",
+  //"API_LIVE_URL": "https://localhost:44322",
+  "Default_url": "https://www.amazon.com/",
+  "API_GET_AFF_ORDERLIST": "/api/Affilliate/get-aff-order.json",
+  "API_PUSH_ORDER_TO_ACCESSTRADE": "/api/Affilliate/at-create-order.json",
+  "API_PUSH_ORDER_TO_ADPIA": "/api/Affilliate/adpia-create-order.json",
+  "API_Key": "1372498309AAH0fVJfnZQFg5Qaqro47y1o5mIIcwVkR3k",
+  "token_id": "618456",
+  "delay_time": "86400",
+  "MongoServer_Host": "103.74.121.131:27017",
+  "MongoServer_catalog": "usexpress_mongo_db"
+}

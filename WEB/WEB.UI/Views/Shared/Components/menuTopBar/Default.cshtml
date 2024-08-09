@@ -1,0 +1,192 @@
+﻿<section class="top-bar clearfix">
+    <div class="container flex space-between">
+        <div class="top-bar-left">
+            <a href="/trung-tam-ho-tro-289">
+                <svg class="icon-us">
+                    <use xlink:href="/images/icons/icon.svg#help"></use>
+                </svg>Hỗ trợ
+            </a>
+            @*<a href="">
+                    <svg class="icon-us">
+                        <use xlink:href="/images/icons/icon.svg#language"></use>
+                    </svg>Ngôn ngữ
+                </a>*@
+            <a href="">
+                <svg class="icon-us">
+                    <use xlink:href="/images/icons/icon.svg#phone"></use>
+                </svg>Hotline 1900 633 600
+            </a>
+        </div>
+        <div class="top-bar-right">
+            <a href="/blog">
+                <svg class="icon-us">
+                    <use xlink:href="/images/icons/icon.svg#rss"></use>
+                </svg>Tin tức
+            </a>
+            @*<a href="">
+                    <svg class="icon-us">
+                        <use xlink:href="/images/icons/icon.svg#review"></use>
+                    </svg>Reviews sản phẩm
+                </a>*@
+            <a href="https://chrome.google.com/webstore/detail/us-express-extension/ilnpmcagjapeemeibhlobehdlhmfedom" target="_blank" class="show-mb">
+                <svg class="icon-us">
+                    <use xlink:href="/images/icons/icon.svg#download"></use>
+                </svg>
+                Tải Extension
+            </a>
+
+            @if (User.Identity.IsAuthenticated)
+            {
+                <div class="my_us">
+                    <div class="user">
+                        <a class="onclick" href="javascript:;">
+                            <span class="avatar">
+                                <img src="~/images/graphics/thumb_1x1.png">
+                            </span>
+                            <h4 class="name">@User.Identity.Name</h4>
+                        </a>
+                        <div class="wrap_user">
+                            <ul>
+                                <li>
+                                    <a href="/thong-tin-tai-khoan">
+                                        <svg class="icon-us">
+                                            <use xlink:href="/images/icons/icon.svg#user"></use>
+                                        </svg>
+                                        Thông tin tài khoản
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/quan-ly-don-hang">
+                                        <svg class="icon-us">
+                                            <use xlink:href="/images/icons/icon.svg#thutuc"></use>
+                                        </svg>
+                                        Quản lý đơn hàng
+                                    </a>
+                                </li>
+                                @*<li>
+                                        <a href="#">
+                                            <svg class="icon-us">
+                                                <use xlink:href="/images/icons/icon.svg#notifi2"></use>
+                                            </svg>
+                                            Thông báo của tôi
+                                        </a>
+                                    </li>*@
+                                <li>
+                                    <a href="/so-dia-chi">
+                                        <svg class="icon-us">
+                                            <use xlink:href="/images/icons/icon.svg#book"></use>
+                                        </svg>
+                                        Sổ địa chỉ
+                                    </a>
+                                </li>
+                                @*<li>
+                                        <a href="/san-pham-yeu-thich">
+                                            <svg class="icon-us">
+                                                <use xlink:href="/images/icons/icon.svg#heart2"></use>
+                                            </svg>
+                                            Sản phẩm yêu thích
+                                        </a>
+                                    </li>*@
+                                @*<li>
+                                        <a href="#">
+                                            <img src="/images/icons/u-xu.svg">
+                                            Quản lý U-Xu của tôi
+                                        </a>
+                                    </li>
+                                *@
+                                <li>
+                                    <a href="/tao-link-gioi-thieu">
+                                        <img src="/images/icons/affiliate.svg">
+                                        Tài khoản Affiliate của tôi
+                                    </a>
+                                </li>
+                            </ul>
+                            @Html.ActionLink("Đăng xuất", "Logoff", "Client", null, new { @class = "out" })
+                        </div>
+                    </div>
+                    @*<div class="notifi">
+                            <a class="onclick" href="javascript:;">
+                                <svg class="icon-us">
+                                    <use xlink:href="/images/icons/icon.svg#notifi"></use>
+                                </svg>
+                                <span class="count">8</span>
+                            </a>
+                            <div class="wrap_notifi">
+                                <ul>
+                                    <li>
+                                        <a href="#">
+                                            <span class="icon">
+                                                <svg class="icon-us">
+                                                    <use xlink:href="/images/icons/icon.svg#thutuc"></use>
+                                                </svg>
+                                            </span>
+                                            Đơn hàng số 953929993 của quý khách có sản phẩm nằm ở nhiều kho khác nhau, vì vậy UsExpress xin phép tách ...
+                                            <span class="date">20/07/2019</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <span class="icon">
+                                                <svg class="icon-us">
+                                                    <use xlink:href="/images/icons/icon.svg#thutuc"></use>
+                                                </svg>
+                                            </span>
+                                            Đơn hàng số 953929993 của quý khách có sản phẩm nằm ở nhiều kho khác nhau, vì vậy UsExpress xin phép tách ...
+                                            <span class="date">20/07/2019</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <span class="icon">
+                                                <svg class="icon-us">
+                                                    <use xlink:href="/images/icons/icon.svg#thutuc"></use>
+                                                </svg>
+                                            </span>
+                                            Đơn hàng số 953929993 của quý khách có sản phẩm nằm ở nhiều kho khác nhau, vì vậy UsExpress xin phép tách ...
+                                            <span class="date">20/07/2019</span>
+                                        </a>
+                                    </li>
+                                    <li class="visited">
+                                        <a href="#">
+                                            <span class="icon">
+                                                <svg class="icon-us">
+                                                    <use xlink:href="/images/icons/icon.svg#thutuc"></use>
+                                                </svg>
+                                            </span>
+                                            Đơn hàng số 953929993 của quý khách có sản phẩm nằm ở nhiều kho khác nhau, vì vậy UsExpress xin phép tách ...
+                                            <span class="date">20/07/2019</span>
+                                        </a>
+                                    </li>
+                                    <li class="visited">
+                                        <a href="#">
+                                            <span class="icon">
+                                                <svg class="icon-us">
+                                                    <use xlink:href="/images/icons/icon.svg#thutuc"></use>
+                                                </svg>
+                                            </span>
+                                            Đơn hàng số 953929993 của quý khách có sản phẩm nằm ở nhiều kho khác nhau, vì vậy UsExpress xin phép tách ...
+                                            <span class="date">20/07/2019</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <div class="center mt20 mb15">
+                                    <a class="btn btn-default none" href="#">Xem tất cả thông báo</a>
+                                </div>
+                            </div>
+                        </div>*@
+                </div>
+            }
+            else
+            {
+                <div class="my_us">
+                    <a href="#login-popup" class="open-popup-link load-login">
+                        <svg class="icon-us">
+                            <use xlink:href="/images/icons/icon.svg#user"></use>
+                        </svg>Đăng nhập / Đăng ký
+                    </a>
+                </div>
+            }
+
+        </div>
+    </div>
+</section>

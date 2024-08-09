@@ -1,0 +1,373 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <meta name="description" content="Mua hộ hàng mỹ, Mua hàng mỹ, Dịch vụ mua hộ">
+    <meta name="keywords" content="Mua hộ hàng mỹ, Mua hàng mỹ, Dịch vụ mua hộ">
+    <meta name="google-site-verification" content="akwLGL6QbNU-FMAnh0n8piEgNME0MNj4vWg8UBg9tw4" />
+
+    <title>Usexpress.vn</title>
+    <link type="image/x-icon" href="~/images/icons/favicon.png" rel="shortcut icon" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&amp;subset=vietnamese" rel="stylesheet">
+
+    <script type="text/javascript" src="~/js/lib/jquery-2.1.4.min.js"></script>
+    <link href="~/css/style.css" rel="stylesheet" type="text/css" />
+    <link href="~/css/extend.css" rel="stylesheet" />
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/lib/jquery-ajax-unobtrusive/dist/jquery.unobtrusive-ajax.min.js"></script>
+
+    @await RenderSectionAsync("SocialMetaTags", required: false)
+
+
+    <environment include="Development">
+        <link type="text/css" rel="stylesheet" href="~/css/lightgallery.css" />
+
+    </environment>
+
+    <environment exclude="Development">
+        <link type="text/css" rel="stylesheet" href="~/css/lightgallery.min.css" />
+    </environment>
+</head>
+<body>
+
+    <!-- Messenger Plugin chat Code -->
+    <div id="fb-root"></div>
+
+    <!-- Your Plugin chat code -->
+    <div id="fb-customer-chat" class="fb-customerchat">
+    </div>
+
+    <script>
+        var chatbox = document.getElementById('fb-customer-chat');
+        chatbox.setAttribute("page_id", "1719868504764368");
+        chatbox.setAttribute("attribution", "page_inbox");
+        window.fbAsyncInit = function () {
+            FB.init({
+                xfbml: true,
+                version: 'v11.0'
+            });
+        };
+
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = 'https://connect.facebook.net/vi_VN/sdk/xfbml.customerchat.js';
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+
+
+    <a href="#back-version" class="back-version open-popup-link">
+        <img src="/images/icons/feedback.svg" />
+
+        Đóng Góp Ý Kiến
+    </a>
+    <style>
+        .back-version {
+            text-align: center;
+            font-size: 14px;
+            padding: 10px;
+            color: #236852;
+            text-decoration: underline;
+            text-underline-position: under;
+            font-style: italic;
+            display: block;
+        }
+
+            .back-version svg {
+                margin-right: 6px;
+            }
+    </style>
+    @await Component.InvokeAsync("menuTopBar")
+
+
+    <!-- build:head3 -->
+    <!--HEADER-->
+    <header class="header-block sticky">
+        <div class="container flex space-between">
+            <div class="header-block_1">
+                <a class="logo" href="/"><img src="~/images/graphics/logo.svg" title="amz"></a>
+                @*<a class="nav-bar" href="javascript:;">
+                        <i class="iconfont-bar"></i>Danh mục
+                    </a>*@
+            </div>
+
+            <div class="header-block_3">
+                <!--Search-->
+                <div class="warp">
+                    @await Component.InvokeAsync("search")
+                    @*@await Component.InvokeAsync("keyWordTop")*@
+                </div>
+
+                @await Component.InvokeAsync("cartsTotal")
+
+            </div>
+
+            @*<div class="warp_menu">
+                    <div class="flex">
+                        <div id="nav-cate-home" class="col-1">
+                            <ul>
+                                <li class="active"><a rel="child-box-1" class="link">Đồ điện tử và công nghệ</a></li>
+                                <li><a rel="child-box-2" class="link">Đồng hồ hàng hiệu</a></li>
+                                <li><a rel="child-box-3" class="link">Đồ điện tử và công nghệ</a></li>
+                                <li><a rel="child-box-4" class="link">Đồng hồ hàng hiệu</a></li>
+                                <li><a rel="child-box-5" class="link">Đồ điện tử và công nghệ</a></li>
+                                <li><a rel="child-box-6" class="link">Đồng hồ hàng hiệu</a></li>
+                                <li><a rel="child-box-7" class="link">Đồ điện tử và công nghệ</a></li>
+                                <li><a rel="child-box-8" class="link">Đồng hồ hàng hiệu</a></li>
+                                <li><a rel="child-box-9" class="link">Đồ điện tử và công nghệ</a></li>
+                                <li><a rel="child-box-10" class="link">Đồng hồ hàng hiệu</a></li>
+                                <li><a rel="child-box-11" class="link">Xem tất cả</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-2">
+                            <div id="child-box-1" class="child-box">
+                                <div class="col-left">
+                                    <div class="flex">
+                                        <ul>
+                                            <h3>Máy tính và phụ kiện</h3>
+                                            <li><a href="#">Laptop, Tablet</a></li>
+                                            <li><a href="#">Laptop, Tablet</a></li>
+                                            <li><a href="#">Laptop, Tablet</a></li>
+                                            <li><a href="#">Laptop, Tablet</a></li>
+                                            <li><a href="#">Laptop, Tablet</a></li>
+                                        </ul>
+                                        <ul>
+                                            <h3>Điện thoại và phụ kiện</h3>
+                                            <li><a href="#">Laptop, Tablet</a></li>
+                                            <li><a href="#">Laptop, Tablet</a></li>
+                                            <li><a href="#">Laptop, Tablet</a></li>
+                                            <li><a href="#">Laptop, Tablet</a></li>
+                                            <li><a href="#">Laptop, Tablet</a></li>
+                                        </ul>
+                                        <ul>
+                                            <h3>Thiết bị kỹ thuật số</h3>
+                                            <li><a href="#">Laptop, Tablet</a></li>
+                                            <li><a href="#">Laptop, Tablet</a></li>
+                                            <li><a href="#">Laptop, Tablet</a></li>
+                                            <li><a href="#">Laptop, Tablet</a></li>
+                                            <li><a href="#">Laptop, Tablet</a></li>
+                                        </ul>
+                                        <ul>
+                                            <h3>Máy tính và phụ kiện</h3>
+                                            <li><a href="#">Laptop, Tablet</a></li>
+                                            <li><a href="#">Laptop, Tablet</a></li>
+                                            <li><a href="#">Laptop, Tablet</a></li>
+                                            <li><a href="#">Laptop, Tablet</a></li>
+                                            <li><a href="#">Laptop, Tablet</a></li>
+                                        </ul>
+                                        <ul>
+                                            <h3>Điện thoại và phụ kiện</h3>
+                                            <li><a href="#">Laptop, Tablet</a></li>
+                                            <li><a href="#">Laptop, Tablet</a></li>
+                                            <li><a href="#">Laptop, Tablet</a></li>
+                                            <li><a href="#">Laptop, Tablet</a></li>
+                                            <li><a href="#">Laptop, Tablet</a></li>
+                                        </ul>
+                                        <ul>
+                                            <h3>Thiết bị kỹ thuật số</h3>
+                                            <li><a href="#">Laptop, Tablet</a></li>
+                                            <li><a href="#">Laptop, Tablet</a></li>
+                                            <li><a href="#">Laptop, Tablet</a></li>
+                                            <li><a href="#">Laptop, Tablet</a></li>
+                                            <li><a href="#">Laptop, Tablet</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-right">
+                                    <img src="~/images/graphics/banner-ads.png">
+                                </div>
+                            </div>
+                            <div id="child-box-2" class="child-box" style="display: none;">
+                                <div class="col-left">
+                                    <div class="flex">
+                                        <ul>
+                                            <h3>Máy tính và phụ kiện</h3>
+                                            <li><a href="#">Laptop, Tablet</a></li>
+                                            <li><a href="#">Laptop, Tablet</a></li>
+                                            <li><a href="#">Laptop, Tablet</a></li>
+                                            <li><a href="#">Laptop, Tablet</a></li>
+                                            <li><a href="#">Laptop, Tablet</a></li>
+                                        </ul>
+                                        <ul>
+                                            <h3>Điện thoại và phụ kiện</h3>
+                                            <li><a href="#">Laptop, Tablet</a></li>
+                                            <li><a href="#">Laptop, Tablet</a></li>
+                                            <li><a href="#">Laptop, Tablet</a></li>
+                                            <li><a href="#">Laptop, Tablet</a></li>
+                                            <li><a href="#">Laptop, Tablet</a></li>
+                                        </ul>
+                                        <ul>
+                                            <h3>Thiết bị kỹ thuật số</h3>
+                                            <li><a href="#">Laptop, Tablet</a></li>
+                                            <li><a href="#">Laptop, Tablet</a></li>
+                                            <li><a href="#">Laptop, Tablet</a></li>
+                                            <li><a href="#">Laptop, Tablet</a></li>
+                                            <li><a href="#">Laptop, Tablet</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-right">
+                                    <img src="https://via.placeholder.com/268x462">
+                                </div>
+                            </div>
+                            <div id="child-box-3" class="child-box" style="display: none;">
+                                <div class="col-left">
+                                    <div class="flex">
+                                        <ul>
+                                            <h3>Máy tính và phụ kiện</h3>
+                                            <li><a href="#">Laptop, Tablet</a></li>
+                                            <li><a href="#">Laptop, Tablet</a></li>
+                                            <li><a href="#">Laptop, Tablet</a></li>
+                                            <li><a href="#">Laptop, Tablet</a></li>
+                                            <li><a href="#">Laptop, Tablet</a></li>
+                                        </ul>
+                                        <ul>
+                                            <h3>Máy tính và phụ kiện</h3>
+                                            <li><a href="#">Laptop, Tablet</a></li>
+                                            <li><a href="#">Laptop, Tablet</a></li>
+                                            <li><a href="#">Laptop, Tablet</a></li>
+                                            <li><a href="#">Laptop, Tablet</a></li>
+                                            <li><a href="#">Laptop, Tablet</a></li>
+                                        </ul>
+                                        <ul>
+                                            <h3>Điện thoại và phụ kiện</h3>
+                                            <li><a href="#">Laptop, Tablet</a></li>
+                                            <li><a href="#">Laptop, Tablet</a></li>
+                                            <li><a href="#">Laptop, Tablet</a></li>
+                                            <li><a href="#">Laptop, Tablet</a></li>
+                                            <li><a href="#">Laptop, Tablet</a></li>
+                                        </ul>
+                                        <ul>
+                                            <h3>Thiết bị kỹ thuật số</h3>
+                                            <li><a href="#">Laptop, Tablet</a></li>
+                                            <li><a href="#">Laptop, Tablet</a></li>
+                                            <li><a href="#">Laptop, Tablet</a></li>
+                                            <li><a href="#">Laptop, Tablet</a></li>
+                                            <li><a href="#">Laptop, Tablet</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-right">
+                                    <img src="https://via.placeholder.com/268x462">
+                                </div>
+                            </div>
+                            <div id="child-box-4" class="child-box" style="display: none;">Nội dung 4</div>
+                            <div id="child-box-5" class="child-box" style="display: none;">Nội dung 5</div>
+                            <div id="child-box-6" class="child-box" style="display: none;">Nội dung 6</div>
+                            <div id="child-box-7" class="child-box" style="display: none;">Nội dung 7</div>
+                            <div id="child-box-8" class="child-box" style="display: none;">Nội dung 8</div>
+                            <div id="child-box-9" class="child-box" style="display: none;">Nội dung 9</div>
+                            <div id="child-box-10" class="child-box" style="display: none;">Nội dung 10</div>
+                            <div id="child-box-11" class="child-box" style="display: none;">Nội dung 11</div>
+                        </div>
+                    </div>
+                </div>*@
+        </div>
+    </header>
+    <!--END HEADER-->
+
+
+    @RenderBody()
+
+    <!--FOOTER-->
+
+    @await Component.InvokeAsync("footer")
+    <!--END FOOTER-->
+
+    @{ await Html.RenderPartialAsync("PartialView/Survey/FeedBack"); }
+
+
+    <div id="pop-up-location"></div>
+    <!--Back to top-->
+    <a href="javascript:;" id="to_top">
+        <svg class="icon-us">
+            <use xlink:href="/images/icons/icon.svg#Up"></use>
+        </svg>
+    </a>
+
+    <environment include="Development">
+        <script src="~/js/lib/defined_param.js"></script>
+
+        @*Lib General*@
+        <script type="text/javascript" src="~/js/lib/swiper.min.js"></script>
+        <script type="text/javascript" src="~/js/lib/svgxuse.min.js"></script>
+        <script type="text/javascript" src="~/js/lib/stickyfill.min.js"></script>
+        <script type="text/javascript" src="~/js/lib/jquery.magnific-popup.min.js"></script>
+        <script type="text/javascript" src="~/js/lib/zebra_datepicker.min.js"></script>
+        <script type="text/javascript" src="/js/jquery.scrollbar.min.js"></script>
+        <script type="text/javascript" src="~/js/lib/lightgallery-all.min.js"></script>
+        <script type="text/javascript" src="~/js/lib/bootstrap.min.js"></script>
+
+        <script src="~/js/lib/jquery.history.js"></script>
+
+        @*minifier to master.min.js*@
+        <script type="text/javascript" src="~/js/lib/common.js"></script>
+        <script src="~/js/lazyload/lib.js"></script>
+
+        <script src="~/js/search/default.js"></script>
+        <script src="~/js/client/default.js"></script>
+
+        <script src="~/js/lib/master.js"></script>
+        <script src="~/js/social/default.js"></script>
+        <script src="~/js/affiliate/default.js"></script>
+        <script src="~/js/carts/cartSummery.js"></script>
+    </environment>
+
+    <environment exclude="Development">
+        <script src="~/js/defined_param.min.js"></script>  <!--minifier-->
+
+        <script type="text/javascript" src="~/js/lib/swiper.min.js"></script>
+        <script type="text/javascript" src="~/js/lib/svgxuse.min.js"></script>
+        <script type="text/javascript" src="~/js/lib/stickyfill.min.js"></script>
+        <script type="text/javascript" src="~/js/lib/jquery.magnific-popup.min.js"></script>
+        <script type="text/javascript" src="~/js/lib/zebra_datepicker.min.js"></script>
+        <script type="text/javascript" src="/js/jquery.scrollbar.min.js"></script>
+        <script type="text/javascript" src="~/js/lib/lightgallery-all.min.js"></script>
+        <script type="text/javascript" src="~/js/lib/bootstrap.min.js"></script>
+
+        <script src="~/js/lib/jquery.history.js"></script>
+        @*minifier js component*@
+        <script src="~/js/master.min.js"></script>
+    </environment>
+
+
+    <!-- build:script -->
+    <div class="clearfix"></div>
+
+    @RenderSection("Scripts", required: false)
+
+    <script type="text/javascript">
+      var userAuthorized = @User.Identity.IsAuthenticated.ToString().ToLower();
+    </script>
+    <script src="//static.accesstrade.vn/js/trackingtag/tracking.min.js"></script>
+    <script type="text/javascript">
+        AT.init({ "campaign_id": 454, "is_reoccur": 1, "is_lastclick": 1, "cookie_duration": 30 });
+        AT.track();
+        obj_general.update_aff();
+    </script>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0N6P0LGHKK"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-0N6P0LGHKK');
+    </script>
+    <!-- Load Facebook SDK for JavaScript -->
+    <div id="fb-root"></div>
+    <script>
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+</body>
+</html>

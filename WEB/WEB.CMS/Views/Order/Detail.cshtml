@@ -1,0 +1,66 @@
+﻿
+@{
+    ViewData["Title"] = "Chi tiết đơn hàng";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using Utilities.Contants
+@model Entities.ViewModels.OrderDetailViewModel
+
+<div class="row-main container">
+    @Html.Hidden("param-order-id", Model.OrderInfo.Id)
+    <a class="btn_show" href="javascrip:;">Hiển thị danh mục <i class="fa fa-caret-right"></i></a>
+    <div class="detail_item mb20">
+        <div class="title-cate flex">
+            <span>Tìm kiếm đơn hàng</span>
+        </div>
+        <div class="warp_padding20 flex row-main-head">
+            <div class="search-wrapper">
+                <input type="text" class="input_search onclick-togle" id="ip-kup-orderno"
+                       placeholder="Nhập mã đơn hàng cần chuyển...">
+                <input type="hidden" id="ip-trans-orderid" />
+                <span class="search-btn">
+                    <button type="button">
+                        <svg class="icon-svg">
+                            <use xlink:href="/images/icons/icon.svg#search"></use>
+                        </svg>
+                    </button>
+                </span>
+            </div>
+            <button type="button" class="btn btn-default bg-main mb10" style="margin-left:10px" onclick="_orderDetail.OnMoveOrder()">
+                <svg class="icon-svg" style="vertical-align: sub;">
+                    <use xlink:href="/images/icons/icon.svg#search"></use>
+                </svg>
+                Chuyển đơn hàng
+            </button>
+        </div>
+    </div>
+    <div class="detail_item mb20">
+        @await Html.PartialAsync("~/Views/Order/OrderInfo.cshtml", Model.OrderInfo)
+    </div>
+    <div class="detail_item mb20">
+        @await Html.PartialAsync("~/Views/Order/OrderItemList.cshtml", Model)
+    </div>
+    <div class="detail_item mb20" id="grid-payment-order">
+
+    </div>
+    <div class="detail_item mb20" id="grid-cashback-order">
+
+    </div>
+    <div class="detail_item thongtin_dinhkem mb20">
+        <h2 class="title-cate">Thông tin thêm</h2>
+        <div class="warp_padding20">
+            <div class="row">
+                <div class="col-md-6">
+                    @await Component.InvokeAsync("AttachFile", new { DataId = Model.OrderInfo.Id, Type = Constants.AttachFileType.ORDER })
+                </div>
+                <div class="col-md-6">
+                    @await Component.InvokeAsync("Note", new { DataId = Model.OrderInfo.Id, Type = Constants.AttachFileType.ORDER })
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    <script src="~/modules/order_detail.js"></script>
+}

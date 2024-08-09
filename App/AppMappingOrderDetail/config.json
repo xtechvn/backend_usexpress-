@@ -1,0 +1,12 @@
+{
+  "EncryptApi": "5fDmJ8Ze",
+  "BOT_TOKEN_TELEGRAM": "1264151832:AAFKCM7CoaBerVhcYCHQba1AyY13X41rT5s",
+  "GROUP_ID_TELEGRAM": "-406438822",
+  "KEY_TOKEN_API": "1372498309AAH0fVJfnZQFg5Qaqro47y1o5mIIcwVkR3k",
+  "API_GET_ORDER_CHANGE": "https://usexpress.vn/ApiUsexpress/getOrderChange",
+  "API_PUSH_TO_QUEUE": "http://103.121.91.231:6588/api/QueueService/data-push.json",
+  "API_REMOVE_ORDER_CHANGE_STATUS": "https://usexpress.vn/ApiUsexpress/removeOrderChangeStatus",
+  "PRODUCT_GROUP_LIST": "260,261,262,263,264,265,266,267,268",
+  "API_CMS_URL": "http://103.74.121.155:4455",
+  "API_CORE_URL": "http://api.usexpressvn.com"
+}

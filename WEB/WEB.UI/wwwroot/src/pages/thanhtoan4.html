@@ -1,0 +1,527 @@
+<!-- build:title -->Thanh toán
+<!-- /build:title -->
+<!-- build:head -->
+<link href="css/order.css" rel="stylesheet" type="text/css" />
+<!-- /build:head -->
+<!-- build:head3 -->
+
+<header class="header-block header-block-pay">
+    <div class="container flex">
+        <div class="header-block_1">
+            <a class="logo" href=""><img src="images/graphics/logo.svg" title="amz"></a>
+        </div>
+        <div class="step-pay">
+            <ul>
+                <li class="active succes">
+                    <a class="logo" href="">
+                        <img src="images/icons/icon-map.svg" title="amz">
+                        <img class="focus" src="images/icons/icon-map-active.svg" title="amz">
+                        <span>Thông tin giao hàng</span>
+                    </a>
+                </li>
+                <li class="active succes">
+                    <a class="logo" href="">
+                        <img src="images/icons/icon-payer.svg" title="amz">
+                        <img class="focus" src="images/icons/icon-payer-active.svg" title="amz">
+                        <span>Thanh toán</span>
+                    </a>
+                </li>
+                <li class="active">
+                    <a class="logo" href="">
+                        <img src="images/icons/icon-confirm.svg" title="amz">
+                        <img class="focus" src="images/icons/icon-confirm-active.svg" title="amz">
+                        <span>Xác nhận</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</header>
+
+<!-- /build:head3 -->
+
+<!-- build:content -->
+<style>
+    .header-block {
+        display: none
+    }
+
+    .header-block-pay {
+        display: block
+    }
+</style>
+
+<section class="main-container clearfix mt30">
+    <div class="container page-buy">
+        <div class="flex mb20">
+            <div class="sidebar1">
+                <div class="cart_empty bg_warp">
+                    <img src="images/graphics/pending.svg" alt="">
+                    <h3 class="mt30 mb5" style="color: #FFAA00;">CHỜ THANH TOÁN</h3>
+                    <p class="mb5" style="color:#585858">Đơn hàng của quý khách chưa được thanh toán, vui lòng thanh
+                        toán lại để hoàn tất.</p>
+                    <p class="mb20">Hỗ trợ ngay : <strong>1900.633.376</strong></p>
+                    <a class="btn">
+                        <svg class="icon-us"
+                            style="width: 20px;height: 20px;vertical-align: text-bottom;margin-right: 4px;">
+                            <use xlink:href="images/icons/icon.svg#cart"></use>
+                        </svg>
+                        Thanh toán ĐƠn hàng
+                    </a>
+                </div>
+                <div class="cart_empty bg_warp ">
+                    <img src="images/graphics/fail.svg" alt="">
+                    <h3 class="mt30 mb5">THANH TOÁN KHÔNG THÀNH CÔNG !</h3>
+                    <p class="mb5">Đơn hàng <strong>DH123456 ; DH3455534 ; DH39393</strong> của quý khách thanh toán
+                        không thành công, vui lòng thanh toán lại .</p>
+                    <p class="mb20">Hỗ trợ ngay : <strong>1900.633.376</strong></p>
+                    <a class="btn">
+                        <svg class="icon-us" style="width: 14px;height: 14px;margin-right: 4px;">
+                            <use xlink:href="images/icons/icon.svg#back"></use>
+                        </svg>
+                        Thanh toán lại
+                    </a>
+                </div>
+                <div class="cart_empty bg_warp ">
+                    <img src="images/graphics/success.svg" alt="">
+                    <h3 class="mt30 mb5" style="color: #37A07F;">THANH TOÁN THÀNH CÔNG</h3>
+                    <div class="text-left">
+                        <p>Bạn đã đặt hàng thành công.</p>
+                        <p><strong>• Mã đơn hàng</strong> : DH8362204201983792(JVJ Digital)</p>
+                        <p class="mb20"><strong>• Hình thức thanh toán</strong> : Thanh toán tiền mặt khi nhận hàng
+                            (COD)</p>
+                        <p>Nhân viên của chúng tôi sẽ liên hệ với bạn sớm nhất để xác nhận đơn hàng.</p>
+                        <p class="mb30"><strong>Lưu ý </strong>: Với đơn hàng chuyển khoản sau giờ làm việc của ngày thứ
+                            6 trong tuần, chúng tôi sẽ liên hệ vào ngày thứ 2 của tuần kế tiếp. Rất mong quý khách thông
+                            cảm.</p>
+                    </div>
+                    <a class="btn">
+                        Tiếp tục mua hàng
+                        <svg class="icon-us">
+                            <use xlink:href="images/icons/icon.svg#next"></use>
+                        </svg>
+                    </a>
+                </div>
+                <div class="chitiet_giohang">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr class="head">
+                                    <th colspan="2">
+                                        <label class="confir_res">
+                                            Tên sản phẩm <span>(2 sản phẩm)</span>
+                                            <input type="checkbox">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </th>
+                                    <th><strong>Đơn giá</strong></th>
+                                    <th><strong>Số lượng </strong></th>
+                                    <th><strong>Thành tiền</strong></th>
+                                </tr>
+                                <tr class="line">
+                                    <th colspan="5"></th>
+                                </tr>
+                                <tr>
+                                    <th colspan="5">
+                                        <div class="text-left hangcungcap_sp">
+                                            <label class="confir_res">
+                                                <img src="images/graphics/my.png" alt="">
+                                                <span>Sản phẩm từ Mỹ</span>
+                                                <input type="checkbox" checked>
+                                                <span class="checkmark"></span>
+                                            </label>
+                                        </div>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="sp_biendong_gia">
+                                    <td class="col_anhsp">
+                                        <img src="images/graphics/sanpham2.png">
+                                    </td>
+                                    <td class="col_tensp">
+                                        <div class="ct_tensp"><a href="#">Điện Thoại iPhone XS 512GB - Hàng Chính
+                                                Hãng</a></div>
+                                        <p class="txt_12 color_666">No Brand, Nhóm màu:ĐEN, Kích thước: One size</p>
+                                        <div class="flex space-between align-center">
+                                            <p class="txt_12 color_666">Cung cấp bởi : <span class="color_green">Tiki</span></p>
+                                        </div>
+                                    </td>
+                                    <td class="col_price">
+                                        <div class="price">24.450.000 <em>đ</em></div>
+                                        <span class="old">30.000.000 đ</span><span>-20%</span>
+                                        <div class="sale">Giảm 500k</div>
+                                    </td>
+                                    <td class="sl_giohang">
+                                        <input type="text" id="qty_input" class="qty_input" value="1" min="1">
+                                    </td>
+                                    <td class="col_price">
+                                        <div><strong class="price color_green">24.450.000 <em>đ</em></strong></div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col_anhsp">
+                                        <img src="images/graphics/sanpham3.png">
+                                    </td>
+                                    <td class="col_tensp">
+                                        <div class="ct_tensp"><a href="#">Điện Thoại iPhone XS 512GB - Hàng Chính
+                                                Hãng</a></div>
+                                        <p class="txt_12 color_666">No Brand, Nhóm màu:ĐEN, Kích thước: One size</p>
+                                        <div class="flex space-between align-center">
+                                            <p class="txt_12 color_666">Cung cấp bởi : <span class="color_green">Tiki</span></p>
+                                        </div>
+                                    </td>
+                                    <td class="col_price">
+                                        <div class="price">24.450.000 <em>đ</em></div>
+                                        <span class="old">30.000.000 đ</span><span>-20%</span>
+                                        <div class="sale">Giảm 500k</div>
+                                    </td>
+                                    <td class="sl_giohang">
+                                        <input type="text" id="qty_input" class="qty_input" value="1" min="1">
+                                    </td>
+                                    <td class="col_price">
+                                        <div><strong class="price color_green">24.450.000 <em>đ</em></strong></div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th colspan="5">
+                                        <div class="text-left hangcungcap_sp">
+                                            <label class="confir_res">
+                                                <img src="images/graphics/my.png" alt="">
+                                                <span>Sản phẩm từ Mỹ</span>
+                                                <input type="checkbox" checked>
+                                                <span class="checkmark"></span>
+                                            </label>
+                                        </div>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="sp_biendong_gia">
+                                    <td class="col_anhsp">
+                                        <img src="images/graphics/sanpham2.png">
+                                    </td>
+                                    <td class="col_tensp">
+                                        <div class="ct_tensp"><a href="#">Điện Thoại iPhone XS 512GB - Hàng Chính
+                                                Hãng</a></div>
+                                        <p class="txt_12 color_666">No Brand, Nhóm màu:ĐEN, Kích thước: One size</p>
+                                        <div class="flex space-between align-center">
+                                            <p class="txt_12 color_666">Cung cấp bởi : <span class="color_green">Tiki</span></p>
+                                        </div>
+                                    </td>
+                                    <td class="col_price">
+                                        <div class="price">24.450.000 <em>đ</em></div>
+                                        <span class="old">30.000.000 đ</span><span>-20%</span>
+                                        <div class="sale">Giảm 500k</div>
+                                    </td>
+                                    <td class="sl_giohang">
+                                        <input type="text" id="qty_input" class="qty_input" value="1" min="1">
+                                    </td>
+                                    <td class="col_price">
+                                        <div><strong class="price color_green">24.450.000 <em>đ</em></strong></div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col_anhsp">
+                                        <img src="images/graphics/sanpham3.png">
+                                    </td>
+                                    <td class="col_tensp">
+                                        <div class="ct_tensp"><a href="#">Điện Thoại iPhone XS 512GB - Hàng Chính
+                                                Hãng</a></div>
+                                        <p class="txt_12 color_666">No Brand, Nhóm màu:ĐEN, Kích thước: One size</p>
+                                        <div class="flex space-between align-center">
+                                            <p class="txt_12 color_666">Cung cấp bởi : <span class="color_green">Tiki</span></p>
+                                        </div>
+                                    </td>
+                                    <td class="col_price">
+                                        <div class="price">24.450.000 <em>đ</em></div>
+                                        <span class="old">30.000.000 đ</span><span>-20%</span>
+                                        <div class="sale">Giảm 500k</div>
+                                    </td>
+                                    <td class="sl_giohang">
+                                        <input type="text" id="qty_input" class="qty_input" value="1" min="1">
+                                    </td>
+                                    <td class="col_price">
+                                        <div><strong class="price color_green">24.450.000 <em>đ</em></strong></div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="sidebar2">
+                <div class="sticky" style="top:20px;">
+                    <div class="checkout_sidebar">
+                        <a class="edit" href="#">
+                            <svg class="icon-us">
+                                <use xlink:href="images/icons/icon.svg#edit"></use>
+                            </svg>Sửa
+                        </a>
+                        <h3 class="title">THÔNG TIN GIAO HÀNG</h3>
+                        <div class="checkout_tr">
+                            <div class="item">
+                                <p class="txt_666">Họ tên khách hàng :</p>
+                                <div>Mai Văn Dinh</div>
+                            </div>
+                            <div class="item">
+                                <p class="txt_666">Số điện thoại :</p>
+                                <span>0999333666</span>
+                            </div>
+                            <div class="item">
+                                <p class="txt_666">Địa chỉ :</p>
+                                <span>17 Duy Tân, P Dịch Vọng Hâu, Q. Cầu Giấy,...</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="checkout_sidebar">
+                        <div class="checkout_tr">
+                            <div class="item">
+                                <p>Tiền hàng :</p>
+                                <span class="price">3,456,789 <em>đ</em></span>
+                            </div>
+                            <div class="item">
+                                <p>Giảm giá :</p>
+                                <span class="price">3,456,789 <em>đ</em></span>
+                            </div>
+                            <div class="item  price_all">
+                                <p><strong>TỔNG TIỀN</strong></p>
+                                <strong class="price">3,000,000 <em>đ</em></strong>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                        <a class="btn btn-order" href="">
+                            <svg class="icon-us refresh">
+                                <use xlink:href="images/icons/icon.svg#refresh"></use>
+                            </svg>
+                            Thanh toán
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sản phẩm đã xem -->
+        <div class="sp_daxem bg_warp mb20">
+            <h2 class="title-label">Sản phẩm bạn đã xem</h2>
+            <div class="list-product flex">
+                <div class="product-item col-5">
+                    <div class="sale">-50%</div>
+                    <a class="ava" href="">
+                        <img src="images/graphics/sanpham1.png">
+                        <span class="like active">
+                            <svg class="icon-us">
+                                <use xlink:href="images/icons/icon.svg#heart"></use>
+                            </svg>
+                        </span>
+                    </a>
+                    <div class="content">
+                        <div class="ct_star">
+                            <svg class="icon-us">
+                                <use xlink:href="images/icons/icon.svg#star-full"></use>
+                            </svg>
+                            <svg class="icon-us">
+                                <use xlink:href="images/icons/icon.svg#star-full"></use>
+                            </svg>
+                            <svg class="icon-us">
+                                <use xlink:href="images/icons/icon.svg#star-full"></use>
+                            </svg>
+                            <svg class="icon-us">
+                                <use xlink:href="images/icons/icon.svg#star-full"></use>
+                            </svg>
+                            <svg class="icon-us">
+                                <use xlink:href="images/icons/icon.svg#star-full"></use>
+                            </svg>
+                            <span class="buy">1140 đã mua</span>
+                        </div>
+                        <h3 class="title"><img src="images/icons/prime.png" title="amz"><a href="" title="">Sản Phẩm
+                                Dinh Dưỡng Nestle Nutren Junior</a></h3>
+                        <div class="flex">
+                            <div class="col-2">
+                                <span>Giá về tay</span>
+                                <strong class="price">18.990.000 đ</strong>
+                            </div>
+                        </div>
+                        <a class="brand_label" href=""><img src="images/graphics/my.png" title="amz">Sản phẩm bán tại
+                            Amazon Úc</a>
+                    </div>
+                </div>
+                <div class="product-item col-5">
+                    <div class="sale">-50%</div>
+                    <a class="ava" href="">
+                        <img src="images/graphics/sanpham2.png">
+                        <span class="like">
+                            <svg class="icon-us">
+                                <use xlink:href="images/icons/icon.svg#heart"></use>
+                            </svg>
+                        </span>
+                    </a>
+                    <div class="content">
+                        <div class="ct_star">
+                            <svg class="icon-us">
+                                <use xlink:href="images/icons/icon.svg#star-full"></use>
+                            </svg>
+                            <svg class="icon-us">
+                                <use xlink:href="images/icons/icon.svg#star-full"></use>
+                            </svg>
+                            <svg class="icon-us">
+                                <use xlink:href="images/icons/icon.svg#star-full"></use>
+                            </svg>
+                            <svg class="icon-us">
+                                <use xlink:href="images/icons/icon.svg#star-full"></use>
+                            </svg>
+                            <svg class="icon-us">
+                                <use xlink:href="images/icons/icon.svg#star-full"></use>
+                            </svg>
+                            <span class="buy">1140 đã mua</span>
+                        </div>
+                        <h3 class="title"><img src="images/icons/prime.png" title="amz"><a href="" title="">Sản Phẩm
+                                Dinh Dưỡng Nestle Nutren Junior</a></h3>
+                        <div class="flex">
+                            <div class="col-2">
+                                <span>Giá về tay</span>
+                                <strong class="price">18.990.000 đ</strong>
+                            </div>
+                        </div>
+                        <a class="brand_label" href=""><img src="images/graphics/my.png" title="amz">Sản phẩm bán tại
+                            Amazon Úc</a>
+                    </div>
+                </div>
+                <div class="product-item col-5">
+                    <div class="sale">-50%</div>
+                    <a class="ava" href="">
+                        <img src="images/graphics/sanpham3.png">
+                        <span class="like">
+                            <svg class="icon-us">
+                                <use xlink:href="images/icons/icon.svg#heart"></use>
+                            </svg>
+                        </span>
+                    </a>
+                    <div class="content">
+                        <div class="ct_star">
+                            <svg class="icon-us">
+                                <use xlink:href="images/icons/icon.svg#star-full"></use>
+                            </svg>
+                            <svg class="icon-us">
+                                <use xlink:href="images/icons/icon.svg#star-full"></use>
+                            </svg>
+                            <svg class="icon-us">
+                                <use xlink:href="images/icons/icon.svg#star-full"></use>
+                            </svg>
+                            <svg class="icon-us">
+                                <use xlink:href="images/icons/icon.svg#star-full"></use>
+                            </svg>
+                            <svg class="icon-us">
+                                <use xlink:href="images/icons/icon.svg#star-full"></use>
+                            </svg>
+                            <span class="buy">1140 đã mua</span>
+                        </div>
+                        <h3 class="title"><img src="images/icons/prime.png" title="amz"><a href="" title="">Sản Phẩm
+                                Dinh Dưỡng Nestle Nutren Junior</a></h3>
+                        <div class="flex">
+                            <div class="col-2">
+                                <span>Giá về tay</span>
+                                <strong class="price">18.990.000 đ</strong>
+                            </div>
+                        </div>
+                        <a class="brand_label" href=""><img src="images/graphics/my.png" title="amz">Sản phẩm bán tại
+                            Amazon Úc</a>
+                    </div>
+                </div>
+                <div class="product-item col-5">
+                    <div class="sale">-50%</div>
+                    <a class="ava" href="">
+                        <img src="images/graphics/sanpham4.png">
+                        <span class="like">
+                            <svg class="icon-us">
+                                <use xlink:href="images/icons/icon.svg#heart"></use>
+                            </svg>
+                        </span>
+                    </a>
+                    <div class="content">
+                        <div class="ct_star">
+                            <svg class="icon-us">
+                                <use xlink:href="images/icons/icon.svg#star-full"></use>
+                            </svg>
+                            <svg class="icon-us">
+                                <use xlink:href="images/icons/icon.svg#star-full"></use>
+                            </svg>
+                            <svg class="icon-us">
+                                <use xlink:href="images/icons/icon.svg#star-full"></use>
+                            </svg>
+                            <svg class="icon-us">
+                                <use xlink:href="images/icons/icon.svg#star-full"></use>
+                            </svg>
+                            <svg class="icon-us">
+                                <use xlink:href="images/icons/icon.svg#star-full"></use>
+                            </svg>
+                            <span class="buy">1140 đã mua</span>
+                        </div>
+                        <h3 class="title"><img src="images/icons/prime.png" title="amz"><a href="" title="">Sản Phẩm
+                                Dinh Dưỡng Nestle Nutren Junior</a></h3>
+                        <div class="flex">
+                            <div class="col-2">
+                                <span>Giá về tay</span>
+                                <strong class="price">18.990.000 đ</strong>
+                            </div>
+                        </div>
+                        <a class="brand_label" href=""><img src="images/graphics/my.png" title="amz">Sản phẩm bán tại
+                            Amazon Úc</a>
+                    </div>
+                </div>
+                <div class="product-item col-5">
+                    <div class="sale">-50%</div>
+                    <a class="ava" href="">
+                        <img src="images/graphics/sanpham5.png">
+                        <span class="like">
+                            <svg class="icon-us">
+                                <use xlink:href="images/icons/icon.svg#heart"></use>
+                            </svg>
+                        </span>
+                    </a>
+                    <div class="content">
+                        <div class="ct_star">
+                            <svg class="icon-us">
+                                <use xlink:href="images/icons/icon.svg#star-full"></use>
+                            </svg>
+                            <svg class="icon-us">
+                                <use xlink:href="images/icons/icon.svg#star-full"></use>
+                            </svg>
+                            <svg class="icon-us">
+                                <use xlink:href="images/icons/icon.svg#star-full"></use>
+                            </svg>
+                            <svg class="icon-us">
+                                <use xlink:href="images/icons/icon.svg#star-full"></use>
+                            </svg>
+                            <svg class="icon-us">
+                                <use xlink:href="images/icons/icon.svg#star-full"></use>
+                            </svg>
+                            <span class="buy">1140 đã mua</span>
+                        </div>
+                        <h3 class="title"><img src="images/icons/prime.png" title="amz"><a href="" title="">Sản Phẩm
+                                Dinh Dưỡng Nestle Nutren Junior</a></h3>
+                        <div class="flex">
+                            <div class="col-2">
+                                <span>Giá về tay</span>
+                                <strong class="price">18.990.000 đ</strong>
+                            </div>
+                        </div>
+                        <a class="brand_label" href=""><img src="images/graphics/my.png" title="amz">Sản phẩm bán tại
+                            Amazon Úc</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- /build:content -->

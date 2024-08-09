@@ -1,0 +1,67 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+	  <PublishChromeDriver>true</PublishChromeDriver>
+	  <WebDriverPlatform>win32</WebDriverPlatform>
+
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <PlatformTarget>x64</PlatformTarget>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="HtmlAgilityPack" Version="1.11.24" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="3.1.7" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="3.1.7" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="3.1.6" />
+
+    <PackageReference Include="RabbitMQ.Client" Version="6.1.0" />
+    <PackageReference Include="Selenium.WebDriver" Version="3.141.0" />
+    <PackageReference Include="Selenium.WebDriver.ChromeDriver" Version="126.0.6478.6200" />
+    <PackageReference Include="StackExchange.Redis" Version="2.1.58" />
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="4.7.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\WEB\Caching\Caching.csproj" />
+    <ProjectReference Include="..\..\WEB\Crawler\Crawler.csproj" />
+    <ProjectReference Include="..\..\WEB\Repositories\Repositories.csproj" />
+    <ProjectReference Include="..\..\WEB\Utilities\Utilities.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="appsettings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="tessdata\eng.traineddata">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="bin\Debug\netcoreapp3.1\tessdata\eng.traineddata">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="bin\Debug\netcoreapp3.1\x64\liblept1753.dll" />
+    <None Include="bin\Debug\netcoreapp3.1\x64\libtesseract3052.dll" />
+    <None Include="bin\Debug\netcoreapp3.1\x86\liblept1753.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="bin\Debug\netcoreapp3.1\x86\libtesseract3052.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Model\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="C:\Users\Mirrors\.nuget\packages\selenium.webdriver.chromedriver\126.0.6478.6200\build\..\driver\win32\chromedriver.exe" />
+  </ItemGroup>
+
+</Project>

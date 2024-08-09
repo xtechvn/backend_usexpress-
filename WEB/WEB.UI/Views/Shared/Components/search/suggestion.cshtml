@@ -1,0 +1,34 @@
+﻿@using Entities.ViewModels;
+@model List<ProductViewModel>
+@if (Model != null)
+{
+    <ul class="list-search scrollbar-inner">
+        @foreach (var item in Model)
+        {
+            <li>
+              
+                    <div class="ava">
+                        <a href="@item.link_product"  title="@item.product_name"><img src="@item.image_thumb" title="@item.product_name" /></a>
+                    </div>
+                    <div class="content">
+                        <h3 class="title"><a title="@item.product_name" href="@item.link_product">@item.product_name</a></h3>
+                        <div class="price">@Convert.ToDouble(item.amount_vnd).ToString("N0") đ</div>
+                    </div>
+               
+            </li>
+        }
+    </ul>
+}
+
+<script type="text/javascript" src="~/js/lib/jquery.scrollbar.min.js"></script>
+<script type="text/javascript">
+    $(function () {
+        scrollBar();
+    });
+    function scrollBar() {
+        var scrollContainer = $(".scrollbar-inner");
+        if (scrollContainer.length > 0) {
+            scrollContainer.scrollbar();
+        }
+    }
+</script>

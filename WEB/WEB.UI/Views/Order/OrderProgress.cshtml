@@ -1,0 +1,104 @@
+﻿@{
+    int order_status = (int)this.ViewData["order_status"];
+    int payment_status = (int)this.ViewData["payment_status"];
+}
+
+<div class="time_ship step-dh flex">
+
+    <div class="step step1">
+        <div class="icon">
+            <svg class="icon-us">
+                <use xlink:href="/images/icons/icon.svg#payment"></use>
+            </svg>
+        </div>
+        @Html.Raw(payment_status == 0 ? "<p>Đã thanh toán</p>" : "<p>Chờ thanh toán</p>")
+        <span class="p_0"></span>
+    </div>
+    <div class="step step2">
+        <div class="icon">
+            <svg class="icon-us">
+                <use xlink:href="/images/icons/icon.svg#plane"></use>
+            </svg>
+        </div>
+        <p>Hàng về kho Mỹ</p>
+        <span class="p_1"></span>
+    </div>
+    <div class="step step3">
+        <div class="icon">
+            <svg class="icon-us">
+                <use xlink:href="/images/icons/icon.svg#plane"></use>
+            </svg>
+        </div>
+        <p>Hàng về Việt Nam</p>
+        <span class="p_2"></span>
+    </div>
+    <div class="step step4">
+        <div class="icon">
+            <svg class="icon-us">
+                <use xlink:href="/images/icons/icon.svg#shipped"></use>
+            </svg>
+        </div>
+        <p>Thông quan</p>
+        <span class="p_3"></span>
+    </div>
+    <div class="step step5">
+        <div class="icon">
+            <svg class="icon-us">
+                <use xlink:href="/images/icons/icon.svg#box"></use>
+            </svg>
+        </div>
+        <p>Giao hàng</p>
+        <span></span>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        var arr_status = new Array("_13_6_", "_9_", "_10_", "_11_7_", "_4_");// đơn hàng mới |  đơn hàng đã mua trên amazon |  Hàng đang chuyển về VN | Hàng đang chuyển về VN | Đơn hàng hoàn thành(Giao hàng thành công)
+        var order_status = parseInt('@order_status');
+        
+        //debugger;
+        var status_current = arr_status.find(x => x.indexOf("_" + order_status + "_") >= 0);
+        var step = arr_status.indexOf(status_current);
+
+       //var data_log = getOrderProgress('UAM-1B24241');
+        //data_log = JSON.stringify(data_log);
+
+       // var i_index = arr_status.indexOf(parseInt(step));
+        for (var i = 0; i <= step; i++) {
+            $('.time_ship').find('.step').eq(i).addClass('active');
+            if (i <= step - 1) {
+                $('.time_ship').find('.step').eq(i).addClass('success');
+                
+                //var log_order = JSON.parse(JSON.parse(data_log).responseText).data;
+             
+                //if (log_order.length > 0) {
+                //    for (var j = 0; j <= log_order.length - 1; j++) {
+                //        if (arr_status[i].indexOf("_" + log_order[j].orderStatus + "_") >= 0){
+                //            $(".p_" + i).html(log_order[j].createDate);
+                //            continue;
+                //        }
+                //    }
+                //}
+            }
+        }
+    })
+
+    function getOrderProgress(order_no) {
+        return $.ajax({
+            type: "POST",
+            url: '/order/order-progress.json',
+            data: {
+                order_no: order_no
+            },
+            dataType: "html",
+            async: !1,
+            error: function () {
+                console.log("Error occured")
+            }
+        });
+    }
+
+</script>

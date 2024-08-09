@@ -1,0 +1,84 @@
+﻿@using Entities.ViewModels;
+@model List<ProductViewModel>
+
+
+
+
+@if (Model != null)
+{
+
+    <div class="flash_sale mb25">
+        <div class="head-title flex">
+            <div class="nhan-hang">
+                <img class="logo" src="/images/graphics/costco.png" title="Gian hàng Costco">
+                <a href="/store/costco"><h2 class="title">GIAN HÀNG COSTCO</h2><a />
+            </div>
+            <div class="option">
+                <a class="view-all" href="/store/costco">Xem tất cả</a>
+            </div>
+        </div>
+        <div class="flex">
+            <div class="banner">
+                <a href="/store/costco">
+                    <img src="~/images/graphics/top_290x709.png">
+                </a>
+            </div>
+            <div class="list-product flex">
+                @foreach (var item in Model)
+                {
+                    var current_date = DateTime.Now;
+                    <div class="product-item col-4">
+                        @if (item.discount > 0 && item.amount_vnd > 0)
+                        {
+                            <div class="sale">-@item.discount%</div>
+                        }
+                        <a class="ava" href="@item.link_product">
+                            <img src="@(item.image_thumb)" alt="@item.product_name" />
+                            @*<span class="like active save">
+                                    <svg class="icon-us">
+                                        <use xlink:href="/images/icons/icon.svg#heart"></use>
+                                    </svg>
+                                </span>*@
+                        </a>
+                        <div class="content">
+                            <div class="ct_star">
+                                @{
+                                    double total_star = item.star;
+                                    if (total_star > 0)
+                                    {
+                                        double pn = (double)Math.Floor(total_star);
+                                        double pd = total_star - pn;
+                                        <div class="ct_star">
+                                            @{ await Html.RenderPartialAsync("PartialView/Product/Element/star", null, new ViewDataDictionary(this.ViewData) { { "star", item.rate } });}
+                                        </div>
+                                    }
+                                }
+                                @if (item.rating != null && item.rating != "0")
+                                {
+                                    <a class="buy">@Html.Raw((item.rating.ToString()) + " đánh giá")</a>
+                                }
+                            </div>
+
+                            <h3 class="title">
+                                <a href="@item.link_product" title="@item.product_name">@item.product_name</a>
+                            </h3>
+                            <div class="flex">
+                                <div class="col-2">
+                                    <span>Giá về tay</span>
+                                    <strong class="price">@Math.Round(item.amount_vnd).ToString("N0") đ</strong>
+                                </div>
+                            </div>
+                            <a class="brand_label" href="/store/costco"><img src="/images/graphics/my.png" title="@item.label_name">Sản phẩm bán tại Costco Mỹ</a>
+                        </div>
+                    </div>
+                }
+
+            </div>
+        </div>
+    </div>
+
+}
+else
+{
+    <p>...</p>
+}

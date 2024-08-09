@@ -1,0 +1,131 @@
+﻿@{
+    Layout = null;
+}
+@using Entities.Models
+@model User
+@{
+    var RoleList = (List<Role>)ViewBag.RoleList;
+}
+<form id="form-user-profile">
+    <div class="flex">
+        <div class="up-file mb15">
+            <div class="ava default mb10">
+                <img class="img-preview" src="@(Model.Avata ?? string.Empty)" onerror="_imageError(this)" />
+            </div>
+            <label class="choose">
+                <input type="file" name="imagefile" onchange="_account.OnChangeImage()" />
+                chọn ảnh
+            </label>
+        </div>
+        <div class="form-default row">
+            <div class="col-md-6">
+                <input type="hidden" asp-for="@Model.Id" />
+                <input type="hidden" asp-for="@Model.Status" />
+                <div class="form-group">
+                    <label class="lbl">Họ tên</label>
+                    <div class="wrap_input">
+                        <input type="text" class="form-control" asp-for="@Model.FullName" placeholder="Nhập họ và tên" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="lbl">Tên đăng nhập</label>
+                    <div class="wrap_input">
+                        <input type="text" class="form-control" asp-for="@Model.UserName" disabled="disabled" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="lbl">Email</label>
+                    <div class="wrap_input">
+                        <input type="text" class="form-control" asp-for="@Model.Email" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="lbl">Vai Trò</label>
+                    <div class="wrap_input">
+                        <input type="text" class="form-control" disabled="disabled" value="@(string.Join(" - ",RoleList.Select(s=>s.Name)))">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="lbl">Ngày sinh</label>
+                    <div class="datepicker-wrap">
+                        <input id="datepicker" class="datepicker-input form-control" type="text" name="BirthDayPicker" value="@(Model.BirthDay == null ? "" : ((DateTime)Model.BirthDay).ToString("dd/MM/yyyy"))">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="lbl">Điện thoại</label>
+                    <div class="wrap_input">
+                        <input type="text" class="form-control" asp-for="@Model.Phone" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="lbl">Địa chỉ</label>
+                    <div class="wrap_input">
+                        <input type="text" class="form-control" asp-for="@Model.Address" />
+                    </div>
+                </div>
+                <div class="form-group male">
+                    <label class="lbl">Giới tính</label>
+                    <label class="radio-inline"><input type="radio" asp-for="@Model.Gender" value="1">Nam</label>
+                    <label class="radio-inline"><input type="radio" asp-for="@Model.Gender" value="0">Nữ</label>
+                </div>
+                <div class="form-group">
+                    <label class="lbl">Ghi chú</label>
+                    <div class="wrap_input">
+                        <input type="text" class="form-control" asp-for="@Model.Note">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group align-right col-12 mt20 block">
+                <button type="button" class="btn btn-default" onclick="_account.OnUpdate()"><i class="fa fa-floppy-o"></i>Lưu</button>
+                <button type="button" class="btn btn-default cancel" onclick="$.magnificPopup.close();"><i class="fa fa-ban"></i>Bỏ qua</button>
+            </div>
+        </div>
+    </div>
+</form>
+
+<div class="warp-dotted mt20">
+    <label class="lbl-text">
+        Bảo mật
+    </label>
+    <form id="form-user-change-password">
+        <div class="row">
+            <div class="col-md-7 form-default">
+                <span class="icon-changer"><img src="~/images/icons/changer.svg"></span>
+                <div>Đổi mật khẩu</div>
+                <div class="txt_666 mb15 txt_13">Bạn nên sử dụng mật khẩu mạnh mà mình chưa sử dụng ở đâu khác</div>
+                <div class="form-group">
+                    <label class="lbl">Mật khẩu hiện tại</label>
+                    <div class="wrap_input">
+                        <input type="hidden" asp-for="@Model.Id" />
+                        <input type="password" class="form-control" id="Password" name="Password" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="lbl">Mật khẩu mới</label>
+                    <div class="wrap_input">
+                        <input type="password" class="form-control" id="NewPassword" name="NewPassword" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="lbl">Gõ lại mật khẩu mới</label>
+                    <div class="wrap_input">
+                        <input type="password" class="form-control" id="ReNewPassword" name="ReNewPassword">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-5 align-right">
+                <button type="button" class="btn btn-default" onclick="_account.OnChangePassword()">
+                    <i class="fa fa-floppy-o"></i>Lưu
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script>
+    $('.datepicker-input').Zebra_DatePicker({
+        format: 'd/m/Y'
+    });
+</script>

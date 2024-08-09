@@ -1,0 +1,62 @@
+﻿@using Entities.ViewModels;
+@model List<AddressModel>
+@{
+    ViewData["Title"] = "Tạo link giới thiệu";
+    Layout = "_Layout";
+    string ReceiverName = (string)ViewBag.ReceiverName;
+    bool is_register_aff = (bool)ViewBag.is_register_aff;
+    string _domain =  (string)ViewBag.domain;
+}
+
+<link href="~/css/user.css" rel="stylesheet" />
+<link href="~/css/style.css" rel="stylesheet" />
+
+<!-- MAIN CONTAINER -->
+<section class="main-container clearfix mt30">
+    <div class="menu_control mb20">
+        <div class="container">
+            <ul class="breadcrumb">
+                <li><a href="/">Trang chủ</a></li>
+                <li>Tài khoản Affiliate của tôi</li>
+                <li class="active">Tạo link giới thiệu</li>
+            </ul>
+        </div>
+    </div>
+    <div class="container">
+        <div class="user_management affiliate_setting flex">
+
+            
+            @{ await Html.RenderPartialAsync("PartialView/Client/MenuClientManager", new ViewDataDictionary(this.ViewData) { { "client_name",ReceiverName } });}
+
+            <div class="sidebar2 user_management">
+
+                <div class="detail-dh">
+                    <div class="head flex">
+                        <h2 class="name">
+                            <strong>Tạo link giới thiệu</strong>
+                        </h2>
+                    </div>
+                    @if (!is_register_aff)
+                    {
+                        { await Html.RenderPartialAsync("PartialView/Affiliate/CreateLinkAff", Model); }
+                    }
+                    else
+                    {
+                    <div>
+                        @await Component.InvokeAsync("affiliate", new { sview = "/Views/Shared/Components/affiliate/default.cshtml", domain = _domain })
+                    </div>
+                    }
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- END MAIN CONTAINER -->
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".tao-link-gioi-thieu").addClass("active");
+    })
+</script>

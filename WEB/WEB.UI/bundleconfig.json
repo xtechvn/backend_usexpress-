@@ -1,0 +1,43 @@
+﻿[
+  {
+    "outputFileName": "wwwroot/css/style.min.css",
+    "inputFiles": [
+      "wwwroot/css/style.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/css/lightgallery.min.css",
+    "inputFiles": [
+      "wwwroot/css/lightgallery.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/master.min.js", // thu viện dùng chung load ngoài trang layout
+    "inputFiles": [
+      "wwwroot/js/lib/common.js",
+      "wwwroot/js/lazyload/lib.js",
+      "wwwroot/js/search/default.js",
+      "wwwroot/js/carts/cartSummery.js",
+      "wwwroot/js/client/default.js",
+      "wwwroot/js/lib/master.js",
+      "wwwroot/js/social/default.js",
+      "wwwroot/js/affiliate/default.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    },
+    "sourceMap": false
+  },
+  {
+    "outputFileName": "wwwroot/js/defined_param.min.js", // thu viện dùng param
+    "inputFiles": [
+      "wwwroot/js/lib/defined_param.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    },
+    "sourceMap": false
+  }
+]

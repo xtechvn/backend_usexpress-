@@ -1,0 +1,74 @@
+﻿@{
+    var today = (int)Utilities.Contants.Constants.Chart_Label_Type.Today;
+    var yesterday = (int)Utilities.Contants.Constants.Chart_Label_Type.Yesterday;
+    var week = (int)Utilities.Contants.Constants.Chart_Label_Type.Week;
+    var month = (int)Utilities.Contants.Constants.Chart_Label_Type.Month;
+    var revenuChart = (int)Utilities.Contants.Constants.Chart_Type_Label.Revenu;
+    var quantityChart = (int)Utilities.Contants.Constants.Chart_Type_Label.Quantity;
+}
+<div class="flex-head">
+    <h2 class="title_cate" id="titlechartLabelToday">Top 5 nhãn hàng bán chạy hôm nay</h2>
+    <h2 class="title_cate" id="titlechartLabelYesterday">Top 5 nhãn hàng bán chạy hôm qua</h2>
+    <h2 class="title_cate" id="titlechartLabel7Days">Top 5 nhãn hàng bán chạy 7 ngày qua</h2>
+    <h2 class="title_cate" id="titlechartLabel1Month">Top 5 nhãn hàng bán chạy 30 ngày qua</h2>
+    <div class="td2">
+        <div class="select-default dropdown">
+            <div class="dropbtn">
+                THEO DOANH THU
+            </div>
+            <div class="dropdown-content">
+                <ul>
+                    <li>
+                        <a onclick="menu.LoadChartLabel(@revenuChart)">
+                            THEO DOANH THU
+                        </a>
+                    </li>
+                    <li>
+                        <a onclick="menu.LoadChartLabel(@quantityChart)">
+                            THEO SỐ LƯỢNG
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="btn-right text-right" hidden>
+        <a class="export btn" href="">
+            <i class="fa fa-file-excel-o"></i>Xuất excel
+        </a>
+    </div>
+</div>
+<div class="tab-default cur-pointer" id="chartLabelRevenu">
+    <a onclick="menu.LoadChartLabelRevenuToday(@today,@revenuChart)"
+       id="labelrevenuToday">Hôm nay</a>
+    <a onclick="menu.LoadChartLabelRevenuYesterday(@yesterday,@revenuChart)"
+       id="labelrevenuYesterday">Hôm qua</a>
+    <a onclick="menu.LoadChartLabelRevenuWeek(@week,@revenuChart)"
+       id="labelrevenu7day">7 ngày qua</a>
+    <a onclick="menu.LoadChartLabelRevenuMonth(@month,@revenuChart)"
+       id="labelrevenu30day">30 ngày qua</a>
+</div>
+<div class="tab-default cur-pointer" id="chartLabelQuantity">
+    <a onclick="menu.LoadChartLabelQuantityToday(@today,@quantityChart)"
+       id="labelQuantityToday">Hôm nay</a>
+    <a onclick="menu.LoadChartLabelQuantityYesterday(@yesterday,@quantityChart)"
+       id="labelQuantityYesterday">Hôm qua</a>
+    <a onclick="menu.LoadChartLabelQuantityWeek(@week,@quantityChart)"
+       id="labelQuantity7day">7 ngày qua</a>
+    <a onclick="menu.LoadChartLabelQuantityMonth(@month,@quantityChart)"
+       id="labelQuantity30day">30 ngày qua</a>
+</div>
+<div class="row">
+    <div class="col-xl-12 text-center">
+        <img src="~/images/icons/loading.gif" style=" width: 100px; height: 100px;"
+             id="imgLabelLoading" />
+    </div>
+    <div class="col-xl-12">
+        <canvas id="revenuLabelChart" class="chartjs-render-monitor"></canvas>
+    </div>
+</div>
+<style>
+    .dropdown .dropdown-content {
+        min-width: 150px !important;
+    }
+</style>

@@ -1,0 +1,52 @@
+﻿@model List<Entities.ViewModels.ArticleFeModel>
+<div class="section_topstory__left">
+    @foreach (var item in Model.Skip(0).Take(1))
+    {
+        <article class="item-news full-thumb us_item_news">
+            <div class="thumb-art">
+                <a class="thumb thumb_5x3" href="@item.link" title="@item.title">
+                    <img src="@item.image_169">
+                </a>
+            </div>
+            <div class="content">
+                <div class="date">
+                    <svg class="icon-us">
+                        <use xlink:href="/images/icons/icon.svg#clock"></use>
+                    </svg>
+                    <span>@Convert.ToDateTime(item.publish_date).ToString("dd-MM-yyyy hh:mm")</span>
+                </div>
+                <h3 class="title-news">
+                    <a href="@item.link" title="@item.title">
+                        @item.title
+                    </a>
+                </h3>
+                <div class="description">
+                    @item.lead
+                </div>
+            </div>
+        </article>
+    }
+</div>
+<div class="section_topstory__right">
+    @foreach (var item in Model.Skip(1).Take(2))
+    {
+        <article class="item-news full-thumb us_item_news">
+            <div class="thumb-art">
+                <a class="thumb thumb_5x3" href="@item.link" title="@item.title">
+                    <img src="@item.image_169">
+                </a>
+            </div>
+            <div class="content">
+                <div class="date">
+                    <svg class="icon-us">
+                        <use xlink:href="/images/icons/icon.svg#clock"></use>
+                    </svg>
+                    <span>@Convert.ToDateTime(item.publish_date).ToString("dd-MM-yyyy hh:mm")</span>
+                </div>
+                <h3 class="title-news">
+                    <a href="@item.link" title="@item.title">@item.title</a>
+                </h3>
+            </div>
+        </article>
+    }
+</div>

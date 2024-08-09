@@ -1,0 +1,39 @@
+﻿@using Entities.Models
+@model List<AttachFile>
+@{
+    var ManageUser = (int)ViewBag.UserId;
+}
+<div class="mb15 italic medium">Tài liệu đơn hàng</div>
+<div class="flex align-center mb20">
+    <label class="choose mb0">
+        <input type="hidden" id="ip-data-attach-id" value="@ViewBag.DataId">
+        <input type="hidden" id="ip-data-attach-type" value="@ViewBag.Type">
+        <input type="file" id="ip-attach-file" multiple style="display: none;" onchange="_attachfile.UploadFile($(this))">
+        <a class="btn-default" style="color: #fff;cursor: pointer;">
+            <i class="fa fa-upload"></i>&nbsp;&nbsp;Upload file
+        </a>
+    </label>
+    <div class="gray txt_12">
+        &nbsp;&nbsp;&nbsp;Upload nhiều file cùng lúc. Định dạng: .jpg,
+        .png, .gif,
+        .pdf, .doc & docx. Dung lượng tối đa 10Mb.
+    </div>
+</div>
+<div class="row list-choose lightgallery" id="image-choice-list">
+    @if (Model != null && Model.Count > 0)
+    {
+        foreach (var item in Model)
+        {
+            <div class="col-sm-3 col-4 mb10" data-src="@item.Path" data-id="@item.Id">
+                <div class="choose-ava">
+                    <img src="@item.Path" />
+                    @if (item.UserId == ManageUser)
+                    {
+                        <button type="button" class="delete" onclick="_attachfile.DeleteAttachFile('@item.Id')">×</button>
+                    }
+                </div>
+            </div>
+        }
+    }
+</div>
+<script defer src="~/modules/attachfile_component.js"></script>

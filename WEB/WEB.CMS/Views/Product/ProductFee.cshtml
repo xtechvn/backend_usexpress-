@@ -1,0 +1,55 @@
+﻿@{
+    Layout = null;
+    var rate = (string)ViewBag.rate;
+    var price = (string)ViewBag.price;
+    var shiping_fee = (string)ViewBag.shiping_fee;
+    var amount_vnd = (string)ViewBag.amount_vnd;
+    var FIRST_POUND_FEE = (string)ViewBag.FIRST_POUND_FEE;
+    var NEXT_POUND_FEE = (string)ViewBag.NEXT_POUND_FEE;
+    var TOTAL_SHIPPING_FEE = (string)ViewBag.TOTAL_SHIPPING_FEE;
+    var LUXURY_FEE = (string)ViewBag.LUXURY_FEE;
+    var PRICE_LAST = (string)ViewBag.PRICE_LAST;
+    var product_save_price = (string)ViewBag.product_save_price;
+}
+<div class="table-responsive table-default">
+    <table class="table table-nowrap table-2col">
+        <tbody>
+            <tr>
+                <td><strong>Giá sản phẩm</strong></td>
+                <td id="form_fee_price"><strong>@price</strong> $</td>
+            </tr>
+            <tr>
+                <td>Phí ship nội địa Mỹ</td>
+                <td id="form_fee_shippingfee">@shiping_fee $</td>
+            </tr>
+            <tr>
+                <td><strong>Tổng phí mua hộ</strong></td>
+                <td id="form_fee_totalfee" class=""><strong>@TOTAL_SHIPPING_FEE</strong> $</td>
+            </tr>
+            <tr>
+                <td> - Phí mua hộ pound đầu tiên</td>
+                <td id="form_fee_firstpound">@FIRST_POUND_FEE $</td>
+            </tr>
+            <tr>
+                <td> - Phí mua hộ pound tiếp theo</td>
+                <td id="form_fee_firstpound">@NEXT_POUND_FEE $</td>
+            </tr>
+            <tr>
+                <td><strong>Phí phụ thu sản phẩm đặc biệt</strong></td>
+                <td id="form_fee_firstpound"><strong>@LUXURY_FEE</strong> $</td>
+            </tr>
+            <tr>
+                <td>Tỷ giá hiện tại</td>
+                <td id="form_fee_vndrate">@rate VNĐ</td>
+            </tr>
+            <tr>
+                <td><strong>Giá về tay (USD)</strong></td>
+                <td id="form_fee_totalamount" class="red">@PRICE_LAST $</td>
+            </tr>
+            <tr>
+                <td><strong>Giá về tay (VND)</strong></td>
+                <td id="form_fee_totalamountVND" class="bold red">@amount_vnd VNĐ</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

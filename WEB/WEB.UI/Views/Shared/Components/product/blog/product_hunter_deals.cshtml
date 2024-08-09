@@ -1,0 +1,32 @@
+﻿@model List<WEB.UI.ViewModels.GroupProductViewModel>
+@if (Model != null)
+{
+
+    <div class="box-san-hang-hieu mb25">
+        <h2 class="title_category">SĂN DEAL HÀNG HIỆU</h2>
+        <div class="list">
+            <div class="flex gird">
+                @foreach (var item in Model)
+                {
+                    <a class="item" href="@item.link">
+                        <div class="thumb thumb_5x4">
+                            <img src="@Html.Raw("http://103.74.121.155:44352"+item.image_thumb)" alt="@item.name" />
+                        </div>
+                        <div class="conten">
+                            <h4>@item.name</h4>
+                            <p>@Html.Raw(item.desc)</p>
+                        </div>
+                    </a>
+                }
+
+            </div>
+            <div class="center mt20 mb10">
+                <a href="/" class="load-more">Xem thêm</a>
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <p>...</p>
+}

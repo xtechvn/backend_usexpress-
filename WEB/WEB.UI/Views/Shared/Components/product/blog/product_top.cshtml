@@ -1,0 +1,82 @@
+﻿@model WEB.UI.ViewModels.ProductTopEntitiesViewModel
+@{
+    bool is_waiting = this.ViewData["is_waiting"] == null ? false : true;
+
+}
+@if (is_waiting)
+{
+    <div class="slide_sale mb25">
+        <div class="head-title flex">
+            <h2 class="title_category">Sản phẩm nổi bật</h2>
+        </div>
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                @for (int i = 0; i < 6; i++)
+                {
+                    <div class="swiper-slide product-item">
+                        <a class="ava placeholder" href="">
+                        </a>
+                        <div class="content">
+                            <div class="ct_star placeholder" style="height: 15px;">
+                            </div>
+                            <h3 class="title placeholder" style="height: 40px;"></h3>
+                            <div class="flex placeholder" style="height:15px"></div>
+                            <a class="brand_label placeholder" style="height:15px"></a>
+                        </div>
+                    </div>
+                }
+            </div>
+            <!-- Add Scrollbar -->
+            <div class="swiper-scrollbar"></div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+        </div>
+    </div>
+
+}
+else
+{
+    if (Model != null)
+    {
+        <div class="slide_sale mb25">
+            <div class="head-title flex">
+                <h2 class="title_category">Sản phẩm nổi bật</h2>
+                @if (Model.obj_tab != null)
+                {
+                    <div class="tab_category">
+                        @{
+                            int d = 0;
+                            foreach (var item in Model.obj_tab)
+                            {
+                                <a class="tab_product_slide_top @Html.Raw(d == 0 ? "active" : "")" data-slidename="slide_sale" style="cursor:pointer" data-boxtype="product_top_list" data-id="@item.id">@item.name</a>
+                                d += 1;
+                            }
+                        }
+                    </div>
+                }
+                <div class="option">
+                    @*<span>@Model.Count() trong @Model.Count()</span>*@
+                    <a class="view-all" href="/camp-all/@Model.campaign_id">Xem tất cả</a>
+                </div>
+            </div>
+
+
+            <div class="swiper-container swiper-container-product-top">
+                <div class="swiper-wrapper product_top_list">
+                    @{ await Html.RenderPartialAsync("/Views/Shared/Components/product/blog/product_top_list.cshtml", Model.product_list);}
+                </div>
+                <!-- Add Scrollbar -->
+                <div class="swiper-scrollbar"></div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
+        </div>
+    }
+    else
+    {
+        <p>...</p>
+    }
+}
+
+
+

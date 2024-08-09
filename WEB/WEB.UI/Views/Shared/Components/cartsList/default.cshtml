@@ -1,0 +1,135 @@
+﻿@using WEB.UI.ViewModels;
+@model List<Entities.ViewModels.Carts.CartsViewModels>
+
+@if (Model != null)
+{
+    int d = 0;
+
+<div class="block_donhang table-responsive">
+
+    @foreach (var item in Model)
+        {
+    <table class="table" id="tbl_cart_@item.label_id">
+        <thead>
+            @if (d == 0)
+                    {
+            <tr class="head">
+                <th colspan="3">
+                    <label class="confir_res">
+                        Tên sản phẩm <span class="total_product_cart">(@Html.Raw(Model.Sum(x => x.cart_item.Count())) sản phẩm)</span>
+                        @*<input type="checkbox">
+                            <span class="checkmark"></span>*@
+                    </label>
+                </th>
+                <th><strong>Đơn giá</strong></th>
+                <th><strong>Số lượng </strong></th>
+                <th><strong>Thành tiền</strong></th>
+            </tr>
+            <tr class="line">
+                <th colspan="6"></th>
+            </tr>
+                    }
+                    else
+                    {
+            <tr class="line">
+                <th colspan="6"></th>
+            </tr>
+                    }
+
+            <tr>
+                <th colspan="6">
+                    <div class="text-left hangcungcap_sp">
+                        <label class="confir_res">
+                            <img src="/images/graphics/my.png" alt="">
+                            <span>Sản phẩm từ <span class="first-letter">@item.label_name</span></span>
+                            @*<input type="checkbox" checked>*@
+                            <input type="checkbox" class="chk_cart_label @("chk_label_" + item.label_id) store_@item.label_id" data-labelid="@item.label_id" data-chknamechild="chk_product_@item.label_id" data-chkitem="@("chk_label_" + item.label_id)">
+                            <span class="checkmark"></span>
+                        </label>
+                    </div>
+                </th>
+            </tr>
+        </thead>
+        <tbody class="cart_list">
+            @foreach (var item_cart in item.cart_item)
+                    {
+            <tr class="sp_biendong_gia row_@item_cart.id">
+                <td class="td_checkbox">
+                    <label class="confir_res">
+                        <input type="checkbox" @Html.Raw(item_cart.is_selected ? "checked" : "") name="chk_product_@item_cart.label_id" data-keyid="@item_cart.id" class="chk_cart_product chk_label_@item_cart.label_id chk_product_@item_cart.id" data-chklabel="@("chk_label_" + item.label_id)" data-labelid="@item_cart.label_id" data-amount="@item_cart.amount_last_vnd.ToString("N0")" data-productcode="@item_cart.product_code">
+                        <span class="checkmark"></span>
+                    </label>
+                </td>
+                <td class="col_anhsp">
+                    @if (item_cart.product_detail.image_size_product.Count() > 0)
+                                {
+                    <img src="@item_cart.product_detail.image_size_product[0].Thumb">
+                                }
+                </td>
+                <td class="col_tensp">
+                    <div class="ct_tensp">
+                        <a href="@item_cart.product_detail.link_product">@item_cart.product_detail.product_name</a>
+                    </div>
+                    <p class="txt_12 color_666">
+
+                        @if (item_cart.product_detail.list_variations != null)
+                                    {
+                                        var variation_name = item_cart.product_detail.variation_name;
+                                        if (variation_name != null && variation_name.Count > 0)
+                                        {
+                                            var variation_current = item_cart.product_detail.list_variations.FirstOrDefault(x => x.selected);
+                                            int k = 0;
+                                            foreach (var item_current_variation in variation_name)
+                                            {
+                                                string label_current = item_current_variation;
+                                                string value_current = variation_current == null ? "" : variation_current.dimensions[item_current_variation].ToString();
+                        @Html.Raw(k > 0 ? ", " : "")
+                        @Html.Raw(label_current + ": " + value_current)
+                                                k += 1;
+                                            }
+                                        }
+                                    }
+                    </p>
+                    <div class="flex space-between align-center">
+                        <p class="txt_12 color_666">
+                            Cung cấp bởi : <span class="color_green">@item_cart.product_detail.seller_name</span>
+                        </p>
+                        <a style="cursor:pointer" class="txt_13 color_green remove_cart pointer-event" data-keyid="@item_cart.id" data-chklabel="@("chk_label_" + item.label_id)" data-chknamechild="@("chk_product_" + item.label_id)">Xóa</a>
+                    </div>
+                    @*<div class="bien_dong_gia">
+                            Sản phẩm đã thay đổi đơn giá từ <strong>
+                                24.550.000
+                                đ
+                            </strong> sang <strong>24.450.000 đ</strong>
+                        </div>*@
+                </td>
+                <td class="col_price">
+                    <div class="price">@item_cart.product_detail.list_product_fee.amount_vnd.ToString("N0") <em>đ</em></div>
+                    @*<span class="old">30.000.000 đ</span><span>-20%</span>
+                        <div class="sale">Giảm 500k</div>*@
+                </td>
+                <td class="sl_giohang">
+                    <div class="input-group-prepend">
+                        <button class="giam_sl up_down_quantity" id="minus-btn" data-type="down" data-chklabel="@("chk_label_" + item.label_id)" data-keyid="@item_cart.id" data-clsquantity="quantity_key_@item_cart.id">-</button>
+                    </div>
+                    <input type="text" class="qty_input txtQuantity quantity_key_@item_cart.id" data-chknamechild="chk_product_@item.label_id" data-keyid="@item_cart.id" value="@item_cart.quantity" data-chklabel="@("chk_label_" + item.label_id)" min="1" maxlength="4">
+                    <div class="input-group-prepend">
+                        <button class="tang_sl up_down_quantity" id="plus-btn" data-type="up" data-clsquantity="quantity_key_@item_cart.id" data-keyid="@item_cart.id" data-chklabel="@("chk_label_" + item.label_id)">+</button>
+                    </div>
+                </td>
+                <td class="col_price">
+                    <div><strong class="price color_green amount_last_vnd_@item_cart.id">@item_cart.amount_last_vnd.ToString("N0") <em>đ</em></strong></div>
+                </td>
+            </tr>
+                    }
+        </tbody>
+    </table>
+            d += 1;
+        }
+</div>
+
+}
+<script src="~/js/carts/cartList.js"></script>
+
+
+

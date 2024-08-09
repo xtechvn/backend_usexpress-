@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <meta name="description" content="design 2018">
+    <meta name="keywords" content="design 2018">
+    <title>
+        <!-- build:title -->
+    </title>
+    <link type="image/x-icon" href="http://ssl.gstatic.com/docs/doclist/images/infinite_arrow_favicon_5.ico"
+        rel="shortcut icon" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&amp;subset=vietnamese" rel="stylesheet">
+    <!-- build:head -->
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
+    <!-- build:head2 -->
+</head>
+
+<body>
+
+    <a class="back-version" href="#">
+        <svg class="icon-us">
+            <use xlink:href="images/icons/icon.svg#back2"></use>
+        </svg>
+        Quay lại phiên bản cũ
+    </a>
+
+    <style>
+        .back-version {
+            text-align: center;
+            font-size: 14px;
+            padding: 10px;
+            color: #236852;
+            text-decoration: underline;
+            text-underline-position: under;
+            font-style: italic;
+            display: block;
+        }
+
+        .back-version svg {
+            margin-right: 6px;
+        }
+    </style>
+
+    <section class="top-bar clearfix">
+        <div class="container flex space-between">
+            <div class="top-bar-left">
+                <a href=""><svg class="icon-us">
+                        <use xlink:href="images/icons/icon.svg#help"></use>
+                    </svg>Hỗ trợ</a>
+                <a href=""><svg class="icon-us">
+                        <use xlink:href="images/icons/icon.svg#language"></use>
+                    </svg>Ngôn ngữ</a>
+                <a href=""><svg class="icon-us">
+                        <use xlink:href="images/icons/icon.svg#phone"></use>
+                    </svg>Hotline 1900 633 376</a>
+            </div>
+            <div class="top-bar-right">
+                <a href=""><svg class="icon-us">
+                        <use xlink:href="images/icons/icon.svg#rss"></use>
+                    </svg>Tin tức</a>
+                <a href=""><svg class="icon-us">
+                        <use xlink:href="images/icons/icon.svg#review"></use>
+                    </svg>Reviews sản phẩm</a>
+                <!-- <a href="" class="show-mb"><svg class="icon-us">
+                        <use xlink:href="images/icons/icon.svg#calendar"></use>
+                    </svg>kiểm tra đơn hàng</a> -->
+                <a href="" class="show-mb"><svg class="icon-us">
+                        <use xlink:href="images/icons/icon.svg#download"></use>
+                    </svg>Tải Extension</a>
+                <div class="my_us">
+                <a href="#login-popup" class="open-popup-link" style="display: none;"><svg class="icon-us">
+                        <use xlink:href="images/icons/icon.svg#user"></use>
+                </svg>Đăng nhập / Đăng ký</a>
+                    <div class="user">
+                        <a class="onclick" href="javascript:;">
+                            <span class="avatar">
+                                <img src="images/graphics/thumb_1x1.jpg">
+                            </span>
+                            <h4 class="name">Trịnh Thăng Bình</h4>
+                        </a>
+                        <div class="wrap_user">
+                            <ul>
+                                <li>
+                                    <a href="#">
+                                        <svg class="icon-us">
+                                            <use xlink:href="images/icons/icon.svg#user"></use>
+                                        </svg>
+                                        Thông tin tài khoản
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <svg class="icon-us">
+                                            <use xlink:href="images/icons/icon.svg#thutuc"></use>
+                                        </svg>
+                                        Quản lý đơn hàng
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <svg class="icon-us">
+                                            <use xlink:href="images/icons/icon.svg#notifi2"></use>
+                                        </svg>
+                                        Thông báo của tôi
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <svg class="icon-us">
+                                            <use xlink:href="images/icons/icon.svg#book"></use>
+                                        </svg>
+                                        Sổ địa chỉ
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <svg class="icon-us">
+                                            <use xlink:href="images/icons/icon.svg#heart2"></use>
+                                        </svg>
+                                        Sản phẩm yêu thích
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <img src="images/icons/u-xu.svg">
+                                        Quản lý U-Xu của tôi
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <img src="images/icons/affiliate.svg">
+                                        Tài khoản Affiliate của tôi
+                                    </a>
+                                </li>
+                            </ul>
+                            <a class="out" href="#">Đăng xuất</a>
+                        </div>
+                    </div>
+                    <div class="notifi">
+                        <a class="onclick" href="javascript:;">
+                            <svg class="icon-us">
+                                <use xlink:href="images/icons/icon.svg#notifi"></use>
+                            </svg>
+                            <span class="count">8</span>
+                        </a>
+                        <div class="wrap_notifi">
+                            <ul>
+                                <li>
+                                    <a href="#">
+                                        <span class="icon">
+                                            <svg class="icon-us">
+                                                <use xlink:href="images/icons/icon.svg#thutuc"></use>
+                                            </svg>
+                                        </span>
+                                        Đơn hàng số 953929993 của quý khách có sản phẩm nằm ở nhiều kho khác nhau, vì
+                                        vậy UsExpress xin phép tách ...
+                                        <span class="date">20/07/2019</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span class="icon">
+                                            <svg class="icon-us">
+                                                <use xlink:href="images/icons/icon.svg#thutuc"></use>
+                                            </svg>
+                                        </span>
+                                        Đơn hàng số 953929993 của quý khách có sản phẩm nằm ở nhiều kho khác nhau, vì
+                                        vậy UsExpress xin phép tách ...
+                                        <span class="date">20/07/2019</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span class="icon">
+                                            <svg class="icon-us">
+                                                <use xlink:href="images/icons/icon.svg#thutuc"></use>
+                                            </svg>
+                                        </span>
+                                        Đơn hàng số 953929993 của quý khách có sản phẩm nằm ở nhiều kho khác nhau, vì
+                                        vậy UsExpress xin phép tách ...
+                                        <span class="date">20/07/2019</span>
+                                    </a>
+                                </li>
+                                <li class="visited">
+                                    <a href="#">
+                                        <span class="icon">
+                                            <svg class="icon-us">
+                                                <use xlink:href="images/icons/icon.svg#thutuc"></use>
+                                            </svg>
+                                        </span>
+                                        Đơn hàng số 953929993 của quý khách có sản phẩm nằm ở nhiều kho khác nhau, vì
+                                        vậy UsExpress xin phép tách ...
+                                        <span class="date">20/07/2019</span>
+                                    </a>
+                                </li>
+                                <li class="visited">
+                                    <a href="#">
+                                        <span class="icon">
+                                            <svg class="icon-us">
+                                                <use xlink:href="images/icons/icon.svg#thutuc"></use>
+                                            </svg>
+                                        </span>
+                                        Đơn hàng số 953929993 của quý khách có sản phẩm nằm ở nhiều kho khác nhau, vì
+                                        vậy UsExpress xin phép tách ...
+                                        <span class="date">20/07/2019</span>
+                                    </a>
+                                </li>
+                            </ul>
+                            <div class="center mt20 mb15">
+                                <a class="btn btn-default none" href="#">Xem tất cả thông báo</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- build:head3 -->
+    <!--HEADER-->
+    <header class="header-block sticky">
+        <div class="container flex space-between">
+            <div class="header-block_1">
+                <a class="logo" href=""><img src="images/graphics/logo.svg" title="amz"></a>
+                <a class="nav-bar" href="javascript:;">
+                    <i class="iconfont-bar"></i>Danh mục
+                </a>
+            </div>
+
+            <div class="header-block_3">
+                <div class="warp">
+                    <form id="search" action="">
+                        <div class="warp-search">
+                            <input type="text" class="input_search" name="" value=""
+                                placeholder="Nhập link sản phẩm Amazon cần tìm...">
+                                <button type="reset" class="btn_reset">×</button>
+                            <div class="suggest-search">
+                                <ul class="list-search scrollbar-inner">
+                                    <li>
+                                        <div class="ava">
+                                            <a href=""><img src="images/graphics/sanpham1.png" title="amz"></a>
+                                        </div>
+                                        <div class="content">
+                                            <h3 class="title"><a href="">Apple iPhone 7 32GB - Hàng Nhập Khẩu </a></h3>
+                                            <div class="price">9.490.000 đ</div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="ava">
+                                            <a href=""><img src="images/graphics/sanpham1.png" title="amz"></a>
+                                        </div>
+                                        <div class="content">
+                                            <h3 class="title"><a href="">Apple iPhone 7 32GB - Hàng Nhập Khẩu </a></h3>
+                                            <div class="price">9.490.000 đ</div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="ava">
+                                            <a href=""><img src="images/graphics/sanpham1.png" title="amz"></a>
+                                        </div>
+                                        <div class="content">
+                                            <h3 class="title"><a href="">Apple iPhone 7 32GB - Hàng Nhập Khẩu </a></h3>
+                                            <div class="price">9.490.000 đ</div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="ava">
+                                            <a href=""><img src="images/graphics/sanpham1.png" title="amz"></a>
+                                        </div>
+                                        <div class="content">
+                                            <h3 class="title"><a href="">Apple iPhone 7 32GB - Hàng Nhập Khẩu </a></h3>
+                                            <div class="price">9.490.000 đ</div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="ava">
+                                            <a href=""><img src="images/graphics/sanpham1.png" title="amz"></a>
+                                        </div>
+                                        <div class="content">
+                                            <h3 class="title"><a href="">Apple iPhone 7 32GB - Hàng Nhập Khẩu </a></h3>
+                                            <div class="price">9.490.000 đ</div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="ava">
+                                            <a href=""><img src="images/graphics/sanpham1.png" title="amz"></a>
+                                        </div>
+                                        <div class="content">
+                                            <h3 class="title"><a href="">Apple iPhone 7 32GB - Hàng Nhập Khẩu </a></h3>
+                                            <div class="price">9.490.000 đ</div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="ava">
+                                            <a href=""><img src="images/graphics/sanpham1.png" title="amz"></a>
+                                        </div>
+                                        <div class="content">
+                                            <h3 class="title"><a href="">Apple iPhone 7 32GB - Hàng Nhập Khẩu </a></h3>
+                                            <div class="price">9.490.000 đ</div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="ava">
+                                            <a href=""><img src="images/graphics/sanpham1.png" title="amz"></a>
+                                        </div>
+                                        <div class="content">
+                                            <h3 class="title"><a href="">Apple iPhone 7 32GB - Hàng Nhập Khẩu </a></h3>
+                                            <div class="price">9.490.000 đ</div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="ava">
+                                            <a href=""><img src="images/graphics/sanpham1.png" title="amz"></a>
+                                        </div>
+                                        <div class="content">
+                                            <h3 class="title"><a href="">Apple iPhone 7 32GB - Hàng Nhập Khẩu </a></h3>
+                                            <div class="price">9.490.000 đ</div>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <div class="history">
+                                    <ul>
+                                        <h3>Lịch sử tìm kiếm</h3>
+                                        <a class="clear" href="">Xóa tất cả</a>
+                                        <li><a href="">Iphone xs max</a></li>
+                                        <li><a href="">Diệp hạ châu</a></li>
+                                        <li><a href="">Sản Phẩm Dinh Dưỡng Nestle Nutren Junior (800g)</a></li>
+                                        <li><a href="">Sữa tăng cân dành cho người béo phì</a></li>
+                                    </ul>
+                                    <ul class="end">
+                                        <h3>Tìm kiếm phổ biến</h3>
+                                        <li><a href="">Iphone xs max</a></li>
+                                        <li><a href="">Quạt điều hòa</a></li>
+                                        <li><a href="">Quạt điều hòa</a></li>
+                                        <li><a href="">Quạt điều hòa</a></li>
+                                    </ul>
+                                </div>
+                                <div class="key-search">
+                                    <ul>
+                                        <li><a href="">Apple iphone </a></li>
+                                        <li><a href="">Apple iphone trong <span class="color_ylow">Điện Thoại - Máy Tính
+                                                    Bảng</span></a></li>
+                                        <li><a href="">Apple iphone xs</a></li>
+                                        <li><a href="">Apple iphone xs max 512GB</a></li>
+                                        <li><a href="">Apple iphone 6s</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="op_thuonghieu dropdown">
+                            <div class="txt_hang dropbtn">
+                                <span>Tất cả</span>
+                            </div>
+                            <div class="options dropdown-content">
+                                <a href="javarscript:;">Điện tử và công nghệ</a>
+                                <a href="javarscript:;">Phụ kiện thời trang</a>
+                                <a href="javarscript:;">Sức khỏe và làm đẹp</a>
+                                <a href="javarscript:;">Thể thao và du lịch</a>
+                                <a href="javarscript:;">Nhà cửa và đời sống</a>
+                                <a href="javarscript:;">Đồ chơi, Mẹ và bé</a>
+                                <a href="javarscript:;">Phụ tùng ô tô</a>
+                                <a href="javarscript:;">Thiết bị Gia dụng</a>
+                                <a href="javarscript:;">Thời trang</a>
+                                <a href="javarscript:;">Hàng Tiêu Dùng - Thực Phẩm</a>
+                            </div>
+                        </div>
+                        <button type="submit" class="icon_seach_web">
+                            <svg class="icon-us">
+                                <use xlink:href="images/icons/icon.svg#search"></use>
+                            </svg>
+                        </button>
+                    </form>
+                    <div class="tag_sp">
+                        <a href="">switch tplink</a>
+                        <a href="">bộ bé trai</a>
+                        <a href="">hạt nối mạng</a>
+                        <a href="">cáp sạc hoco</a>
+                        <a href="">ốp chống</a>
+                        <a href="">bài ma sói</a>
+                        <a href="">robot hút bụi</a>
+                        <a href="">album bts</a>
+                    </div>
+                </div>
+                <a class="cart" href="">
+                    <svg class="icon-us">
+                        <use xlink:href="images/icons/icon.svg#cart"></use>
+                    </svg>
+                    <span class="count">8</span>
+                    Giỏ hàng
+                </a>
+            </div>
+
+            <div class="warp_menu">
+                <div class="flex">
+                    <div id="nav-cate-home" class="col-1">
+                        <ul>
+                            <li class="active"><a rel="child-box-1" class="link">
+                                    <svg class="icon-us">
+                                        <use xlink:href="images/icons/icon.svg#tivi">
+                                        </use>
+                                    </svg>
+                                    Đồ điện tử và công nghệ</a></li>
+                            <li><a rel="child-box-2" class="link">
+                                    <svg class="icon-us">
+                                        <use xlink:href="images/icons/icon.svg#dong-ho">
+                                        </use>
+                                    </svg>
+                                    Đồng hồ hàng hiệu</a>
+                            </li>
+                            <li><a rel="child-box-3" class="link">
+                                    <svg class="icon-us">
+                                        <use xlink:href="images/icons/icon.svg#fashion-woment">
+                                        </use>
+                                    </svg>
+                                    Đồ điện tử và công nghệ</a></li>
+                            <li><a rel="child-box-4" class="link">
+                                    <svg class="icon-us">
+                                        <use xlink:href="images/icons/icon.svg#fashion-men">
+                                        </use>
+                                    </svg>
+                                    Đồng hồ hàng hiệu</a>
+                            </li>
+                            <li><a rel="child-box-5" class="link">
+                                    <svg class="icon-us">
+                                        <use xlink:href="images/icons/icon.svg#baby">
+                                        </use>
+                                    </svg>
+                                    Đồ điện tử và công
+                                    nghệ</a></li>
+                            <li><a rel="child-box-6" class="link">
+                                    <svg class="icon-us">
+                                        <use xlink:href="images/icons/icon.svg#lipstick">
+                                        </use>
+                                    </svg>
+                                    Đồng hồ hàng hiệu</a>
+                            </li>
+                            <li><a rel="child-box-7" class="link">
+                                    <svg class="icon-us">
+                                        <use xlink:href="images/icons/icon.svg#perfume">
+                                        </use>
+                                    </svg>
+                                    Đồ điện tử và công nghệ</a></li>
+                            <li><a rel="child-box-8" class="link">
+                                    <svg class="icon-us">
+                                        <use xlink:href="images/icons/icon.svg#game"></use>
+                                    </svg>
+                                    Đồng hồ hàng hiệu</a>
+                            </li>
+                            <li>
+                                <a rel="child-box-9" class="link">
+                                    <svg class="icon-us">
+                                        <use xlink:href="images/icons/icon.svg#car"></use>
+                                    </svg>
+                                    Đồ điện tử và công nghệ</a>
+                            </li>
+                            <li><a rel="child-box-10" class="link">
+                                    <svg class="icon-us">
+                                        <use xlink:href="images/icons/icon.svg#football">
+                                        </use>
+                                    </svg>
+                                    Đồng hồ hàng hiệu</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-2">
+                        <div id="child-box-1" class="child-box">
+                            <div class="col-left">
+                                <div class="flex">
+                                    <ul>
+                                        <h3>Máy tính và phụ kiện</h3>
+                                        <li><a href="#">Laptop, Tablet</a></li>
+                                        <li><a href="#">Laptop, Tablet</a></li>
+                                        <li><a href="#">Laptop, Tablet</a></li>
+                                        <li><a href="#">Laptop, Tablet</a></li>
+                                        <li><a href="#">Laptop, Tablet</a></li>
+                                    </ul>
+                                    <ul>
+                                        <h3>Điện thoại và phụ kiện</h3>
+                                        <li><a href="#">Laptop, Tablet</a></li>
+                                        <li><a href="#">Laptop, Tablet</a></li>
+                                        <li><a href="#">Laptop, Tablet</a></li>
+                                        <li><a href="#">Laptop, Tablet</a></li>
+                                        <li><a href="#">Laptop, Tablet</a></li>
+                                    </ul>
+                                    <ul>
+                                        <h3>Thiết bị kỹ thuật số</h3>
+                                        <li><a href="#">Laptop, Tablet</a></li>
+                                        <li><a href="#">Laptop, Tablet</a></li>
+                                        <li><a href="#">Laptop, Tablet</a></li>
+                                        <li><a href="#">Laptop, Tablet</a></li>
+                                        <li><a href="#">Laptop, Tablet</a></li>
+                                    </ul>
+                                    <ul>
+                                        <h3>Máy tính và phụ kiện</h3>
+                                        <li><a href="#">Laptop, Tablet</a></li>
+                                        <li><a href="#">Laptop, Tablet</a></li>
+                                        <li><a href="#">Laptop, Tablet</a></li>
+                                        <li><a href="#">Laptop, Tablet</a></li>
+                                        <li><a href="#">Laptop, Tablet</a></li>
+                                    </ul>
+                                    <ul>
+                                        <h3>Điện thoại và phụ kiện</h3>
+                                        <li><a href="#">Laptop, Tablet</a></li>
+                                        <li><a href="#">Laptop, Tablet</a></li>
+                                        <li><a href="#">Laptop, Tablet</a></li>
+                                        <li><a href="#">Laptop, Tablet</a></li>
+                                        <li><a href="#">Laptop, Tablet</a></li>
+                                    </ul>
+                                    <ul>
+                                        <h3>Thiết bị kỹ thuật số</h3>
+                                        <li><a href="#">Laptop, Tablet</a></li>
+                                        <li><a href="#">Laptop, Tablet</a></li>
+                                        <li><a href="#">Laptop, Tablet</a></li>
+                                        <li><a href="#">Laptop, Tablet</a></li>
+                                        <li><a href="#">Laptop, Tablet</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-right">
+                                <img src="images/graphics/banner-ads.png">
+                            </div>
+                        </div>
+                        <div id="child-box-2" class="child-box" style="display: none;">
+                            <div class="col-left">
+                                <div class="flex">
+                                    <ul>
+                                        <h3>Máy tính và phụ kiện</h3>
+                                        <li><a href="#">Laptop, Tablet</a></li>
+                                        <li><a href="#">Laptop, Tablet</a></li>
+                                        <li><a href="#">Laptop, Tablet</a></li>
+                                        <li><a href="#">Laptop, Tablet</a></li>
+                                        <li><a href="#">Laptop, Tablet</a></li>
+                                    </ul>
+                                    <ul>
+                                        <h3>Điện thoại và phụ kiện</h3>
+                                        <li><a href="#">Laptop, Tablet</a></li>
+                                        <li><a href="#">Laptop, Tablet</a></li>
+                                        <li><a href="#">Laptop, Tablet</a></li>
+                                        <li><a href="#">Laptop, Tablet</a></li>
+                                        <li><a href="#">Laptop, Tablet</a></li>
+                                    </ul>
+                                    <ul>
+                                        <h3>Thiết bị kỹ thuật số</h3>
+                                        <li><a href="#">Laptop, Tablet</a></li>
+                                        <li><a href="#">Laptop, Tablet</a></li>
+                                        <li><a href="#">Laptop, Tablet</a></li>
+                                        <li><a href="#">Laptop, Tablet</a></li>
+                                        <li><a href="#">Laptop, Tablet</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-right">
+                                <img src="https://via.placeholder.com/268x462">
+                            </div>
+                        </div>
+                        <div id="child-box-3" class="child-box" style="display: none;">
+                            <div class="col-left">
+                                <div class="flex">
+                                    <ul>
+                                        <h3>Máy tính và phụ kiện</h3>
+                                        <li><a href="#">Laptop, Tablet</a></li>
+                                        <li><a href="#">Laptop, Tablet</a></li>
+                                        <li><a href="#">Laptop, Tablet</a></li>
+                                        <li><a href="#">Laptop, Tablet</a></li>
+                                        <li><a href="#">Laptop, Tablet</a></li>
+                                    </ul>
+                                    <ul>
+                                        <h3>Máy tính và phụ kiện</h3>
+                                        <li><a href="#">Laptop, Tablet</a></li>
+                                        <li><a href="#">Laptop, Tablet</a></li>
+                                        <li><a href="#">Laptop, Tablet</a></li>
+                                        <li><a href="#">Laptop, Tablet</a></li>
+                                        <li><a href="#">Laptop, Tablet</a></li>
+                                    </ul>
+                                    <ul>
+                                        <h3>Điện thoại và phụ kiện</h3>
+                                        <li><a href="#">Laptop, Tablet</a></li>
+                                        <li><a href="#">Laptop, Tablet</a></li>
+                                        <li><a href="#">Laptop, Tablet</a></li>
+                                        <li><a href="#">Laptop, Tablet</a></li>
+                                        <li><a href="#">Laptop, Tablet</a></li>
+                                    </ul>
+                                    <ul>
+                                        <h3>Thiết bị kỹ thuật số</h3>
+                                        <li><a href="#">Laptop, Tablet</a></li>
+                                        <li><a href="#">Laptop, Tablet</a></li>
+                                        <li><a href="#">Laptop, Tablet</a></li>
+                                        <li><a href="#">Laptop, Tablet</a></li>
+                                        <li><a href="#">Laptop, Tablet</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-right">
+                                <img src="https://via.placeholder.com/268x462">
+                            </div>
+                        </div>
+                        <div id="child-box-4" class="child-box" style="display: none;">Nội dung 4</div>
+                        <div id="child-box-5" class="child-box" style="display: none;">Nội dung 5</div>
+                        <div id="child-box-6" class="child-box" style="display: none;">Nội dung 6</div>
+                        <div id="child-box-7" class="child-box" style="display: none;">Nội dung 7</div>
+                        <div id="child-box-8" class="child-box" style="display: none;">Nội dung 8</div>
+                        <div id="child-box-9" class="child-box" style="display: none;">Nội dung 9</div>
+                        <div id="child-box-10" class="child-box" style="display: none;">Nội dung 10</div>
+                        <div id="child-box-11" class="child-box" style="display: none;">Nội dung 11</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!--END HEADER-->
+
+    <!-- build:content -->
+
+
+    <!--FOOTER-->
+    <footer id="footer" class="clearfix">
+        <div class="footer-top">
+            <div class="container">
+                <div class="newsletter">
+                    <img src="images/graphics/newsletter.svg">
+                    <strong>Đăng ký nhận Bản tin Giảm giá</strong>
+                    <p>Để không bỏ lỡ những đợt Sale hấp dẫn từ Mỹ</p>
+                </div>
+                <form action="">
+                    <input type="text" class="input_search" name="" value="" placeholder="Nhập email của bạn">
+                    <button type="submit" class="">Đăng ký</button>
+                </form>
+                <a class="messenger" href="#"><img src="images/icons/chat.png"></a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="row">
+                    <div class="td">
+                        <h3>Hỗ trợ khách hàng</h3>
+                        <div class="hotline">
+                            <p class="color_green2"><strong>Hotline CSKH: 1900 633 600</strong></p>
+                            <p>(Từ 8h30-17h30 Thứ 2 đến Thứ 6)</p>
+                        </div>
+                        <ul>
+                            <li><a href="">Câu hỏi thường gặp</a></li>
+                            <li><a href="">Hướng dẫn đặt hàng</a></li>
+                            <li><a href="">Trung tâm trợ giúp</a></li>
+                        </ul>
+                    </div>
+                    <div class="td">
+                        <h3>Hiểu thêm về US</h3>
+                        <ul>
+                            <li><a href="">Về US Express</a></li>
+                            <li><a href="">Báo chí nói về US Express</a></li>
+                            <li><a href="">Gia nhập US Express</a></li>
+                        </ul>
+                    </div>
+                    <div class="td">
+                        <h3>Chăm sóc khách hàng</h3>
+                        <ul>
+                            <li><a href="">Chính sách bảo mật</a></li>
+                            <li><a href="">Chính sách giao dịch</a></li>
+                            <li><a href="">Chính sách thanh toán</a></li>
+                            <li><a href="">Chính sách bảo hành và đổi trả</a></li>
+                            <li><a href="">Chính sách giải quyết khiếu nại</a></li>
+                            <li><a href="">Điều khoản mua bán US Express</a></li>
+                        </ul>
+                    </div>
+                    <div class="td">
+                        <h3>Order cùng US</h3>
+                        <ul>
+                            <li><a href="">10 thương hiệu được ưu chuộng...</a></li>
+                            <li><a href="">Chọn hàng Prime thế nào cho đúng</a></li>
+                            <li><a href="">Phân biệt Adidas thật giả</a></li>
+                            <li><a href="">Phân biệt Adidas thật giả</a></li>
+                            <li><a href="">Phân biệt Adidas thật giả</a></li>
+                            <li><a href="">Phân biệt Adidas thật giả</a></li>
+                        </ul>
+                    </div>
+                    <div class="td">
+                        <h3>Hình thức thanh toán</h3>
+                        <div class="visa">
+                            <a href=""><img src="images/graphics/visa.png"></a>
+                            <a href=""><img src="images/graphics/visa2.png"></a>
+                            <a href=""><img src="images/graphics/visa3.png"></a>
+                            <a href=""><img src="images/graphics/visa4.png"></a>
+                            <a href=""><img src="images/graphics/visa5.png"></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="address">
+                    <div class="left">
+                        <h3>địa chỉ Văn phòng US Express</h3>
+                        <p><strong>Trung tâm kho vận tại Mỹ:</strong> 6210 NE 92ND DR, STE 105 Portland, Bang Oregon
+                            97220-1341</p>
+                        <p><strong>Văn phòng tại Hà Nội:</strong> Tầng 5, tòa nhà Diamond Flower, Số 1 Hoàng Đạo Thúy,
+                            Q. Thanh Xuân</p>
+                        <p><strong>Văn phòng tại Tp.HCM:</strong> 04.54 Lầu 4, Tháp B, Tòa nhà River Gate, Số 151-155
+                            Bến Vân Đồn, P.6, Q.4</p>
+                    </div>
+                    <div class="right social">
+                        <a href=""><img src="images/icons/facebook.svg"></a>
+                        <a href=""><img src="images/icons/youtube.svg"></a>
+                        <a href=""><img src="images/icons/camera.svg"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <div class="container flex">
+                <div class="text">
+                    <p>© 2019 - Bản quyền của Công ty Cổ Phần US Express - usexpress.vn</p>
+                    <p>Giấy chứng nhận Đăng ký Kinh doanh số 3002090565, cấp ngày 23/11/2017</p>
+                </div>
+                <div class="social">
+                    <a href=""><img src="images/graphics/bocongthuong.png"></a>
+                    <a href=""><img src="images/graphics/shield.svg"></a>
+                    <a href=""><img src="images/graphics/dss.png"></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!--END FOOTER-->
+
+    <!--POPUP ĐĂNG NHẬP/ĐĂNG KÝ-->
+    <div id="login-popup" class="login-popup white-popup mfp-hide">
+        <div class="content_poup">
+            <div class="flex">
+                <div class="tien_ich">
+                    <ul>
+                        <li>
+                            <svg class="icon-us">
+                                <use xlink:href="images/icons/icon.svg#like"></use>
+                            </svg>
+                            <h4>Chi phí minh bạch</h4>
+                        </li>
+                        <li>
+                            <svg class="icon-us">
+                                <use xlink:href="images/icons/icon.svg#dam-bao"></use>
+                            </svg>
+                            <h4>Hàng hóa được đảm bảo</h4>
+                        </li>
+                        <li>
+                            <svg class="icon-us">
+                                <use xlink:href="images/icons/icon.svg#date"></use>
+                            </svg>
+                            <h4>Giao hàng từ 10 - 15 ngày làm việc</h4>
+                        </li>
+                        <li>
+                            <svg class="icon-us">
+                                <use xlink:href="images/icons/icon.svg#tietkiem"></use>
+                            </svg>
+                            <h4>Mua càng nhiều, tiết kiệm càng nhiều</h4>
+                        </li>
+                    </ul>
+                </div>
+                <div class="form">
+                    <div class="tab flex">
+                        <a class="login active" href="#tab-dn">Đăng nhập</a>
+                        <a class="resign" href="#tab-dk">Tạo tài khoản</a>
+                    </div>
+                    <div id="tab-dn" class="tab-content">
+                        <div class="form-group icon-visible">
+                            <svg class="icon-us">
+                                <use xlink:href="images/icons/icon.svg#mail"></use>
+                            </svg>
+                            <input type="" class="form-control" id="" placeholder="Nhập địa chỉ Email" name="">
+                            <span class="error">Thông báo lỗi</span>
+                        </div>
+                        <div class="form-group icon-visible">
+                            <svg class="icon-us">
+                                <use xlink:href="images/icons/icon.svg#padlock"></use>
+                            </svg>
+                            <input type="" class="form-control" id="" placeholder="Nhập mật khẩu" name="">
+                            <span class="error">Thông báo lỗi</span>
+                        </div>
+                        <a class="request-pass" href="">Quên mật khẩu?</a>
+                        <button class="btn bg-green">Đăng nhập</button>
+                        <div class="login-social">
+                            <h3 class="center"><span>Hoặc đăng nhập bằng</span></h3>
+                            <div class="flex">
+                                <a href=""><img src="images/graphics/btn-face.svg"></a>
+                                <a href=""><img src="images/graphics/btn-google.svg"></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="tab-dk" class="tab-content" style="display: none;">
+                        <div class="form-group icon-visible">
+                            <svg class="icon-us">
+                                <use xlink:href="images/icons/icon.svg#user"></use>
+                            </svg>
+                            <input type="text" class="form-control" placeholder="Nhập họ và tên" name="">
+                        </div>
+                        <div class="form-group icon-visible">
+                            <svg class="icon-us">
+                                <use xlink:href="images/icons/icon.svg#mail"></use>
+                            </svg>
+                            <input type="" class="form-control" id="" placeholder="Nhập địa chỉ Email" name="">
+                        </div>
+                        <div class="form-group icon-visible">
+                            <svg class="icon-us">
+                                <use xlink:href="images/icons/icon.svg#smartphone"></use>
+                            </svg>
+                            <input type="number" class="form-control" id="" placeholder="Nhập số điện thoại" name="">
+                        </div>
+                        <div class="form-group icon-visible">
+                            <svg class="icon-us">
+                                <use xlink:href="images/icons/icon.svg#padlock"></use>
+                            </svg>
+                            <input type="" class="form-control" placeholder="Nhập mật khẩu từ 6 đến 32 ký tự" name="">
+                        </div>
+                        <div class="form-group icon-visible">
+                            <svg class="icon-us">
+                                <use xlink:href="images/icons/icon.svg#padlock"></use>
+                            </svg>
+                            <input type="password" class="form-control" placeholder="Nhập lại mật khẩu" name="">
+                        </div>
+                        <label class="confir_res">
+                            Nhận các thông tin và chương trình khuyến mãi qua email.
+                            <input type="checkbox">
+                            <span class="checkmark"></span>
+                        </label>
+                        <button class="btn">Tạo tài khoản</button>
+                        <p class="mt10">Khi bạn nhấn Đăng ký, bạn đã đồng ý thực hiện mọi giao dịch mua bán theo <a
+                                href="" style="color: #00A3FF">điều kiện sử dụng và chính sách của Chúng tôi</a>.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--END POPUP ĐĂNG NHẬP/ĐĂNG KÝ-->
+
+    <!--Back to top-->
+    <a href="javascript:;" id="to_top">
+        <svg class="icon-us">
+            <use xlink:href="images/icons/icon.svg#Up"></use>
+        </svg>
+    </a>
+    <!--Jquery lib-->
+    <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="js/swiper.min.js"></script>
+    <script type="text/javascript" src="js/svgxuse.min.js"></script>
+    <script type="text/javascript" src="js/stickyfill.min.js"></script>
+    <script type="text/javascript" src="js/jquery.scrollbar.min.js"></script>
+    <script type="text/javascript" src="js/jquery.magnific-popup.min.js"></script>
+    <script type="text/javascript" src="js/zebra_datepicker.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/common.js"></script>
+    <!-- build:script -->
+    <!-- build:script2 -->
+</body>
+
+</html>

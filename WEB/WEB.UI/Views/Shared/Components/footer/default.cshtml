@@ -1,0 +1,104 @@
+﻿@using Entities.ViewModels;
+@model List<CategoryViewModel>
+
+
+<footer id="footer" class="clearfix">
+    <div class="footer-top">
+        <div class="container">
+            <div class="newsletter">
+                <img src="~/images/graphics/newsletter.svg">
+                <strong>Đăng ký nhận Bản tin Giảm giá</strong>
+                <p>Để không bỏ lỡ những đợt Sale hấp dẫn từ Mỹ</p>
+            </div>
+            <form action="">
+                <input type="text" class="input_search" name="" value="" placeholder="Nhập email của bạn">
+                <button type="submit" class="">Đăng ký</button>
+            </form>
+            <a class="messenger" href="#"><img src="/images/icons/chat.png"></a>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <div class="container">
+            <div class="row">
+
+                <div class="td">
+                    <h3>Về USEXPRESS</h3>
+                    <div class="hotline">
+                        <p class="color_green2"><strong>Hotline CSKH: 1900 633 600</strong></p>
+                        <p>(Từ 8h30-17h30 Thứ 2 đến Thứ 6)</p>
+                    </div>
+                    <ul>
+                        @foreach (var item_1 in Model.Skip(0).Take(3))
+                        {
+                            <li><a href="@("/" + item_1.path)">@item_1.name</a></li>
+                        }
+                    </ul>
+                </div>
+                <div class="td">
+                    <h3>Hiểu thêm về US</h3>
+                    <ul>
+                        @foreach (var item_2 in Model.Skip(3).Take(20))
+                        {
+                            <li><a href="@("/" + item_2.path)">@item_2.name</a></li>
+                        }
+                    </ul>
+                </div>
+                @*<div class="td">
+                    <h3>Chăm sóc khách hàng</h3>
+                    <ul>
+                        @foreach (var item_1 in Model.Skip(0).Take(5))
+                        {
+                            <li><a href="@("/" + item_1.path)">@item_1.name</a></li>
+                        }
+                    </ul>
+                </div>*@
+
+                <div class="td">
+                    @*<h3>Order cùng US</h3>
+                        <ul>
+                            <li><a href="">10 thương hiệu được ưu chuộng...</a></li>
+                            <li><a href="">Chọn hàng Prime thế nào cho đúng</a></li>
+                            <li><a href="">Phân biệt Adidas thật giả</a></li>
+                            <li><a href="">Phân biệt Adidas thật giả</a></li>
+                            <li><a href="">Phân biệt Adidas thật giả</a></li>
+                            <li><a href="">Phân biệt Adidas thật giả</a></li>
+                        </ul>*@
+                </div>
+                <div class="td">
+                    <h3>Hình thức thanh toán</h3>
+                    <div class="visa">
+                        <a href=""><img src="~/images/graphics/visa.png"></a>
+                        <a href=""><img src="~/images/graphics/visa2.png"></a>
+                        <a href=""><img src="~/images/graphics/visa3.png"></a>
+                        <a href=""><img src="~/images/graphics/visa4.png"></a>
+                        <a href=""><img src="~/images/graphics/visa5.png"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="address">
+                <div class="left">
+                    <h3>địa chỉ Văn phòng US Express</h3>
+                    <p><strong>Trung tâm kho vận tại Mỹ:</strong> 1749 NE Sandy Blvd, Portland, OR 97230</p>
+                    <p><strong>Văn phòng tại Hà Nội:</strong> Tầng 9, Toà nhà Diamond Flower, số 48 Lê Văn Lương, Nhân Chính, Thanh Xuân, Hà Nội</p>
+                    <p><strong>Văn phòng tại Tp.HCM:</strong>  42M, Đường 9M, P.Tân Thuận Tây, Q.7, TP.HCM</p>
+                </div>
+                <div class="right social">
+                    <a href="https://www.facebook.com/US.ExpressVietnam/"><img src="/images/icons/facebook.svg"></a>
+                    <a href="https://www.youtube.com/channel/UC14AsBzefh_qX3PzoTXEbXg"><img src="/images/icons/youtube.svg"></a>
+                    <a href="https://www.instagram.com/usexpress.vn/"><img src="/images/icons/camera.svg"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="copyright">
+        <div class="container flex">
+            <div class="text">
+                <p>© 2019 - Bản quyền của Công ty Cổ Phần US Express - usexpress.vn</p>
+                <p>Giấy chứng nhận Đăng ký Kinh doanh số 3002090565, cấp ngày 23/11/2017</p>
+            </div>
+            <div class="social">
+                <a href="http://online.gov.vn/Home/WebDetails/44755"><img src="~/images/graphics/bocongthuong.png"></a>
+            </div>
+        </div>
+    </div>
+</footer>

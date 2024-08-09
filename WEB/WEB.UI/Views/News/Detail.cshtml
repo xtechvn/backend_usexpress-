@@ -1,0 +1,258 @@
+﻿@model Entities.ViewModels.ArticleModel
+<link href="/css/article.css" rel="stylesheet" type="text/css" />
+
+@section SocialMetaTags {
+   <!--Facebook Open Graph-->
+    <meta property="fb:app_id" content="892696148005813">
+    <meta property="og:site_name" content="usexpress.vn" />
+    <meta property="og:title" content="@Model.Title - UsExpress" />
+    <meta property="og:description" content="@Model.Lead"- UsExpress" />
+    <meta property="og:image" content="@Model.Image169" />
+    <meta property="og:type" content="product" />
+    <meta property="og:url" content="https://usexpress.vn@Context.Request.Path" />
+}
+
+<!-- MAIN CONTAINER -->
+<div class="menu_news"></div>
+<section class="container flex space-between">
+    <div class="col-left">
+        <div class="detail_tin">
+            <h1 class="title_detail">@Model.Title</h1>
+            <div class="topDetail flex">
+                @*<div class="item">
+                        <svg class="icon-us">
+                            <use xlink:href="images/icons/icon.svg#user"></use>
+                        </svg>
+                        <span>By @Model.AuthorId</span>
+                    </div>*@
+                <div class="item">
+                    <svg class="icon-us">
+                        <use xlink:href="images/icons/icon.svg#calendar"></use>
+                    </svg>
+                    <span>@Model.PublishDate.ToString("dd-MM-yyyy hh:ss")</span>
+                </div>
+            </div>
+            <p class="lead">
+                @Model.Lead
+            </p>
+
+            @Html.Raw(Model.Body)
+
+            <div class="social-flex mb30 mt30">
+                Chia sẻ:
+                <a href="javascripts:;" data-platform="facebook" class="usex_share_link">
+                    <svg class="icon-us">
+                        <use xlink:href="images/icons/icon.svg#Facebook"></use>
+                    </svg>
+                </a>
+                <a href="javascripts:;" data-platform="twitter" class="usex_share_link" style="display:none;">
+                    <svg class="icon-us">
+                        <use xlink:href="images/icons/icon.svg#twiter"></use>
+                    </svg>
+                </a>
+                <a href="javascripts:;" data-platform="copylink" class="tooltip usex_share_link">
+                    <svg class="icon-us">
+                        <use xlink:href="images/icons/icon.svg#link"></use>
+                    </svg>
+                   <span id="copied_clipboard_notifi" class="tip" style="display:none;">Copy link thành công</span>
+                </a>
+            </div>
+
+            <!-- Comment facebook -->
+            @*<div class="box-comment mb20">
+                   .....
+                </div>*@
+            <!-- Box tag -->
+            @if (Model.Tags != null)
+            {
+                <div class="box-tag mb20">
+                    <h3 class="txt_tag">Thẻ tag</h3>
+                    @foreach (var tag_name in Model.Tags)
+                    {
+                        <h4 class="tag_item"><a href="/tag/(@Html.Raw(tag_name) + " .html")">@tag_name</a></h4>
+                    }
+                </div>
+            }
+        </div>
+    </div>
+    <div class="box_300">
+        <div class="box_category">
+            <img class="width-100" src="images/graphics/banner-300.png">
+        </div>
+        <div class="top_page_view_news"></div>
+        <div class="box_category">
+            <h2 class="title">Sản phẩm khuyến mãi</h2>
+            <div class="product-small">
+                <div class="product-item">
+                    <a class="ava" href="">
+                        <img src="images/graphics/sp1.jpg">
+                    </a>
+                    <div class="content">
+                        <h3><a href="" title="">Cáp sạc lightning cho Apple Iphone</a></h3>
+                        <div class="ct_star">
+                            <svg class="icon-us">
+                                <use xlink:href="images/icons/icon.svg#star-full"></use>
+                            </svg>
+                            <svg class="icon-us">
+                                <use xlink:href="images/icons/icon.svg#star-full"></use>
+                            </svg>
+                            <svg class="icon-us">
+                                <use xlink:href="images/icons/icon.svg#star-full"></use>
+                            </svg>
+                            <svg class="icon-us">
+                                <use xlink:href="images/icons/icon.svg#star-full"></use>
+                            </svg>
+                            <svg class="icon-us">
+                                <use xlink:href="images/icons/icon.svg#star-full"></use>
+                            </svg>
+                            <span>11400 đã mua</span>
+                        </div>
+                        <strong class="price">18.990.000 đ</strong>
+                        <div class="sale_old">
+                            <strong class="price old">2,000,293 đ</strong>
+                            <div class="sale-up">-50%</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-item">
+                    <a class="ava" href="">
+                        <img src="images/graphics/sanpham3.png">
+                    </a>
+                    <div class="content">
+                        <h3><a href="" title="">Cáp sạc lightning cho Apple Iphone</a></h3>
+                        <div class="ct_star">
+                            <svg class="icon-us">
+                                <use xlink:href="images/icons/icon.svg#star-full"></use>
+                            </svg>
+                            <svg class="icon-us">
+                                <use xlink:href="images/icons/icon.svg#star-full"></use>
+                            </svg>
+                            <svg class="icon-us">
+                                <use xlink:href="images/icons/icon.svg#star-full"></use>
+                            </svg>
+                            <svg class="icon-us">
+                                <use xlink:href="images/icons/icon.svg#star-full"></use>
+                            </svg>
+                            <svg class="icon-us">
+                                <use xlink:href="images/icons/icon.svg#star-full"></use>
+                            </svg>
+                            <span>11400 đã mua</span>
+                        </div>
+                        <strong class="price">18.990.000 đ</strong>
+                        <div class="sale_old">
+                            <strong class="price old">2,000,293 đ</strong>
+                            <div class="sale-up">-50%</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-item">
+                    <a class="ava" href="">
+                        <img src="images/graphics/sanpham4.png">
+                    </a>
+                    <div class="content">
+                        <h3><a href="" title="">Cáp sạc lightning cho Apple Iphone</a></h3>
+                        <div class="ct_star">
+                            <svg class="icon-us">
+                                <use xlink:href="images/icons/icon.svg#star-full"></use>
+                            </svg>
+                            <svg class="icon-us">
+                                <use xlink:href="images/icons/icon.svg#star-full"></use>
+                            </svg>
+                            <svg class="icon-us">
+                                <use xlink:href="images/icons/icon.svg#star-full"></use>
+                            </svg>
+                            <svg class="icon-us">
+                                <use xlink:href="images/icons/icon.svg#star-full"></use>
+                            </svg>
+                            <svg class="icon-us">
+                                <use xlink:href="images/icons/icon.svg#star-full"></use>
+                            </svg>
+                            <span>11400 đã mua</span>
+                        </div>
+                        <strong class="price">18.990.000 đ</strong>
+                        <div class="sale_old">
+                            <strong class="price old">2,000,293 đ</strong>
+                            <div class="sale-up">-50%</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-item">
+                    <a class="ava" href="">
+                        <img src="images/graphics/sanpham5.png">
+                    </a>
+                    <div class="content">
+                        <h3><a href="" title="">Cáp sạc lightning cho Apple Iphone</a></h3>
+                        <div class="ct_star">
+                            <svg class="icon-us">
+                                <use xlink:href="images/icons/icon.svg#star-full"></use>
+                            </svg>
+                            <svg class="icon-us">
+                                <use xlink:href="images/icons/icon.svg#star-full"></use>
+                            </svg>
+                            <svg class="icon-us">
+                                <use xlink:href="images/icons/icon.svg#star-full"></use>
+                            </svg>
+                            <svg class="icon-us">
+                                <use xlink:href="images/icons/icon.svg#star-full"></use>
+                            </svg>
+                            <svg class="icon-us">
+                                <use xlink:href="images/icons/icon.svg#star-full"></use>
+                            </svg>
+                            <span>11400 đã mua</span>
+                        </div>
+                        <strong class="price">18.990.000 đ</strong>
+                        <div class="sale_old">
+                            <strong class="price old">2,000,293 đ</strong>
+                            <div class="sale-up">-50%</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-item">
+                    <a class="ava" href="">
+                        <img src="images/graphics/sanpham3.png">
+                    </a>
+                    <div class="content">
+                        <h3><a href="" title="">Cáp sạc lightning cho Apple Iphone</a></h3>
+                        <div class="ct_star">
+                            <svg class="icon-us">
+                                <use xlink:href="images/icons/icon.svg#star-full"></use>
+                            </svg>
+                            <svg class="icon-us">
+                                <use xlink:href="images/icons/icon.svg#star-full"></use>
+                            </svg>
+                            <svg class="icon-us">
+                                <use xlink:href="images/icons/icon.svg#star-full"></use>
+                            </svg>
+                            <svg class="icon-us">
+                                <use xlink:href="images/icons/icon.svg#star-full"></use>
+                            </svg>
+                            <svg class="icon-us">
+                                <use xlink:href="images/icons/icon.svg#star-full"></use>
+                            </svg>
+                            <span>11400 đã mua</span>
+                        </div>
+                        <strong class="price">18.990.000 đ</strong>
+                        <div class="sale_old">
+                            <strong class="price old">2,000,293 đ</strong>
+                            <div class="sale-up">-50%</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<section class="slide_sale product-care">
+    <div class="container product-history">
+    </div>
+</section>
+<script src="~/js/news/menu.js"></script>
+<script src="~/js/news/detail.js"></script>
+<script type="text/javascript">
+    var article_id ='@Model.Id';
+</script>
+<script src="~/js/news/pageview.js"></script>
+<script src="~/js/news/master.js"></script>

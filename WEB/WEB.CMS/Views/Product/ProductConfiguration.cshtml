@@ -1,0 +1,138 @@
+﻿@using Entities.Models
+@using Entities.ViewModels.Product
+@{
+    ViewData["Title"] = "Thiết lập sản phẩm";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var LabelList = (List<Label>)ViewBag.LabelList;
+}
+<style>
+    .configuration_tab {
+        padding-top: 30px;
+    }
+</style>
+<div class="row-main container flex">
+    <div class="row-main_col200">
+        <a class="close-menu" href="javascrip:;">×</a>
+        <div class="tab-default block bg-white">
+            <a id="block-tk-select" href="javascript:;" onclick="_product_configuration.SelectTab(1)" class="active close-menu2">
+                <i class="fa fa-ban"></i>
+                Chặn từ khóa
+                <i class="fa fa-chevron-right"></i>
+            </a>
+            <a id="tl-dom-select" href="javascript:;" onclick="_product_configuration.SelectTab(0)" class="close-menu2">
+                <i class="iconfont-setting"></i>
+                Thiết lập dom sản phẩm (Chưa hoàn thành)
+                <i class="fa fa-chevron-right"></i>
+            </a>
+            <a id="list-tk-select" href="javascript:;" onclick="_product_configuration.SelectTab(2)" class="close-menu2">
+                <i class="fa fa-list"></i>
+                Danh sách sản phẩm khóa (Chưa hoàn thành)
+                <i class="fa fa-chevron-right"></i>
+            </a>
+        </div>
+    </div>
+    <div class="row-main_col800">
+        <a class="btn_show" href="javascrip:;">Hiển thị danh mục <i class="fa fa-caret-right"></i></a>
+        <div class="mb20 tab-content">
+            <div id="tl-dom" style="display: none" class="wrap_bg form-default form-default__3 configuration_tab">
+                <div class="form-group row">
+                    <div class="col-sm-3 col-12 text-right mt5">Key Dom</div>
+                    <div class="col-sm-9 col-12">
+                        <input type="text" class="form-control" id=""
+                               value="">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-3 col-12 text-right mt5">Field name</div>
+                    <div class="col-sm-9 col-12 flex-btn">
+                        <select class="form-control">
+                            <option>Price-</option>
+                            <option>Bình thường</option>
+                        </select>
+                        <div class="flex-btn__right">
+                            <a class="edit btn-default" href="#"><i class="fa fa-pencil-square-o"></i></a>
+                            <a class="btn-default add ml-2" href="#"><i class="fa fa-plus"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-3 col-12 text-right mt5">Nhãn hàng</div>
+                    <div class="col-sm-9 col-12">
+                        <select class="form-control" style="max-width:500px">
+                            @foreach (var label in LabelList)
+                            {
+                                <option value="@label.Id">@label.StoreName</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group align-right mt20 block">
+                    <button type="submit" class="btn btn-default bg-main">
+                        <i class="fa fa-edit mr-3"></i>Lưu
+                    </button>
+                </div>
+            </div>
+            <div id="block-tk" class="" >
+
+                <div class="wrap_bg form-default form-default__3 mb30 configuration_tab">
+                    <form id="form_block">
+                        <div class="form-group row">
+                            <div class="col-sm-3 col-12 text-right mt5">Từ khóa</div>
+                            <div class="col-sm-9 col-12">
+                                <input type="text" class="form-control form_block_keyword" id="form_block_keyword" name="form_block_keyword" value="">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-3 col-12 text-right mt5">Phân loại từ khóa</div>
+                            <div class="col-sm-9 col-12">
+                                <select id="form_block_keyword_type" class="form-control" style="max-width:500px">
+                                    <option value="-1">Tất cả</option>
+                                    <option value="0">Mã sản phẩm</option>
+                                    <option value="1">Từ khóa</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group male row">
+                            <div class="col-sm-3 col-12 text-right mt5">Trạng thái</div>
+                            <div class="col-sm-9 col-12 mt5">
+                                <label class="radio-inline"><input type="radio" value="1" name="form_product_status">Khóa/tạm dừng</label>
+                                <label class="radio-inline"><input type="radio" value="-1" name="form_product_status">Chặn</label>
+                                <label class="radio-inline"><input type="radio" value="0" name="form_product_status">Tất cả (Mở khoá / Bỏ chặn)</label>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="form-group row">
+                        <div class="col-sm-3 col-12 text-right mt5">Nhãn hàng</div>
+                        <div class="col-sm-9 col-12">
+                            <select id="form_block_label" class="form-control" style="max-width:500px">
+                                @foreach (var label in LabelList)
+                                {
+                                    <option value="@label.Id">@label.StoreName</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group align-right mt20 block">
+                        <button type="button" class="btn btn-default bg-main" " style="color:#FFFFFF;" onclick="_product_configuration.OnSearch()">
+                            <i class="fa fa-search mr-2"></i>Tìm kiếm
+                        </button>
+                        <button id="form_btn_save" type="button" class="btn btn-default bg-main" onclick="_product_configuration.SummitKeywordLock()">
+                            <i class="fa fa-edit mr-2"></i>Lưu
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div id="list-tk" class="wrap_bg configuration_tab" style="display: none;">
+                <h3>Danh sách sản phẩm khóa</h3>
+            </div>
+            <div id="block_table" class="wrap_bg">
+
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts {
+    <script src="/modules/product_configuration.js"></script>
+   <script> _product_configuration.Initialization();</script>
+
+}

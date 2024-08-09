@@ -1,0 +1,122 @@
+﻿@using WEB.UI.ViewModels;
+@model PaginationEntitiesViewModel
+@*<ul id="pagination" class="pagination mt20">
+        <li class="page-item">
+            <a class="page-link" href="/">
+                <svg class="icon-us">
+                    <use xlink:href="/images/icons/icon.svg#prev2"></use>
+                </svg>
+            </a>
+        </li>
+        <li class="page-item">
+            <a class="page-link icon" href="/">
+                <svg class="icon-us">
+                    <use xlink:href="/images/icons/icon.svg#prev1"></use>
+                </svg>
+            </a>
+        </li>
+        <li class="page-item active"><a class="page-link" href="/">1</a></li>
+        <li class="page-item"><a class="page-link" href="/">2</a></li>
+        <li class="page-item"><a class="page-link" href="/">3</a></li>
+        <li class="page-item">
+            <a class="page-link icon" href="/">
+                <svg class="icon-us">
+                    <use xlink:href="/images/icons/icon.svg#next1"></use>
+                </svg>
+            </a>
+        </li>
+        <li class="page-item">
+            <a class="page-link" href="/">
+                <svg class="icon-us">
+                    <use xlink:href="/images/icons/icon.svg#next2"></use>
+                </svg>
+            </a>
+        </li>
+    </ul>*@
+@if ( Model.number_page>1)
+{
+    <ul class="pagination">
+        @{
+
+
+            int numberPage = Model.number_page;
+            int pageCurrent = Model.cur_page;
+            int offset = 2;//number display page
+
+
+            //config FirstLink
+            if (pageCurrent > 1)
+            {
+                int prevPage = pageCurrent - 1;
+                //var PrevLink = new Dictionary<string, string> { { "page", prevPage.ToString() } };
+                //var FirstLink = new Dictionary<string, string> { { "page", "1" } };
+                <li class="page-item">
+                    <a class="page-link" href="@Model.base_url.Replace("{cur_page}","1")">
+                        <svg class="icon-us">
+                            <use xlink:href="/images/icons/icon.svg#prev2"></use>
+                        </svg>
+                    </a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="@Model.base_url.Replace("{cur_page}",prevPage.ToString())">
+                        <svg class="icon-us">
+                            <use xlink:href="/images/icons/icon.svg#prev1"></use>
+                        </svg>
+                    </a>
+                </li>
+            }
+
+            int from = pageCurrent - offset;
+            int to = pageCurrent + offset;
+            if (from <= 0)
+            {
+                from = 1;
+                to = offset * 2;
+            }
+
+
+            if (to > numberPage)
+            {
+                to = numberPage;
+            }
+
+            int i;
+            for (i = from; i <= to; i++)
+            {
+                if (pageCurrent == i)
+                {
+                    <li class="page-item active"><a class="page-link" href="@Model.base_url.Replace("{cur_page}",i.ToString())">@i</a></li>
+                }
+                else
+                {
+                    <li class="page-item"><a class="page-link" href="@Model.base_url.Replace("{cur_page}",i.ToString())">@i</a></li>
+                }
+
+            }
+
+            if (pageCurrent < numberPage)
+            {
+                <li style="padding:8px 12px 7px 13px"><a>...</a></li>
+                int nextPage = pageCurrent + 1;                
+                <li class="page-item">
+                    <a class="page-link" href="@Model.base_url.Replace("{cur_page}",nextPage.ToString())">
+                        <svg class="icon-us">
+                            <use xlink:href="/images/icons/icon.svg#next1"></use>
+                        </svg>
+                    </a>
+                </li>
+            }
+
+            if (pageCurrent <= numberPage - (to / 2))
+            {
+                <li class="page-item">
+                    <a class="page-link" href="@Model.base_url.Replace("{cur_page}",numberPage.ToString())">
+                        <svg class="icon-us">
+                            <use xlink:href="/images/icons/icon.svg#next2"></use>
+                        </svg>
+                    </a>
+                </li>
+            }
+        }
+    </ul>
+}

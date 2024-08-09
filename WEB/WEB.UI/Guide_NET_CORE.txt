@@ -1,0 +1,97 @@
+﻿ https://docs.microsoft.com/en-us/aspnet/core/tutorials/first-mvc-app/adding-controller?view=aspnetcore-3.1&tabs=visual-studio
+ https://docs.microsoft.com/en-us/aspnet/core/client-side/bundling-and-minification?view=aspnetcore-3.1&tabs=visual-studio
+ localstorage: https://viblo.asia/p/local-storage-JQVkVZwzkyd
+ 
+ {
+    "userId": "7j79y-kdjr8n4h-5jd8-5k39-cfk8ghr9wu",
+    "username": "trungquandev17",
+    "occupation": "Full stack web developer",
+    standard fields
+    "iss": "Trung Quan, author of blog: https://trungquandev.com", // viết tắt của Issuer là thông tin người tạo ra Token (không phải user đâu nhé, mà nó chính là tên cái hệ thống backend của các bạn chẳng hạn)
+    "iat": 1568456819, // viết tắt của Issued at, là nhãn thời gian lúc mà cái token được tạo.
+    "exp": 1568460419 // viết tắt của Expiration time, xác định thời gian hết hạn của Token
+  }
+    
+Push lên lấy token về
+Encode nó với user và pass của client kèm  1 key private
+Trả ra ngoài lưu trong localStorege
+Khi cần check authent sẽ push ngược value trong localStorege lại và decode ra lấy user,pass để gentoken.so sánh token Nếu đổi đăng nhập lại. Nếu chưa thì cho dùng
+    
+
+    @RenderSection("Scripts", required: false) @*the required indicates whether or not the view using the layout page must have a scripts section*@
+
+------------- LINK DOCUMENT ------------------
+-------------------LINK HTML CMS-------------------------
+1. user + phan quyen
+- http://103.74.121.156:2455/CMS/HTML/login.html -- inprogress
+- http://103.74.121.156:2455/CMS/HTML/index.html
+
+- http://103.74.121.156:2455/CMS/HTML/nguoi-dung.html
+- http://103.74.121.156:2455/CMS/HTML/nhom-quyen.html
+- http://103.74.121.156:2455/CMS/HTML/lightbox.html
+2.  san pham
+http://103.74.121.156:2455/CMS/HTML/san-pham.html
+http://103.74.121.156:2455/CMS/HTML/lightbox.html
+
+------------------------------frontend-------------------------------------------------
+- http://103.74.121.156:2455/FRONT_END/
+
+---------------- dong bo sql server sang ES--------------------------------------
+https://www.mastercode.vn/blog/web-development/dong-bo-sql-server-sang-elasticsearch.95
+https://towardsdatascience.com/beat-cache-invalidation-in-asp-net-core-using-kafka-and-debezium-65cd1d80554d
+---------------------- TAI KHOAN-------------------------------------------------------
+1. ftp
+103.74.121.156 : 2208 cuonglv/123456
+2. svn - source code
+https://103.74.121.156/svn/Amz-Project
+3. svn - HTML
+https://103.74.121.156/svn/Amz-HTML
+4. database
+acc: cuonglv / cuong123456
+------------------------------------------------------------------------------------
+
+sql
+103.74.121.156
+sa
+
+
+sql
+103.74.121.156 sa/sa@123456
+
+tiki:
+https://sellercenter.tiki.vn/new/#/
+dinhthanhbinh2305@gmail.com
+binh2305
+
+------------- lazyload--------------
+https://kiencang.net/native-lazy-loading-cho-web/
+https://kiencang.net/lazysizes-js-lazy-load-anh-p1/
+-----
+Scaffold-DbContext "Data Source=103.74.121.131;Initial Catalog=usexpress;Persist Security Info=True;User ID=sa;Password=sa@123456" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models -force
+
+
+----- QUEUE----------
+rabbitmqctl add_vhost vhost_qc
+rabbitmqctl add_user qcenv qc123456
+rabbitmqctl set_permissions -p vhost_qc qcenv ".*" ".*" ".*"
+rabbitmqctl set_user_tags qcenv administrator
+
+vhost  vhost_qc
+username/password qcenv / qc123456
+
+--------- cài đặt mongo db ---
+step1: https://viblo.asia/p/su-dung-mongodb-trong-aspnet-core-part-1-L4x5xEybKBM
+step 2: https://viblo.asia/p/su-dung-mongodb-trong-aspnet-core-part-2-crud-1VgZvXD95Aw
+Bước 1: chạy lệnh: .\mongod --dbpath ..\data
+Bước 2: mở powershell khác và gõ: .\mongo 
+Bước 3: tạo database sử dụng lệnh: use FirstDatabase
+Bước 4: tạo bảng hay gọi là tạo collection . Ví dụ: db.createCollection("Carts")
+
+Một số câu lệnh cơ bản trên MongoDB
+use userTestDb;
+db.createCollection('Carts');
+db.users.insert({ name:'cuonglv', gender: 'Male'});
+db.users.update({ _id: 1 },{$set:{ name: 'Le van cuong' }});
+db.users.remove({ _id: 1});
+db.users.find({});
+db.users.find({ name: 'Tuan Nguyen' });

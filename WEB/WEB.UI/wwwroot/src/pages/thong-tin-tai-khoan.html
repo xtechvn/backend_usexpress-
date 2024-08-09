@@ -1,0 +1,183 @@
+<!-- build:title -->Quản lý đơn hàng
+<!-- /build:title -->
+<!-- build:head -->
+<link href="css/user.css" rel="stylesheet" type="text/css" />
+<link href="css/order.css" rel="stylesheet" type="text/css" />
+<!-- /build:head -->
+<!-- build:content -->
+
+<!-- MAIN CONTAINER -->
+<section class="main-container clearfix mt30">
+    <div class="menu_control mb20">
+        <div class="container">
+            <ul class="breadcrumb">
+                <li><a href="#">Trang chủ</a></li>
+                <li class="active">Thông tin tài khoản</li>
+            </ul>
+        </div>
+    </div>
+    <div class="container">
+        <div class="user_management flex">
+            <div class="sidebar1">
+                <header>
+                    <div class="avatar">
+                        <img src="images/graphics/thumb_1x1.jpg">
+                    </div>
+                    <div class="info">
+                        <span>Xin chào bạn</span>
+                        <h4>Lê Văn Cường</h4>
+                    </div>
+                </header>
+                <ul class="lever1">
+                    <li class="active"><a href="/" title=""><svg class="icon-us">
+                                <use xlink:href="images/icons/icon.svg#user"></use>
+                            </svg>Thông tin tài khoản</a></li>
+                    <li><a href="/" title=""><svg class="icon-us">
+                                <use xlink:href="images/icons/icon.svg#thutuc"></use>
+                            </svg>Quản lý đơn hàng</a></li>
+                    <li><a href="/" title=""><svg class="icon-us">
+                                <use xlink:href="images/icons/icon.svg#notifi1"></use>
+                            </svg>Thông báo của tôi</a></li>
+                    <li><a href="/" title=""><svg class="icon-us">
+                                <use xlink:href="images/icons/icon.svg#address2"></use>
+                            </svg>Sổ địa chỉ</a></li>
+                    <li><a href="/" title=""><svg class="icon-us">
+                                <use xlink:href="images/icons/icon.svg#heart2"></use>
+                            </svg>Sản phẩm yêu thích</a></li>
+                    <li><a href="/" title=""><img class="icon-us" src="images/icons/u-xu.svg">Quản lý U-Xu của tôi</a>
+                    </li>
+                    <li>
+                        <a href="/" title=""><img class="icon-us" src="images/icons/affiliate.svg">Tài khoản Affiliate
+                            của tôi</a>
+                        <ul class="lever2">
+                            <li><a href="/" title=""><svg class="icon-us">
+                                        <use xlink:href="images/icons/icon.svg#link2"></use>
+                                    </svg>Tạo link giới thiệu</a></li>
+                            <li><a href="/" title=""><svg class="icon-us">
+                                        <use xlink:href="images/icons/icon.svg#thutuc"></use>
+                                    </svg>Quản lý đơn hàng Affiliate</a></li>
+                            <li><a href="/" title=""><svg class="icon-us">
+                                        <use xlink:href="images/icons/icon.svg#atm-card"></use>
+                                    </svg>Thông tin thanh toán</a></li>
+                            <li><a href="/" title=""><svg class="icon-us">
+                                        <use xlink:href="images/icons/icon.svg#buy"></use>
+                                    </svg>Đối soát hoa hồng</a></li>
+                            <li><a href="/" title=""><svg class="icon-us">
+                                        <use xlink:href="images/icons/icon.svg#notifi3"></use>
+                                    </svg>Giới thiệu về US Affiliate</a></li>
+                        </ul>
+                    </li>
+                </ul>
+
+            </div>
+            <div class="sidebar2 padding_20 page-buy">
+                <div class="form-customer form_default">
+                    <div class="form-group">
+                        <label class="lbl">Họ và tên</label>
+                        <div class="wrap-input">
+                            <input type="text" class="form-control" id="" value="Lê Văn Cường" name="">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="lbl">Địa chỉ Email</label>
+                        <div class="wrap-input">
+                            <input type="text" class="form-control disable" id="" value="huavancuong@gmail.com" name="">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="lbl">Số điện thoại</label>
+                        <div class="wrap-input">
+                            <input type="text" class="form-control disable" id="" value="0899999000" name="">
+                        </div>
+                    </div>
+                    <div class="form-group male">
+                        <label class="lbl">Giới tính</label>
+                        <div class="wrap-input">
+                            <label class="check-list inline">
+                                <input type="radio" name="optradio" checked="">
+                                <span class="checkmark"></span>
+                                Nam
+                            </label>
+                            <label class="check-list inline">
+                                <input type="radio" name="optradio">
+                                <span class="checkmark"></span>
+                                Nữ
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group year">
+                        <label class="lbl">Ngày sinh</label>
+                        <div class="wrap-input">
+                            <div class="item">
+                                <select class="form-control select2" name="" id="">
+                                    <option value="">Ngày</option>
+                                </select>
+                            </div>
+                            <div class="item">
+                                <select class="form-control select2" name="" id="">
+                                    <option value="">Tháng</option>
+                                </select>
+                            </div>
+                            <div class="item">
+                                <select class="form-control select2" name="" id="">
+                                    <option value="">Năm</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="lbl">Tỉnh/Thành</label>
+                        <div class="wrap-input">
+                            <select class="form-control select2" name="" id="">
+                                <option value="">Tỉnh/Thành</option>
+                                <option value="">Hà Nội</option>
+                                <option value="">Hồ Chí Minh</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="lbl">Quận/Huyện</label>
+                        <div class="wrap-input">
+                            <select class="form-control select2" name="" id="">
+                                <option value="">Quận/Huyện</option>
+                                <option value="">Hà Nội</option>
+                                <option value="">Hồ Chí Minh</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="lbl">Phường/Xã</label>
+                        <div class="wrap-input">
+                            <select class="form-control select2" name="" id="">
+                                <option value="">Phường/Xã</option>
+                                <option value="">Hà Nội</option>
+                                <option value="">Hồ Chí Minh</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="lbl">Địa chỉ gia hàng</label>
+                        <div class="wrap-input">
+                            <textarea class="form-control"
+                                style="min-height: 80px;">17 duy tân, Phường Dịch Vọng Hậu, Quận Cầu Giấy</textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-group control_btn">
+                        <label class="lbl">&nbsp;</label>
+                        <div class="wrap-input">
+                            <button class="btn yellow">Xác nhận</button>
+                            <button class="btn">Đổi mật khẩu</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+<!-- END MAIN CONTAINER -->
+
+
+<!-- /build:content -->

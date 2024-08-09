@@ -1,0 +1,28 @@
+[
+  {
+    "storeId": 1,
+    "blacklist": [
+      {
+        "category": "laptop",
+        "keyword": "abc,cdg,dko"
+      },
+      {
+        "category": "phone",
+        "keyword": "nbg,cv,cdg"
+      }
+    ]
+  },
+  {
+    "storeId": 2,
+    "blacklist": [
+      {
+        "category": "laptop",
+        "keyword": "abc,cdg,dko"
+      },
+      {
+        "category": "phone",
+        "keyword": "nbg,cv,cdg"
+      }
+    ]
+  }
+]

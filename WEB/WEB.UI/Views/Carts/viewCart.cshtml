@@ -1,0 +1,112 @@
+﻿@{
+    int total_carts = (int)ViewBag.total_carts;
+}
+<link href="~/css/order.css" rel="stylesheet" />
+<!-- MAIN CONTAINER -->
+<section class="main-container clearfix mt30">
+    <div class="menu_control mb20">
+        <div class="container">
+            <ul class="breadcrumb">
+                <li><a href="/">Trang chủ</a></li>
+                <li class="active" href="/Carts/view.html">Giỏ hàng</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="container page-payer">
+        @*<div class="notifil-payer">
+                <div class="flex">
+                    <img src="/images/graphics/sp-pin.png" alt="">
+                    <div>
+                        Đơn hàng <strong>DH123456</strong> đang chờ thanh toán, quý khách vui lòng <a href="#"
+                                                                                                      class="color_green2">thanh toán lại</a>.
+                    </div>
+                </div>
+                <a href="#" class="close">
+                    <svg class="icon-us">
+                        <use xlink:href="/images/icons/icon.svg#close"></use>
+                    </svg>
+                </a>
+            </div>*@
+
+
+        <div class="flex mb20">
+
+
+            @if (total_carts > 0)
+            {
+            <div class="sidebar1 chitiet_giohang">
+                @await Component.InvokeAsync("cartsList", new { i_selected = -1 })
+            </div>
+            <div class="sidebar2">
+                <div class="sticky" style="top: 100px;">
+
+                    @*@{ await Html.RenderPartialAsync("PartialView/Voucher/InputForm"); }*@
+
+                    @await Component.InvokeAsync("cartsSummery")
+
+                </div>
+            </div>
+            }
+            else
+            {
+            <div class="cart_empty bg_warp ">
+                <img src="/images/graphics/empty.svg" alt="">
+                <h3 class="mt30 mb5">Giỏ hàng trống</h3>
+                <p class="mb30" style="color:#585858">Không có sản phẩm nào trong giỏ hàng của bạn</p>
+                <a class="btn" href="/">
+                    Tiếp tục mua hàng
+                    <svg class="icon-us">
+                        <use xlink:href="images/icons/icon.svg#next"></use>
+                    </svg>
+                </a>
+            </div>
+            }
+        </div>
+        <div class="product-history">
+            <!--SP đã xem -->
+            @{ await Html.RenderPartialAsync("PartialView/Product/ListingProductHistory", null, new ViewDataDictionary(this.ViewData) { { "is_waiting", "1" } });}
+        </div>
+
+    </div>
+</section>
+<!-- END MAIN CONTAINER -->
+
+@if (total_carts > 0)
+{
+@*<div class="notifi-popup white-popup" style="max-width: 750px;">*@
+<div class="open-voucher white-popup mfp-hide" style="max-width: 750px;">
+    <div class="content_poup" style="padding: 30px 40px">
+        <h2 class="title_form txt_20 mb30 color_green">
+            Chọn voucher
+        </h2>
+        <div class="align-center apply-voucher">
+            <div class="txt_18"><b>Mã voucher:</b></div>
+            <div class="form-group form-group__button mb0 voucher_apply">
+                <input type="text" class="form-control mb0 color_green" id="txt_voucher" placeholder="Nhập mã giảm giá..." name="voucher_choice">
+                <button class="btn btn-apply-voucher">Áp dụng</button>
+            </div>
+            <div class="voucher_success flex"></div>
+        </div>
+
+        <div class="check-list-voucher form_default">
+            <div class="voucher_public">
+                <div class="confir_res circle expired voucher-loading placeholder" style="background-color: lightgray;height: 86px;"></div>
+            </div>
+            <div class="control_btn2">
+                <button class="btn cancel agray btn_destroy" style="width:170px">Trở lại</button>
+                <button class="btn confirm accept_voucher" style="width:205px">OK</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/js/voucher/default.js"></script>
+}
+
+
+@section Scripts {
+    <script type="text/javascript">
+        product_general.get_product_history(null);
+    </script>
+}

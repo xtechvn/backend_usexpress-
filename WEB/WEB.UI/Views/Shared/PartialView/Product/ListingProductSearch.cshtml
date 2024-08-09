@@ -1,0 +1,81 @@
+﻿@model List<WEB.UI.ViewModels.ProductListViewModel>;
+@{
+    var view_type = this.ViewData["view_type"].ToString();
+    //var total_item_store = Convert.ToInt32(this.ViewData["total_item_store"]);
+    //var cur_page = Convert.ToInt32(this.ViewData["cur_page"]);
+}
+<div class="list-product line-bottom flex">
+    @foreach (var item in Model)
+    {
+        <div class="product-item col-4">
+            @*<div class="sale">-50%</div>*@
+            <a class="ava" href="@item.url" @Html.Raw(view_type != "search" ? "" : "target='_blank'")>
+                <img src="@item.image_url">
+                <span class="like active">
+                    <svg class="icon-us">
+                        <use xlink:href="/images/icons/icon.svg#heart"></use>
+                    </svg>
+                </span>
+            </a>
+            <div class="content">
+                @{
+                    double total_star = item.star;
+                    if (total_star > 0)
+                    {
+                        double pn = (double)Math.Floor(total_star);
+                        double pd = total_star - pn;
+                                <div class="ct_star">
+                                    @{
+                                        bool is_has_star_half = false;
+                                        for (int i = 0; i < 5; i++)
+                                        {
+                                            <svg class="icon-us">
+                                                @if (i < pn)
+                                                {
+                                                    <use xlink:href="/images/icons/icon.svg#star-full"></use>
+                                                }
+                                                else if (pd < 0.9 && (!is_has_star_half))
+                                                {
+                                                    <use xlink:href="/images/icons/icon.svg#star-half"></use>
+                                                    is_has_star_half = true;
+                                                }
+                                                else
+                                                {
+                                                    <use xlink:href="/images/icons/icon.svg#star-none"></use>
+                                                }
+                                            </svg>
+                                        }
+                                        @if (item.reviews_count > 0)
+                                        {
+                                            <a class="buy">@Html.Raw((item.reviews_count.ToString()) + " đánh giá")</a>
+                                        }
+                                    }
+
+                                </div>
+                    }
+                   
+                }
+                <h3 class="title">
+                    @*<img src="@item.image_url" title="amz">*@
+                    <a href="@item.url" title="@item.product_name" @Html.Raw(view_type != "search" ? "" : "target='_blank'")>
+                        @item.product_name
+                    </a>
+                </h3>
+                <div class="flex">
+                    <div class="col-2">
+                        <a href="@item.url" title="@item.product_name">
+
+                            @Html.Raw(item.amount > 0 ? "<span>Giá về tay</span>" : "")
+                            <strong class="price">@Html.Raw(item.amount > 0 ? item.amount.ToString("N0") : "Xem báo giá")</strong>
+                        </a>
+                    </div>
+                </div>
+                <a class="brand_label" href="@item.url_store" @Html.Raw(view_type != "search" ? "" : "target='_blank'") title="@item.product_name">
+                    <img src="/images/graphics/my.png" title="@item.product_name">Sản phẩm bán tại Amazon Mỹ
+                </a>
+            </div>
+        </div>
+    }
+</div>
+
+

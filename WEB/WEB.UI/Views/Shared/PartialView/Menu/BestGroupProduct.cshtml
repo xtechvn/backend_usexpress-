@@ -1,0 +1,36 @@
+﻿@using Entities.ViewModels.GroupProducts;
+@model List<GroupProductFeaturedViewModel>
+@{
+    bool is_waiting = this.ViewData["is_waiting"] == null ? false : true;
+
+}
+
+@if (is_waiting)
+{
+    @for (int i = 0; i < 11; i++)
+    {
+        <div class="item swiper-slide">
+            <a class="ava placeholder" style="width:86px;height:52px;"></a>
+            <div class="content placeholder">
+                <h3><a style="width:78.64px;height:15px;"></a></h3>
+            </div>
+        </div>
+    }
+}
+else
+{
+    foreach (var item in Model)
+    {
+        <div class="item swiper-slide">
+            <a class="ava" href="@item.path">
+                <img src="@item.image">
+            </a>
+            <div class="content">
+                <h3><a href="@item.path" title="@item.name">@item.name</a></h3>
+            </div>
+        </div>
+    }
+
+
+}
+

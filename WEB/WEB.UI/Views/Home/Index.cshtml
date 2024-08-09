@@ -1,0 +1,464 @@
+﻿@{
+    bool is_show_popup_login = (ViewBag.is_show_popup_login == null ? false : (bool)ViewBag.is_show_popup_login);
+    string back_link = (ViewBag.back_link == null ? "/" : (string)ViewBag.back_link);
+}
+@section SocialMetaTags {
+    <!--Facebook Open Graph-->
+    <meta property="fb:app_id" content="892696148005813">
+    <meta property="og:site_name" content="usexpress.vn" />
+    <meta property="og:title" content="UsExpress - Trang chủ" />
+    <meta property="og:description" content="Mua hàng Mỹ thuận tiện hơn với UsExpress" />
+    <meta property="og:image" content="https://103.74.121.155:44352/uploads/images/2022/5/23/c172532f-577b-4601-b69c-930816551504.png" />
+    <meta property="og:site_name" content="UsExpress" />
+}
+@Html.Hidden("is_show_popup_login", is_show_popup_login)
+
+<!--
+<section class="container clearfix">
+    <div class="slide_category">
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <a class="ava" href="">
+                        <img src="~/images/graphics/Mua-hang-amazon.png" />
+                    </a>
+                </div>
+                <div class="swiper-slide">
+                    <a class="ava" href="">
+                        <img src="~/images/graphics/Mua-hang-HL.png" />
+                        <span class="baotri"><img src="/images/icons/tag_on_maintain.png" title="baotri"></span>
+                    </a>
+                </div>
+                <div class="swiper-slide">
+                    <a class="ava" href="">
+                        <img src="~/images/graphics/Mua-hang-jomashop.png" />
+                        <span class="baotri"><img src="/images/icons/tag_on_maintain.png" title="baotri"></span>
+                    </a>
+                </div>
+                <div class="swiper-slide">
+                    <a class="ava" href="">
+                        <img src="~/images/graphics/Mua-hang-costco.png" />
+                        <span class="baotri"><img src="/images/icons/tag_on_maintain.png" title="baotri"></span>
+                    </a>
+                </div>
+                <div class="swiper-slide">
+                    <a class="ava" href="">
+                        <img src="~/images/graphics/Mua-hang-sephora.png" />
+                        <span class="baotri"><img src="/images/icons/tag_on_maintain.png" title="baotri"></span>
+                    </a>
+                </div>
+                <div class="swiper-slide">
+                    <a class="ava" href="">
+                        <img src="~/images/graphics/Mua-hang-VS.png" />
+                        <span class="baotri"><img src="/images/icons/tag_on_maintain.png" title="baotri"></span>
+                    </a>
+                </div>
+                <div class="swiper-slide">
+                    <a class="ava" href="">
+                        <img src="~/images/graphics/Mua-hang-bestbuy.png" />
+                        <span class="baotri"><img src="/images/icons/tag_on_maintain.png" title="baotri"></span>
+                    </a>
+                </div>
+                <div class="swiper-slide">
+                    <a class="ava" href="">
+                        <img src="~/images/graphics/Mua-hang-lacoste.png" />
+                        <span class="baotri"><img src="/images/icons/tag_on_maintain.png" title="baotri"></span>
+                    </a>
+                </div>
+                <div class="swiper-slide">
+                    <a class="ava" href="">
+                        <img src="~/images/graphics/Mua-hang-macy.png" />
+                        <span class="baotri"><img src="/images/icons/tag_on_maintain.png" title="baotri"></span>
+                    </a>
+                </div>
+                <div class="swiper-slide">
+                    <a class="ava" href="">
+                        <img src="~/images/graphics/Mua-hang-NR.png" />
+                        <span class="baotri"><img src="/images/icons/tag_on_maintain.png" title="baotri"></span>
+                    </a>
+                </div>
+            </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+        </div>
+    </div>
+</section>
+    -->
+<section class="section_home1">
+    <div class="container flex">
+        <div class="slide_banner">
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <a class="thumb" href="/store/costco">
+                            <img src="~/images/graphics/slide_top_1_860x236.png">
+                        </a>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <a class="thumb" href="">
+                            <img src="~/images/graphics/slide_top_2_860x236.png">
+                        </a>
+                    </div>
+                    <div class="swiper-slide">
+                        <a class="thumb" href="https://landing.usexpress.vn/ads_1/">
+                            <img src="~/images/graphics/slide_top_3_860x236.png">
+                        </a>
+                    </div>
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+        <div class="banner_300">
+            <a class="thumb" href="/store/costco">
+                <img src="~/images/graphics/BANNER_TOP_1_334X115.jpg">
+            </a>
+            <a class="thumb" href="/do-dien-tu-358-cat">
+                <img src="~/images/graphics/BANNER_TOP_2_334X115.jpg">
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Xu hướng tìm kiếm -->
+<section class="container clearfix">
+    <div class="xu-huong group-product-choice">
+        <div class="swiper-container">
+            <div class="swiper-wrapper best_group_groduct">
+                @{ await Html.RenderPartialAsync("PartialView/Menu/BestGroupProduct", new ViewDataDictionary(this.ViewData) { { "is_waiting", "1" } });}
+            </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+        </div>
+    </div>
+</section>
+
+<section class="container clearfix">
+    <!-- Slide sản phẩm nổi bật -->
+    <div class="product_top">
+        @{ await Html.RenderPartialAsync("/Views/Shared/Components/product/blog/product_top.cshtml", new ViewDataDictionary(this.ViewData) { { "is_waiting", "1" } });}
+    </div>
+
+    <!-- Box thương hiệu -->
+    @{ await Html.RenderPartialAsync("PartialView/Home/trademark");}
+
+    <!-- Banner top-->
+    <div class="box-ads-home mb25">
+        <div class="flex">
+            <a class="item" href="/store/costco">
+                <img src="~/images/graphics/BANNER_LEFT_582x146.jpg">
+            </a>
+            <a class="item" href="/omega-3-357-cat">
+                <img src="~/images/graphics/BANNER_RIGHT_582x146.jpg">
+            </a>
+        </div>
+    </div>
+
+    <!-- GIAN HÀNG COSTCO -->
+    <div class="Store-Costco-product_liston_home"></div>
+
+    <!-- FLASH SALE -->
+    <div class="box_flash_sale"></div>
+
+    <!-- SĂN DEAL HÀNG HIỆU -->
+    <div class="box_hunter_deal"></div>
+
+    @*<div class="box-quan-tam bg_warp mb25">
+            <div class="head-title head-title2 flex">
+                <h2 class="title_category">Bạn có thể quan tâm</h2>
+                <div class="option">
+                    <span>1 trong 56</span>
+                    <a class="view-all" href="">Xem tất cả</a>
+                </div>
+            </div>
+            <div class="list-product flex">
+                <div class="product-item col-5">
+                    <div class="sale">-50%</div>
+                    <a class="ava" href="">
+                        <img data-src="/images/graphics/sanpham1.png" alt="…" loading="lazy" class="lazyload" />
+                    </a>
+                    <div class="content">
+                        <div class="ct_star">
+                            <svg class="icon-us"><use xlink:href="/images/icons/icon.svg#star-full"></use></svg>
+                            <svg class="icon-us"><use xlink:href="/images/icons/icon.svg#star-full"></use></svg>
+                            <svg class="icon-us"><use xlink:href="/images/icons/icon.svg#star-full"></use></svg>
+                            <svg class="icon-us"><use xlink:href="/images/icons/icon.svg#star-full"></use></svg>
+                            <svg class="icon-us"><use xlink:href="/images/icons/icon.svg#star-full"></use></svg>
+                            <span class="buy">1140 đã mua</span>
+                        </div>
+                        <h3 class="title"><img src="/images/icons/prime.png" title="amz"><a href="" title="">Sản Phẩm Dinh Dưỡng Nestle Nutren Junior</a></h3>
+                        <div class="flex">
+                            <div class="col-2">
+                                <span>Giá về tay</span>
+                                <strong class="price">18.990.000 đ</strong>
+                            </div>
+                        </div>
+                        <a class="brand_label" href=""><img src="~/images/graphics/my.png" title="amz">Sản phẩm bán tại Amazon Úc</a>
+                    </div>
+                </div>
+                <div class="product-item col-5">
+                    <div class="sale">-50%</div>
+                    <a class="ava" href="">
+                        <img data-src="/images/graphics/sanpham1.png" alt="…" loading="lazy" class="lazyload" />
+                    </a>
+                    <div class="content">
+                        <div class="ct_star">
+                            <svg class="icon-us"><use xlink:href="/images/icons/icon.svg#star-full"></use></svg>
+                            <svg class="icon-us"><use xlink:href="/images/icons/icon.svg#star-full"></use></svg>
+                            <svg class="icon-us"><use xlink:href="/images/icons/icon.svg#star-full"></use></svg>
+                            <svg class="icon-us"><use xlink:href="/images/icons/icon.svg#star-full"></use></svg>
+                            <svg class="icon-us"><use xlink:href="/images/icons/icon.svg#star-full"></use></svg>
+                            <span class="buy">1140 đã mua</span>
+                        </div>
+                        <h3 class="title"><img src="/images/icons/prime.png" title="amz"><a href="" title="">Sản Phẩm Dinh Dưỡng Nestle Nutren Junior</a></h3>
+                        <div class="flex">
+                            <div class="col-2">
+                                <span>Giá về tay</span>
+                                <strong class="price">18.990.000 đ</strong>
+                            </div>
+                        </div>
+                        <a class="brand_label" href=""><img src="~/images/graphics/my.png" title="amz">Sản phẩm bán tại Amazon Úc</a>
+                    </div>
+                </div>
+                <div class="product-item col-5">
+                    <div class="sale">-50%</div>
+                    <a class="ava" href="">
+                        <img data-src="/images/graphics/sanpham1.png" alt="…" loading="lazy" class="lazyload" />
+                    </a>
+                    <div class="content">
+                        <div class="ct_star">
+                            <svg class="icon-us"><use xlink:href="/images/icons/icon.svg#star-full"></use></svg>
+                            <svg class="icon-us"><use xlink:href="/images/icons/icon.svg#star-full"></use></svg>
+                            <svg class="icon-us"><use xlink:href="/images/icons/icon.svg#star-full"></use></svg>
+                            <svg class="icon-us"><use xlink:href="/images/icons/icon.svg#star-full"></use></svg>
+                            <svg class="icon-us"><use xlink:href="/images/icons/icon.svg#star-full"></use></svg>
+                            <span class="buy">1140 đã mua</span>
+                        </div>
+                        <h3 class="title"><img src="/images/icons/prime.png" title="amz"><a href="" title="">Sản Phẩm Dinh Dưỡng Nestle Nutren Junior</a></h3>
+                        <div class="flex">
+                            <div class="col-2">
+                                <span>Giá về tay</span>
+                                <strong class="price">18.990.000 đ</strong>
+                            </div>
+                        </div>
+                        <a class="brand_label" href=""><img src="~/images/graphics/my.png" title="amz">Sản phẩm bán tại Amazon Úc</a>
+                    </div>
+                </div>
+                <div class="product-item col-5">
+                    <div class="sale">-50%</div>
+                    <a class="ava" href="">
+                        <img data-src="/images/graphics/sanpham1.png" alt="…" loading="lazy" class="lazyload" />
+                    </a>
+                    <div class="content">
+                        <div class="ct_star">
+                            <svg class="icon-us"><use xlink:href="/images/icons/icon.svg#star-full"></use></svg>
+                            <svg class="icon-us"><use xlink:href="/images/icons/icon.svg#star-full"></use></svg>
+                            <svg class="icon-us"><use xlink:href="/images/icons/icon.svg#star-full"></use></svg>
+                            <svg class="icon-us"><use xlink:href="/images/icons/icon.svg#star-full"></use></svg>
+                            <svg class="icon-us"><use xlink:href="/images/icons/icon.svg#star-full"></use></svg>
+                            <span class="buy">1140 đã mua</span>
+                        </div>
+                        <h3 class="title"><img src="/images/icons/prime.png" title="amz"><a href="" title="">Sản Phẩm Dinh Dưỡng Nestle Nutren Junior</a></h3>
+                        <div class="flex">
+                            <div class="col-2">
+                                <span>Giá về tay</span>
+                                <strong class="price">18.990.000 đ</strong>
+                            </div>
+                        </div>
+                        <a class="brand_label" href=""><img src="~/images/graphics/my.png" title="amz">Sản phẩm bán tại Amazon Úc</a>
+                    </div>
+                </div>
+                <div class="product-item col-5">
+                    <div class="sale">-50%</div>
+                    <a class="ava" href="">
+                        <img data-src="/images/graphics/sanpham1.png" alt="…" loading="lazy" class="lazyload" />
+                    </a>
+                    <div class="content">
+                        <div class="ct_star">
+                            <svg class="icon-us"><use xlink:href="/images/icons/icon.svg#star-full"></use></svg>
+                            <svg class="icon-us"><use xlink:href="/images/icons/icon.svg#star-full"></use></svg>
+                            <svg class="icon-us"><use xlink:href="/images/icons/icon.svg#star-full"></use></svg>
+                            <svg class="icon-us"><use xlink:href="/images/icons/icon.svg#star-full"></use></svg>
+                            <svg class="icon-us"><use xlink:href="/images/icons/icon.svg#star-full"></use></svg>
+                            <span class="buy">1140 đã mua</span>
+                        </div>
+                        <h3 class="title"><img src="/images/icons/prime.png" title="amz"><a href="" title="">Sản Phẩm Dinh Dưỡng Nestle Nutren Junior</a></h3>
+                        <div class="flex">
+                            <div class="col-2">
+                                <span>Giá về tay</span>
+                                <strong class="price">18.990.000 đ</strong>
+                            </div>
+                        </div>
+                        <a class="brand_label" href=""><img src="~/images/graphics/my.png" title="amz">Sản phẩm bán tại Amazon Úc</a>
+                    </div>
+                </div>
+                <div class="product-item col-5">
+                    <div class="sale">-50%</div>
+                    <a class="ava" href="">
+                        <img data-src="/images/graphics/sanpham1.png" alt="…" loading="lazy" class="lazyload" />
+                    </a>
+                    <div class="content">
+                        <div class="ct_star">
+                            <svg class="icon-us"><use xlink:href="/images/icons/icon.svg#star-full"></use></svg>
+                            <svg class="icon-us"><use xlink:href="/images/icons/icon.svg#star-full"></use></svg>
+                            <svg class="icon-us"><use xlink:href="/images/icons/icon.svg#star-full"></use></svg>
+                            <svg class="icon-us"><use xlink:href="/images/icons/icon.svg#star-full"></use></svg>
+                            <svg class="icon-us"><use xlink:href="/images/icons/icon.svg#star-full"></use></svg>
+                            <span class="buy">1140 đã mua</span>
+                        </div>
+                        <h3 class="title"><img src="/images/icons/prime.png" title="amz"><a href="" title="">Sản Phẩm Dinh Dưỡng Nestle Nutren Junior</a></h3>
+                        <div class="flex">
+                            <div class="col-2">
+                                <span>Giá về tay</span>
+                                <strong class="price">18.990.000 đ</strong>
+                            </div>
+                        </div>
+                        <a class="brand_label" href=""><img src="~/images/graphics/my.png" title="amz">Sản phẩm bán tại Amazon Úc</a>
+                    </div>
+                </div>
+                <div class="product-item col-5">
+                    <div class="sale">-50%</div>
+                    <a class="ava" href="">
+                        <img data-src="/images/graphics/sanpham1.png" alt="…" loading="lazy" class="lazyload" />
+                    </a>
+                    <div class="content">
+                        <div class="ct_star">
+                            <svg class="icon-us"><use xlink:href="/images/icons/icon.svg#star-full"></use></svg>
+                            <svg class="icon-us"><use xlink:href="/images/icons/icon.svg#star-full"></use></svg>
+                            <svg class="icon-us"><use xlink:href="/images/icons/icon.svg#star-full"></use></svg>
+                            <svg class="icon-us"><use xlink:href="/images/icons/icon.svg#star-full"></use></svg>
+                            <svg class="icon-us"><use xlink:href="/images/icons/icon.svg#star-full"></use></svg>
+                            <span class="buy">1140 đã mua</span>
+                        </div>
+                        <h3 class="title"><img src="/images/icons/prime.png" title="amz"><a href="" title="">Sản Phẩm Dinh Dưỡng Nestle Nutren Junior</a></h3>
+                        <div class="flex">
+                            <div class="col-2">
+                                <span>Giá về tay</span>
+                                <strong class="price">18.990.000 đ</strong>
+                            </div>
+                        </div>
+                        <a class="brand_label" href=""><img src="~/images/graphics/my.png" title="amz">Sản phẩm bán tại Amazon Úc</a>
+                    </div>
+                </div>
+                <div class="product-item col-5">
+                    <div class="sale">-50%</div>
+                    <a class="ava" href="">
+                        <img data-src="/images/graphics/sanpham1.png" alt="…" loading="lazy" class="lazyload" />
+                    </a>
+                    <div class="content">
+                        <div class="ct_star">
+                            <svg class="icon-us"><use xlink:href="/images/icons/icon.svg#star-full"></use></svg>
+                            <svg class="icon-us"><use xlink:href="/images/icons/icon.svg#star-full"></use></svg>
+                            <svg class="icon-us"><use xlink:href="/images/icons/icon.svg#star-full"></use></svg>
+                            <svg class="icon-us"><use xlink:href="/images/icons/icon.svg#star-full"></use></svg>
+                            <svg class="icon-us"><use xlink:href="/images/icons/icon.svg#star-full"></use></svg>
+                            <span class="buy">1140 đã mua</span>
+                        </div>
+                        <h3 class="title"><img src="/images/icons/prime.png" title="amz"><a href="" title="">Sản Phẩm Dinh Dưỡng Nestle Nutren Junior</a></h3>
+                        <div class="flex">
+                            <div class="col-2">
+                                <span>Giá về tay</span>
+                                <strong class="price">18.990.000 đ</strong>
+                            </div>
+                        </div>
+                        <a class="brand_label" href=""><img src="~/images/graphics/my.png" title="amz">Sản phẩm bán tại Amazon Úc</a>
+                    </div>
+                </div>
+                <div class="product-item col-5">
+                    <div class="sale">-50%</div>
+                    <a class="ava" href="">
+                        <img data-src="/images/graphics/sanpham1.png" alt="…" loading="lazy" class="lazyload" />
+                    </a>
+                    <div class="content">
+                        <div class="ct_star">
+                            <svg class="icon-us"><use xlink:href="/images/icons/icon.svg#star-full"></use></svg>
+                            <svg class="icon-us"><use xlink:href="/images/icons/icon.svg#star-full"></use></svg>
+                            <svg class="icon-us"><use xlink:href="/images/icons/icon.svg#star-full"></use></svg>
+                            <svg class="icon-us"><use xlink:href="/images/icons/icon.svg#star-full"></use></svg>
+                            <svg class="icon-us"><use xlink:href="/images/icons/icon.svg#star-full"></use></svg>
+                            <span class="buy">1140 đã mua</span>
+                        </div>
+                        <h3 class="title"><img src="/images/icons/prime.png" title="amz"><a href="" title="">Sản Phẩm Dinh Dưỡng Nestle Nutren Junior</a></h3>
+                        <div class="flex">
+                            <div class="col-2">
+                                <span>Giá về tay</span>
+                                <strong class="price">18.990.000 đ</strong>
+                            </div>
+                        </div>
+                        <a class="brand_label" href=""><img src="~/images/graphics/my.png" title="amz">Sản phẩm bán tại Amazon Úc</a>
+                    </div>
+                </div>
+                <div class="product-item col-5">
+                    <div class="sale">-50%</div>
+                    <a class="ava" href="">
+                        <img data-src="/images/graphics/sanpham1.png" alt="…" loading="lazy" class="lazyload" />
+                    </a>
+                    <div class="content">
+                        <div class="ct_star">
+                            <svg class="icon-us"><use xlink:href="/images/icons/icon.svg#star-full"></use></svg>
+                            <svg class="icon-us"><use xlink:href="/images/icons/icon.svg#star-full"></use></svg>
+                            <svg class="icon-us"><use xlink:href="/images/icons/icon.svg#star-full"></use></svg>
+                            <svg class="icon-us"><use xlink:href="/images/icons/icon.svg#star-full"></use></svg>
+                            <svg class="icon-us"><use xlink:href="/images/icons/icon.svg#star-full"></use></svg>
+                            <span class="buy">1140 đã mua</span>
+                        </div>
+                        <h3 class="title"><img src="/images/icons/prime.png" title="amz"><a href="" title="">Sản Phẩm Dinh Dưỡng Nestle Nutren Junior</a></h3>
+                        <div class="flex">
+                            <div class="col-2">
+                                <span>Giá về tay</span>
+                                <strong class="price">18.990.000 đ</strong>
+                            </div>
+                        </div>
+                        <a class="brand_label" href=""><img src="~/images/graphics/my.png" title="amz">Sản phẩm bán tại Amazon Úc</a>
+                    </div>
+                </div>
+            </div>
+        </div>*@
+
+    <div class="bg_warp mb25">
+        <div class="head-title head-title2 flex">
+            <h2 class="title_category">Đồng hành cùng chúng tôi</h2>
+        </div>
+        <div class="box-donghanh">
+            <a class="item" href="/">
+                <span class="ava">
+                    <img src="~/images/thuong-hieu/dh-1.png">
+                </span>
+            </a>
+            <a class="item" href="/">
+                <span class="ava">
+                    <img src="~/images/thuong-hieu/dh-2.png">
+                </span>
+            </a>
+            <a class="item" href="/">
+                <span class="ava">
+                    <img src="~/images/thuong-hieu/dh-3.png">
+                </span>
+            </a>
+            <a class="item" href="/">
+                <span class="ava">
+                    <img src="~/images/thuong-hieu/dh-4.png">
+                </span>
+            </a>
+            <a class="item" href="/">
+                <span class="ava">
+                    <img src="~/images/thuong-hieu/dh-5.png">
+                </span>
+            </a>
+            <a class="item" href="/">
+                <span class="ava">
+                    <img src="~/images/thuong-hieu/dh-6.png">
+                </span>
+            </a>
+            <a class="item" href="/">
+                <span class="ava">
+                    <img src="~/images/thuong-hieu/dh-7.png">
+                </span>
+            </a>
+        </div>
+
+    </div>
+
+</section>
+
+<script src="~/js/home/default.js?r=1"></script>

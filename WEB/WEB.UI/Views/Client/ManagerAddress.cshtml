@@ -1,0 +1,39 @@
+﻿@using Entities.ViewModels;
+@model List<AddressModel>
+@{
+    ViewData["Title"] = "Sổ địa chỉ";
+    Layout = "_Layout";
+    string ReceiverName = (string)ViewBag.ReceiverName;
+}
+
+<link href="~/css/order.css" rel="stylesheet" />
+<link href="~/css/user.css" rel="stylesheet" />
+<!-- MAIN CONTAINER -->
+<section class="main-container clearfix mt30">
+    <div class="menu_control mb20">
+        <div class="container">
+            <ul class="breadcrumb">
+                <li><a href="/">Trang chủ</a></li>
+                <li class="active">Sổ địa chỉ</li>
+            </ul>
+        </div>
+    </div>
+    <div class="container">
+        <div class="user_management flex">
+
+            @{ await Html.RenderPartialAsync("PartialView/Client/MenuClientManager", new ViewDataDictionary(this.ViewData) { { "client_name", ReceiverName } });}
+
+            <div class="sidebar2">
+                @{ await Html.RenderPartialAsync("PartialView/Client/AddressManager", Model); }
+            </div>
+
+        </div>
+    </div>
+</section>
+<!-- END MAIN CONTAINER -->
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".so-dia-chi").addClass("active");
+    })
+</script>

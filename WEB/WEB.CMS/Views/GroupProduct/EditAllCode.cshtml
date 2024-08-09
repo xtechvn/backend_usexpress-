@@ -1,0 +1,70 @@
+﻿@{
+    Layout = null;
+    var utm_source = (bool)ViewBag.utm_source;
+    var utm_medium = (bool)ViewBag.utm_medium;
+    var utm_campaign = (bool)ViewBag.utm_campaign;
+}
+@model Entities.Models.AllCode
+<div id="them-chien-dich" class="white-popup">
+    <div class="content_lightbox">
+        <div class="form-default">
+            <form id="edit-allcode">
+                <input type="hidden" class="form-control" asp-for="@Model.Id">
+                <input type="hidden" class="form-control" asp-for="@Model.CodeValue">
+                <input type="hidden" class="form-control" asp-for="@Model.OrderNo">
+                <input type="hidden" class="form-control" asp-for="@Model.Type">
+                @if (utm_source)
+                {
+                    <div class="form-group">
+                        <label class="lbl">Utm source</label>
+                        <div class="wrap_input">
+                            <input type="text" class="form-control " id="utm_source-edit" asp-for="@Model.Description" value="@Model.Description">
+                        </div>
+                    </div>
+                }
+                @if (utm_medium)
+                {
+                    <div class="form-group">
+                        <label class="lbl">Utm medium</label>
+                        <div class="wrap_input">
+                            <input type="text" class="form-control " id="utm_medium-edit" asp-for="@Model.Description" value="@Model.Description">
+                        </div>
+                    </div>
+                }
+                @if (utm_campaign)
+                {
+                    <div class="form-group">
+                        <label class="lbl">Utm campaign</label>
+                        <div class="wrap_input">
+                            <input type="text" class="form-control " id="utm_campaign-edit" asp-for="@Model.Description" value="@Model.Description">
+                        </div>
+                    </div>
+                }
+            </form>
+
+            <div class="form-group align-right mt20 block">
+                @if (utm_source)
+                {
+                    <button type="submit" onclick="_menu.EditUtmSource(@Model.Id)" class="btn btn-default bg-main">
+                        <i class="fa fa-floppy-o"></i>Lưu
+                    </button>
+                }
+                @if (utm_campaign)
+                {
+                    <button type="submit" onclick="_menu.EditUtmCampaign(@Model.Id)" class="btn btn-default bg-main">
+                        <i class="fa fa-floppy-o"></i>Lưu
+                    </button>
+                }
+                @if (utm_medium)
+                {
+                    <button type="submit" onclick="_menu.EditUtmCampaign(@Model.Id)" class="btn btn-default bg-main">
+                        <i class="fa fa-floppy-o"></i>Lưu
+                    </button>
+                }
+                <button type="button" class="btn btn-default cancel" onclick="$.magnificPopup.close();">
+                    <i class="fa fa-minus-circle"></i>Bỏ qua
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

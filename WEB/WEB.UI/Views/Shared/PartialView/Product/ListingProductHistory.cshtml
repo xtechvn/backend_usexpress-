@@ -1,0 +1,75 @@
+﻿@model List<Entities.ViewModels.ProductViewModel>
+@{
+    bool is_waiting = this.ViewData["is_waiting"] == null ? false : true;
+}
+<div class="sp_daxem bg_warp mb20">
+    <h2 class="title-label">Sản phẩm bạn đã xem</h2>
+    <div class="list-product flex">
+        @if (is_waiting)
+        {
+            <div class="product-item col-5">
+                <a class="ava placeholder" href="">
+                </a>
+                <div class="content">
+                    <div class="ct_star placeholder" style="height: 15px;">
+                    </div>
+                    <h3 class="title placeholder" style="height: 40px;"></h3>
+                    <div class="flex placeholder" style="height:15px"></div>
+                    <a class="brand_label placeholder" style="height:15px"></a>
+                </div>
+            </div>
+            @for (int i = 0; i < 4; i++)
+            {
+                <div class="product-item col-5">
+                    <a class="ava placeholder" href="">
+                    </a>
+                    <div class="content">
+                        <div class="ct_star placeholder" style="height: 15px;">
+                        </div>
+                        <h3 class="title placeholder" style="height: 40px;"></h3>
+                        <div class="flex placeholder" style="height:15px"></div>
+                        <a class="brand_label placeholder" style="height:15px"></a>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            @foreach (var item in Model)
+            {                
+                var rd = new Random();
+                <div class="product-item col-5">
+
+                    @*<div class="sale">-50%</div>*@
+                    <a class="ava" href="@item.link_product">
+                        <img src="@(item.image_thumb)" />
+                        <span class="like active">
+                            <svg class="icon-us">
+                                <use xlink:href="/images/icons/icon.svg#heart"></use>
+                            </svg>
+                        </span>
+                    </a>
+                    <div class="content">
+                        <div class="ct_star">
+                            @{ await Html.RenderPartialAsync("PartialView/Product/Element/star", null, new ViewDataDictionary(this.ViewData) { { "star", item.star } });}
+                            <span class="buy">@(item.reviews_count >0 ? item.reviews_count : rd.Next(600,2000)) lượt đánh giá</span>
+                        </div>
+                        <h3 class="title">
+                            <img src="/images/icons/prime.png" title="amz"><a href="@item.link_product" title="@item.product_name">
+                                @item.product_name
+                            </a>
+                        </h3>
+                        <div class="flex">
+                            <div class="col-2">
+                                <span>Giá về tay</span>
+                                <strong class="price">@Math.Round(item.amount_vnd).ToString("N0") đ</strong>
+                            </div>
+                        </div>
+                        <a class="brand_label" href="@item.keywork_search">
+                            <img src="~/images/graphics/my.png" title="amz">Sản phẩm bán tại @item.label_name</a>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+</div>

@@ -1,0 +1,10 @@
+﻿{
+  "profiles": {
+    "App_AutomaticPurchase_AMZ": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "DOTNET_ENVIRONMENT": "Development"
+      }
+    }
+  }
+}

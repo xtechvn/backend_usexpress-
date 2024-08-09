@@ -1,0 +1,65 @@
+﻿@using Entities.ViewModels
+@using Utilities.Contants;
+@model ProductFeeViewModel
+<div class="content_poup">
+    <div class="wrap_price">
+        <div class="head flex">
+            <div>GIÁ SẢN PHẨM TRÊN @Model.label_name.ToUpper():</div>
+            <div>@Model.price.ToString("C2")</div>
+        </div>
+        @if (Model.shiping_fee > 0)
+        {
+            <ul>
+                <li class="flex">
+                    <div>Phí ship nội địa Mỹ:</div>
+                    <div>$@Model.shiping_fee</div>
+                </li>
+            </ul>
+        }
+
+        @{
+            if (Model.list_product_fee != null)
+            {
+                <div class="head flex">
+                    <div>CHI TIẾT BẢNG GIÁ PHÍ MUA HỘ</div>
+                    <div>$@Model.list_product_fee[FeeBuyType.TOTAL_SHIPPING_FEE.ToString()].ToString("C2")</div>
+                </div>
+                <ul>
+                    <li class="flex">
+                        <div>Phí mua hộ pound đầu tiên:</div>
+                        <div>$@Model.list_product_fee[FeeBuyType.FIRST_POUND_FEE.ToString()]</div>
+                    </li>
+
+                    @if (@Model.list_product_fee[FeeBuyType.NEXT_POUND_FEE.ToString()] > 0)
+                    {
+                        <li class="flex">
+                            <div>Phí xử lý pound tiếp theo:</div>
+                            <div>$@Model.list_product_fee[FeeBuyType.NEXT_POUND_FEE.ToString()]</div>
+                        </li>
+                    }
+                    @if (@Model.list_product_fee[FeeBuyType.LUXURY_FEE.ToString()] > 0)
+                    {
+                        <li class="flex">
+                            <div>Phụ thu hàng hóa đặc biệt:</div>
+                            <div>@Model.list_product_fee[FeeBuyType.LUXURY_FEE.ToString()].ToString("C2")</div>
+                        </li>
+                    }
+                </ul>
+            }
+        }
+
+        <hr>
+        <div class="flex">
+            <div><strong style="color: #242424;">Tổng giá (đã bao gồm thuế, phí)</strong></div>
+            <div><strong class="color_green">@Math.Round(Model.list_product_fee[FeeBuyType.PRICE_LAST.ToString()]).ToString("C2")</strong></div>
+        </div>
+        <div class="flex">
+            <div><strong style="color: #242424;">Giá về tay</strong></div>
+            <div><strong class="red">@Model.amount_vnd.ToString("N0") đ</strong></div>
+        </div>
+        <div class="txt_11 txt_666 italic mt15">
+            Giá trên là giá cuối cùng, bạn không phải trả
+            thêm bất kỳ khoản phí nào khác
+        </div>
+    </div>
+</div>

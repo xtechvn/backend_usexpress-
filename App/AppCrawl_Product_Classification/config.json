@@ -1,0 +1,12 @@
+{
+  "EncryptApi": "5fDmJ8Ze",
+  "KEY_ENCODE_TOKEN_PUT_QUEUE": "AAFKCM7CoaBerVhcYCHQba1AyY13X41rT5s",
+  //"PRODUCT_GROUP_LIST": "1,2,4,5,6",
+  "PRODUCT_GROUP_LIST": "",
+  "API_CMS_URL": "http://103.74.121.155:4455",
+  "API_CMS_LIVE_URL": "http://103.121.91.231:6588",
+  "API_CRAWL_DETAIL_PRODUCT": "/api/product/detail-public.json",
+  "db_folder": "2",
+  "KEY_TOKEN_API": "1372498309AAH0fVJfnZQFg5Qaqro47y1o5mIIcwVkR3k",
+  "delay_time": "14400"
+}

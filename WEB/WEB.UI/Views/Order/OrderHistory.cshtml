@@ -1,0 +1,62 @@
+﻿@using WEB.UI.ViewModels
+@model OrderManagerViewModel
+@{
+    ViewData["Title"] = "Quản lý đơn hàng";
+    Layout = "/Views/Shared/_Layout.cshtml";
+}
+
+<link href="/css/user.css" rel="stylesheet" type="text/css" />
+<link href="/css/order.css" rel="stylesheet" type="text/css" />
+
+
+<!-- MAIN CONTAINER -->
+<section class="main-container clearfix mt30">
+    <div class="menu_control mb20">
+        <div class="container">
+            <ul class="breadcrumb">
+                <li><a href="/">Trang chủ</a></li>
+                <li class="active">Quản lý đơn hàng</li>
+            </ul>
+        </div>
+    </div>
+    <div class="container">
+        <div class="user_management flex">
+
+          
+            @{ await Html.RenderPartialAsync("PartialView/Client/MenuClientManager", new ViewDataDictionary(this.ViewData) { { "client_name", Model.receiver_name } });}
+
+            <div class="sidebar2 padding_15">
+                <div class="detail-dh">
+
+                    @await Component.InvokeAsync("ordersLast", new { view_comp = "/Views/Shared/Components/orders/order_last/default.cshtml", client_id = Model.client_id })
+
+                    @await Component.InvokeAsync("ordersTab", new { view_comp = "/Views/Shared/Components/orders/tab/default.cshtml", client_id = Model.client_id })
+
+                    <div class="flex space-between align-center order_control">
+                        <h2 class="txt_18 medium mb10">ĐƠN HÀNG CỦA TÔI</h2>
+                        <div class="search-wrapper mb15 control_search_order">
+                            <input type="text" class="input_search txt_input_search" name="" value="" placeholder="Nhập mã đơn hàng">
+                            <button class="search-btn btn_search_order">
+                                <svg class="icon-us">
+                                    <use xlink:href="/images/icons/icon.svg#search"></use>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="table-responsive table-default order_manager">
+                        @await Component.InvokeAsync("ordersList", new { view_comp = "/Views/Shared/Components/orders/listing/default.cshtml", client_id = Model.client_id, order_status = -1, input_search = string.Empty, current_page = 1, page_size = 5 })
+                    </div>
+
+                    <div class="center btn_view_more_order" style="display:none;">
+                        <a class="btn" style="width:282px">Xem thêm</a>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+<script src="~/js/order/default.js"></script>
+<!-- END MAIN CONTAINER -->

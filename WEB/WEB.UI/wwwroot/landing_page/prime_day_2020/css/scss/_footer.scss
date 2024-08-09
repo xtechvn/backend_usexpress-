@@ -1,0 +1,117 @@
+footer{
+	margin-top: 80px;float: left;width: 100%;
+	.footer-top{
+		background: #49B391;padding: 14px 0;color: #fff;
+		.newsletter{
+		    float: left;
+		    padding-left: 160px;margin-right: 40px;margin-top: 3px;
+			img{position: absolute;top: -70px;left: 60px;}
+		}
+		form{
+			width: 366px;background: #fff;overflow: hidden;
+		    border-radius: 3px;
+		    position: relative;
+		    input{
+			    font-size: 14px;
+			    color: #333;
+			    line-height: 40px;
+			    height: 40px;
+			    padding: 0 80px 0 10px;	
+			    width: 100%;
+			    &:focus{outline:0;}	    	
+		    }
+		    button{
+			    background: #F2F2F2;
+			    border-radius: 0px 3px 3px 0px;
+			    border: 0;
+			    position: absolute;
+			    right: 0px;
+			    top: 0px;
+			    height: 40px;
+			    font-weight: 500;padding: 0 15.5px;color: #333;
+			    cursor: pointer;		    	
+		    }
+		}
+		.messenger{
+			position: absolute;
+			right: 0px;
+			top: -47px;
+		}
+	}
+	.footer-bottom{
+		background: #333;padding: 40px 0;color: #F2F2F2;font-size: 13px;float: left;width: 100%;
+		h3{text-transform: uppercase;color: #B9B8B8;font-weight: 500;font-size: 14px;margin-bottom: 13px;}
+		p{line-height: 1.5;}
+		.row{font-size: 0;}
+		.td{
+			width: 20%;padding: 0 10px;display: inline-block;vertical-align: top;margin-bottom: 20px;
+			.hotline{margin-bottom: 15px;font-size: 13px;line-height: 1.5;
+				.color_green2{font-size: 13px;}
+				p{line-height: 1.5;font-size: 12px;}
+			}
+			ul{
+				li{
+					display: block;margin-bottom: 10px;
+					a{font-size: 13px;color: #F2F2F2;
+						&:hover{text-decoration:underline;}
+					}
+				}
+			}
+			.visa{
+				font-size: 0;margin-left: -12px;
+				a{display: inline-block;width: 33.33%;padding-left: 12px;margin-bottom: 12px;}
+			}
+		}
+		.address{
+		    float: left;
+		    width: 100%;
+		    border-top: 1px solid #F2F2F2;
+		    padding-top: 32px;
+		    margin-top: 20px;
+			.social{
+				a{display: inline-block;margin-left: 30px;}
+			}
+		}
+	}
+	.copyright{
+		background: #FFFFFF;
+		color: #6f6f6f;padding:15px 0;float: left;width: 100%;font-size: 13px;
+		.flex{
+			justify-content: space-between;align-items: center;
+		}
+		a{display: inline-block;margin-left: 45px;vertical-align: middle;}
+	}
+	@media (max-width: 860px){
+		.col-3{padding: 0 10px;
+			h3{font-size: 16px;}
+			.bank{
+				a{margin-right: 5px;}
+			}
+		}
+		.copyright{
+			.text{
+				width: 100%;text-align: center;margin-bottom: 10px;
+			}
+			.social{width: 100%;text-align: center;
+				a{margin: 0 10px;}
+			}
+		}
+		
+		.footer-top{
+			.newsletter{
+				padding-left: 100px;margin-top: 0;
+				img{left: 10px;}
+			}
+			form{width: 250px;}
+		}
+		.footer-bottom{
+			.td{width: 33.33%}
+			.address{
+				.social{width: 100%;margin-top: 20px;
+					a{margin: 0 30px 0 0}
+				}
+			}
+		}
+	}
+
+}

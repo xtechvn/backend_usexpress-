@@ -1,0 +1,531 @@
+﻿@using Entities.ViewModels;
+@using Utilities.Contants;
+@model ProductViewModel
+
+@section SocialMetaTags {
+    <!--Facebook Open Graph-->
+    <meta property="fb:app_id" content="892696148005813">
+    <meta property="og:site_name" content="usexpress.vn" />
+    <meta property="og:title" content="Mua sản phẩm @Model.product_name trên UsExpress" />
+    <meta property="og:description" content="@Model.product_name - UsExpress" />
+    <meta property="og:image" content="@Model.image_thumb" />
+    <meta property="og:type" content="product" />
+    <meta property="og:url" content="https://usexpress.vn@Model.link_product" />
+}
+
+<link href="~/css/detail.css" rel="stylesheet" />
+
+<section class="container product_detail clearfix">
+    <div class="menu_control mb10">
+        <div class="container">
+            <ul class="breadcrumb">
+
+                @switch (Model.label_id)
+                {
+                    case (int)LabelType.costco:
+                        <li><a href="/">Trang chủ</a></li>
+                        <li class="active"><a href="/store/costco">Costco</a></li>
+                        break;
+                    default:
+                        <li class="active"><a href="/">Trang chủ</a></li>
+                        break;
+                }
+                @*<li><a>@Model.product_name</a></li>*@
+                @*<li class="active">Apple Iphone xs 64gb hàng chính hãng</li>*@
+            </ul>
+        </div>
+    </div>
+    <div class="pin_detail">
+        <div class="container flex">
+            <div class="ava ajax_waiting">
+                @if (Model.image_size_product != null)
+                {
+                    <img src="@Model.image_size_product[0].Thumb" alt="@Model.product_name">
+                }
+            </div>
+            <div class="content">
+                <h2 class="title_name ajax_waiting">
+                    @Model.product_name</ h2>
+                    <div class="ct_price">
+                        @if (Model.discount > 0)
+                        {
+                            <div class="price-old">
+                                Giá gốc:
+                                @if (Model.price_vnd > 0)
+                                {
+                                    <span>@Model.price_vnd.ToString("N0") đ</span>
+                                }
+                                else
+                                {
+                                    <span>@Math.Round(Model.amount_vnd / (1 - Model.discount / 100)).ToString("N0") đ</span>
+                                }
+                                <strong>giảm @Model.discount%</strong>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="price-old hidden"></div>
+                        }
+                        <div class="price">
+                            Giá về tay:
+                            @if (Model.regex_step > 1)
+                            {
+                                if (Model.price > 0 && Model.amount_vnd > 0 && Model.product_status == 0)
+                                {
+                                    <strong>@Model.amount_vnd.ToString("N0") đ</strong>
+                                }
+                                else
+                                {
+                                    <a class='contact btn yellow' href='/'>Liên hệ CSKH</a>
+                                }
+                            }
+                            else
+                            {
+                                <div class="price_product loadding-new">
+                                    <div class="sk-child"></div>
+                                </div>
+                            }
+                        </div>
+
+                        @if (Model.amount_vnd > 0 && Model.product_status == 0)
+                        {
+                            <a class="brand_label" href="">
+                                <img src="~/images/graphics/my.png" title="@Model.product_name">Sản phẩm bán tại
+                                @Model.label_name
+                            </a>
+                        }
+                    </div>
+            </div>
+            @if (Model.amount_vnd > 0 && Model.product_status == 0)
+            {
+                <div class="ct_button">
+                    <a class="btn add_to_cart">
+                        <svg class="icon-us">
+                            <use xlink:href="/images/icons/icon.svg#cart"></use>
+                        </svg>
+                        Thêm vào giỏ hàng
+                    </a>
+                    <a class="btn buy btn_fast_buy" data-productcode="@Model.product_code" data-sellerid="@Model.seller_id">
+                        Mua ngay
+                        <svg class="icon-us">
+                            <use xlink:href="/images/icons/icon.svg#next1"></use>
+                        </svg>
+                    </a>
+                </div>
+            }
+        </div>
+    </div>
+    <div class="product-info flex mb20">
+        <div class="col_left">
+            <div class="PD_Media">
+                <div id="lightgallery" class="ajax_waiting lightgallery swiper-container gallery-top">
+                    <div class="swiper-wrapper">
+                        @{
+                            if (Model.image_size_product != null)
+                            {
+                                int d = 0;
+                                foreach (var img in Model.image_size_product)
+                                {
+                                    <div class="swiper-slide item" data-src=" @img.Larger"
+                                         data-sub-html="@Model.product_name">
+                                        <div class="swiper-slide-container">
+                                            <div class="ava">
+                                                <img class="@Html.Raw(d==0?"zoom_01":"")" src="@img.Larger" alt="@Model.product_name">
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    d += 1;
+                                }
+                            }
+                        }
+                    </div>
+                </div>
+
+                <div class="ajax_waiting swiper-container gallery-thumbs">
+                    <div class="swiper-wrapper">
+                        @{
+                            if (Model.image_size_product != null)
+                            {
+                                foreach (var item in Model.image_size_product)
+                                {
+                                    <div class="swiper-slide">
+                                        <div class="swiper-slide-container">
+                                            <img src="@item.Thumb" alt="@Model.product_name">
+                                        </div>
+                                    </div>
+                                }
+                            }
+                        }
+                    </div>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                </div>
+            </div>
+            <div class="center">
+                <a href="/store/costco"><img src="/images/graphics/slide_top_1_860x236.png" alt="@Model.product_name"></a>
+            </div>
+        </div>
+        <div class="col_right tt_sp_chitiet">
+
+
+            <div class="sidebar_1">
+                <h1 class="title_name ajax_waiting">@Model.product_name</h1>
+                <div class="sidebar_1_head flex ajax_waiting">
+                    @{
+                        double total_star = Model.star;
+                        if (total_star > 0)
+                        {
+                            double pn = (double)Math.Floor(total_star);
+                            double pd = total_star - pn;
+                            <div class="ct_star">
+                                @{
+                                    bool is_has_star_half = false;
+                                    for (int i = 0; i < 5; i++)
+                                    {
+                                        <svg class="icon-us">
+                                            @if (i < pn)
+                                            {
+                                                <use xlink:href="/images/icons/icon.svg#star-full"></use>
+                                            }
+                                            else if (pd < 0.9 && (!is_has_star_half))
+                                            {
+                                                <use xlink:href="/images/icons/icon.svg#star-half"></use>
+                                                is_has_star_half = true;
+                                            }
+                                            else
+                                            {
+                                                <use xlink:href="/images/icons/icon.svg#star-none"></use>
+                                            }
+                                        </svg>
+                                    }
+                                }
+
+                            </div>
+                        }
+                    }
+
+                    @if (Model.rating != null && Model.rating != "0")
+                    {
+                        <a class="vote">@Html.Raw((Model.rating.ToString()) + " đánh giá")</a>
+                    }
+                    else
+                    {
+                        <a class="vote">Chưa có đánh giá</a>
+                    }
+                    @if (Model.is_prime_eligible)
+                    {
+                        <img width="59" src="~/images/graphics/prime.svg">
+                    }
+
+
+                    <div class="th ajax_waiting">Thương hiệu: <span>&nbsp;@Model.seller_name</span></div>
+                </div>
+
+                <div class="ct_danhgia ajax_waiting">
+                    @Html.Raw(Model.is_amazon_choice ? "<span class='choice'><img src='/images/graphics/amazon-choice.png'></span>" : "")
+
+                </div>
+
+                <div class="ct_price ajax_waiting">
+
+                    @if (Model.discount > 0)
+                    {
+                        <div class="price-old">
+                            Giá gốc:
+                            @if (Model.price_vnd > 0)
+                            {
+                                <span>@Model.price_vnd.ToString("N0") đ</span>
+                            }
+                            else
+                            {
+                                <span>@Math.Round(Model.amount_vnd / (1 - Model.discount / 100)).ToString("N0") đ</span>
+                            }
+                            <strong>giảm @Model.discount%</strong>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="price-old hidden"></div>
+                    }
+                    @*<div id="price_product" class="price">
+                            Giá về tay: &nbsp;
+                            <div class="loadding-new">
+                                <div class="sk-child"></div>
+                            </div>
+                        </div>*@
+
+
+                    <div class="price block-price">
+                        Giá về tay:
+                        @if (Model.regex_step > 1)
+                        {
+                            if (Model.price > 0 && Model.amount_vnd > 0 && Model.product_status == 0)
+                            {
+                                <strong>@Model.amount_vnd.ToString("N0") đ</strong>
+                            }
+                            else
+                            {
+                                <a class='contact btn yellow' href='/lien-he-288'>Liên hệ CSKH</a>
+                            }
+                        }
+                        else
+                        {
+                            <div class="price_product loadding-new">
+                                <div class="sk-child"></div>
+                            </div>
+                        }
+                        @if (Model.amount_vnd > 0)
+                        {
+                            <a href="#detail-price-popup" class="detail_price open-popup-link" style="display:@Html.Raw(Model.regex_step > 1 ? "inline-block" : "none");">Chi tiết giá</a>
+                        }
+                    </div>
+
+                </div>
+                <div class="ct_note">
+                    <svg class="icon-us">
+                        <use xlink:href="/images/icons/icon.svg#exclamation-mark"></use>
+                    </svg>
+                    Bạn đang chọn mua sản phẩm với hàng Non-Prime từ Amazon. Sản phẩm này dự kiến sẽ được Amazon giao
+                    đến kho của US Express tại Mỹ trong khoảng <strong>6-10</strong> ngày làm việc. US Express sẽ giao
+                    hàng đến tận tay bạn trong vòng từ <strong>10-15</strong> ngày làm việc kể từ khi nhận được hàng tại
+                    kho Mỹ.
+                </div>
+
+                @*@{ await Html.RenderPartialAsync("PartialView/Product/Variation", Model); }*@
+
+                <div class="ct_count">
+                    <div class="social" style="display:flex;justify-content:flex-end; margin-bottom:20px;">
+                        @*<a class="heart" href="#">
+                        <svg class="icon-us" style="width:30px;height:30px;margin-right:15px;">
+                            <use xlink:href="/images/icons/icon.svg#heart2"></use>
+                        </svg>
+                        </a>*@
+                        <div class="fb-share-button" data-href="https://usexpress.vn/@Model.link_product" data-layout="button" data-size="large" style="margin-right:15px;">
+                            <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://usexpress.vn/@Model.link_product;src=sdkpreparse" 
+                               class="fb-xfbml-parse-ignore">Chia sẻ
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                @if (Model.amount_vnd > 0 && Model.product_status == 0)
+                {
+                    <div class="ct_button">
+                        <a class="btn add_to_cart" data-productcode="@Model.product_code" data-sellerid="@Model.seller_id">
+                            <svg class="icon-us">
+                                <use xlink:href="/images/icons/icon.svg#cart"></use>
+                            </svg>
+                            Thêm vào giỏ hàng
+                        </a>
+                        <a class="btn buy btn_fast_buy" data-productcode="@Model.product_code" data-sellerid="@Model.seller_id">
+                            Mua ngay
+                            <svg class="icon-us">
+                                <use xlink:href="/images/icons/icon.svg#next1"></use>
+                            </svg>
+                        </a>
+
+                        @*<a class="heart active" href="">
+                                <svg class="icon-us">
+                                    <use xlink:href="/images/icons/icon.svg#heart"></use>
+                                </svg>
+                            </a>*@
+                    </div>
+                }
+
+                @if (Model.product_infomation != null)
+                {
+                    if (Model.product_infomation.Count > 0)
+                    {
+                        <div class="ct_tinhnang ajax_waiting">
+                            <h3>Tính năng nổi bật</h3>
+                            <div class="content-danhgia @Html.Raw(Model.product_infomation.Count > 3 ? "built-toggle" : "")">
+                                <ul>
+                                    @foreach (var item in Model.product_infomation)
+                                    {
+                                        <li>@item.ToString()</li>
+                                    }
+                                </ul>
+                            </div>
+                            @if (Model.product_infomation.Count > 3)
+                            {
+                                <div class="view-full"><a href="javascript:;">Xem tất cả</a></div>
+                            }
+                        </div>
+                    }
+                }
+            </div>
+            <div class="sidebar_2">
+                <a class="kt_hang" href="@Model.keywork_search" target="_blank">Kiểm tra trên Amazon</a>
+                <div class="wrap">
+                    <div class="ct_dichvu">
+                        <div class="head">
+                            <p class="info ajax_waiting">
+                                <svg class="icon-us">
+                                    <use xlink:href="/images/icons/icon.svg#exclamation-mark"></use>
+                                </svg>Thông tin người bán
+                            </p>
+                            <p class="Store ajax_waiting"><a href="#">@Model.seller_name</a>@*<span>&nbsp;(@Model. nhận xét)</span>*@</p>
+                            <div class="ct_star flex ajax_waiting">
+                                @{ await Html.RenderPartialAsync("PartialView/Product/Element/star", null, new ViewDataDictionary(this.ViewData) { { "star", Model.star } });}
+                                | 100% đánh giá uy tín
+                            </div>
+                        </div>
+                        <ul>
+                            <li>
+                                <svg class="icon-us">
+                                    <use xlink:href="/images/icons/icon.svg#like"></use>
+                                </svg>
+                                <h4>Chi phí minh bạch</h4>
+                            </li>
+                            <li>
+                                <svg class="icon-us">
+                                    <use xlink:href="/images/icons/icon.svg#dam-bao"></use>
+                                </svg>
+                                <h4>Hàng hóa được đảm bảo</h4>
+                            </li>
+                            <li>
+                                <svg class="icon-us">
+                                    <use xlink:href="/images/icons/icon.svg#date"></use>
+                                </svg>
+                                <h4>Giao hàng từ 10 - 15 ngày làm việc</h4>
+                            </li>
+                            <li>
+                                <svg class="icon-us" style="width: 35px;height: 35px;">
+                                    <use xlink:href="/images/icons/icon.svg#tietkiem"></use>
+                                </svg>
+                                <h4>Mua càng nhiều, tiết kiệm càng nhiều</h4>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="ct_hotline">
+                        <span>Hotline</span>
+                        <strong>
+                            <a href="">
+                                <svg class="icon-us">
+                                    <use xlink:href="/images/icons/icon.svg#hotline"></use>
+                                </svg>
+                                1900 633 600
+                            </a>
+                        </strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="product-info2 flex mb20">
+        <div class="col_left">
+
+            <!-- Nhà cung cấp nổi bật -->
+            <div class="seller_list"></div>
+
+            <!-- Thông tin sản phẩm -->
+            @if (Model.product_specification != null)
+            {
+                if (Model.product_specification.Count > 0)
+                {
+                    <div class="bg_warp ct_ttsp mb20 ajax_waiting">
+                        <h2 class="title-label">Thông tin của sản phẩm</h2>
+                        <ul>
+                            @foreach (var item in Model.product_specification)
+                            {
+                                <li>
+                                    <label>@item.Key</label>
+                                    <div>@Html.Raw(item.Value)</div>
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                }
+            }
+            <!-- Mô tả sản phẩm -->
+            @if (Model.product_infomation_HTML == null)
+            {
+                if (Model.image_product != null)
+                {
+                    <div class="bg_warp ct_description mb20 ajax_waiting">
+                        <h2 class="title-label">
+                            Hình ảnh sản phẩm
+                        </h2>
+                        <div class="content built-toggle center">
+                            @foreach (var item in Model.image_product)
+                            {
+                                <img alt="@Model.product_name" data-original="@item" class="lazydetail" src="@item" style="display: inline;">
+                            }
+                        </div>
+                        <div class="view-full"><a href="javascript:;">Xem tất cả</a></div>
+                    </div>
+                }
+            }
+            else
+            {
+                <div class="bg_warp ct_description mb20 ajax_waiting">
+                    <h2 class="title-label">
+                        Mô tả sản phẩm
+                    </h2>
+                    <div class="content built-toggle">
+                        @Html.Raw(Model.product_infomation_HTML)
+                    </div>
+                    <div class="view-full"><a href="javascript:;">Xem tất cả</a></div>
+                </div>
+            }
+        </div>
+        <div class="product_related">
+            @{ await Html.RenderPartialAsync("PartialView/Product/ProductRelated", null, new ViewDataDictionary(this.ViewData) { { "is_waiting", "1" } });}
+        </div>
+
+    </div>
+</section>
+
+<section class="container clearfix">
+    <div class="product-history">
+        <!--SP đã xem -->
+        @{ await Html.RenderPartialAsync("PartialView/Product/ListingProductHistory", null, new ViewDataDictionary(this.ViewData) { { "is_waiting", "1" } });}
+    </div>
+    <!-- ĐÁNH GIÁ SẢN PHẨM -->
+    @*<div class="sp_danhgia bg_warp">
+            <h2 class="title-label">Đánh giá sản phẩm</h2>
+            <div class="tab-bl flex">
+                <a href="" class="active">Bình luận trên Amazon (100)</a>
+                <a href="">Bình luận trên trang (200)</a>
+            </div>
+        </div>*@
+</section>
+
+<!--POPUP THÔNG BÁO mfp-hide-->
+@if (Model.list_product_fee != null)
+{
+    <div id="detail-price-popup" class="white-popup mfp-hide">
+        @if (Model.regex_step > 1) // show price
+        {
+            { await Html.RenderPartialAsync("Components/product/fee", Model.list_product_fee); }
+        }
+    </div>
+}
+
+<!-- Thông báo thêm sản phẩm thành công -->
+<div class="popup-default add-product-success">
+    <div class="content-popup center">
+        <i class="checked"></i>
+        <div class="mt15">
+            Sản phẩm đã được thêm vào giỏ hàng
+        </div>
+    </div>
+</div>
+
+<!--END POPUP THÔNG BÁO-->
+@*THƯ VIỆN PRODUCT JS CỦA HÙNG CSS*@
+<script type="text/javascript" src="~/js/lib/detail.js"></script>
+
+<script type="text/javascript">
+    var product_param = "";
+    $(document).ready(function () {
+        product_param = '{"keywork_search" : "@Model.keywork_search"  ,"product_code" : "@Model.product_code","image_thumb" : "@Html.Raw(Model.image_thumb)","amount_vnd" : "@Model.amount_vnd","star" : "@Model.star","reviews_count" : "@Model.reviews_count","label_id" : "@Model.label_id","label_name" : "@Model.label_name","regex_step":"@Model.regex_step" ,"is_has_seller" : "@Model.is_has_seller", "link_product" : "@Model.link_product", "product_name" : "@Html.Raw(Model.product_name.Replace("\"","").Replace("'", ""))"}';
+    });
+    $("meta[property='og:site_name']").attr("content", window.location.hostname);
+</script>
+@section Scripts {
+    <script src="~/js/product_detail/default.js"></script>
+}
+
+

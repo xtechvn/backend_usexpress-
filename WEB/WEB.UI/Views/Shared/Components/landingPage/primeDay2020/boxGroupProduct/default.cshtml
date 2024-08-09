@@ -1,0 +1,63 @@
+﻿@model List<Entities.ViewModels.ProductViewModel>
+@if (Model != null)
+    {
+ var rd = new Random();
+        if (Model.Count > 0)
+        {
+            foreach (var item in Model)
+            {
+
+                if (item.price > 0)
+                {
+                    if (item.image_size_product.Count > 0)
+                    {
+                int dc = rd.Next(15,40);
+                        string link_us_old = "https://usexpress.vn/amazon/item/" + Utilities.CommonHelper.CheckMaxLength((item.product_name).ToString(), 100) + "--" + item.product_code + "/";
+                    <div class="product-item col-5">
+                    <div class="wrap">
+                        <div class="sale">-@dc%</div>
+                        <a class="ava" href="@link_us_old" target="_blank">
+                            <img src="@(item.image_size_product.Count > 0 ? item.image_size_product[0].Larger : "unknown")">
+                        </a>
+                        <div class="content">
+                            @*<div class="ct_star">
+                                    <svg class="icon-us">
+                                        <use xlink:href="~/landing_page/prime_day_2020/css/images/icons/icon.svg#star-full"></use>
+                                    </svg>
+                                    <svg class="icon-us">
+                                        <use xlink:href="~/landing_page/prime_day_2020/css/images/icons/icon.svg#star-full"></use>
+                                    </svg>
+                                    <svg class="icon-us">
+                                        <use xlink:href="~/landing_page/prime_day_2020/css/images/icons/icon.svg#star-full"></use>
+                                    </svg>
+                                    <svg class="icon-us">
+                                        <use xlink:href="~/landing_page/prime_day_2020/css/images/icons/icon.svg#star-full"></use>
+                                    </svg>
+                                    <svg class="icon-us">
+                                        <use xlink:href="~/landing_page/prime_day_2020/css/images/icons/icon.svg#star-full"></use>
+                                    </svg>
+                                    <span class="buy">1140 đã mua</span>
+                                </div>*@
+                            <h3 class="title">
+                                <img src="~/landing_page/prime_day_2020/css/images/icons/prime.png" title="amz"><a href="@link_us_old" title="@item.product_name" target="_blank">
+                                    @item.product_name
+                                </a>
+                            </h3>
+                            <div class="flex">
+                                <div class="col-2">
+                                    <span>Giá về tay</span>
+                                    <strong>@((item.list_product_fee.list_product_fee["PRICE_LAST"] * item.rate).ToString("N0")) đ</strong>
+                                </div>
+                            </div>
+                            <a class="brand_label" href="@link_us_old" target="_blank">
+                                <img src="~/landing_page/prime_day_2020/css/images/graphics/my.png" title="amz">Sản phẩm bán
+                                tại Amazon
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,133 @@
+﻿@{
+    Layout = null;
+}
+@using Entities.Models
+@{
+    var ListLabel = (List<Label>)ViewBag.LabelList;
+    var ListSpecialIndustry = (List<AllCode>)ViewBag.IndustrySpecialList;
+    var ListWeightUnit = (List<AllCode>)ViewBag.WeightUnitList;
+    var rateCurrent = (double)ViewBag.RateCurent;
+    var UserId = (string)ViewBag.UserId;
+
+}
+<form id="form-product-cost">
+    <div class="form-group">
+        <label class="lbl">Cân nặng <sup class="red">*</sup></label>
+        <div class="wrap_input flex">
+            <div style="width:45%;">
+                <input type="text" class="form-control currency-usd" name="Pound" />
+            </div>
+            <div class="ml15" style="width:45%">
+                <select class="form-control" name="Unit" required>
+                    <option value="-1">-- Đơn vị tính --</option>
+                    @foreach (var item in ListWeightUnit)
+                    {
+                        <option value="@item.CodeValue">@item.Description</option>
+                    }
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="lbl">Giá sản phẩm ($) <sup class="red">*</sup></label>
+        <div class="wrap_input flex">
+            <div style="width:45%;">
+                <input type="text" class="form-control currency-usd" name="Price" />
+            </div>
+            <div class="ml15" style="width:45%">
+                <input type="text" class="form-control currency-usd" name="RateCurrent" placeholder="Tỉ giá" value="@rateCurrent.ToString("N2")" />
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="lbl">Phí ship nội địa ($) <sup class="red">*</sup></label>
+        <div class="wrap_input">
+            <input type="text" class="form-control currency-usd" name="ShippingUSFee" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="lbl">Sản phẩm đặc thù</label>
+        <div class="wrap_input">
+            <select class="form-control" name="IndustrySpecialType">
+                <option value="-1">-- Chọn sản phẩm đặc thù --</option>
+                @foreach (var item in ListSpecialIndustry)
+                {
+                    <option value="@item.CodeValue">@item.Description</option>
+                }
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="lbl">Công thức giá <sup class="red">*</sup></label>
+        <div class="wrap_input">
+            <select class="form-control" name="LabelId" required>
+                @foreach (var item in ListLabel)
+                {
+                    <option value="@item.Id">@item.StoreName</option>
+                }
+            </select>
+        </div>
+    </div>
+</form>
+
+<div class="form-group mfp-hide" id="grid-product-cost">
+    <label class="lbl"></label>
+    <div class="wrap_input">
+        <p><strong>Chi tiết phí mua hộ</strong></p>
+        <div class="table-responsive table-default">
+            <table class="table table-nowrap table-2col">
+                <tbody>
+                    <tr>
+                        <td>Phí mua hộ pound đầu tiên</td>
+                        <td>8$</td>
+                    </tr>
+                    <tr>
+                        <td>Phí mua hộ pound đầu tiên</td>
+                        <td>8$</td>
+                    </tr>
+                    <tr>
+                        <td>Phí mua hộ pound đầu tiên</td>
+                        <td>8$</td>
+                    </tr>
+                    <tr>
+                        <td>Phí mua hộ pound đầu tiên</td>
+                        <td>8$</td>
+                    </tr>
+                    <tr>
+                        <td>Phí mua hộ pound đầu tiên</td>
+                        <td>8$</td>
+                    </tr>
+                    <tr>
+                        <td>Phí mua hộ pound đầu tiên</td>
+                        <td class="red">1.500.000</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="form-group mfp-hide" id="block_sync_product">
+    <label class="lbl"></label>
+    <div class="wrap_input">
+        <input type="text" class="form-control" id="sync_product_code" placeholder="Nhập mã sản phẩm cần đồng bộ. Ví dụ : B089XQW668" />
+    </div>
+</div>
+
+<div class="form-group">
+    <label class="lbl"></label>
+    <div class="wrap_input mfp-hide" id="product_link_success">
+       
+    </div>
+</div>
+
+
+<div class="form-group align-right mt20 block">
+    @if (UserId != "62")
+    {
+      <button type="button" class="btn btn-default bg-danger mfp-hide" id="btn_show_mapping" onclick="_productCost.OnMappingProduct();"><i class="fa fa-arrow-circle-right"></i>Mapping</button>
+    }
+    <button type="button" class="btn btn-default bg-danger mfp-hide" id="btn_save_mapping" onclick="_productCost.OnSyncProduct();"><i class="fa fa-arrow-circle-right"></i>Đồng bộ sản phẩm</button>
+    <button type="button" class="btn btn-default bg-main" onclick="_productCost.OnGetDetailProductCost();"><i class="fa fa-floppy-o"></i>Báo giá</button>
+    <button type="button" class="btn btn-default cancel" onclick="$.magnificPopup.close();"><i class="fa fa-minus-circle"></i>Bỏ qua</button>
+</div>

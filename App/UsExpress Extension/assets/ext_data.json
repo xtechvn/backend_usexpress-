@@ -1,0 +1,19 @@
+{
+     "max_item_store":"100",
+     "delete_product_detail_schedule":"14400",
+    "HTML":{
+        "out_stock":"Liên hệ CSKH",
+        "on_loading":"Đang tải báo giá ...",
+        "btn_onloading":"Vui lòng chờ ...",
+        "primarybutton_readytoclick": "Báo giá sản phẩm",
+        "OrderButton_readytoclick": "Mua ngay",
+        "button_redirect_toUSExpress": "Xem chi tiết",
+        "note_instock": "Giá trên là giá cuối cùng, bạn không cần phải trả bất kỳ khoản phí nào khác",
+        "note_outstock": "Sản phẩm đã hết hàng hoặc không khả dụng tại thời điểm hiện tại. Quý khách vui lòng nhấn vào nút bên dưới để xem thêm chi tiết.",
+        "primarybutton_pricerange": "Vui lòng chọn cỡ / màu sắc"
+
+    }
+}
+
+
+

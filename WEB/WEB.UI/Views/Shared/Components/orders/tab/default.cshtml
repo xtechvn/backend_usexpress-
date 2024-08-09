@@ -1,0 +1,14 @@
+﻿@using Entities.ViewModels.Orders;
+@model List<OrderTabModel>
+
+@if (Model != null)
+{
+    int d = 0;
+    <div class="tab-default tab_order">
+        @foreach (var item in Model)
+        {
+            <a data-index="@item.tab_index" id="tab_@d"  data-count="@item.order_count"  style="cursor:pointer;" class="tab_order_status @Html.Raw(d == 0 ? "active":"")">@item.tab_name <strong class="tab_@d">(@item.order_count)</strong></a>
+            d += 1;
+        }     
+    </div>
+}

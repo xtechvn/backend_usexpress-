@@ -1,0 +1,27 @@
+﻿@model List<Entities.ViewModels.ArticleFeModel>
+@foreach (var item in Model)
+{
+    <article class="item-news us_item_news">
+        <div class="thumb-art">
+            <a class="thumb thumb_5x3" href="@item.link" title="@item.title">
+                <img src="@item.image_169">
+            </a>
+        </div>
+        <div class="content">
+            <h3 class="title-news">
+                <a href="@item.link" title="@item.title">
+                    @item.title
+                </a>
+            </h3>
+            <div class="date">
+                <svg class="icon-us">
+                    <use xlink:href="/images/icons/icon.svg#clock"></use>
+                </svg>
+                <span>@item.publish_date.ToString("dd-MM-yyyy hh:mm")</span>
+            </div>
+            <div class="description">
+                @item.lead
+            </div>
+        </div>
+    </article>
+}

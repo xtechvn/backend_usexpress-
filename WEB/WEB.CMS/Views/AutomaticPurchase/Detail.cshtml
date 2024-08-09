@@ -1,0 +1,298 @@
+﻿@using Entities.Models
+@{
+    ViewData["Title"] = "Cài đặt mua tự động.";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var purchase_status = (List<AllCode>)ViewBag.Purchase_Status;
+    var delivering_status = (List<AllCode>)ViewBag.Delivering_Status;
+    var purchase_id = (long)ViewBag.Id;
+
+}
+<style>
+
+    .autobuy_div_2 {
+    }
+
+        .autobuy_div_2 .lbl {
+            width: 200px !important;
+        }
+
+        .autobuy_div_2 .wrap_input {
+            width: calc(100% - 200px) !important;
+        }
+    .wrap_input input {
+        min-width:300px !important;
+    }
+</style>
+<div class="container">
+    <div class="row">
+        <div class="col-xl-12 add-prodcut-popup mb20">
+            <form id="form_automaticpurchase_main">
+                <div class="content_lightbox bg-white">
+                    <p class="txt_16">Thông tin đơn hàng</p>
+                    <div class="border-wrap mb20">
+                        <h3 class="title_down_up onclick-togle active">
+                            Thông tin
+                            <a class="down-up fa fa-angle-down"></a>
+                        </h3>
+                        <div class="wap expand" style="display: block">
+                            <div class="form-default2 row">
+                                <div class="col-md-6 mb15">
+                                    <div class="form-group pr30">
+                                        <label class="lbl">
+                                            Mã đơn hàng
+                                            <sup class="red">*</sup>
+                                        </label>
+                                        <div class="wrap_input">
+                                            <input type="text" class="form-control error" id="form_OrderCode" name="form_OrderCode" value="" disabled="disabled" style="background-color: #E5E5E5;">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group pr30">
+                                        <label class="lbl">
+                                            URL
+                                            <sup class="red">*</sup>
+                                        </label>
+                                        <div class="wrap_input">
+                                            <input type="text" class="form-control error form_PurchaseUrl" id="form_PurchaseUrl" name="form_PurchaseUrl" value="" disabled="disabled" style="background-color: #E5E5E5;">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group pr30">
+                                        <label class="lbl">
+                                            Giá sản phẩm
+                                            <sup class="red">*</sup>
+                                        </label>
+                                        <div class="wrap_input">
+                                            <input type="text" class="form-control error form_Amount" id="form_Amount" name="form_Amount" value="" disabled="disabled" style="background-color: #E5E5E5;">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group pr30">
+                                        <label class="lbl">
+                                            Ngày tạo
+                                        </label>
+                                        <div class="wrap_input">
+                                            <input id="form_createdate" name="form_CreateDate" class="datepicker-input form-control change_detail" disabled="disabled" type="text" value="" style="background-color: #E5E5E5;">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6 mb15">
+
+                                    <div class="form-group pr30">
+                                        <label class="lbl">
+                                            Mã sản phẩm
+                                            <sup class="red">*</sup>
+                                        </label>
+                                        <div class="wrap_input">
+                                            <input type="text" class="form-control error" id="form_ProductCode" name="form_ProductCode" value="" disabled="disabled" style="background-color: #E5E5E5;">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group pr30">
+                                        <label class="lbl">
+                                            Số lượng mua
+                                            <sup class="red">*</sup>
+                                        </label>
+                                        <div class="wrap_input">
+                                            <input type="number" class="form-control error form_Quanity" id="form_Quanity" name="form_Quanity" value="" disabled="disabled" style="background-color: #E5E5E5;">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group pr30">
+                                        <label class="lbl">
+                                            Ngày cập nhật
+                                        </label>
+                                        <div class="wrap_input">
+                                            <input id="form_UpdateLast" name="form_UpdateLast" class="datepicker-input form-control change_detail" disabled="disabled" type="text" value="" style="background-color: #E5E5E5;">
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="col-12 autobuy_div_2">
+                                    <div class="form-group pr30">
+                                        <label class="lbl">
+                                            Trạng thái mua tự động
+                                            <sup class="red">*</sup>
+                                        </label>
+                                        <div class="wrap_input">
+                                            <select id="form_PurchaseStatus" name="form_PurchaseStatus" class="form-control" disabled="disabled" style="background-color: #E5E5E5;">
+                                                @foreach (var status in purchase_status)
+                                                {
+                                                    <option value="@status.CodeValue" disabled>@status.Description</option>
+                                                }
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 autobuy_div_2">
+                                    <div class="form-group pr30">
+                                        <label class="lbl">
+                                            Message
+                                            <sup class="red">*</sup>
+                                        </label>
+                                        <div class="wrap_input">
+                                            <input id="form_PurchaseMessage" name="form_PurchaseMessage" class="form-control" type="text" disabled="disabled" value="" style="background-color: #E5E5E5;">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 autobuy_div_2">
+                                    <div class="form-group pr30">
+                                        <label class="lbl">
+                                            Ghi chú
+                                            <sup class="red">*</sup>
+                                        </label>
+                                        <div class="wrap_input">
+                                            <input id="form_ManualNote" name="form_ManualNote" class="form-control" type="text" disabled="disabled" value="" style="background-color: #E5E5E5;">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 autobuy_div_2">
+                                    <div class="form-group pr30">
+                                        <label class="lbl">
+                                            URL mua thành công
+                                            <sup class="red">*</sup>
+                                        </label>
+                                        <div class="wrap_input">
+                                            <input id="form_OrderedSuccessUrl" name="form_OrderedSuccessUrl" class="form-control" type="text" disabled="disabled" value="" style="background-color: #E5E5E5;">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 autobuy_div_2">
+                                    <div class="form-group pr30">
+                                        <label class="lbl">
+                                            URL chi tiết đơn
+                                            <sup class="red">*</sup>
+                                        </label>
+                                        <div class="wrap_input">
+                                            <input id="form_OrderDetailUrl" name="form_OrderDetailUrl" class="form-control" type="text" disabled="disabled" value="" style="background-color: #E5E5E5;">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 row autobuy_div_2">
+                                    <div class="col-md-6 mb15">
+                                        <div class="form-group pr10">
+                                            <label class="lbl">
+                                                PurchasedOrderID
+                                            </label>
+                                            <div class="wrap_input">
+                                                <input type="text" class="form-control" id="form_PurchasedOrderID" name="form_PurchasedOrderID" value="" disabled="disabled" style="background-color: #E5E5E5;">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group pr10">
+                                            <label class="lbl">
+                                                PurchasedSellerStoreURL
+                                            </label>
+                                            <div class="wrap_input">
+                                                <input type="text" class="form-control " id="form_PurchasedSellerStoreURL" name="form_PurchasedSellerStoreURL" value="" disabled="disabled" style="background-color: #E5E5E5;">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6 mb15">
+                                        <div class="form-group pr10">
+                                            <label class="lbl">
+                                                PurchasedSellerName
+                                            </label>
+                                            <div class="wrap_input">
+                                                <input type="text" class="form-control" id="form_PurchasedSellerName" name="form_PurchasedSellerName" value="" disabled="disabled" style="background-color: #E5E5E5;">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                    <div class="border-wrap mb20 autobuy_div_2">
+                        <h3 class="title_down_up onclick-togle">
+                            Thông tin vận chuyển
+                            <a class="down-up fa fa-angle-down"></a>
+                        </h3>
+                        <div class="wap expand">
+                            <div class="form-default2 row">
+                                <div class="col-12">
+                                    <div class="form-group pr30">
+                                        <label class="lbl">
+                                            Trạng thái vận chuyển
+                                        </label>
+                                        <div class="wrap_input">
+                                            <select id="form_DeliveryStatus" class="form-control" disabled="disabled" style="background-color: #E5E5E5;">
+                                                @foreach (var delivering in delivering_status)
+                                                {
+                                                    <option value="@delivering.CodeValue">@delivering.Description</option>
+                                                }
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 mb15">
+                                    <div class="form-group pr30">
+                                        <label class="lbl">
+                                            Ngày tới kho dự kiến
+                                        </label>
+                                        <div class="wrap_input">
+                                            <input id="form_OrderEstimatedDeliveryDate" name="form_OrderEstimatedDeliveryDate" class="datepicker-input form-control change_detail" disabled="disabled" type="text" value="" style="background-color: #E5E5E5;">
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="col-12">
+                                    <div class="form-group pr30">
+                                        <label class="lbl">
+                                            DeliveryMessage
+                                        </label>
+                                        <div class="wrap_input">
+                                            <input id="form_DeliveryMessage" name="form_DeliveryMessage" class="form-control" type="text" disabled="disabled" value="" style="background-color: #E5E5E5;">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="border-wrap mb20 autobuy_div_2">
+                        <h3 class="title_down_up onclick-togle">
+                            Ảnh đặt hàng tự động
+                            <a class="down-up fa fa-angle-down"></a>
+                        </h3>
+                        <div class="wap form-default2 expand">
+                            <div id="form_purchase_img" class="row">
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+                    <div class="form-group align-right mt20 block pin-btn-bottom">
+                        <button id="btn_autopurchase_EnableEdit" type="button" class="btn btn-default bg-main mb10" onclick="auto_purchase_detail.EnableEdit()"><i class="fa fa-floppy-o"></i>Chỉnh sửa</button>
+                        <button id="btn_autopurchase_save" type="button" class="btn btn-default bg-main mb10" disabled="disabled" onclick="auto_purchase_detail.Save()"><i class="fa fa-floppy-o"></i>Lưu</button>
+                        <a href="/automaticpurchase" class="btn btn-default cancel mb10">
+                            <i class="fa fa-minus-circle"></i> Quay lại
+                        </a>
+
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+@section scripts {
+    <script src="~/modules/automatic_purchase_detail.js"></script>
+    <script>
+        auto_purchase_detail.Init(@purchase_id);
+    </script>
+}

@@ -1,0 +1,43 @@
+﻿
+@{
+    ViewData["Title"] = "Tạo sản phẩm thủ công";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row product">
+    <div class="text-center">
+        <h3 class="text-center">Cấu hình sản phẩm</h3>
+    </div>
+    <div class="col-md-12 col-sm-12">
+        <div class="form-group row">
+            <label class="col-sm-2">Nhập mã ASIN</label>
+            <div class="col-sm-4">
+                <input type="text" id="ASIN" name="name" value="" placeholder="Nhập mã ASIN" />
+            </div>
+            <div class="col-sm-4 col-md-4 text-left">
+                <button class="btn btn-success" onclick="_menu.CreateProductManual()">Tạo sản phẩm</button>
+                <button class="btn btn-success" onclick="_menu.GetDetail(1)">Lấy chi tiết</button>
+                <button class="btn btn-success" onclick="_menu.GetDetail(0)">Lấy dữ liệu mẫu</button>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2">Chuỗi json</label>
+            <div class="col-sm-10">
+                <textarea rows="5" class="height-200" id="json_product" placeholder="Nhập chuỗi json của sản phẩm"></textarea>
+            </div>
+        </div>
+    </div>
+
+</div>
+<style>
+    .product {
+        margin-left: 10px;
+    }
+
+    .height-200 {
+        height: 500px;
+    }
+</style>
+@section scripts {
+    <script src="~/modules/groupProduct.js"></script>
+}

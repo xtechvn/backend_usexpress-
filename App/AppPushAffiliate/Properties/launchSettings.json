@@ -1,0 +1,10 @@
+﻿{
+  "profiles": {
+    "AppPushAffiliate": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "DOTNET_ENVIRONMENT": "Development"
+      }
+    }
+  }
+}

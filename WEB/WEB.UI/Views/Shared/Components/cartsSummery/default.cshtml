@@ -1,0 +1,42 @@
+﻿@model WEB.UI.ViewModels.CartSummeryViewModel
+
+<div class="checkout_sidebar" id="cart_summery">
+    <div class="flex space-between mb12 voucher_box">
+        <div class="color_green2 flex">
+            <img height="18" src="/images/icons/coupon.png" style="margin: -3px 9px 0 0;">
+            Mã voucher :
+        </div>
+        <a class="color_ylow flex align-center cursor" id="choice-voucher">
+            Chọn hoặc nhập mã
+            <svg class="icon-us" style="width: 12px;height: 12px;margin-left: 6px;">
+                <use xlink:href="/images/icons/icon.svg#next"></use>
+            </svg>
+        </a>
+    </div>
+    <div class="checkout_tr">
+        <div class="item">
+            <p>Tiền hàng :</p>
+            <span class="price total_amount_vnd summery_total_price" data-totalamountcart="@Model.total_amount_cart">@Model.total_amount_cart.ToString("N0")<em>đ</em></span>
+        </div>
+        <div class="item">
+            <p>Giảm giá :</p>
+            <span class="price total_discount_amount summery_total_price" data-totaldiscountamount="@Model.total_discount_amount"><em><svg class="icon-us refresh"><use xlink:href="/images/icons/icon.svg#refresh"></use></svg></em></span>
+        </div>
+        <div class="item  price_all">
+            <p><strong>TỔNG TIỀN</strong></p>
+            <strong class="price total_amount_last_vnd summery_total_price" data-totalamountlast="@Model.total_amount_last"><em><svg class="icon-us refresh"><use xlink:href="/images/icons/icon.svg#refresh"></use></svg></em></strong>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+    @*<a class="btn btn-order btn-confirm-cart">XÁC NHẬN GIỎ HÀNG</a>*@
+</div>
+
+<script>
+ var label_id = -1;
+    $(document).ready(function () {
+        label_id = @Model.label_id;
+    })
+</script>
+
+
+

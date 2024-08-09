@@ -1,0 +1,154 @@
+<!-- build:title -->Thanh toán
+<!-- /build:title -->
+<!-- build:head -->
+<link href="css/order.css" rel="stylesheet" type="text/css" />
+<!-- /build:head -->
+<!-- build:head3 -->
+<header class="header-block header-block-pay">
+    <div class="container flex">
+        <div class="header-block_1">
+            <a class="logo" href=""><img src="images/graphics/logo.svg" title="amz"></a>
+        </div>
+        <div class="step-pay">
+            <ul>
+                <li class="active">
+                    <a class="logo" href="">
+                        <img src="images/icons/icon-map.svg" title="amz">
+                        <img class="focus" src="images/icons/icon-map-active.svg" title="amz">
+                        <span>Thông tin giao hàng</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="logo" href="">
+                        <img src="images/icons/icon-payer.svg" title="amz">
+                        <img class="focus" src="images/icons/icon-payer-active.svg" title="amz">
+                        <span>Thanh toán</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="logo" href="">
+                        <img src="images/icons/icon-confirm.svg" title="amz">
+                        <img class="focus" src="images/icons/icon-confirm-active.svg" title="amz">
+                        <span>Xác nhận</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</header>
+<!-- /build:head3 -->
+
+<!-- build:content -->
+<style>
+    .header-block {
+        display: none
+    }
+
+    .header-block-pay {
+        display: block
+    }
+</style>
+
+<section class="main-container clearfix mt30">
+    <div class="container page-buy">
+        <div class="bg_left">
+            <div class="nav_setting">
+                <a class="active" href="#tab-free">
+                    <svg class="icon-us">
+                        <use xlink:href="images/icons/icon.svg#cart"></use>
+                    </svg>
+                    Không cần đăng nhập</a>
+                <a href="#tab-dk">
+                    <svg class="icon-us">
+                        <use xlink:href="images/icons/icon.svg#user"></use>
+                    </svg>
+                    Đăng nhập / Đăng ký
+                </a>
+
+            </div>
+            <div id="login-popup" class="content_setting">
+                <div class="form">
+                    <!-- Tab mua không cần đăng nhập -->
+                    <div id="tab-free" class="tab-content">
+                        <div class="form form_default">
+                            <div class="form-group icon-visible">
+                                <svg class="icon-us">
+                                    <use xlink:href="images/icons/icon.svg#user"></use>
+                                </svg>
+                                <input type="text" class="form-control error" id="" placeholder="Nhập họ và tên"
+                                    name="">
+                                <span class="error">Thông báo lỗi</span>
+                            </div>
+                            <div class="form-group icon-visible">
+                                <svg class="icon-us">
+                                    <use xlink:href="images/icons/icon.svg#mail"></use>
+                                </svg>
+                                <input type="" class="form-control" id="" placeholder="Nhập địa chỉ Email" name="">
+                            </div>
+                            <div class="form-group icon-visible">
+                                <svg class="icon-us">
+                                    <use xlink:href="images/icons/icon.svg#smartphone"></use>
+                                </svg>
+                                <input type="number" class="form-control" id="" placeholder="Nhập số điện thoại"
+                                    name="">
+                            </div>
+                            <div class="form-group icon-visible">
+                                <svg class="icon-us">
+                                    <use xlink:href="images/icons/icon.svg#compass"></use>
+                                </svg>
+                                <select class="form-control select2" name="" id="">
+                                    <option value="">Tỉnh/Thành</option>
+                                    <option value="">Hà Nội</option>
+                                    <option value="">Hồ Chí Minh</option>
+                                </select>
+                            </div>
+                            <div class="form-group icon-visible">
+                                <svg class="icon-us">
+                                    <use xlink:href="images/icons/icon.svg#map"></use>
+                                </svg>
+                                <select class="form-control select2" name="" id="">
+                                    <option value="">Quận/Huyện</option>
+                                    <option value="">Hà Nội</option>
+                                    <option value="">Hồ Chí Minh</option>
+                                </select>
+                            </div>
+                            <div class="form-group icon-visible">
+                                <svg class="icon-us">
+                                    <use xlink:href="images/icons/icon.svg#vector"></use>
+                                </svg>
+                                <select class="form-control select2" name="" id="">
+                                    <option value="">Phường/Xã</option>
+                                    <option value="">Hà Nội</option>
+                                    <option value="">Hồ Chí Minh</option>
+                                </select>
+                            </div>
+                            <div class="form-group icon-visible">
+                                <svg class="icon-us">
+                                    <use xlink:href="images/icons/icon.svg#address"></use>
+                                </svg>
+                                <input type="" class="form-control" id="" placeholder="Địa chỉ gia hàng" name="">
+                            </div>
+
+                            <label class="confir_res mt20 mb30">
+                                Tạo tài khoản
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                            </label>
+                            <div class="control_btn ">
+                                <button class="btn yellow full">Tạo địa chỉ giao hàng</button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="content_note">
+                * Để thuận tiện cho việc theo dõi đơn hàng và sử dụng được nhiều chức năng hữu ích cũng như cập nhật
+                được các chương trình khuyến mãi của UsExpress. Chúng tôi khuyến khích quý khách hãy đăng ký tài khoản
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- /build:content -->

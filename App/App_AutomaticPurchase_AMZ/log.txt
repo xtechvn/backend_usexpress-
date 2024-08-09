@@ -1,0 +1,703 @@
+UAM-2D12124 - B00PVP92X0 - Recorrect Product
+UAM-2D12124 - B00PVP92X0 - AutomaticBuyItem
+UAM-2D12124 - B00PVP92X0 - Go to URL https://www.amazon.com/dp/B00PVP92X0?smid=&psc=1
+UAM-2D12124 - B00PVP92X0 - Recorrect Product
+UAM-2D12124 - B00PVP92X0 - AutomaticBuyItem
+UAM-2D12124 - B00PVP92X0 - Go to URL https://www.amazon.com/dp/B00PVP92X0?smid=&psc=1
+UAM-2D12124 - B00PVP92X0 - Product Available
+UAM-2D12124 - B00PVP92X0 - 
+UAM-2D12124 - B00PVP92X0 - CheckAddToCartButtonAvailable Success. Case By Xpath: //input[contains(@id,"add-to-cart")]
+UAM-2D12124 - B00PVP92X0 - CheckSeller success.
+UAM-2D12124 - B00PVP92X0 - Check Deal and Discount (Old Function) Completed. Clicked: 
+UAM-2D12124 - B00PVP92X0 - Select Quantity Success. Product quantity: 1. Product MinQuantity: 1 MaxQuantity: 30. 
+UAM-2D12124 - B00PVP92X0 - Price: $25.97 <= [Order Amount +2$]: $27.97
+UAM-2D12124 - B00PVP92X0 - Click Add To Cart Button
+UAM-2D12124 - B00PVP92X0 - CheckAdsPopupAfterClickAddToCart Success.
+UAM-2D12124 - B00PVP92X0 - https://www.amazon.com/gp/cart/view.html/ref=nav_crt_ewc_hd
+UAM-2D12124 - B00PVP92X0 - Delete Other Product Success. Error Element Count: 0 . Deleted: 
+UAM-2D12124 - B00PVP92X0 - https://www.amazon.com/gp/cart/view.html/ref=nav_crt_ewc_hd
+UAM-2D12124 - B00PVP92X0 - ReCheckProductInCart Success.
+UAM-2D12124 - B00PVP92X0 - Already Logged in
+UAM-2D12124 - B00PVP92X0 - ProccessCheckOut Success.
+UAM-2D12124 - B00PVP92X0 - Gather Information Success
+UAM-2D12124 - B07PFYM5MZ - Recorrect Product
+UAM-2D12124 - B07PFYM5MZ - AutomaticBuyItem
+UAM-2D12124 - B07PFYM5MZ - Go to URL https://www.amazon.com/dp/B07PFYM5MZ?smid=&psc=1
+UAM-2D12124 - B07PFYM5MZ - Product Available
+UAM-2D12124 - B07PFYM5MZ - 
+UAM-2D12124 - B07PFYM5MZ - CheckAddToCartButtonAvailable Success. Case By Xpath: //input[contains(@id,"add-to-cart")]
+UAM-2D12124 - B07PFYM5MZ - CheckSeller success.
+UAM-2D12124 - B07PFYM5MZ - Check Deal and Discount (Old Function) Completed. Clicked: 
+UAM-2D12124 - B07PFYM5MZ - Select Quantity Success. Product quantity: 1. Product MinQuantity: 1 MaxQuantity: 54. 
+UAM-2D12124 - B07PFYM5MZ - Price: $19.99 <= [Order Amount +2$]: $21.99
+UAM-2D12124 - B07PFYM5MZ - Click Add To Cart Button
+UAM-2D12124 - B07PFYM5MZ - CheckAdsPopupAfterClickAddToCart Success.
+UAM-2D12124 - B07PFYM5MZ - https://www.amazon.com/gp/cart/view.html/ref=nav_crt_ewc_hd
+UAM-2D12124 - B07PFYM5MZ - Delete Other Product Success. Error Element Count: 0 . Deleted: 
+UAM-2D12124 - B07PFYM5MZ - https://www.amazon.com/gp/cart/view.html/ref=nav_crt_ewc_hd
+UAM-2D12124 - B07PFYM5MZ - ReCheckProductInCart Success.
+UAM-2D12124 - B07PFYM5MZ - Already Logged in
+UAM-2D12124 - B07PFYM5MZ - ProccessCheckOut Success.
+UAM-2D12124 - B07PFYM5MZ - Gather Information Success
+UAM-2D08086 - 0738750042 - CheckIfPurchased: Data / Token Invalid Not Found or New
+UAM-2D08086 - 0738750042 - Recorrect Product
+UAM-2D08086 - 0738750042 - AutomaticBuyItem
+UAM-2D08086 - 0738750042 - Go to URL https://www.amazon.com/dp/0738750042?smid=&psc=1
+UAM-2D08086 - 0738750042 - Product Available
+UAM-2D08086 - 0738750042 - CheckBuyNewOption Success. Case By Xpath: //div[@id="buyBoxAccordion"]//div[@id="newAccordionRow"]//a[@data-csa-c-func-deps="aui-da-a-accordion"]
+UAM-2D08086 - 0738750042 - CheckAddToCartButtonAvailable Success. Case By Xpath: //input[contains(@id,"add-to-cart")]
+UAM-2D08086 - 0738750042 - CheckSeller success.
+UAM-2D08086 - 0738750042 - Check Deal and Discount (Old Function) Completed. Clicked:
+UAM-2D08086 - 0738750042 - Select Quantity Success. Product quantity: 1. 
+Product MinQuantity: 1 MaxQuantity: 30.
+UAM-2D08086 - 0738750042 - Price: $12.24 <= [Order Amount +2$]: $18.23
+UAM-2D08086 - 0738750042 - Click Add To Cart Button
+UAM-2D08086 - 0738750042 - CheckAdsPopupAfterClickAddToCart Success.
+UAM-2D08086 - 0738750042 - https://www.amazon.com/gp/cart/view.html/ref=nav_crt_ewc_hd
+UAM-2D08086 - 0738750042 - Delete Other Product Success. Error Element Count: 0 . Deleted:
+UAM-2D08086 - 0738750042 - https://www.amazon.com/gp/cart/view.html/ref=nav_crt_ewc_hd
+UAM-2D08086 - 0738750042 - ReCheckProductInCart Success.
+UAM-2D08086 - 0738750042 - Already Logged in
+UAM-2D08086 - 0738750042 - CheckIfPurchased: Data / Token Invalid Not Found or New
+UAM-2D08086 - 0738750042 - Recorrect Product
+UAM-2D08086 - 0738750042 - AutomaticBuyItem
+UAM-2D08086 - 0738750042 - Go to URL https://www.amazon.com/dp/0738750042?smid=&psc=1
+UAM-2D08086 - 0738750042 - Product Available
+UAM-2D08086 - 0738750042 - CheckBuyNewOption Success. Case By Xpath: //div[@id="buyBoxAccordion"]//div[@id="newAccordionRow"]//a[@data-csa-c-func-deps="aui-da-a-accordion"]
+UAM-2D08086 - 0738750042 - CheckAddToCartButtonAvailable Success. Case By Xpath: //input[contains(@id,"add-to-cart")]
+UAM-2D08086 - 0738750042 - CheckSeller success.
+UAM-2D08086 - 0738750042 - Check Deal and Discount (Old Function) Completed. Clicked:
+UAM-2D08086 - 0738750042 - Select Quantity Success. Product quantity: 1. 
+Product MinQuantity: 1 MaxQuantity: 30.
+UAM-2D08086 - 0738750042 - Price: $12.24 <= [Order Amount +2$]: $18.23
+UAM-2D08086 - 0738750042 - Click Add To Cart Button
+UAM-2D08086 - 0738750042 - CheckAdsPopupAfterClickAddToCart Success.
+UAM-2D08086 - 0738750042 - https://www.amazon.com/gp/cart/view.html/ref=nav_crt_ewc_hd
+UAM-2D08086 - 0738750042 - Delete Other Product Success. Error Element Count: 0 . Deleted:
+UAM-2D08086 - 0738750042 - https://www.amazon.com/gp/cart/view.html/ref=nav_crt_ewc_hd
+UAM-2D08086 - 0738750042 - ReCheckProductInCart Success.
+UAM-2D08086 - 0738750042 - Already Logged in
+UAM-2D08086 - 0738750042 - ProccessCheckOut Success.
+UAM-2D08086 - 0738750042 - Gather Information Success
+UAM-2D08086 - 0875421229 - CheckIfPurchased: Data / Token Invalid Not Found or New
+UAM-2D08086 - 0875421229 - Recorrect Product
+UAM-2D08086 - 0875421229 - AutomaticBuyItem
+UAM-2D08086 - 0875421229 - Go to URL https://www.amazon.com/dp/0875421229?smid=&psc=1
+UAM-2D08086 - 0875421229 - Product Available
+UAM-2D08086 - 0875421229 - CheckBuyNewOption Success. Case By Xpath: //div[@id="buyBoxAccordion"]//div[@id="newAccordionRow"]//a[@data-csa-c-func-deps="aui-da-a-accordion"]
+UAM-2D08086 - 0875421229 - CheckAddToCartButtonAvailable Success. Case By Xpath: //input[contains(@id,"add-to-cart")]
+UAM-2D08086 - 0875421229 - CheckSeller success.
+UAM-2D08086 - 0875421229 - Check Deal and Discount (Old Function) Completed. Clicked:
+UAM-2D08086 - 0875421229 - Select Quantity Success. Product quantity: 1. 
+Product MinQuantity: 1 MaxQuantity: 30.
+UAM-2D08086 - 0875421229 - Price: $11.05 <= [Order Amount +2$]: $17.04
+UAM-2D08086 - 0875421229 - Click Add To Cart Button
+UAM-2D08086 - 0875421229 - CheckAdsPopupAfterClickAddToCart Success.
+UAM-2D08086 - 0875421229 - https://www.amazon.com/gp/cart/view.html/ref=nav_crt_ewc_hd
+UAM-2D08086 - 0875421229 - Delete Other Product Success. Error Element Count: 0 . Deleted:
+UAM-2D08086 - 0875421229 - https://www.amazon.com/gp/cart/view.html/ref=nav_crt_ewc_hd
+UAM-2D08086 - 0875421229 - ReCheckProductInCart Success.
+UAM-2D08086 - 0875421229 - Already Logged in
+UAM-2D08086 - 0875421229 - ProccessCheckOut Success.
+UAM-2D08086 - 0875421229 - Gather Information Success
+UAM-2D13131 - B08PDW2QVT - CheckIfPurchased: Data / Token Invalid Not Found or New
+UAM-2D13131 - B08PDW2QVT - Recorrect Product
+UAM-2D13131 - B08PDW2QVT - AutomaticBuyItem
+UAM-2D13131 - B08PDW2QVT - Go to URL https://www.amazon.com/dp/B08PDW2QVT?smid=&psc=1
+UAM-2D13131 - B08PDW2QVT - Product Available
+UAM-2D13131 - B08PDW2QVT - CheckBuyNewOption Success. Case By Xpath: //div[@id="buyBoxAccordion"]//div[@id="newAccordionRow"]//a[@data-csa-c-func-deps="aui-da-a-accordion"]
+UAM-2D13131 - B08PDW2QVT - CheckAddToCartButtonAvailable Success. Case By Xpath: //input[contains(@id,"add-to-cart")]
+UAM-2D13131 - B08PDW2QVT - CheckSeller success.
+UAM-2D13131 - B08PDW2QVT - Check Deal and Discount (Old Function) Completed. Clicked:
+UAM-2D13131 - B08PDW2QVT - Select Quantity Success. Product quantity: 1. 
+Product MinQuantity: 1 MaxQuantity: 12.
+UAM-2D13131 - B08PDW2QVT - Price: $84.95 <= [Order Amount +2$]: $86.95
+UAM-2D13131 - B08PDW2QVT - Click Add To Cart Button
+UAM-2D13131 - B08PDW2QVT - CheckAdsPopupAfterClickAddToCart Success.
+UAM-2D13131 - B08PDW2QVT - https://www.amazon.com/gp/cart/view.html/ref=nav_crt_ewc_hd
+UAM-2D13131 - B08PDW2QVT - Delete Other Product Success. Error Element Count: 0 . Deleted:
+UAM-2D13131 - B08PDW2QVT - https://www.amazon.com/gp/cart/view.html/ref=nav_crt_ewc_hd
+UAM-2D13131 - B08PDW2QVT - ReCheckProductInCart Success.
+UAM-2D13131 - B08PDW2QVT - Already Logged in
+UAM-2D13131 - B08PDW2QVT - ProccessCheckOut Success.
+UAM-2D13131 - B08PDW2QVT - Gather Information Success
+UAM-2D19191 - B0933LFZY2 - CheckIfPurchased: Data / Token Invalid Not Found or New
+UAM-2D19191 - B0933LFZY2 - Recorrect Product
+UAM-2D19191 - B0933LFZY2 - AutomaticBuyItem
+UAM-2D19191 - B0933LFZY2 - Go to URL https://www.amazon.com/dp/B0933LFZY2?smid=&psc=1
+UAM-2D19191 - B0933LFZY2 - Product Available
+UAM-2D19191 - B0933LFZY2 - CheckBuyNewOption - Not found in any Case. No monthly delivering option found.
+UAM-2D19191 - B0933LFZY2 - Add to Cart Button Not Found at any case
+UAM-2D19191 - B0933LFZY2 - Offers Listing with Xpath [//div[contains(@id,"pinned-offer")]] NOT available.
+UAM-2D19191 - B0933LFZY2 - OfferListing_OfferCheck: Excution Failed.
+UAM-2D19191 - B0933LFZY2 - Added: {"offer":null,"is_prime":false,"seller_name":"New","seller_URL":null} to Offer List
+UAM-2D19191 - B0933LFZY2 - CheckIfPurchased: Data / Token Invalid Not Found or New
+UAM-2D19191 - B0933LFZY2 - Recorrect Product
+UAM-2D19191 - B0933LFZY2 - AutomaticBuyItem
+UAM-2D19191 - B0933LFZY2 - Go to URL https://www.amazon.com/dp/B0933LFZY2?smid=&psc=1
+UAM-2D19191 - B0933LFZY2 - Product Available
+UAM-2D19191 - B0933LFZY2 - CheckBuyNewOption - Not found in any Case. No monthly delivering option found.
+UAM-2D19191 - B0933LFZY2 - Add to Cart Button Not Found at any case
+UAM-2D19191 - B0933LFZY2 - Offers Listing with Xpath [//div[contains(@id,"pinned-offer")]] NOT available.
+UAM-2D19191 - B0933LFZY2 - CheckIfPurchased: Data / Token Invalid Not Found or New
+UAM-2D19191 - B0933LFZY2 - Recorrect Product
+UAM-2D19191 - B0933LFZY2 - AutomaticBuyItem
+UAM-2D19191 - B0933LFZY2 - Go to URL https://www.amazon.com/dp/B0933LFZY2?smid=&psc=1
+UAM-2D19191 - B0933LFZY2 - Product Available
+UAM-2D19191 - B0933LFZY2 - CheckBuyNewOption - Not found in any Case. No monthly delivering option found.
+UAM-2D19191 - B0933LFZY2 - Add to Cart Button Not Found at any case
+UAM-2D19191 - B0933LFZY2 - Offers Listing with Xpath [//div[contains(@id,"pinned-offer")]] NOT available.
+UAM-2D19191 - B0933LFZY2 - OfferListing_OfferCheck: Excution Failed.
+UAM-2D19191 - B0933LFZY2 - CheckIfPurchased: Data / Token Invalid Not Found or New
+UAM-2D19191 - B0933LFZY2 - Recorrect Product
+UAM-2D19191 - B0933LFZY2 - AutomaticBuyItem
+UAM-2D19191 - B0933LFZY2 - Go to URL https://www.amazon.com/dp/B0933LFZY2?smid=&psc=1
+UAM-2D19191 - B0933LFZY2 - Product Available
+UAM-2D19191 - B0933LFZY2 - CheckBuyNewOption - Not found in any Case. No monthly delivering option found.
+UAM-2D19191 - B0933LFZY2 - Add to Cart Button Not Found at any case
+UAM-2D19191 - B0933LFZY2 - Offers Listing with Xpath [//div[contains(@id,"pinned-offer")]] NOT available.
+UAM-2D19191 - B0933LFZY2 - OfferListing_OfferCheck: Excution Success.
+UAM-2D19191 - B0933LFZY2 - CheckIfPurchased: Data / Token Invalid Not Found or New
+UAM-2D19191 - B0933LFZY2 - Recorrect Product
+UAM-2D19191 - B0933LFZY2 - AutomaticBuyItem
+UAM-2D19191 - B0933LFZY2 - Go to URL https://www.amazon.com/dp/B0933LFZY2?smid=&psc=1
+UAM-2D19191 - B0933LFZY2 - Product Available
+UAM-2D19191 - B0933LFZY2 - CheckBuyNewOption - Not found in any Case. No monthly delivering option found.
+UAM-2D19191 - B0933LFZY2 - Add to Cart Button Not Found at any case
+UAM-2D19191 - B0933LFZY2 - Offers Listing with Xpath [//div[contains(@id,"pinned-offer")]] NOT available.
+UAM-2D19191 - B0933LFZY2 - OfferListing_OfferCheck: Excution Success. All Passed
+UAM-2D19191 - B0933LFZY2 - Added: Normal Offer to Offer List
+UAM-2D19191 - B0933LFZY2 - Add Offer To Cart Success to Offer List
+UAM-2E11113 - 1784944416 - CheckIfPurchased: Data / Token Invalid Not Found or New
+UAM-2E11113 - 1784944416 - Recorrect Product
+UAM-2E11113 - 1784944416 - AutomaticBuyItem
+UAM-2E11113 - 1784944416 - Go to URL https://www.amazon.com/dp/1784944416?smid=&psc=1
+UAM-2E11113 - 1784944416 - Product Available
+UAM-2E11113 - 1784944416 - CheckBuyNewOption Success. Case By Xpath: //div[@id="buyBoxAccordion"]//div[@id="newAccordionRow"]//a[@data-csa-c-func-deps="aui-da-a-accordion"]
+UAM-2E11113 - 1784944416 - CheckAddToCartButtonAvailable Success. Case By Xpath: //input[contains(@id,"add-to-cart")]
+UAM-2E11113 - 1784944416 - CheckSeller success.
+UAM-2E11113 - 1784944416 - Check Deal and Discount (Old Function) Completed. Clicked:
+UAM-2E11113 - 1784944416 - Select Quantity Success. Product quantity: 1. 
+Product MinQuantity: 1 MaxQuantity: 30.
+UAM-2E11113 - 1784944416 - Price: $22.95 > [Order Amount +2$]: $22.28
+UAM-2E11113 - 1784944416 - CheckIfPurchased: Data / Token Invalid Not Found or New
+UAM-2E11113 - 1784944416 - Recorrect Product
+UAM-2E11113 - 1784944416 - AutomaticBuyItem
+UAM-2E11113 - 1784944416 - Go to URL https://www.amazon.com/dp/1784944416?smid=&psc=1
+UAM-2E11113 - 1784944416 - Product Available
+UAM-2E11113 - 1784944416 - CheckBuyNewOption Success. Case By Xpath: //div[@id="buyBoxAccordion"]//div[@id="newAccordionRow"]//a[@data-csa-c-func-deps="aui-da-a-accordion"]
+UAM-2E11113 - 1784944416 - CheckAddToCartButtonAvailable Success. Case By Xpath: //input[contains(@id,"add-to-cart")]
+UAM-2E11113 - 1784944416 - CheckSeller success.
+UAM-2E11113 - 1784944416 - Check Deal and Discount (Old Function) Completed. Clicked:
+UAM-2E11113 - 1784944416 - Select Quantity Success. Product quantity: 1. 
+Product MinQuantity: 1 MaxQuantity: 30.
+UAM-2E11113 - 1784944416 - Price: $22.95 > [Order Amount +2$]: $22.28
+UAM-2E11113 - 1784944416 - LoadMoreOffers: Load Success
+UAM-2E11113 - 1784944416 - Offers Listing with Xpath [//div[contains(@id,"pinned-offer")]] available.
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck: Excution Failed. OfferListing_OfferCheck - Offer b2b-aod-sticky-pinned-offer: Not Acceptable Price -  Crawl Return: 22.95 , Order Price: 20.28
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck - Offer aod-offer: Offer is Used or Others than NEW, Skip offer
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck - Offer aod-offer: Offer is Used or Others than NEW, Skip offer
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck - Offer aod-offer: Offer is Used or Others than NEW, Skip offer
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck - Offer aod-offer: Offer is Used or Others than NEW, Skip offer
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck - Offer aod-offer: Offer is Used or Others than NEW, Skip offer
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck - Offer aod-offer: Offer is Used or Others than NEW, Skip offer
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck - Offer aod-offer: Offer is Used or Others than NEW, Skip offer
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck - Offer aod-offer: Offer is Used or Others than NEW, Skip offer
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck - Offer aod-offer: Offer is Used or Others than NEW, Skip offer
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck - Offer aod-offer: Offer is Used or Others than NEW, Skip offer
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck - Offer aod-offer: Offer is Used or Others than NEW, Skip offer
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck - Offer aod-offer: Offer is Used or Others than NEW, Skip offer
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck - Offer aod-offer: Offer is Used or Others than NEW, Skip offer
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck: Excution Success. All Passed
+UAM-2E11113 - 1784944416 - Added: Normal Offer to Offer List
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck: Excution Success. All Passed
+UAM-2E11113 - 1784944416 - Added: Normal Offer to Offer List
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck: Excution Success. All Passed
+UAM-2E11113 - 1784944416 - Added: Normal Offer to Offer List
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck: Excution Success. All Passed
+UAM-2E11113 - 1784944416 - Added: Normal Offer to Offer List
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck: Excution Success. All Passed
+UAM-2E11113 - 1784944416 - Added: Normal Offer to Offer List
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck - Offer aod-offer: Offer is Used or Others than NEW, Skip offer
+UAM-2E11113 - 1784944416 - CheckIfPurchased: Data / Token Invalid Not Found or New
+UAM-2E11113 - 1784944416 - Recorrect Product
+UAM-2E11113 - 1784944416 - AutomaticBuyItem
+UAM-2E11113 - 1784944416 - Go to URL https://www.amazon.com/dp/1784944416?smid=&psc=1
+UAM-2E11113 - 1784944416 - Product Available
+UAM-2E11113 - 1784944416 - CheckBuyNewOption Success. Case By Xpath: //div[@id="buyBoxAccordion"]//div[@id="newAccordionRow"]//a[@data-csa-c-func-deps="aui-da-a-accordion"]
+UAM-2E11113 - 1784944416 - CheckAddToCartButtonAvailable Success. Case By Xpath: //input[contains(@id,"add-to-cart")]
+UAM-2E11113 - 1784944416 - CheckSeller success.
+UAM-2E11113 - 1784944416 - Check Deal and Discount (Old Function) Completed. Clicked:
+UAM-2E11113 - 1784944416 - Select Quantity Success. Product quantity: 1. 
+Product MinQuantity: 1 MaxQuantity: 30.
+UAM-2E11113 - 1784944416 - Price: $22.95 > [Order Amount +2$]: $22.28
+UAM-2E11113 - 1784944416 - LoadMoreOffers: Load Success
+UAM-2E11113 - 1784944416 - Offers Listing with Xpath [//div[contains(@id,"pinned-offer")]] available.
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck: Excution Failed. OfferListing_OfferCheck - Offer b2b-aod-sticky-pinned-offer: Not Acceptable Price -  Crawl Return: 22.95 , Order Price: 20.28
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck - Offer aod-offer: Offer is Used or Others than NEW, Skip offer
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck - Offer aod-offer: Offer is Used or Others than NEW, Skip offer
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck - Offer aod-offer: Offer is Used or Others than NEW, Skip offer
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck - Offer aod-offer: Offer is Used or Others than NEW, Skip offer
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck - Offer aod-offer: Offer is Used or Others than NEW, Skip offer
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck - Offer aod-offer: Offer is Used or Others than NEW, Skip offer
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck - Offer aod-offer: Offer is Used or Others than NEW, Skip offer
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck - Offer aod-offer: Offer is Used or Others than NEW, Skip offer
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck - Offer aod-offer: Offer is Used or Others than NEW, Skip offer
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck - Offer aod-offer: Offer is Used or Others than NEW, Skip offer
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck - Offer aod-offer: Offer is Used or Others than NEW, Skip offer
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck - Offer aod-offer: Offer is Used or Others than NEW, Skip offer
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck - Offer aod-offer: Offer is Used or Others than NEW, Skip offer
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck: Excution Success. All Passed
+UAM-2E11113 - 1784944416 - Added: Normal Offer to Offer List
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck: Excution Success. All Passed
+UAM-2E11113 - 1784944416 - Added: Normal Offer to Offer List
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck: Excution Success. All Passed
+UAM-2E11113 - 1784944416 - Added: Normal Offer to Offer List
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck: Excution Success. All Passed
+UAM-2E11113 - 1784944416 - Added: Normal Offer to Offer List
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck: Excution Success. All Passed
+UAM-2E11113 - 1784944416 - Added: Normal Offer to Offer List
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck - Offer aod-offer: Offer is Used or Others than NEW, Skip offer
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck: Excution Success. All Passed
+UAM-2E11113 - 1784944416 - Added: Normal Offer to Offer List
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck: Excution Success. All Passed
+UAM-2E11113 - 1784944416 - Added: Normal Offer to Offer List
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck: Excution Success. All Passed
+UAM-2E11113 - 1784944416 - Added: Normal Offer to Offer List
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck: Excution Success. All Passed
+UAM-2E11113 - 1784944416 - Added: Normal Offer to Offer List
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck: Excution Success. All Passed
+UAM-2E11113 - 1784944416 - Added: Normal Offer to Offer List
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck: Excution Success. All Passed
+UAM-2E11113 - 1784944416 - Added: Normal Offer to Offer List
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck: Excution Failed. OfferListing_OfferCheck - Offer aod-offer: Not Acceptable Price -  Crawl Return: 22.29 , Order Price: 20.28
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck: Excution Success. All Passed
+UAM-2E11113 - 1784944416 - Added: Normal Offer to Offer List
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck: Excution Failed. OfferListing_OfferCheck - Offer aod-offer: Not Acceptable Price -  Crawl Return: 23.26 , Order Price: 20.28
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck: Excution Success. All Passed
+UAM-2E11113 - 1784944416 - Added: Normal Offer to Offer List
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck: Excution Failed. OfferListing_OfferCheck - Offer aod-offer: Not Acceptable Price -  Crawl Return: 23.93 , Order Price: 20.28
+UAM-2E11113 - 1784944416 - OfferListing_AddToCart: Excution Failed. OpenQA.Selenium.ElementClickInterceptedException: element click intercepted: Element <input name="submit.addToCart" aria-label="Add to Cart from seller swati21 and price $15.12
+" aria-labelledby="" class="a-button-input" type="submit"> is not clickable at point (1439, 14). Other element would receive the click: <div class="a-fixed-right-grid-col aod-atc-inline-msg-column a-col-right" style="width:150px;margin-right:-150px;float:left;">...</div>
+  (Session info: chrome=101.0.4951.54)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.UnpackAndThrowOnError(Response errorResponse)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters)
+   at OpenQA.Selenium.Remote.RemoteWebElement.Click()
+   at App_AutomaticPurchase_AMZ.Repositories.AutoPurchaseAmzRepository.OfferListing_AddToCart(ChromeDriver driver, IWebElement selected_offer, Dictionary`2 offer_xpath) in C:\Users\Mirrors\Desktop\SVN\App\App_AutomaticPurchase_AMZ\Repositories\AutoPurchaseAmzRepository.cs:line 1583 to Offer List
+UAM-2E11113 - 1784944416 - OfferListing_AddToCart: Excution Failed. OpenQA.Selenium.ElementClickInterceptedException: element click intercepted: Element <input name="submit.addToCart" aria-label="Add to Cart from seller BookGuyz and price $19.12
+" aria-labelledby="" class="a-button-input" type="submit"> is not clickable at point (1439, 14). Other element would receive the click: <div class="a-fixed-right-grid-col aod-atc-inline-msg-column a-col-right" style="width:150px;margin-right:-150px;float:left;">...</div>
+  (Session info: chrome=101.0.4951.54)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.UnpackAndThrowOnError(Response errorResponse)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters)
+   at OpenQA.Selenium.Remote.RemoteWebElement.Click()
+   at App_AutomaticPurchase_AMZ.Repositories.AutoPurchaseAmzRepository.OfferListing_AddToCart(ChromeDriver driver, IWebElement selected_offer, Dictionary`2 offer_xpath) in C:\Users\Mirrors\Desktop\SVN\App\App_AutomaticPurchase_AMZ\Repositories\AutoPurchaseAmzRepository.cs:line 1583 to Offer List
+UAM-2E11113 - 1784944416 - CheckIfPurchased: Data / Token Invalid Not Found or New
+UAM-2E11113 - 1784944416 - Recorrect Product
+UAM-2E11113 - 1784944416 - AutomaticBuyItem
+UAM-2E11113 - 1784944416 - Go to URL https://www.amazon.com/dp/1784944416?smid=&psc=1
+UAM-2E11113 - 1784944416 - Product Available
+UAM-2E11113 - 1784944416 - CheckBuyNewOption Success. Case By Xpath: //div[@id="buyBoxAccordion"]//div[@id="newAccordionRow"]//a[@data-csa-c-func-deps="aui-da-a-accordion"]
+UAM-2E11113 - 1784944416 - CheckAddToCartButtonAvailable Success. Case By Xpath: //input[contains(@id,"add-to-cart")]
+UAM-2E11113 - 1784944416 - CheckSeller success.
+UAM-2E11113 - 1784944416 - Check Deal and Discount (Old Function) Completed. Clicked:
+UAM-2E11113 - 1784944416 - Select Quantity Success. Product quantity: 1. 
+Product MinQuantity: 1 MaxQuantity: 30.
+UAM-2E11113 - 1784944416 - Price: $22.95 > [Order Amount +2$]: $22.28
+UAM-2E11113 - 1784944416 - LoadMoreOffers: Load Success
+UAM-2E11113 - 1784944416 - Offers Listing with Xpath [//div[contains(@id,"pinned-offer")]] available.
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck: Excution Failed. OfferListing_OfferCheck - Offer b2b-aod-sticky-pinned-offer: Not Acceptable Price -  Crawl Return: 22.95 , Order Price: 20.28
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck - Offer aod-offer: Offer is Used or Others than NEW, Skip offer
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck - Offer aod-offer: Offer is Used or Others than NEW, Skip offer
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck - Offer aod-offer: Offer is Used or Others than NEW, Skip offer
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck - Offer aod-offer: Offer is Used or Others than NEW, Skip offer
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck - Offer aod-offer: Offer is Used or Others than NEW, Skip offer
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck - Offer aod-offer: Offer is Used or Others than NEW, Skip offer
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck - Offer aod-offer: Offer is Used or Others than NEW, Skip offer
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck - Offer aod-offer: Offer is Used or Others than NEW, Skip offer
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck - Offer aod-offer: Offer is Used or Others than NEW, Skip offer
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck - Offer aod-offer: Offer is Used or Others than NEW, Skip offer
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck - Offer aod-offer: Offer is Used or Others than NEW, Skip offer
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck - Offer aod-offer: Offer is Used or Others than NEW, Skip offer
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck - Offer aod-offer: Offer is Used or Others than NEW, Skip offer
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck: Excution Success. All Passed
+UAM-2E11113 - 1784944416 - Added: Normal Offer to Offer List
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck: Excution Success. All Passed
+UAM-2E11113 - 1784944416 - Added: Normal Offer to Offer List
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck: Excution Success. All Passed
+UAM-2E11113 - 1784944416 - Added: Normal Offer to Offer List
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck: Excution Success. All Passed
+UAM-2E11113 - 1784944416 - Added: Normal Offer to Offer List
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck: Excution Success. All Passed
+UAM-2E11113 - 1784944416 - Added: Normal Offer to Offer List
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck - Offer aod-offer: Offer is Used or Others than NEW, Skip offer
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck: Excution Success. All Passed
+UAM-2E11113 - 1784944416 - Added: Normal Offer to Offer List
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck: Excution Success. All Passed
+UAM-2E11113 - 1784944416 - Added: Normal Offer to Offer List
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck: Excution Success. All Passed
+UAM-2E11113 - 1784944416 - Added: Normal Offer to Offer List
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck: Excution Success. All Passed
+UAM-2E11113 - 1784944416 - Added: Normal Offer to Offer List
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck: Excution Success. All Passed
+UAM-2E11113 - 1784944416 - Added: Normal Offer to Offer List
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck: Excution Success. All Passed
+UAM-2E11113 - 1784944416 - Added: Normal Offer to Offer List
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck: Excution Failed. OfferListing_OfferCheck - Offer aod-offer: Not Acceptable Price -  Crawl Return: 22.29 , Order Price: 20.28
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck: Excution Success. All Passed
+UAM-2E11113 - 1784944416 - Added: Normal Offer to Offer List
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck: Excution Failed. OfferListing_OfferCheck - Offer aod-offer: Not Acceptable Price -  Crawl Return: 23.26 , Order Price: 20.28
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck: Excution Success. All Passed
+UAM-2E11113 - 1784944416 - Added: Normal Offer to Offer List
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck: Excution Failed. OfferListing_OfferCheck - Offer aod-offer: Not Acceptable Price -  Crawl Return: 23.93 , Order Price: 20.28
+UAM-2E11113 - 1784944416 - CheckIfPurchased: Data / Token Invalid Not Found or New
+UAM-2E11113 - 1784944416 - Recorrect Product
+UAM-2E11113 - 1784944416 - AutomaticBuyItem
+UAM-2E11113 - 1784944416 - Go to URL https://www.amazon.com/dp/1784944416?smid=&psc=1
+UAM-2E11113 - 1784944416 - Product Available
+UAM-2E11113 - 1784944416 - CheckBuyNewOption Success. Case By Xpath: //div[@id="buyBoxAccordion"]//div[@id="newAccordionRow"]//a[@data-csa-c-func-deps="aui-da-a-accordion"]
+UAM-2E11113 - 1784944416 - CheckAddToCartButtonAvailable Success. Case By Xpath: //input[contains(@id,"add-to-cart")]
+UAM-2E11113 - 1784944416 - CheckSeller success.
+UAM-2E11113 - 1784944416 - Check Deal and Discount (Old Function) Completed. Clicked:
+UAM-2E11113 - 1784944416 - Select Quantity Success. Product quantity: 1. 
+Product MinQuantity: 1 MaxQuantity: 30.
+UAM-2E11113 - 1784944416 - Price: $22.95 > [Order Amount +2$]: $22.28
+UAM-2E11113 - 1784944416 - LoadMoreOffers: Load Success
+UAM-2E11113 - 1784944416 - Offers Listing with Xpath [//div[contains(@id,"pinned-offer")]] available.
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck: Excution Failed. OfferListing_OfferCheck - Offer b2b-aod-sticky-pinned-offer: Not Acceptable Price -  Crawl Return: 22.95 , Order Price: 20.28
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck - Offer aod-offer: Offer is Used or Others than NEW, Skip offer
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck - Offer aod-offer: Offer is Used or Others than NEW, Skip offer
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck - Offer aod-offer: Offer is Used or Others than NEW, Skip offer
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck - Offer aod-offer: Offer is Used or Others than NEW, Skip offer
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck - Offer aod-offer: Offer is Used or Others than NEW, Skip offer
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck - Offer aod-offer: Offer is Used or Others than NEW, Skip offer
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck - Offer aod-offer: Offer is Used or Others than NEW, Skip offer
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck - Offer aod-offer: Offer is Used or Others than NEW, Skip offer
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck - Offer aod-offer: Offer is Used or Others than NEW, Skip offer
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck - Offer aod-offer: Offer is Used or Others than NEW, Skip offer
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck - Offer aod-offer: Offer is Used or Others than NEW, Skip offer
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck - Offer aod-offer: Offer is Used or Others than NEW, Skip offer
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck - Offer aod-offer: Offer is Used or Others than NEW, Skip offer
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck: Excution Success. All Passed
+UAM-2E11113 - 1784944416 - Added: Normal Offer to Offer List
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck: Excution Success. All Passed
+UAM-2E11113 - 1784944416 - Added: Normal Offer to Offer List
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck: Excution Success. All Passed
+UAM-2E11113 - 1784944416 - Added: Normal Offer to Offer List
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck: Excution Success. All Passed
+UAM-2E11113 - 1784944416 - Added: Normal Offer to Offer List
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck: Excution Success. All Passed
+UAM-2E11113 - 1784944416 - Added: Normal Offer to Offer List
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck - Offer aod-offer: Offer is Used or Others than NEW, Skip offer
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck: Excution Success. All Passed
+UAM-2E11113 - 1784944416 - Added: Normal Offer to Offer List
+UAM-2E11113 - 1784944416 - OfferListing_AddToCart: Excution Failed. OpenQA.Selenium.ElementClickInterceptedException: element click intercepted: Element <input name="submit.addToCart" aria-label="Add to Cart from seller swati21 and price $15.12
+" aria-labelledby="" class="a-button-input" type="submit"> is not clickable at point (1358, 14). Other element would receive the click: <div class="a-fixed-right-grid-col aod-atc-inline-msg-column a-col-right" style="width:150px;margin-right:-150px;float:left;">...</div>
+  (Session info: chrome=101.0.4951.54)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.UnpackAndThrowOnError(Response errorResponse)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters)
+   at OpenQA.Selenium.Remote.RemoteWebElement.Click()
+   at App_AutomaticPurchase_AMZ.Repositories.AutoPurchaseAmzRepository.OfferListing_AddToCart(ChromeDriver driver, IWebElement selected_offer, Dictionary`2 offer_xpath) in C:\Users\Mirrors\Desktop\SVN\App\App_AutomaticPurchase_AMZ\Repositories\AutoPurchaseAmzRepository.cs:line 1584 to Offer List
+UAM-2E11113 - 1784944416 - CheckIfPurchased: Data / Token Invalid Not Found or New
+UAM-2E11113 - 1784944416 - Recorrect Product
+UAM-2E11113 - 1784944416 - AutomaticBuyItem
+UAM-2E11113 - 1784944416 - Go to URL https://www.amazon.com/dp/1784944416?smid=&psc=1
+UAM-2E11113 - 1784944416 - Product Available
+UAM-2E11113 - 1784944416 - CheckBuyNewOption Success. Case By Xpath: //div[@id="buyBoxAccordion"]//div[@id="newAccordionRow"]//a[@data-csa-c-func-deps="aui-da-a-accordion"]
+UAM-2E11113 - 1784944416 - CheckAddToCartButtonAvailable Success. Case By Xpath: //input[contains(@id,"add-to-cart")]
+UAM-2E11113 - 1784944416 - CheckSeller success.
+UAM-2E11113 - 1784944416 - Check Deal and Discount (Old Function) Completed. Clicked:
+UAM-2E11113 - 1784944416 - Select Quantity Success. Product quantity: 1. 
+Product MinQuantity: 1 MaxQuantity: 30.
+UAM-2E11113 - 1784944416 - Price: $22.95 > [Order Amount +2$]: $22.28
+UAM-2E11113 - 1784944416 - LoadMoreOffers: Load Success
+UAM-2E11113 - 1784944416 - Offers Listing with Xpath [//div[contains(@id,"pinned-offer")]] available.
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck: Excution Failed. OfferListing_OfferCheck - Offer b2b-aod-sticky-pinned-offer: Not Acceptable Price -  Crawl Return: 22.95 , Order Price: 20.28
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck - Offer aod-offer: Offer is Used or Others than NEW, Skip offer
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck - Offer aod-offer: Offer is Used or Others than NEW, Skip offer
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck - Offer aod-offer: Offer is Used or Others than NEW, Skip offer
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck - Offer aod-offer: Offer is Used or Others than NEW, Skip offer
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck - Offer aod-offer: Offer is Used or Others than NEW, Skip offer
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck - Offer aod-offer: Offer is Used or Others than NEW, Skip offer
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck - Offer aod-offer: Offer is Used or Others than NEW, Skip offer
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck - Offer aod-offer: Offer is Used or Others than NEW, Skip offer
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck - Offer aod-offer: Offer is Used or Others than NEW, Skip offer
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck - Offer aod-offer: Offer is Used or Others than NEW, Skip offer
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck - Offer aod-offer: Offer is Used or Others than NEW, Skip offer
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck - Offer aod-offer: Offer is Used or Others than NEW, Skip offer
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck - Offer aod-offer: Offer is Used or Others than NEW, Skip offer
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck: Excution Success. All Passed
+UAM-2E11113 - 1784944416 - Added: Normal Offer to Offer List
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck: Excution Success. All Passed
+UAM-2E11113 - 1784944416 - Added: Normal Offer to Offer List
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck: Excution Success. All Passed
+UAM-2E11113 - 1784944416 - Added: Normal Offer to Offer List
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck: Excution Success. All Passed
+UAM-2E11113 - 1784944416 - Added: Normal Offer to Offer List
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck: Excution Success. All Passed
+UAM-2E11113 - 1784944416 - Added: Normal Offer to Offer List
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck - Offer aod-offer: Offer is Used or Others than NEW, Skip offer
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck: Excution Success. All Passed
+UAM-2E11113 - 1784944416 - Added: Normal Offer to Offer List
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck: Excution Success. All Passed
+UAM-2E11113 - 1784944416 - Added: Normal Offer to Offer List
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck: Excution Success. All Passed
+UAM-2E11113 - 1784944416 - Added: Normal Offer to Offer List
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck: Excution Success. All Passed
+UAM-2E11113 - 1784944416 - Added: Normal Offer to Offer List
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck: Excution Success. All Passed
+UAM-2E11113 - 1784944416 - Added: Normal Offer to Offer List
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck: Excution Success. All Passed
+UAM-2E11113 - 1784944416 - Added: Normal Offer to Offer List
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck: Excution Failed. OfferListing_OfferCheck - Offer aod-offer: Not Acceptable Price -  Crawl Return: 22.29 , Order Price: 20.28
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck: Excution Success. All Passed
+UAM-2E11113 - 1784944416 - Added: Normal Offer to Offer List
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck: Excution Failed. OfferListing_OfferCheck - Offer aod-offer: Not Acceptable Price -  Crawl Return: 23.26 , Order Price: 20.28
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck: Excution Success. All Passed
+UAM-2E11113 - 1784944416 - Added: Normal Offer to Offer List
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck: Excution Failed. OfferListing_OfferCheck - Offer aod-offer: Not Acceptable Price -  Crawl Return: 23.93 , Order Price: 20.28
+UAM-2E11113 - 1784944416 - OfferListing_AddToCart: Excution Failed. OpenQA.Selenium.ElementClickInterceptedException: element click intercepted: Element <input name="submit.addToCart" aria-label="Add to Cart from seller swati21 and price $15.12
+" aria-labelledby="" class="a-button-input" type="submit"> is not clickable at point (1417, 14). Other element would receive the click: <div class="a-fixed-right-grid-col aod-atc-inline-msg-column a-col-right" style="width:150px;margin-right:-150px;float:left;">...</div>
+  (Session info: chrome=101.0.4951.54)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.UnpackAndThrowOnError(Response errorResponse)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters)
+   at OpenQA.Selenium.Remote.RemoteWebElement.Click()
+   at App_AutomaticPurchase_AMZ.Repositories.AutoPurchaseAmzRepository.OfferListing_AddToCart(ChromeDriver driver, IWebElement selected_offer, Dictionary`2 offer_xpath) in C:\Users\Mirrors\Desktop\SVN\App\App_AutomaticPurchase_AMZ\Repositories\AutoPurchaseAmzRepository.cs:line 1584 to Offer List
+UAM-2E11113 - 1784944416 - CheckIfPurchased: Data / Token Invalid Not Found or New
+UAM-2E11113 - 1784944416 - Recorrect Product
+UAM-2E11113 - 1784944416 - AutomaticBuyItem
+UAM-2E11113 - 1784944416 - Go to URL https://www.amazon.com/dp/1784944416?smid=&psc=1
+UAM-2E11113 - 1784944416 - Product Available
+UAM-2E11113 - 1784944416 - CheckBuyNewOption Success. Case By Xpath: //div[@id="buyBoxAccordion"]//div[@id="newAccordionRow"]//a[@data-csa-c-func-deps="aui-da-a-accordion"]
+UAM-2E11113 - 1784944416 - CheckAddToCartButtonAvailable Success. Case By Xpath: //input[contains(@id,"add-to-cart")]
+UAM-2E11113 - 1784944416 - CheckSeller success.
+UAM-2E11113 - 1784944416 - Check Deal and Discount (Old Function) Completed. Clicked:
+UAM-2E11113 - 1784944416 - Select Quantity Success. Product quantity: 1. 
+Product MinQuantity: 1 MaxQuantity: 30.
+UAM-2E11113 - 1784944416 - Price: $22.95 > [Order Amount +2$]: $22.28
+UAM-2E11113 - 1784944416 - LoadMoreOffers: Load Success
+UAM-2E11113 - 1784944416 - Offers Listing with Xpath [//div[contains(@id,"pinned-offer")]] available.
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck: Excution Failed. OfferListing_OfferCheck - Offer b2b-aod-sticky-pinned-offer: Not Acceptable Price -  Crawl Return: 22.95 , Order Price: 20.28
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck - Offer aod-offer: Offer is Used or Others than NEW, Skip offer
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck - Offer aod-offer: Offer is Used or Others than NEW, Skip offer
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck - Offer aod-offer: Offer is Used or Others than NEW, Skip offer
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck - Offer aod-offer: Offer is Used or Others than NEW, Skip offer
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck - Offer aod-offer: Offer is Used or Others than NEW, Skip offer
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck - Offer aod-offer: Offer is Used or Others than NEW, Skip offer
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck - Offer aod-offer: Offer is Used or Others than NEW, Skip offer
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck - Offer aod-offer: Offer is Used or Others than NEW, Skip offer
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck - Offer aod-offer: Offer is Used or Others than NEW, Skip offer
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck - Offer aod-offer: Offer is Used or Others than NEW, Skip offer
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck - Offer aod-offer: Offer is Used or Others than NEW, Skip offer
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck - Offer aod-offer: Offer is Used or Others than NEW, Skip offer
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck - Offer aod-offer: Offer is Used or Others than NEW, Skip offer
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck: Excution Success. All Passed
+UAM-2E11113 - 1784944416 - Added: Normal Offer to Offer List
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck: Excution Success. All Passed
+UAM-2E11113 - 1784944416 - Added: Normal Offer to Offer List
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck: Excution Success. All Passed
+UAM-2E11113 - 1784944416 - Added: Normal Offer to Offer List
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck: Excution Success. All Passed
+UAM-2E11113 - 1784944416 - Added: Normal Offer to Offer List
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck: Excution Success. All Passed
+UAM-2E11113 - 1784944416 - Added: Normal Offer to Offer List
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck - Offer aod-offer: Offer is Used or Others than NEW, Skip offer
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck: Excution Success. All Passed
+UAM-2E11113 - 1784944416 - Added: Normal Offer to Offer List
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck: Excution Success. All Passed
+UAM-2E11113 - 1784944416 - Added: Normal Offer to Offer List
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck: Excution Success. All Passed
+UAM-2E11113 - 1784944416 - Added: Normal Offer to Offer List
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck: Excution Success. All Passed
+UAM-2E11113 - 1784944416 - Added: Normal Offer to Offer List
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck: Excution Success. All Passed
+UAM-2E11113 - 1784944416 - Added: Normal Offer to Offer List
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck: Excution Success. All Passed
+UAM-2E11113 - 1784944416 - Added: Normal Offer to Offer List
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck: Excution Failed. OfferListing_OfferCheck - Offer aod-offer: Not Acceptable Price -  Crawl Return: 22.29 , Order Price: 20.28
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck: Excution Success. All Passed
+UAM-2E11113 - 1784944416 - Added: Normal Offer to Offer List
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck: Excution Failed. OfferListing_OfferCheck - Offer aod-offer: Not Acceptable Price -  Crawl Return: 23.26 , Order Price: 20.28
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck: Excution Success. All Passed
+UAM-2E11113 - 1784944416 - Added: Normal Offer to Offer List
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck: Excution Failed. OfferListing_OfferCheck - Offer aod-offer: Not Acceptable Price -  Crawl Return: 23.93 , Order Price: 20.28
+UAM-2E11113 - 1784944416 - OfferListing_AddToCart: Excution Failed. OpenQA.Selenium.ElementClickInterceptedException: element click intercepted: Element <input name="submit.addToCart" aria-label="Add to Cart from seller swati21 and price $15.12
+" aria-labelledby="" class="a-button-input" type="submit"> is not clickable at point (1146, 14). Other element would receive the click: <div class="a-fixed-right-grid-col aod-atc-inline-msg-column a-col-right" style="width:150px;margin-right:-150px;float:left;">...</div>
+  (Session info: chrome=101.0.4951.54)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.UnpackAndThrowOnError(Response errorResponse)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters)
+   at OpenQA.Selenium.Remote.RemoteWebElement.Click()
+   at App_AutomaticPurchase_AMZ.Repositories.AutoPurchaseAmzRepository.OfferListing_AddToCart(ChromeDriver driver, IWebElement selected_offer, Dictionary`2 offer_xpath) in C:\Users\Mirrors\Desktop\SVN\App\App_AutomaticPurchase_AMZ\Repositories\AutoPurchaseAmzRepository.cs:line 1584 to Offer List
+UAM-2E11113 - 1784944416 - CheckIfPurchased - Exists: Success: 141
+UAM-2E11113 - 1784944416 - CheckIfPurchased: Data / Token Invalid Not Found or New
+UAM-2E11113 - 1784944416 - Recorrect Product
+UAM-2E11113 - 1784944416 - AutomaticBuyItem
+UAM-2E11113 - 1784944416 - Go to URL https://www.amazon.com/dp/1784944416?smid=&psc=1
+UAM-2E11113 - 1784944416 - Product Available
+UAM-2E11113 - 1784944416 - CheckBuyNewOption Success. Case By Xpath: //div[@id="buyBoxAccordion"]//div[@id="newAccordionRow"]//a[@data-csa-c-func-deps="aui-da-a-accordion"]
+UAM-2E11113 - 1784944416 - CheckAddToCartButtonAvailable Success. Case By Xpath: //input[contains(@id,"add-to-cart")]
+UAM-2E11113 - 1784944416 - CheckSeller success.
+UAM-2E11113 - 1784944416 - Check Deal and Discount (Old Function) Completed. Clicked:
+UAM-2E11113 - 1784944416 - Select Quantity Success. Product quantity: 1. 
+Product MinQuantity: 1 MaxQuantity: 30.
+UAM-2E11113 - 1784944416 - Price: $22.95 > [Order Amount +2$]: $22.28
+UAM-2E11113 - 1784944416 - LoadMoreOffers: Load Success
+UAM-2E11113 - 1784944416 - Offers Listing with Xpath [//div[contains(@id,"pinned-offer")]] available.
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck: Excution Failed. OfferListing_OfferCheck - Offer b2b-aod-sticky-pinned-offer: Not Acceptable Price -  Crawl Return: 22.95 , Order Price: 20.28
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck - Offer aod-offer: Offer is Used or Others than NEW, Skip offer
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck - Offer aod-offer: Offer is Used or Others than NEW, Skip offer
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck - Offer aod-offer: Offer is Used or Others than NEW, Skip offer
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck - Offer aod-offer: Offer is Used or Others than NEW, Skip offer
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck - Offer aod-offer: Offer is Used or Others than NEW, Skip offer
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck - Offer aod-offer: Offer is Used or Others than NEW, Skip offer
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck - Offer aod-offer: Offer is Used or Others than NEW, Skip offer
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck - Offer aod-offer: Offer is Used or Others than NEW, Skip offer
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck - Offer aod-offer: Offer is Used or Others than NEW, Skip offer
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck - Offer aod-offer: Offer is Used or Others than NEW, Skip offer
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck - Offer aod-offer: Offer is Used or Others than NEW, Skip offer
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck - Offer aod-offer: Offer is Used or Others than NEW, Skip offer
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck - Offer aod-offer: Offer is Used or Others than NEW, Skip offer
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck: Excution Success. All Passed
+UAM-2E11113 - 1784944416 - Added: Normal Offer to Offer List
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck: Excution Success. All Passed
+UAM-2E11113 - 1784944416 - Added: Normal Offer to Offer List
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck: Excution Success. All Passed
+UAM-2E11113 - 1784944416 - Added: Normal Offer to Offer List
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck: Excution Success. All Passed
+UAM-2E11113 - 1784944416 - Added: Normal Offer to Offer List
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck: Excution Success. All Passed
+UAM-2E11113 - 1784944416 - Added: Normal Offer to Offer List
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck - Offer aod-offer: Offer is Used or Others than NEW, Skip offer
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck: Excution Success. All Passed
+UAM-2E11113 - 1784944416 - Added: Normal Offer to Offer List
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck: Excution Success. All Passed
+UAM-2E11113 - 1784944416 - Added: Normal Offer to Offer List
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck: Excution Success. All Passed
+UAM-2E11113 - 1784944416 - Added: Normal Offer to Offer List
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck: Excution Success. All Passed
+UAM-2E11113 - 1784944416 - Added: Normal Offer to Offer List
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck: Excution Success. All Passed
+UAM-2E11113 - 1784944416 - Added: Normal Offer to Offer List
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck: Excution Success. All Passed
+UAM-2E11113 - 1784944416 - Added: Normal Offer to Offer List
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck: Excution Failed. OfferListing_OfferCheck - Offer aod-offer: Not Acceptable Price -  Crawl Return: 22.29 , Order Price: 20.28
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck: Excution Success. All Passed
+UAM-2E11113 - 1784944416 - Added: Normal Offer to Offer List
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck: Excution Failed. OfferListing_OfferCheck - Offer aod-offer: Not Acceptable Price -  Crawl Return: 23.26 , Order Price: 20.28
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck: Excution Success. All Passed
+UAM-2E11113 - 1784944416 - Added: Normal Offer to Offer List
+UAM-2E11113 - 1784944416 - OfferListing_OfferCheck: Excution Failed. OfferListing_OfferCheck - Offer aod-offer: Not Acceptable Price -  Crawl Return: 23.93 , Order Price: 20.28
+UAM-2E11113 - 1784944416 - OfferListing_AddToCart: Excution Failed. OpenQA.Selenium.ElementClickInterceptedException: element click intercepted: Element <input name="submit.addToCart" aria-label="Add to Cart from seller swati21 and price $15.12
+" aria-labelledby="" class="a-button-input" type="submit"> is not clickable at point (1068, 14). Other element would receive the click: <div class="a-fixed-right-grid-col aod-atc-inline-msg-column a-col-right" style="width:150px;margin-right:-150px;float:left;">...</div>
+  (Session info: chrome=101.0.4951.54)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.UnpackAndThrowOnError(Response errorResponse)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters)
+   at OpenQA.Selenium.Remote.RemoteWebElement.Click()
+   at App_AutomaticPurchase_AMZ.Repositories.AutoPurchaseAmzRepository.OfferListing_AddToCart(ChromeDriver driver, IWebElement selected_offer, Dictionary`2 offer_xpath) in C:\Users\Mirrors\Desktop\SVN\App\App_AutomaticPurchase_AMZ\Repositories\AutoPurchaseAmzRepository.cs:line 1584 to Offer List
+UAM-2E11113 - 1784944416 - Add Offer To Cart Success to Offer List
+UAM-2E11113 - 1784944416 - CheckAdsPopupAfterClickAddToCart Success. to Offer List
+UAM-2E11113 - 1784944416 - https://www.amazon.com/gp/cart/view.html/ref=nav_crt_ewc_hd
+UAM-2E11113 - 1784944416 - Delete Other Product Success. Error Element Count: 0 . Deleted:
+UAM-2E11113 - 1784944416 - https://www.amazon.com/gp/cart/view.html/ref=nav_crt_ewc_hd
+UAM-2E11113 - 1784944416 - ReCheckProductInCart Success.
+UAM-2E11113 - 1784944416 - Already Logged in
+UAM-2E11113 - 1784944416 - ProccessCheckOut Success.
+UAM-2E11113 - 1784944416 - Gather Information Success
+UAM-2G12129 - B08BX7FV5L - CheckIfPurchased: Data / Token Invalid Not Found or New
+UAM-2G12129 - B08BX7FV5L - Recorrect Product
+UAM-2G12129 - B08BX7FV5L - AutomaticBuyItem
+UAM-2G12129 - B08BX7FV5L - Go to URL https://www.amazon.com/dp/B08BX7FV5L?smid=&psc=1
+UAM-2G12129 - B08BX7FV5L - Product Available
+UAM-2G12129 - B08BX7FV5L - CheckBuyNewOption - Not found in any Case. No monthly delivering option found.
+UAM-2G12129 - B08BX7FV5L - CheckIfPurchased: Data / Token Invalid Not Found or New
+UAM-2G12129 - B08BX7FV5L - Recorrect Product
+UAM-2G12129 - B08BX7FV5L - AutomaticBuyItem
+UAM-2G12129 - B08BX7FV5L - Go to URL https://www.amazon.com/dp/B08BX7FV5L?smid=&psc=1
+UAM-2G12129 - B08BX7FV5L - Product Available
+UAM-2G12129 - B08BX7FV5L - CheckBuyNewOption - Not found in any Case. No monthly delivering option found.
+UAM-2G12129 - B08BX7FV5L - CheckIfPurchased: Data / Token Invalid Not Found or New
+UAM-2G12129 - B08BX7FV5L - Recorrect Product
+UAM-2G12129 - B08BX7FV5L - AutomaticBuyItem
+UAM-2G12129 - B08BX7FV5L - Go to URL https://www.amazon.com/dp/B08BX7FV5L?smid=&psc=1
+UAM-2G12129 - B08BX7FV5L - Product Available
+UAM-2G12129 - B08BX7FV5L - CheckBuyNewOption Success. Case By Xpath: //div[@id="buyBoxAccordion"]//div[@id="newAccordionRow"]//a[@data-csa-c-func-deps="aui-da-a-accordion"]
+UAM-2G12129 - B08BX7FV5L - CheckIfPurchased: Data / Token Invalid Not Found or New
+UAM-2G12129 - B08BX7FV5L - Recorrect Product
+UAM-2G12129 - B08BX7FV5L - AutomaticBuyItem
+UAM-2G12129 - B08BX7FV5L - Go to URL https://www.amazon.com/dp/B08BX7FV5L?smid=&psc=1
+UAM-2G12129 - B08BX7FV5L - Product Available
+UAM-2G12129 - B08BX7FV5L - CheckBuyNewOption Success. Case By Xpath: //div[@id="buyBoxAccordion"]//div[@id="newAccordionRow"]//a[@data-csa-c-func-deps="aui-da-a-accordion"]
+UAM-2G12129 - B08BX7FV5L - CheckIfPurchased: Data / Token Invalid Not Found or New
+UAM-2G12129 - B08BX7FV5L - Recorrect Product
+UAM-2G12129 - B08BX7FV5L - AutomaticBuyItem
+UAM-2G12129 - B08BX7FV5L - Go to URL https://www.amazon.com/dp/B08BX7FV5L?smid=&psc=1
+UAM-2G12129 - B08BX7FV5L - Product Available
+UAM-2G12129 - B08BX7FV5L - CheckBuyNewOption Success. Case By Xpath: //div[@id="buyBoxAccordion"]//div[@id="newAccordionRow"]//a[@data-csa-c-func-deps="aui-da-a-accordion"]
+UAM-2G12129 - B08BX7FV5L - CheckIfPurchased: Data / Token Invalid Not Found or New
+UAM-2G12129 - B08BX7FV5L - Recorrect Product
+UAM-2G12129 - B08BX7FV5L - AutomaticBuyItem
+UAM-2G12129 - B08BX7FV5L - Go to URL https://www.amazon.com/dp/B08BX7FV5L?smid=&psc=1
+UAM-2G12129 - B08BX7FV5L - Product Available
+UAM-2G12129 - B08BX7FV5L - CheckIfPurchased: Data / Token Invalid Not Found or New
+UAM-2G12129 - B08BX7FV5L - Recorrect Product
+UAM-2G12129 - B08BX7FV5L - AutomaticBuyItem
+UAM-2G12129 - B08BX7FV5L - Go to URL https://www.amazon.com/dp/B08BX7FV5L?smid=&psc=1
+UAM-2G12129 - B08BX7FV5L - Product Available
+UAM-2G12129 - B08BX7FV5L - CheckIfPurchased: Data / Token Invalid Not Found or New
+UAM-2G12129 - B08BX7FV5L - Recorrect Product
+UAM-2G12129 - B08BX7FV5L - AutomaticBuyItem
+UAM-2G12129 - B08BX7FV5L - Go to URL https://www.amazon.com/dp/B08BX7FV5L?smid=&psc=1
+UAM-2G12129 - B08BX7FV5L - Product Available
+UAM-2G12129 - B08BX7FV5L - CheckIfPurchased: Data / Token Invalid Not Found or New
+UAM-2G12129 - B08BX7FV5L - Recorrect Product
+UAM-2G12129 - B08BX7FV5L - AutomaticBuyItem
+UAM-2G12129 - B08BX7FV5L - Go to URL https://www.amazon.com/dp/B08BX7FV5L?smid=&psc=1
+UAM-2G12129 - B08BX7FV5L - Product Available
+UAM-2G12129 - B08BX7FV5L - CheckBuyNewOption Success. Case By Xpath: //div[@id="buyBoxAccordion"]//div[@id="dealsAccordionRow"]//button[@title="Add to Shopping Cart"]
+UAM-2G12129 - B08BX7FV5L - CheckIfPurchased: Data / Token Invalid Not Found or New
+UAM-2G12129 - B08BX7FV5L - Recorrect Product
+UAM-2G12129 - B08BX7FV5L - AutomaticBuyItem
+UAM-2G12129 - B08BX7FV5L - Go to URL https://www.amazon.com/dp/B08BX7FV5L?smid=&psc=1
+UAM-2G12129 - B08BX7FV5L - Product Available
+UAM-2G12129 - B08BX7FV5L - CheckBuyNewOption Success. Case By Xpath: //div[@id="buyBoxAccordion"]//div[@id="dealsAccordionRow"]//a[@data-csa-c-func-deps="aui-da-a-accordion"]
+UAM-2G12129 - B08BX7FV5L - CheckAddToCartButtonAvailable Success. Case By Xpath: //input[contains(@id,"add-to-cart")]
+UAM-2G12129 - B08BX7FV5L - CheckSeller success.
+UAM-2G12129 - B08BX7FV5L - Check Deal and Discount (Old Function) Completed. Clicked:
+UAM-2G12129 - B08BX7FV5L - Select Quantity Success. Product quantity: 1. 
+Product MinQuantity: 1 MaxQuantity: 20.
+UAM-2G12129 - B08BX7FV5L - Price: $74.99 <= [Order Amount +2$]: $76.99
+UAM-2G12129 - B08BX7FV5L - Click Add To Cart Button
+UAM-2G12129 - B08BX7FV5L - CheckAdsPopupAfterClickAddToCart Success.
+UAM-2G12129 - B08BX7FV5L - CheckIfPurchased: Data / Token Invalid Not Found or New
+UAM-2G12129 - B08BX7FV5L - Recorrect Product
+UAM-2G12129 - B08BX7FV5L - AutomaticBuyItem
+UAM-2G12129 - B08BX7FV5L - Go to URL https://www.amazon.com/dp/B08BX7FV5L?smid=&psc=1
+UAM-2G12129 - B08BX7FV5L - Product Available
+UAM-2G12129 - B08BX7FV5L - CheckBuyNewOption Success. Case By Xpath: //div[@id="buyBoxAccordion"]//div[@id="dealsAccordionRow"]//a[@data-csa-c-func-deps="aui-da-a-accordion"]
+UAM-2G12129 - B08BX7FV5L - CheckAddToCartButtonAvailable Success. Case By Xpath: //input[contains(@id,"add-to-cart")]
+UAM-2G12129 - B08BX7FV5L - CheckSeller success.
+UAM-2G12129 - B08BX7FV5L - Check Deal and Discount (Old Function) Completed. Clicked:
+UAM-2G12129 - B08BX7FV5L - Select Quantity Success. Product quantity: 1. 
+Product MinQuantity: 1 MaxQuantity: 20.
+UAM-2G12129 - B08BX7FV5L - Price: $74.99 <= [Order Amount +2$]: $76.99
+UAM-2G12129 - B08BX7FV5L - Click Add To Cart Button
+UAM-2G12129 - B08BX7FV5L - CheckAdsPopupAfterClickAddToCart Success.
+UAM-2G12129 - B08BX7FV5L - CheckIfPurchased: Data / Token Invalid Not Found or New
+UAM-2G12129 - B08BX7FV5L - Recorrect Product
+UAM-2G12129 - B08BX7FV5L - AutomaticBuyItem
+UAM-2G12129 - B08BX7FV5L - Go to URL https://www.amazon.com/dp/B08BX7FV5L?smid=&psc=1
+UAM-2G12129 - B08BX7FV5L - Product Available
+UAM-2G12129 - B08BX7FV5L - CheckBuyNewOption Success. Case By Xpath: //div[@id="buyBoxAccordion"]//div[@id="dealsAccordionRow"]//a[@data-csa-c-func-deps="aui-da-a-accordion"]
+UAM-2G12129 - B08BX7FV5L - CheckIfPurchased: Data / Token Invalid Not Found or New
+UAM-2G12129 - B08BX7FV5L - Recorrect Product
+UAM-2G12129 - B08BX7FV5L - AutomaticBuyItem
+UAM-2G12129 - B08BX7FV5L - Go to URL https://www.amazon.com/dp/B08BX7FV5L?smid=&psc=1
+UAM-2G12129 - B08BX7FV5L - Product Available
+UAM-2G12129 - B08BX7FV5L - CheckBuyNewOption Success. Case By Xpath: //div[@id="buyBoxAccordion"]//div[@id="dealsAccordionRow"]//a[@data-csa-c-func-deps="aui-da-a-accordion"]
+UAM-2G12129 - B08BX7FV5L - CheckAddToCartButtonAvailable Success. Case By Xpath: //button[@title="Add to Shopping Cart"]
+UAM-2G12129 - B08BX7FV5L - CheckSeller success.
+UAM-2G12129 - B08BX7FV5L - Check Deal and Discount (Old Function) Completed. Clicked:
+UAM-2G12129 - B08BX7FV5L - Select Quantity Success. Product quantity: 1. 
+Product MinQuantity: 1 MaxQuantity: 20.
+UAM-2G12129 - B08BX7FV5L - Price: $74.99 <= [Order Amount +2$]: $76.99
+UAM-2G12129 - B08BX7FV5L - Click Add To Cart Button
+UAM-2G12129 - B08BX7FV5L - CheckAdsPopupAfterClickAddToCart Success.

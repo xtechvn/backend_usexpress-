@@ -1,0 +1,128 @@
+﻿@{
+    Layout = null;
+}
+@using Utilities
+@using Entities.Models
+@using Entities.ViewModels
+@model List<PaymentViewModel>
+@{
+    // var _ListProduct = (List<OrderItemViewModel>)ViewBag.ListProduct;
+    var _ListPaymentType = (List<AllCode>)ViewBag.ListPaymentType;
+    var _UserLogin = (int)ViewBag.UserLogin;
+}
+
+<div class="title-cate flex">
+    <span>Số lần thanh toán</span>
+</div>
+<div class="warp_padding20">
+    <div class="wrap_bg wrap_bg_no-padding mb20">
+        <div class="table-responsive table-default">
+            <table class="table table-nowrap text-center">
+                <thead>
+                    <tr style="background: #ECECEE;">
+                        <th>STT</th>
+                        <th>Pay Id</th>
+                        <th style="width: 180px;">Ngày chuyển</th>
+                        <th style="width: 180px;">Số tiền chuyển</th>
+                        <th>Nguồn chuyển</th>
+                        <th>Ghi chú</th>
+                        <th>Tác vụ</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td>
+                            <div class="datepicker-wrap" style="width:100%">
+                                <input type="hidden" id="model-payment-id" />
+                                <input type="text" class="datepicker-input form-control" id="model-payment-date" />
+                            </div>
+                        </td>
+                        <td>
+                            <div class="form-group mb0">
+                                <input type="text" class="form-control currency" id="model-payment-amount" />
+                            </div>
+                        </td>
+                        <td>
+                            <div class="form-group mb0">
+                                @*<select class="form-control" style="height: 30px;" id="model-payment-productid">
+                                        <option value="0">Mã sản phẩm</option>
+                                        @foreach (var item in _ListProduct)
+                                        {
+                                            <option value="@item.ProductId">@item.ProductCode</option>
+                                        }
+                                    </select>*@
+
+                                <select class="form-control" style="height: 30px;" id="model-payment-type">
+                                    <option value="0">Hình thức thanh toán</option>
+                                    @foreach (var item in _ListPaymentType)
+                                    {
+                                        <option value="@item.CodeValue">@item.Description</option>
+                                    }
+                                </select>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="form-group mb0">
+                                <input type="text" class="form-control" id="model-payment-note" />
+                            </div>
+                        </td>
+                        <td>
+                            <a class="cur-pointer mr10" onclick="_payment.Save()" title="Lưu"><i class="fa fa-save blue"></i></a>
+                            <a class="cur-pointer" onclick="_payment.ResetForm();" title="Refresh"><i class="fa fa-refresh success"></i></a>
+                        </td>
+                    </tr>
+                    @if (Model != null && Model.Count > 0)
+                    {
+                        var count = 0;
+                        foreach (var item in Model)
+                        {
+                            count++;
+                            <tr>
+                                <td>@count</td>
+                                <td>@item.Id</td>
+                                <td>@item.PaymentDate.ToString("dd/MM/yyyy HH:mm")</td>
+                                <td>@StringHelpers.FormatCurrency(item.Amount)</td>
+                                <td>@item.PaymentTypeName</td>
+                                <td>@item.Note</td>
+                                <td>
+                                    @if (item.UserId == _UserLogin)
+                                    {
+                                        <a class="cur-pointer mr10" onclick="_payment.FillUpdateItem('@item.Id','@item.PaymentDate.ToString("dd/MM/yyyy HH:mm")','@item.PaymentType','@item.Amount','@item.Note')">
+                                            <i class="fa fa-pencil blue"></i>
+                                        </a>
+                                        <a class="cur-pointer" onclick="_payment.Delete('@item.Id')"><i class="fa fa-times red"></i></a>
+                                    }
+                                </td>
+                            </tr>
+                        }
+                        <tr style="background: #E1E8EA;">
+                            <td></td>
+                            <td style="padding: 20px 15px;">
+                                <strong>Tổng cộng:</strong>
+                            </td>
+                            <td></td>
+                            <td style="padding: 20px 15px;">
+                                <strong>@StringHelpers.FormatCurrency(Model.Sum(s => s.Amount))</strong>
+                            </td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        $('.datepicker-input').Zebra_DatePicker({
+            format: 'd/m/Y H:i',
+            onSelect: function () {
+                $(this).change();
+            }
+        });
+    });
+</script>

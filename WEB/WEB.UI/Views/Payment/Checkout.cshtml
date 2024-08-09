@@ -1,0 +1,151 @@
+﻿@{
+    ViewData["Title"] = "Địa chỉ giao hàng";
+    Layout = "_Layout";
+    long order_id = (long)ViewBag.orderId;
+    long address_id = (long)ViewBag.addressId;
+    
+}
+
+<style>
+    .header-block {
+        display: none
+    }
+
+    .header-block-pay {
+        display: block
+    }
+</style>
+
+<link href="~/css/order.css" rel="stylesheet" />
+
+@{ await Html.RenderPartialAsync("PartialView/Payment/headerPayment"); }
+
+<section class="main-container clearfix mt30">
+    <div class="container page-buy">
+        <div class="flex">
+            <div class="sidebar1 chitiet_giohang">
+
+                @{ await Html.RenderPartialAsync("PartialView/Payment/PaymentType"); }
+
+                @if (order_id > 0)
+                {
+                    var order = (List<Entities.ViewModels.Carts.CartsViewModels>)ViewBag.order;
+                    await Html.RenderPartialAsync("/Views/Shared/Components/cartsList/default.cshtml", order);
+                }
+                else
+                {
+                    @await Component.InvokeAsync("cartsList", new { i_selected = 1 })
+                }
+            </div>
+            <div class="sidebar2" id="payment_confirm">
+                <div class="sticky" style="top:20px;">
+                    @{ await Html.RenderPartialAsync("PartialView/Payment/AddressReceiver"); }
+                    @if (order_id > 0)
+                    {
+                        var order = (List<Entities.ViewModels.Carts.CartsViewModels>)ViewBag.order;
+                        var summery_order = new WEB.UI.ViewModels.CartSummeryViewModel
+                        {
+                            total_amount_cart = order[0].total_amount_cart,
+                            total_discount_amount = order[0].total_discount_amount,
+                            total_amount_last = order[0].total_amount_last,
+                            label_id = order[0].label_id
+                        };
+
+                        await Html.RenderPartialAsync("/Views/Shared/Components/cartsSummery/default.cshtml", summery_order);
+
+                    }
+                    else
+                    {
+                        @await Component.InvokeAsync("cartsSummery")
+                    }
+                </div>
+            </div>
+        </div>
+
+        <!-- Sản phẩm đã xem -->
+
+    </div>
+</section>
+
+@Html.Hidden("hd_order_id", order_id)
+@Html.Hidden("hd_address_id", address_id)
+
+<!--POPUP TẠO ĐỊA CHỈ GIAO HÀNG-->
+<div id="address-popup" class="address-popup white-popup mfp-hide"></div>
+<!--END POPUP TẠO ĐỊA CHỈ GIAO HÀNG-->
+<!--POPUP CKTT-->
+<div id="usexpress-bank-popup" class="white-popup mfp-hide">
+    <div class="content_poup">
+        <h2 class="title_form txt_22 mb30">Thông tin chuyển khoản thanh toán</h2>
+        <ul class="info-bank mb15">
+            <li>
+                <div>
+                    Số tài khoản
+                </div>
+                <div class="medium">
+                    19035975432016
+                </div>
+            </li>
+            <li>
+                <div>
+                    Chủ tài khoản
+                </div>
+                <div class="medium">
+                    Công ty TNHH US EXPRESS Việt Nam
+                </div>
+            </li>
+            <li>
+                <div>
+                    Ngân hàng
+                </div>
+                <div class="medium">
+                    Techcombank Hoàng Đạo Thúy, Hà Nội
+                </div>
+            </li>
+            <li>
+                <div>
+                    Số tiền chuyển khoản
+                </div>
+                <div class="color_green2 medium amount_payment">
+                    {amount} đ
+                </div>
+            </li>
+            <li>
+                <div>
+                    Nội dung chuyển khoản
+                </div>
+                <div class="color_green2 medium order_no_payment">
+                    {order_no} CHUYEN KHOAN MUA HO
+                </div>
+            </li>
+        </ul>
+
+        <div class="note-popup">
+            <p>LƯU Ý:</p>
+            <ul>
+                <li>
+                    Bạn vui lòng điền chính xác thông tin chuyển khoản bao gồm “Số tiền chuyển khoản” & “Nội dung chuyển khoản” để việc đặt hàng diễn ra nhanh chóng.
+                </li>
+                <li>
+                    Đơn hàng của bạn sẽ được xác nhận thanh toán sau khi hệ thống của US Express ghi nhận thông báo thanh toán thành công từ ngân hàng.
+                </li>
+                <li>
+                    Bạn vui lòng giữ lại các chứng từ giao dịch để đối chiếu khi có phát sinh vấn đề
+                </li>
+                <li>
+                    Bạn có thể thực hiện thanh toán tại quầy giao dịch ngân hàng, Mobile Banking, ATM, hoặc thanh toán qua dịch vụ Internet Banking của ngân hàng <a class="line-color" href="https://ib.techcombank.com.vn/servlet/BrowserServlet" target="_blank"><em>tại đây</em></a>.
+                </li>
+            </ul>
+        </div>
+        <div class="center">
+            <button class="pointer-event btn btn-change-payment" style="margin-right: 11px;background-color: darkgray;">
+                Đổi hình thức thanh toán
+            </button>
+            <button class="btn confirm btn-confirm-transfer">Xác nhận</button>
+        </div>
+    </div>
+</div>
+<!--END POPUP CKTT-->
+
+<script src="~/js/address_manager/default.js"></script>
+<script src="~/js/payment/checkout.js"></script>

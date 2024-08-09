@@ -1,0 +1,64 @@
+﻿@using Entities.ViewModels;
+@model ClientLogOnViewModel
+
+
+<div class="text-danger error error-login-client-summery"></div>
+<form id="formClientLogin"
+      asp-controller="Client"
+      asp-action="Login"
+      asp-antiforgery="true"
+      data-ajax="true"
+      data-ajax-method="post"
+      data-ajax-begin="beginClientLogin"
+      data-ajax-complete="completeClientLogin">
+
+    <input type="hidden" asp-for="return_url" name="return_url">
+    <input type="hidden" asp-for="remember_me" name="remember_me">
+
+    <div class="form-group icon-visible">
+        <svg class="icon-us">
+            <use xlink:href="/images/icons/icon.svg#mail"></use>
+        </svg>
+
+        <input type="text" class="form-control" asp-for="Email" placeholder="Nhập địa chỉ Email" name="Email">
+        <span asp-validation-for="Email" class="error text-danger"></span>
+
+    </div>
+    <div class="form-group icon-visible">
+        <svg class="icon-us">
+            <use xlink:href="/images/icons/icon.svg#padlock"></use>
+        </svg>
+
+        <input type="password" class="form-control" asp-for="Password" placeholder="Nhập mật khẩu" name="Password">
+        <span asp-validation-for="Password" class="error text-danger"></span>
+    </div>
+
+
+    @*<a id="forgot_password" asp-controller="Client" asp-action="ForgotPassword"
+           data-target="frm_client_sercurity"
+           class="request-pass">
+            Quên mật khẩu
+        </a>*@
+    <a asp-action="ForgotPassword" asp-controller="Client"
+       data-ajax="true"
+       data-ajax-begin="beginClientforget"
+       data-ajax-complete="completeClientforget"
+       id="forgot_password"> Quên mật khẩu</a>
+
+    <button class="btn bg-green btn_login_client" type="submit">Đăng nhập</button>
+    @*<div class="login-social">
+        <h3 class="center"><span>Hoặc đăng nhập bằng</span></h3>
+        <div class="flex">
+            <a href=""><img src="~/images/graphics/btn-face.svg"></a>
+            <a href=""><img src="~/images/graphics/btn-google.svg"></a>
+        </div>
+    </div>*@
+
+</form>
+
+<script type="text/javascript">
+    var form = $("#formClientLogin").closest("form");
+    form.removeData('validator');
+    form.removeData('unobtrusiveValidation');
+    $.validator.unobtrusive.parse(form);
+</script>

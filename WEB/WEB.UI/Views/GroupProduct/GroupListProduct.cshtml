@@ -1,0 +1,507 @@
+﻿@model WEB.UI.ViewModels.GroupProductEntitiesViewModel
+@{
+    ViewData["Title"] = "Nhóm sản phẩm";
+}
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&amp;subset=vietnamese" rel="stylesheet">
+<link href="~/css/order.css" rel="stylesheet" />
+<link href="~/css/user.css" rel="stylesheet" />
+
+<!-- MAIN CONTAINER -->
+<section class="main-container clearfix mt30">
+    <div class="menu_control mb20">
+        <div class="container">
+            <ul class="breadcrumb">
+                <li><a href="/">Trang chủ</a></li>
+                <li class="active">@Model.group_product_name</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="container mb30">
+        <div class="user_management flex">
+            
+
+            <div class="sidebar1">
+               
+
+                <div class="sidebar-category">
+                    <h2 class="title">
+                        <svg class="icon-us">
+                            <use xlink:href="/images/icons/icon.svg#danh-muc"></use>
+                        </svg>
+                        Danh mục sản phẩm
+                    </h2>
+                    @*<h3 class="lbl txt_14 medium mb10">Đồ dùng điện tử</h3>*@
+                    <div class="list-category">
+                        <ul style="height: 100px;">
+
+
+                            <li>
+                                <a href="/">
+                                    <svg class="icon-us">
+                                        <use xlink:href="/images/icons/icon.svg#next"></use>
+                                    </svg>
+                                    Phụ kiện &amp; nhà cung cấp (26015)
+                                </a>
+                            </li>
+
+
+                        </ul>
+                        <a class="xem-them" href="javascript:;">
+                            <span> Xem thêm</span>
+                            <svg class="icon-us">
+                                <use xlink:href="images/icons/icon.svg#next"></use>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="sidebar-category">
+                    <h2 class="title">
+                        <svg class="icon-us">
+                            <use xlink:href="/images/icons/icon.svg#address"></use>
+                        </svg>
+                        CÁC STORE Ở MỸ
+                    </h2>
+                    <div class="list-category">
+                        <ul style="height: 87px">
+                            <li>
+                                <a href="/">
+                                    <svg class="icon-us">
+                                        <use xlink:href="/images/icons/icon.svg#next"></use>
+                                    </svg>
+                                    Amazon
+                                </a>
+                            </li>
+                            @*<li>
+                        <a href="/">
+                            <svg class="icon-us">
+                                <use xlink:href="/images/icons/icon.svg#next"></use>
+                            </svg>
+                            Jomashop
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/">
+                            <svg class="icon-us">
+                                <use xlink:href="/images/icons/icon.svg#next"></use>
+                            </svg>
+                            Costco
+                        </a>
+                    </li>*@
+                        </ul>
+                        @*<a class="xem-them" href="javascript:;">
+                    <span> Xem thêm</span>
+                    <svg class="icon-us">
+                        <use xlink:href="/images/icons/icon.svg#next"></use>
+                    </svg>
+                </a>*@
+                    </div>
+                </div>
+
+                <div class="sidebar-category">
+                    <h2 class="title">
+                        <svg class="icon-us">
+                            <use xlink:href="/images/icons/icon.svg#star-none"></use>
+                        </svg>
+                        Đánh giá
+                    </h2>
+                    <div class="vote">
+                        <ul>
+                            <li>
+                                <div class="ct_star">
+                                    <svg class="icon-us">
+                                        <use xlink:href="/images/icons/icon.svg#star-full"></use>
+                                    </svg>
+                                    <svg class="icon-us">
+                                        <use xlink:href="/images/icons/icon.svg#star-full"></use>
+                                    </svg>
+                                    <svg class="icon-us">
+                                        <use xlink:href="/images/icons/icon.svg#star-full"></use>
+                                    </svg>
+                                    <svg class="icon-us">
+                                        <use xlink:href="/images/icons/icon.svg#star-full"></use>
+                                    </svg>
+                                    <svg class="icon-us not">
+                                        <use xlink:href="/images/icons/icon.svg#star-full"></use>
+                                    </svg>
+                                </div>
+                                <span>(5 sao)</span>
+                            </li>
+                            <li>
+                                <div class="ct_star">
+                                    <svg class="icon-us">
+                                        <use xlink:href="/images/icons/icon.svg#star-full"></use>
+                                    </svg>
+                                    <svg class="icon-us">
+                                        <use xlink:href="/images/icons/icon.svg#star-full"></use>
+                                    </svg>
+                                    <svg class="icon-us">
+                                        <use xlink:href="/images/icons/icon.svg#star-full"></use>
+                                    </svg>
+                                    <svg class="icon-us">
+                                        <use xlink:href="/images/icons/icon.svg#star-full"></use>
+                                    </svg>
+                                    <svg class="icon-us not">
+                                        <use xlink:href="/images/icons/icon.svg#star-none"></use>
+                                    </svg>
+                                </div>
+                                <span>(Ít nhất 4 sao)</span>
+                            </li>
+                            <li>
+                                <div class="ct_star">
+                                    <svg class="icon-us">
+                                        <use xlink:href="/images/icons/icon.svg#star-full"></use>
+                                    </svg>
+                                    <svg class="icon-us">
+                                        <use xlink:href="/images/icons/icon.svg#star-full"></use>
+                                    </svg>
+                                    <svg class="icon-us">
+                                        <use xlink:href="/images/icons/icon.svg#star-full"></use>
+                                    </svg>
+                                    <svg class="icon-us">
+                                        <use xlink:href="/images/icons/icon.svg#star-none"></use>
+                                    </svg>
+                                    <svg class="icon-us not">
+                                        <use xlink:href="/images/icons/icon.svg#star-none"></use>
+                                    </svg>
+                                </div>
+                                <span>(Ít nhất 3 sao)</span>
+                            </li>
+                            <li>
+                                <div class="ct_star">
+                                    <svg class="icon-us">
+                                        <use xlink:href="/images/icons/icon.svg#star-full"></use>
+                                    </svg>
+                                    <svg class="icon-us">
+                                        <use xlink:href="/images/icons/icon.svg#star-full"></use>
+                                    </svg>
+                                    <svg class="icon-us">
+                                        <use xlink:href="/images/icons/icon.svg#star-none"></use>
+                                    </svg>
+                                    <svg class="icon-us">
+                                        <use xlink:href="/images/icons/icon.svg#star-none"></use>
+                                    </svg>
+                                    <svg class="icon-us not">
+                                        <use xlink:href="/images/icons/icon.svg#star-none"></use>
+                                    </svg>
+                                </div>
+                                <span>(Ít nhất 2 sao)</span>
+                            </li>
+                            <li>
+                                <div class="ct_star">
+                                    <svg class="icon-us">
+                                        <use xlink:href="/images/icons/icon.svg#star-full"></use>
+                                    </svg>
+                                    <svg class="icon-us">
+                                        <use xlink:href="/images/icons/icon.svg#star-none"></use>
+                                    </svg>
+                                    <svg class="icon-us">
+                                        <use xlink:href="/images/icons/icon.svg#star-none"></use>
+                                    </svg>
+                                    <svg class="icon-us">
+                                        <use xlink:href="/images/icons/icon.svg#star-none"></use>
+                                    </svg>
+                                    <svg class="icon-us not">
+                                        <use xlink:href="/images/icons/icon.svg#star-none"></use>
+                                    </svg>
+                                </div>
+                                <span>(Ít nhất 1 sao)</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+            <div class="sidebar2 padding_15">
+                <div class="detail-dh">
+                    <div class="head-title flex space-between align-center">
+                        <div class="txt_18"><span class="txt_666">Tìm thấy @Model.Pagination.total_item_store sản phẩm @Html.Raw(Model.group_product_name == "" ? "" : "nhóm " + Model.group_product_name)</span></div>
+
+                    </div>
+                    @*<div class="sort flex align-center">
+                    <span>Sắp xếp theo :</span>
+                    <a class="itemt active" href="/">Giảm giá nhiều</a>
+                    <a class="itemt" href="/">Hàng mới</a>
+                    <a class="itemt" href="/">Bán chạy</a>
+                    <select class="itemt form-control" name="" id="">
+                        <option value="">Giá cao</option>
+                        <option value="">Giá thấp</option>
+                    </select>
+                </div>*@
+                </div>
+
+                @*MODULE 2: Listing san pham*@
+                @if (Model.obj_lst_product_result.Count > 0)
+                {
+                    { await Html.RenderPartialAsync("PartialView/Product/ListingProductSearch", Model.obj_lst_product_result, new ViewDataDictionary(this.ViewData) { { "view_type", "g_p" } }); }
+
+                    @*MODULE 3: phan trang*@
+                    @await Component.InvokeAsync("perpage", new { s_view = "/Views/Shared/Components/common/perpage.cshtml", pagination_model = Model.Pagination })
+                }
+
+            </div>
+
+        </div>
+    </div>
+
+    @*<div class="container clearfix">
+            <div class="sp_daxem bg_warp mb20">
+                <h2 class="title-label">Sản phẩm bạn đã xem</h2>
+                <div class="list-product flex">
+                    <div class="product-item col-5">
+                        <div class="sale">-50%</div>
+                        <a class="ava" href="">
+                            <img src="/images/graphics/sanpham1.png">
+                            <span class="like active">
+                                <svg class="icon-us">
+                                    <use xlink:href="/images/icons/icon.svg#heart"></use>
+                                </svg>
+                            </span>
+                        </a>
+                        <div class="content">
+                            <div class="ct_star">
+                                <svg class="icon-us">
+                                    <use xlink:href="/images/icons/icon.svg#star-full"></use>
+                                </svg>
+                                <svg class="icon-us">
+                                    <use xlink:href="/images/icons/icon.svg#star-full"></use>
+                                </svg>
+                                <svg class="icon-us">
+                                    <use xlink:href="/images/icons/icon.svg#star-full"></use>
+                                </svg>
+                                <svg class="icon-us">
+                                    <use xlink:href="/images/icons/icon.svg#star-full"></use>
+                                </svg>
+                                <svg class="icon-us">
+                                    <use xlink:href="/images/icons/icon.svg#star-full"></use>
+                                </svg>
+                                <span class="buy">1140 đã mua</span>
+                            </div>
+                            <h3 class="title">
+                                <img src="/images/icons/prime.png" title="amz"><a href="" title="">
+                                    Sản Phẩm Dinh
+                                    Dưỡng Nestle Nutren Junior
+                                </a>
+                            </h3>
+                            <div class="flex">
+                                <div class="col-2">
+                                    <span>Giá về tay</span>
+                                    <strong class="price">18.990.000 đ</strong>
+                                </div>
+                            </div>
+                            <a class="brand_label" href="">
+                                <img src="/images/graphics/my.png" title="amz">Sản phẩm bán tại Amazon
+                                Úc
+                            </a>
+                        </div>
+                    </div>
+                    <div class="product-item col-5">
+                        <div class="sale">-50%</div>
+                        <a class="ava" href="">
+                            <img src="/images/graphics/sanpham2.png">
+                            <span class="like">
+                                <svg class="icon-us">
+                                    <use xlink:href="/images/icons/icon.svg#heart"></use>
+                                </svg>
+                            </span>
+                        </a>
+                        <div class="content">
+                            <div class="ct_star">
+                                <svg class="icon-us">
+                                    <use xlink:href="/images/icons/icon.svg#star-full"></use>
+                                </svg>
+                                <svg class="icon-us">
+                                    <use xlink:href="/images/icons/icon.svg#star-full"></use>
+                                </svg>
+                                <svg class="icon-us">
+                                    <use xlink:href="/images/icons/icon.svg#star-full"></use>
+                                </svg>
+                                <svg class="icon-us">
+                                    <use xlink:href="/images/icons/icon.svg#star-full"></use>
+                                </svg>
+                                <svg class="icon-us">
+                                    <use xlink:href="/images/icons/icon.svg#star-full"></use>
+                                </svg>
+                                <span class="buy">1140 đã mua</span>
+                            </div>
+                            <h3 class="title">
+                                <img src="/images/icons/prime.png" title="amz"><a href="" title="">
+                                    Sản Phẩm Dinh
+                                    Dưỡng Nestle Nutren Junior
+                                </a>
+                            </h3>
+                            <div class="flex">
+                                <div class="col-2">
+                                    <span>Giá về tay</span>
+                                    <strong class="price">18.990.000 đ</strong>
+                                </div>
+                            </div>
+                            <a class="brand_label" href="">
+                                <img src="/images/graphics/my.png" title="amz">Sản phẩm bán tại Amazon
+                                Úc
+                            </a>
+                        </div>
+                    </div>
+                    <div class="product-item col-5">
+                        <div class="sale">-50%</div>
+                        <a class="ava" href="">
+                            <img src="/images/graphics/sanpham3.png">
+                            <span class="like">
+                                <svg class="icon-us">
+                                    <use xlink:href="/images/icons/icon.svg#heart"></use>
+                                </svg>
+                            </span>
+                        </a>
+                        <div class="content">
+                            <div class="ct_star">
+                                <svg class="icon-us">
+                                    <use xlink:href="/images/icons/icon.svg#star-full"></use>
+                                </svg>
+                                <svg class="icon-us">
+                                    <use xlink:href="/images/icons/icon.svg#star-full"></use>
+                                </svg>
+                                <svg class="icon-us">
+                                    <use xlink:href="/images/icons/icon.svg#star-full"></use>
+                                </svg>
+                                <svg class="icon-us">
+                                    <use xlink:href="/images/icons/icon.svg#star-full"></use>
+                                </svg>
+                                <svg class="icon-us">
+                                    <use xlink:href="/images/icons/icon.svg#star-full"></use>
+                                </svg>
+                                <span class="buy">1140 đã mua</span>
+                            </div>
+                            <h3 class="title">
+                                <img src="/images/icons/prime.png" title="amz"><a href="" title="">
+                                    Sản Phẩm Dinh
+                                    Dưỡng Nestle Nutren Junior
+                                </a>
+                            </h3>
+                            <div class="flex">
+                                <div class="col-2">
+                                    <span>Giá về tay</span>
+                                    <strong class="price">18.990.000 đ</strong>
+                                </div>
+                            </div>
+                            <a class="brand_label" href="">
+                                <img src="/images/graphics/my.png" title="amz">Sản phẩm bán tại Amazon
+                                Úc
+                            </a>
+                        </div>
+                    </div>
+                    <div class="product-item col-5">
+                        <div class="sale">-50%</div>
+                        <a class="ava" href="">
+                            <img src="/images/graphics/sanpham4.png">
+                            <span class="like">
+                                <svg class="icon-us">
+                                    <use xlink:href="/images/icons/icon.svg#heart"></use>
+                                </svg>
+                            </span>
+                        </a>
+                        <div class="content">
+                            <div class="ct_star">
+                                <svg class="icon-us">
+                                    <use xlink:href="/images/icons/icon.svg#star-full"></use>
+                                </svg>
+                                <svg class="icon-us">
+                                    <use xlink:href="/images/icons/icon.svg#star-full"></use>
+                                </svg>
+                                <svg class="icon-us">
+                                    <use xlink:href="/images/icons/icon.svg#star-full"></use>
+                                </svg>
+                                <svg class="icon-us">
+                                    <use xlink:href="/images/icons/icon.svg#star-full"></use>
+                                </svg>
+                                <svg class="icon-us">
+                                    <use xlink:href="/images/icons/icon.svg#star-full"></use>
+                                </svg>
+                                <span class="buy">1140 đã mua</span>
+                            </div>
+                            <h3 class="title">
+                                <img src="/images/icons/prime.png" title="amz"><a href="" title="">
+                                    Sản Phẩm Dinh
+                                    Dưỡng Nestle Nutren Junior
+                                </a>
+                            </h3>
+                            <div class="flex">
+                                <div class="col-2">
+                                    <span>Giá về tay</span>
+                                    <strong class="price">18.990.000 đ</strong>
+                                </div>
+                            </div>
+                            <a class="brand_label" href="">
+                                <img src="/images/graphics/my.png" title="amz">Sản phẩm bán tại Amazon
+                                Úc
+                            </a>
+                        </div>
+                    </div>
+                    <div class="product-item col-5">
+                        <div class="sale">-50%</div>
+                        <a class="ava" href="">
+                            <img src="/images/graphics/sanpham5.png">
+                            <span class="like">
+                                <svg class="icon-us">
+                                    <use xlink:href="/images/icons/icon.svg#heart"></use>
+                                </svg>
+                            </span>
+                        </a>
+                        <div class="content">
+                            <div class="ct_star">
+                                <svg class="icon-us">
+                                    <use xlink:href="/images/icons/icon.svg#star-full"></use>
+                                </svg>
+                                <svg class="icon-us">
+                                    <use xlink:href="/images/icons/icon.svg#star-full"></use>
+                                </svg>
+                                <svg class="icon-us">
+                                    <use xlink:href="/images/icons/icon.svg#star-full"></use>
+                                </svg>
+                                <svg class="icon-us">
+                                    <use xlink:href="/images/icons/icon.svg#star-full"></use>
+                                </svg>
+                                <svg class="icon-us">
+                                    <use xlink:href="/images/icons/icon.svg#star-full"></use>
+                                </svg>
+                                <span class="buy">1140 đã mua</span>
+                            </div>
+                            <h3 class="title">
+                                <img src="/images/icons/prime.png" title="amz"><a href="" title="">
+                                    Sản Phẩm Dinh
+                                    Dưỡng Nestle Nutren Junior
+                                </a>
+                            </h3>
+                            <div class="flex">
+                                <div class="col-2">
+                                    <span>Giá về tay</span>
+                                    <strong class="price">18.990.000 đ</strong>
+                                </div>
+                            </div>
+                            <a class="brand_label" href="">
+                                <img src="/images/graphics/my.png" title="amz">Sản phẩm bán tại Amazon
+                                Úc
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>*@
+
+</section>
+<!-- END MAIN CONTAINER -->
+
+
+<script>
+    $('.list-category .xem-them').click(function () {
+        $(this).parent().removeClass('open');
+        if (!$(this).hasClass("active")) {
+            $(this).addClass("active");
+            $(this).parent().addClass('open');
+        } else {
+            $(this).removeClass("active");
+            $(this).parent().removeClass('open');
+        }
+    });
+</script>

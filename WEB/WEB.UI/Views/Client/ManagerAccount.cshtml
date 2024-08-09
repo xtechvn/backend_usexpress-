@@ -1,0 +1,263 @@
+﻿@using WEB.UI.ViewModels;
+@model Entities.ViewModels.ClientInfoViewModel
+@{
+    int d = 0;
+    ViewData["Title"] = "Thông tin tài khoản";
+    Layout = "_Layout";
+}
+
+<link href="~/css/user.css" rel="stylesheet" />
+<!-- MAIN CONTAINER -->
+<section class="main-container clearfix mt30">
+    <div class="menu_control mb20">
+        <div class="container">
+            <ul class="breadcrumb">
+                <li><a href="/">Trang chủ</a></li>
+                <li class="active">Thông tin tài khoản</li>
+            </ul>
+        </div>
+    </div>
+    <div class="container">
+        <div class="user_management flex">
+
+            @{ await Html.RenderPartialAsync("PartialView/Client/MenuClientManager", new ViewDataDictionary(this.ViewData) { { "client_name", Model.ReceiverName } });}
+
+            <div class="sidebar2 padding_20 page-buy">
+                <form id="frm_client_info_update"
+                      class="form-customer form_default"
+                      asp-controller="Client"
+                      asp-action="UpdateClientInfo"
+                      asp-antiforgery="true"
+                      data-ajax="true"
+                      data-ajax-method="post"
+                      data-ajax-begin="beginClientUpdateInfoResponse"
+                      data-ajax-complete="completeClientUpdateInfoResponse">
+
+                    <input type="hidden" asp-for="Id"  name="Id" autocomplete="off">
+                    <div class="form-group">
+                        <label class="lbl">Họ và tên</label>
+                        <div class="wrap-input">
+                            <input type="text" asp-for="ReceiverName" class="form-control" id="txt_receiver_name" placeholder="Nhập họ và tên" name="ReceiverName" autocomplete="off">
+                            <span asp-validation-for="ReceiverName" class="error text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="lbl">Địa chỉ Email</label>
+                        <div class="wrap-input">
+                            <input type="text" asp-for="Email" class="form-control disable" name="Email" readonly="true">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="lbl">Số điện thoại</label>
+                        <div class="wrap-input">
+                            <input type="text" asp-for="Phone" class="form-control disable" name="Phone" readonly="true">
+                        </div>
+                    </div>
+                    <div class="form-group male">
+                        <label class="lbl">Giới tính</label>
+                        <div class="wrap-input">
+                            @foreach (var gender in Model.Genders)
+                            {
+                                @*<input type="radio" asp-for="Gender" value="@gender" />@gender<br />*@
+                                <label class="check-list inline">
+                                    <input type="radio" asp-for="Gender" value="@d" />@gender<br />
+                                    <span class="checkmark"></span>
+                                </label>
+                                d += 1;
+                            }
+
+                        </div>
+                    </div>
+                    <div class="form-group year">
+                        <label class="lbl">Ngày sinh</label>
+                        <div class="wrap-input">
+                            <div class="item">
+                                <select asp-for="BirthdayDay" asp-items="@(new SelectList(Model.BirthdayDayList,"Value","Text"))" class="form-control select2" id="BirthdayDay">
+                                    <option value="-1">Chọn ngày</option>
+                                </select>
+                                <span asp-validation-for="BirthdayDay" class="error text-danger"></span>
+                            </div>
+                            <div class="item">
+                                <select asp-for="BirthdayMonth" asp-items="@(new SelectList(Model.BirthdayMonthList,"Value","Text"))" class="form-control select2" id="BirthdayMonth">
+                                    <option value="-1">Chọn tháng</option>
+                                </select>
+                                <span asp-validation-for="BirthdayMonth" class="error text-danger"></span>
+                            </div>
+                            <div class="item">
+                                <select asp-for="BirthdayYear" asp-items="@(new SelectList(Model.BirthdayYearList,"Value","Text"))" class="form-control select2" id="BirthdayYear">
+                                    <option value="-1">Chọn năm</option>
+                                </select>
+                                <span asp-validation-for="BirthdayYear" class="error text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="lbl">Tỉnh/Thành</label>
+                        <div class="wrap-input">
+
+                            <select asp-for="ProvinceId" data-provinceid="@Model.ProvinceId" asp-items="@(new SelectList(Model.ProvinceListReceiver,"ProvinceId","Name"))" class="form-control select2" id="cbo_province">
+                                <option value="-1">Tỉnh/Thành</option>
+                            </select>
+                            <span asp-validation-for="ProvinceId" class="error text-danger"></span>
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="lbl">Quận/Huyện</label>
+                        <div class="wrap-input">
+                            <select asp-for="DistrictId" data-districtid="@Model.DistrictId" asp-items="@(new SelectList(Model.DistrictListReceiver,"DistrictId","Name"))" class="form-control select2" id="cbo_district">
+                                <option value="-1">Quận/Huyện</option>
+                            </select>
+                            <span asp-validation-for="DistrictId" class="error text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="lbl">Phường/Xã</label>
+                        <div class="wrap-input">
+                            <select asp-for="WardId" data-wardid="@Model.WardId" asp-items="@(new SelectList(Model.WardListReceiver,"WardId","Name"))" class="form-control select2" id="cbo_ward">
+                                <option value="-1">Phường/Xã</option>
+                            </select>
+                            <span asp-validation-for="WardId" class="error text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="lbl">Địa chỉ giao hàng</label>
+                        <div class="wrap-input">
+
+                            <input type="text" asp-for="FullAddress" class="form-control" id="txt_full_address" placeholder="Nhập họ và tên" name="FullAddress" autocomplete="off">
+                            <span asp-validation-for="FullAddress" class="error text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div id="show_change_password" class="hide">
+                        <div class="form-group">
+                            <label class="lbl">Mật khẩu cũ</label>
+                            <div class="wrap-input">
+                                <input type="password" asp-for="PasswordOld" class="form-control" id="txt_password_old" placeholder="Nhập mật khẩu cũ" name="PasswordOld" autocomplete="off">
+                                <span asp-validation-for="PasswordOld" class="error text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="lbl">Mật khẩu mới</label>
+                            <div class="wrap-input">
+                                <input type="password" asp-for="PasswordNew" class="form-control" id="txt_password_new" placeholder="Mật khẩu từ 6 đến 100 ký tự" name="PasswordNew" autocomplete="off">
+                                <span asp-validation-for="PasswordNew" class="error text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="lbl">Nhập lại mật khẩu mới</label>
+                            <div class="wrap-input">
+                                <input type="password" asp-for="ConfirmPasswordNew" class="form-control" id="txt_confirm_password" placeholder="Nhập lại mật khẩu mới" name="ConfirmPasswordNew" autocomplete="off">
+                                <span asp-validation-for="ConfirmPasswordNew" class="error text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group control_btn">
+                        <label class="lbl">&nbsp;</label>
+                        <div class="wrap-input">
+                            <button class="btn yellow btn_update_info_client">Cập nhật</button>
+                            <div class="btn btn_changepass">Đổi mật khẩu</div>
+                        </div>
+                    </div>
+
+
+                </form>
+            </div>
+
+        </div>
+    </div>
+</section>
+<!-- END MAIN CONTAINER -->
+
+<!-- Thông báo thêm sản phẩm thành công -->
+<div class="popup-default update-success add-product-success">
+    <div class="content-popup center">
+        <i class="checked"></i>
+        <div class="mt15">
+            Cập nhật thông tin thành công
+        </div>
+    </div>
+</div>
+
+<script src="~/js/address_manager/default.js"></script>
+<script type="text/javascript">
+    var form = $("#frm_client_info_update").closest("form");
+    form.removeData('validator');
+    form.removeData('unobtrusiveValidation');
+    $.validator.unobtrusive.parse(form);
+
+    $(document).ready(function () {
+        $(".thong-tin-tai-khoan").addClass("active");      
+
+        receiver.bin_province();
+    })
+
+    $("#BirthdayDay").change(function (e) {
+        checkDate();
+    });
+    $("#BirthdayMonth").change(function (e) {
+        checkDate();
+    });
+    $("#BirthdayYear").change(function (e) {
+        checkDate();
+    });
+    function checkDate() {
+        var month = parseInt($("#BirthdayMonth").val());
+        var year = parseInt($("#BirthdayYear").val());
+        if (month > 0 && year > 0) {
+            var total_day = getDaysInMonth(month, year);
+            var day_selected = parseInt($("#BirthdayDay").val());
+            if (day_selected > total_day) {
+                $("#BirthdayDay").val(total_day);
+            }
+        }
+    }
+
+
+    $("#cbo_province").change(function (e) {
+        receiver.reset_location();
+        var id = ($(this).val());
+        $('#cbo_ward').find('option').remove().end().append('<option value="-1">Phường/Xã</option>').val('-1');
+        if (id == "-1") {
+            $('#cbo_district').find('option').remove().end().append('<option value="-1">Quận/Huyện</option>').val('-1');
+        } else {
+            receiver.bin_district(id);
+        }
+    });
+
+    $("#cbo_district").change(function (e) {
+        receiver.reset_location();
+        var id = ($(this).val());
+        $('#cbo_ward').find('option').remove().end().append('<option value="-1">Phường/Xã</option>').val('-1');
+        receiver.bin_ward(id);
+    });
+    $("#cbo_ward").change(function (e) {
+        receiver.reset_location();
+    });
+
+    function beginClientUpdateInfoResponse() {
+        $(".btn_update_info_client").addClass('placeholder');
+        $(".btn_update_info_client").prop("disabled", true);
+    }
+    function completeClientUpdateInfoResponse(response) {
+      
+        $(".btn_update_info_client").prop("disabled", false);
+        var result = response.responseJSON;
+
+        switch (result.status) {
+            case SUCCESS:
+                $(".btn_update_info_client").removeClass('placeholder');
+                $('.update-success').addClass('open');
+                setTimeout(function () {
+                    $('.add-product-success').removeClass('open');
+                }, 1700);
+                break;
+            case ERROR:
+
+            case FAILED:
+                $('.error-client-summery').html(result.msg);
+                break;
+        }
+    }
+</script>

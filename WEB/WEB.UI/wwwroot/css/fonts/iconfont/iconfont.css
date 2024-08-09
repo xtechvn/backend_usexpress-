@@ -1,0 +1,419 @@
+/**
+iconfont Webfont
+*/
+@font-face {
+	font-family: 'iconfont';
+	src: url('iconfont.eot?1641721733618');
+	src: url('iconfont.eot?#iefix-1641721733618') format('embedded-opentype'),
+		url('iconfont.woff2?1641721733618') format('woff2'),
+		url('iconfont.woff?1641721733618') format('woff'),
+		url('iconfont.ttf?1641721733618') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+[class^='iconfont-']:before,
+[class*=' iconfont-']:before {
+	font-family: 'iconfont';
+	display: inline-block;
+	vertical-align: middle;
+	line-height: 1;
+	font-weight: normal;
+	font-style: normal;
+	speak: none;
+	text-decoration: inherit;
+	font-size: inherit;
+	text-transform: none;
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+/*
+Glyphs list
+*/
+ .iconfont-address:before {
+			content: '\ea01';
+		}
+
+		 .iconfont-address2:before {
+			content: '\ea02';
+		}
+
+		 .iconfont-atm-card:before {
+			content: '\ea03';
+		}
+
+		 .iconfont-authentication:before {
+			content: '\ea04';
+		}
+
+		 .iconfont-baby:before {
+			content: '\ea05';
+		}
+
+		 .iconfont-back:before {
+			content: '\ea06';
+		}
+
+		 .iconfont-back2:before {
+			content: '\ea07';
+		}
+
+		 .iconfont-bar:before {
+			content: '\ea08';
+		}
+
+		 .iconfont-book:before {
+			content: '\ea09';
+		}
+
+		 .iconfont-box:before {
+			content: '\ea0a';
+		}
+
+		 .iconfont-buy:before {
+			content: '\ea0b';
+		}
+
+		 .iconfont-calendar:before {
+			content: '\ea0c';
+		}
+
+		 .iconfont-cancel:before {
+			content: '\ea0d';
+		}
+
+		 .iconfont-car:before {
+			content: '\ea0e';
+		}
+
+		 .iconfont-cart:before {
+			content: '\ea0f';
+		}
+
+		 .iconfont-check-box:before {
+			content: '\ea10';
+		}
+
+		 .iconfont-check-square:before {
+			content: '\ea11';
+		}
+
+		 .iconfont-checked:before {
+			content: '\ea12';
+		}
+
+		 .iconfont-clock:before {
+			content: '\ea13';
+		}
+
+		 .iconfont-close:before {
+			content: '\ea14';
+		}
+
+		 .iconfont-close2:before {
+			content: '\ea15';
+		}
+
+		 .iconfont-compass:before {
+			content: '\ea16';
+		}
+
+		 .iconfont-dam-bao:before {
+			content: '\ea17';
+		}
+
+		 .iconfont-danh-muc:before {
+			content: '\ea18';
+		}
+
+		 .iconfont-date:before {
+			content: '\ea19';
+		}
+
+		 .iconfont-delete:before {
+			content: '\ea1a';
+		}
+
+		 .iconfont-discount:before {
+			content: '\ea1b';
+		}
+
+		 .iconfont-dola:before {
+			content: '\ea1c';
+		}
+
+		 .iconfont-dong-ho:before {
+			content: '\ea1d';
+		}
+
+		 .iconfont-down:before {
+			content: '\ea1e';
+		}
+
+		 .iconfont-download:before {
+			content: '\ea1f';
+		}
+
+		 .iconfont-edit:before {
+			content: '\ea20';
+		}
+
+		 .iconfont-exclamation-mark:before {
+			content: '\ea21';
+		}
+
+		 .iconfont-Facebook:before {
+			content: '\ea22';
+		}
+
+		 .iconfont-fashion-men:before {
+			content: '\ea23';
+		}
+
+		 .iconfont-fashion-woment:before {
+			content: '\ea24';
+		}
+
+		 .iconfont-file:before {
+			content: '\ea25';
+		}
+
+		 .iconfont-football:before {
+			content: '\ea26';
+		}
+
+		 .iconfont-game:before {
+			content: '\ea27';
+		}
+
+		 .iconfont-giasoc:before {
+			content: '\ea28';
+		}
+
+		 .iconfont-gioihan:before {
+			content: '\ea29';
+		}
+
+		 .iconfont-heart:before {
+			content: '\ea2a';
+		}
+
+		 .iconfont-heart2:before {
+			content: '\ea2b';
+		}
+
+		 .iconfont-help:before {
+			content: '\ea2c';
+		}
+
+		 .iconfont-home:before {
+			content: '\ea2d';
+		}
+
+		 .iconfont-home2:before {
+			content: '\ea2e';
+		}
+
+		 .iconfont-hotline:before {
+			content: '\ea2f';
+		}
+
+		 .iconfont-language:before {
+			content: '\ea30';
+		}
+
+		 .iconfont-like:before {
+			content: '\ea31';
+		}
+
+		 .iconfont-link:before {
+			content: '\ea32';
+		}
+
+		 .iconfont-link2:before {
+			content: '\ea33';
+		}
+
+		 .iconfont-lipstick:before {
+			content: '\ea34';
+		}
+
+		 .iconfont-mail:before {
+			content: '\ea35';
+		}
+
+		 .iconfont-map:before {
+			content: '\ea36';
+		}
+
+		 .iconfont-next:before {
+			content: '\ea37';
+		}
+
+		 .iconfont-next1:before {
+			content: '\ea38';
+		}
+
+		 .iconfont-next2:before {
+			content: '\ea39';
+		}
+
+		 .iconfont-next3:before {
+			content: '\ea3a';
+		}
+
+		 .iconfont-notifi:before {
+			content: '\ea3b';
+		}
+
+		 .iconfont-notifi1:before {
+			content: '\ea3c';
+		}
+
+		 .iconfont-notifi2:before {
+			content: '\ea3d';
+		}
+
+		 .iconfont-notifi3:before {
+			content: '\ea3e';
+		}
+
+		 .iconfont-padlock:before {
+			content: '\ea3f';
+		}
+
+		 .iconfont-payment:before {
+			content: '\ea40';
+		}
+
+		 .iconfont-perfume:before {
+			content: '\ea41';
+		}
+
+		 .iconfont-phone:before {
+			content: '\ea42';
+		}
+
+		 .iconfont-picture:before {
+			content: '\ea43';
+		}
+
+		 .iconfont-plane:before {
+			content: '\ea44';
+		}
+
+		 .iconfont-prev1:before {
+			content: '\ea45';
+		}
+
+		 .iconfont-prev2:before {
+			content: '\ea46';
+		}
+
+		 .iconfont-prev3:before {
+			content: '\ea47';
+		}
+
+		 .iconfont-refresh:before {
+			content: '\ea48';
+		}
+
+		 .iconfont-review:before {
+			content: '\ea49';
+		}
+
+		 .iconfont-rss:before {
+			content: '\ea4a';
+		}
+
+		 .iconfont-search:before {
+			content: '\ea4b';
+		}
+
+		 .iconfont-send:before {
+			content: '\ea4c';
+		}
+
+		 .iconfont-send_bank:before {
+			content: '\ea4d';
+		}
+
+		 .iconfont-share:before {
+			content: '\ea4e';
+		}
+
+		 .iconfont-shipped:before {
+			content: '\ea4f';
+		}
+
+		 .iconfont-smartphone:before {
+			content: '\ea50';
+		}
+
+		 .iconfont-sosanh:before {
+			content: '\ea51';
+		}
+
+		 .iconfont-star-full:before {
+			content: '\ea52';
+		}
+
+		 .iconfont-star-half:before {
+			content: '\ea53';
+		}
+
+		 .iconfont-star-none:before {
+			content: '\ea54';
+		}
+
+		 .iconfont-step:before {
+			content: '\ea55';
+		}
+
+		 .iconfont-superscript2:before {
+			content: '\ea56';
+		}
+
+		 .iconfont-thutuc:before {
+			content: '\ea57';
+		}
+
+		 .iconfont-tietkiem:before {
+			content: '\ea58';
+		}
+
+		 .iconfont-tivi:before {
+			content: '\ea59';
+		}
+
+		 .iconfont-twiter:before {
+			content: '\ea5a';
+		}
+
+		 .iconfont-Union:before {
+			content: '\ea5b';
+		}
+
+		 .iconfont-Up:before {
+			content: '\ea5c';
+		}
+
+		 .iconfont-upfile:before {
+			content: '\ea5d';
+		}
+
+		 .iconfont-user:before {
+			content: '\ea5e';
+		}
+
+		 .iconfont-vector:before {
+			content: '\ea5f';
+		}
+
+		 .iconfont-visa:before {
+			content: '\ea60';
+		}
+
+		

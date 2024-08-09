@@ -1,0 +1,30 @@
+﻿@model WEB.UI.ViewModels.ProductTopEntitiesViewModel
+@if (Model != null)
+{
+    int d = 0;
+    if (Model.product_list.Count > 0)
+    {
+        <section class="section section_s4 clearfix mb60">
+            <div class="container">
+                <h2 class="center mb30">
+                    <img src="~/landing_page/prime_day_2020/css/images/graphics/banner-title1.png">
+                </h2>
+                <div class="tab-default tab-category">
+                    @foreach (var item in Model.obj_tab)
+                    {
+                        <a class="tab_group_product btn @Html.Raw(d == 0 ? "active" : "")" data-folderid="@item.id">@item.name</a>
+                        d += 1;
+                    }
+                </div>
+
+                <div class="group_product_prime list-product list-product__2 flex">                    
+                    @{ await Html.RenderPartialAsync("/Views/Shared/Components/landingPage/primeDay2020/boxProductSale/product_list_tab.cshtml", Model.product_list);}
+                </div>
+                @*<div class="center mt20">
+                        <a  class="btn xem_them green">Xem thêm</a>
+                    </div>*@
+            </div>
+        </section>
+
+    }
+}

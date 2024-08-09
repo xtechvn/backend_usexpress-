@@ -1,0 +1,22 @@
+﻿@using Entities.ViewModels;
+@model List<ProductViewModel>
+
+
+@if (Model != null)
+{
+
+    <div class="head-title head-title2 flex">
+        <h2 class="title_category">Tất cả sản phẩm</h2>
+    </div>
+
+    <div class="list-product flex append-data">
+        @{ await Html.RenderPartialAsync("PartialView/Store/Costco/product_detail", Model);}
+    </div>
+
+    <div class="center btn_view_more_product mt30">
+        <a class="btn" style="width:282px">Xem thêm</a>
+    </div>
+
+}
+
+

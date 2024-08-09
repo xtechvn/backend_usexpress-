@@ -1,0 +1,85 @@
+﻿@model List<Entities.ViewModels.ProductViewModel>
+@if (Model != null)
+{
+
+    @foreach (var item in Model)
+    {
+        @if (item.discount <= 0)
+        {
+            item.discount = new Random().Next(1, 20);
+        }
+        var current_date = DateTime.Now;
+        string product_name = Utilities.CommonHelper.CheckMaxLength((item.product_name).ToString(), 100);
+        <div class="product-item col-4">
+            @if (item.discount > 0 && item.amount_vnd > 0)
+            {
+                <div class="sale">-@item.discount%</div>
+            }
+            <a class="ava" href="@item.link_product">
+                <img src="@(item.image_size_product.Count > 0 ? item.image_size_product[0].Larger : "unknown")" alt="@product_name" />
+            </a>
+            <div class="content">
+                <div class="ct_star">
+                    @{
+                        double total_star = item.star;
+                        if (total_star > 0)
+                        {
+                            double pn = (double)Math.Floor(total_star);
+                            double pd = total_star - pn;
+                            <div class="ct_star">
+                                @{ await Html.RenderPartialAsync("PartialView/Product/Element/star", null, new ViewDataDictionary(this.ViewData) { { "star", item.rate } });}
+                            </div>
+                        }
+                    }
+                    @if (item.rating != null && item.rating != "0")
+                    {
+                        <a class="buy">@Html.Raw((item.rating.ToString()) + " đánh giá")</a>
+                    }
+                </div>
+                <strong class="price">@Math.Round(item.amount_vnd).ToString("N0") đ</strong>
+
+                @if (item.discount > 0 && item.price_vnd > 0)
+                {
+                    <strong class="price old">@item.price_vnd.ToString("N0") đ</strong>
+                }
+                else
+                {
+                <strong class="price old">@Math.Round(item.amount_vnd / (1 - item.discount / 100)).ToString("N0") đ</strong>
+                }
+
+                @if (item.sale_exprire_time != null && item.discount > 0)
+                {
+
+                    if (DateTime.Compare(current_date, item.sale_exprire_time) > 0)
+                    {
+                        item.sale_exprire_time = current_date.Date.AddHours(23).AddMinutes(59);
+                    }
+                    @*<div class="exist">
+                <span class="set">
+                    <img src="/images/icons/sale.png">
+                </span>
+                <span>Còn lại : 30%</span>
+                <div class="rest rest_30"></div>
+            </div>*@
+                    <div class="start-time" id="expire_time_@item.product_code">
+                        Kết thúc sau :
+                        <span class="hours">00</span>:
+                        <span class="minutes">00</span>:
+                        <span class="seconds">00</span>
+                    </div>
+                    <script type="text/javascript">
+                            var deadline = new Date(Date.parse('@item.sale_exprire_time'));
+                            timer.initializeClockDate('expire_time_@item.product_code', deadline);
+                    </script>
+
+                }
+            </div>
+        </div>
+
+    }
+
+}
+else
+{
+    <p>...</p>
+}

@@ -1,0 +1,36 @@
+﻿@{
+    double star = this.ViewData["star"] == null ? 5 : Convert.ToDouble(this.ViewData["star"]);
+}
+
+@{
+    double total_star = star;
+    if (total_star > 0)
+    {
+        double pn = (double)Math.Floor(total_star);
+        double pd = total_star - pn;
+        <div class="ct_star">
+            @{
+                bool is_has_star_half = false;
+                for (int i = 0; i < 5; i++)
+                {
+                    <svg class="icon-us">
+                        @if (i < pn)
+                        {
+                            <use xlink:href="/images/icons/icon.svg#star-full"></use>
+                        }
+                        else if (pd < 0.9 && (!is_has_star_half))
+                        {
+                            <use xlink:href="/images/icons/icon.svg#star-half"></use>
+                            is_has_star_half = true;
+                        }
+                        else
+                        {
+                            <use xlink:href="/images/icons/icon.svg#star-none"></use>
+                        }
+                    </svg>
+                }
+            }
+
+        </div>
+    }
+}

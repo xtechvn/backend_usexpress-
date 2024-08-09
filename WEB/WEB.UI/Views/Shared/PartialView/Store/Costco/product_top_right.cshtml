@@ -1,0 +1,59 @@
+﻿@using Entities.ViewModels;
+@model List<ProductViewModel>
+
+<div class="list-live">
+    <h2 class="title-live">
+        Sản phẩm mua nhiều
+    </h2>
+    <div class="scrollbar-inner">
+        @foreach (var item in Model)
+        {
+            <div class="product-item">
+                <div class="thumb">
+                    <a class="ava" href="@item.link_product">
+                        <img src="@item.image_thumb">
+                    </a>
+                </div>
+                <div class="content">
+                    <h3 class="title"><a href="@item.link_product" title="@item.product_name">@item.product_name</a></h3>
+                    <div class="price">@item.amount_vnd.ToString("N0") đ</div>
+                </div>
+                <div class="flex-bottom">
+                    <div class="sl_giohang">
+                        <span>Số lượng :</span>
+                        <div class="input-group-prepend">
+                            <button class="giam_sl" id="minus-btn">-</button>
+                        </div>
+                        <input type="text" id="qty_input" class="qty_input" value="1" min="1">
+                        <div class="input-group-prepend">
+                            <button class="tang_sl" id="plus-btn">+</button>
+                        </div>
+                    </div>
+                    <a class="btn buy btn_fast_buy" data-productcode="@item.product_code">
+                        ĐẶT MUA
+                        <svg class="icon-us">
+                            <use xlink:href="images/icons/icon.svg#next1"></use>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<script type="text/javascript">
+
+    $(function () {
+
+        scrollBar();
+
+    });
+
+    //scrollBar
+    function scrollBar() {
+        var scrollContainer = $(".scrollbar-inner");
+        if (scrollContainer.length > 0) {
+            scrollContainer.scrollbar();
+        }
+    }
+</script>

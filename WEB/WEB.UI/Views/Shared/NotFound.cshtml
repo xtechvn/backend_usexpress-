@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewData["Title"] = "Page Not Found";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="clearfix container">
+    <div class="text-center" style="margin: 50px auto;font-size: 18px;max-width: 600px;">
+        <img src="/images/graphics/404.svg" alt="">
+        <h3 class="mt30 mb15" style="color: #DE0028;font-size:50px">
+            @ViewBag.statusCode
+        </h3>
+        <p class="mb25" style="color:#242424;font-size:20px;">            
+        @ViewBag.ErrorMessage
+        </p>
+        <div>
+            <a class="btn" href="/trung-tam-ho-tro-289" style="border: 1px solid #236852;background: none;
+    color: #236852;border-radius: 10px; margin-right: 20px;">Trung tâm trợ giúp</a>
+            
+            <a class="btn" href="/" style="border: 1px solid #236852;border-radius: 10px;padding: 0px 30px;">
+                Về trang chủ
+            </a> 
+            
+
+        </div>
+    </div>
+</section>
+

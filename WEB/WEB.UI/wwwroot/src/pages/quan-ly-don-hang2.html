@@ -1,0 +1,211 @@
+<!-- build:title -->Quản lý đơn hàng
+<!-- /build:title -->
+<!-- build:head -->
+<link href="css/user.css" rel="stylesheet" type="text/css" />
+<link href="css/order.css" rel="stylesheet" type="text/css" />
+<!-- /build:head -->
+<!-- build:content -->
+
+<!-- MAIN CONTAINER -->
+<section class="main-container clearfix mt30">
+    <div class="menu_control mb20">
+        <div class="container">
+            <ul class="breadcrumb">
+                <li><a href="#">Trang chủ</a></li>
+                <li class="active">Thông tin tài khoản</li>
+            </ul>
+        </div>
+    </div>
+    <div class="container">
+        <div class="user_management flex">
+            <div class="sidebar1">
+                <header>
+                    <div class="avatar">
+                        <img src="images/graphics/thumb_1x1.jpg">
+                    </div>
+                    <div class="info">
+                        <span>Xin chào bạn</span>
+                        <h4>Lê Văn Cường</h4>
+                    </div>
+                </header>
+                <ul class="lever1">
+                    <li><a href="/" title=""><svg class="icon-us">
+                                <use xlink:href="images/icons/icon.svg#user"></use>
+                            </svg>Thông tin tài khoản</a></li>
+                    <li class="active"><a href="/" title=""><svg class="icon-us">
+                                <use xlink:href="images/icons/icon.svg#thutuc"></use>
+                            </svg>Quản lý đơn hàng</a></li>
+                    <li><a href="/" title=""><svg class="icon-us">
+                                <use xlink:href="images/icons/icon.svg#notifi1"></use>
+                            </svg>Thông báo của tôi</a></li>
+                    <li><a href="/" title=""><svg class="icon-us">
+                                <use xlink:href="images/icons/icon.svg#address2"></use>
+                            </svg>Sổ địa chỉ</a></li>
+                    <li><a href="/" title=""><svg class="icon-us">
+                                <use xlink:href="images/icons/icon.svg#heart2"></use>
+                            </svg>Sản phẩm yêu thích</a></li>
+                    <li><a href="/" title=""><img class="icon-us" src="images/icons/u-xu.svg">Quản lý U-Xu của tôi</a>
+                    </li>
+                    <li>
+                        <a href="/" title=""><img class="icon-us" src="images/icons/affiliate.svg">Tài khoản Affiliate
+                            của tôi</a>
+                        <ul class="lever2">
+                            <li><a href="/" title=""><svg class="icon-us">
+                                        <use xlink:href="images/icons/icon.svg#link2"></use>
+                                    </svg>Tạo link giới thiệu</a></li>
+                            <li><a href="/" title=""><svg class="icon-us">
+                                        <use xlink:href="images/icons/icon.svg#thutuc"></use>
+                                    </svg>Quản lý đơn hàng Affiliate</a></li>
+                            <li><a href="/" title=""><svg class="icon-us">
+                                        <use xlink:href="images/icons/icon.svg#atm-card"></use>
+                                    </svg>Thông tin thanh toán</a></li>
+                            <li><a href="/" title=""><svg class="icon-us">
+                                        <use xlink:href="images/icons/icon.svg#buy"></use>
+                                    </svg>Đối soát hoa hồng</a></li>
+                            <li><a href="/" title=""><svg class="icon-us">
+                                        <use xlink:href="images/icons/icon.svg#notifi3"></use>
+                                    </svg>Giới thiệu về US Affiliate</a></li>
+                        </ul>
+                    </li>
+                </ul>
+
+            </div>
+            <div class="sidebar2 padding_15">
+                <div class="detail-dh">
+                    <div class="flex head-between">
+                        <a href="#" class="back mb20 txt_666">
+                            <svg class="icon-us">
+                                <use xlink:href="images/icons/icon.svg#back2"></use>
+                            </svg>
+                            Quay lại đơn hàng của tôi
+                        </a>
+                        <div class="flex head-info">
+                            <div>Mã đơn hàng: <strong class="color_green medium">944786279</strong></div>
+                            <div class="txt_666">Ngày mua : 17/07/2019</div>
+                            <div class="txt_666">Tổng tiền : 709.000 đ</div>
+                        </div>
+                    </div>
+                    <div class="txt_18 mb20 color_green">Đơn hàng của bạn đang được chúng tôi mua hộ :
+                    </div>
+                    <div class="step-dh flex">
+                        <div class="step step1 active success">
+                            <div class="icon">
+                                <svg class="icon-us">
+                                    <use xlink:href="images/icons/icon.svg#payment"></use>
+                                </svg>
+                            </div>
+                            <p>Đã thanh toán</p>
+                            <span>04:15 01/03/2019</span>
+                        </div>
+                        <div class="step step4">
+                            <div class="icon">
+                                <svg class="icon-us">
+                                    <use xlink:href="images/icons/icon.svg#plane"></use>
+                                </svg>
+                            </div>
+                            <p>Hàng đang chuyển về Việt Nam </p>
+                            <span>09:43 13/06/2019</span>
+                        </div>
+                        <div class="step step5">
+                            <div class="icon">
+                                <svg class="icon-us">
+                                    <use xlink:href="images/icons/icon.svg#shipped"></use>
+                                </svg>
+                            </div>
+                            <p>Thông quan - Đang giao hàng</p>
+                            <span>09:43 13/06/2019</span>
+                        </div>
+                        <div class="step step6">
+                            <div class="icon">
+                                <svg class="icon-us">
+                                    <use xlink:href="images/icons/icon.svg#box"></use>
+                                </svg>
+                            </div>
+                            <p>Đơn hàng hoàn thành</p>
+                            <span>09:43 13/06/2019</span>
+                        </div>
+                    </div>
+                    <!-- Danh sách đơn hàng -->
+                    <div class="list-dh list-dh__2 mb30">
+                        <!-- <div class="tr thead">
+                            <div class="td sp">Sản phẩm</div>
+                            <div class="td price">Giá</div>
+                            <div class="td soluong">Số lượng</div>
+                            <div class="td thanhtien">Thành tiền</div>
+                        </div> -->
+                        <div class="tr">
+                            <div class="td sp">
+                                <div class="ava"><img class="img" src="images/graphics/sanpham1.png" alt=""></div>
+                                <div class="content">
+                                    <h3><a href="/">Kenneth Cole Men Watch Reaction ... 42mm for Business Man in
+                                            Vietnam</a></h3>
+                                    <div class="option">Cung cấp bởi: <span class="black medium">Costco</span></div>
+                                    <div class="flex">
+                                        <div class="option">Giá : <span class="black medium">749.000 đ</span></div>
+                                        <div class="option m-l-20">Số lượng : <span class="black medium">2</span></div>
+                                    </div>
+                                    <div class="option">Địa chỉ nhận hàng : <span class="black medium">17 duy tân,
+                                            Phường Dịch Vọng Hậu, Quận Cầu Giấy, Hà Nội, Việt Nam</span></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tr">
+                            <div class="td sp">
+                                <div class="ava"><img class="img" src="images/graphics/sanpham1.png" alt=""></div>
+                                <div class="content">
+                                    <h3><a href="/">Kenneth Cole Men Watch Reaction ... 42mm for Business Man in
+                                            Vietnam</a></h3>
+                                    <div class="option">Cung cấp bởi: <span class="black medium">Costco</span></div>
+                                    <div class="flex">
+                                        <div class="option">Giá : <span class="black medium">749.000 đ</span></div>
+                                        <div class="option m-l-20">Số lượng : <span class="black medium">2</span></div>
+                                    </div>
+                                    <div class="option">Địa chỉ nhận hàng : <span class="black medium">17 duy tân,
+                                            Phường Dịch Vọng Hậu, Quận Cầu Giấy, Hà Nội, Việt Nam</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Thông tin căn bản khách hàng -->
+                    <div class="customer-dh flex">
+                        <div class="item">
+                            <div class="medium mb10">PHẠM ÁI PHƯƠNG</div>
+                            <div class="mb10">Địa chỉ: <span class="medium">Tầng 5, tòa nhà Diamond Flower, số 1 Hoàng
+                                    Đạo Thúy, Hà Nội</span></div>
+                            <div class="mb25">Điện thoại: <span class="medium">0968667936</span></div>
+                            <a class="edit btn" href="#">Đổi địa chỉ</a>
+                        </div>
+                        <div class="item">
+                            <ul>
+                                <li class="flex space-between mb10">
+                                    <div>Hình thức thanh toán :</div>
+                                    <div>Thanh toán bằng ATM</div>
+                                </li>
+                                <li class="flex space-between mb10">
+                                    <div>Tiền hàng :</div>
+                                    <div>3.000.000đ</div>
+                                </li>
+                                <li class="flex space-between mb10">
+                                    <div>Giảm giá :</div>
+                                    <div>-0đ</div>
+                                </li>
+                                <li class="flex space-between mb10">
+                                    <div>Tổng tiền:</div>
+                                    <div class="medium txt_18">3.000.000đ </div>
+                                </li>
+                            </ul>
+                            <a class="cancel btn" href="#">Hủy đơn hàng</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+<!-- END MAIN CONTAINER -->
+
+
+<!-- /build:content -->

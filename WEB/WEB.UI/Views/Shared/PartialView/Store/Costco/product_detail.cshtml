@@ -1,0 +1,45 @@
+﻿@using Entities.ViewModels;
+@model List<ProductViewModel>
+
+@foreach (var item in Model)
+{    
+    <div class="product-item col-5">
+        @if (item.discount > 0)
+        {
+            <div class="sale">-@item.discount%</div>
+        }
+        <a class="ava" href="@item.link_product">
+            <img src="@(item.image_thumb)" />
+        </a>
+        <div class="content">
+            <div class="ct_star">
+                @{
+                    double total_star = item.star;
+                    if (total_star > 0)
+                    {
+                        double pn = (double)Math.Floor(total_star);
+                        double pd = total_star - pn;
+                        <div class="ct_star">
+                            @{ await Html.RenderPartialAsync("PartialView/Product/Element/star", null, new ViewDataDictionary(this.ViewData) { { "star", item.rate } });}
+                        </div>
+                    }
+                }
+                @if (item.rating != null && item.rating != "0")
+                {
+                    <a class="buy">@Html.Raw((item.rating.ToString()) + " đánh giá")</a>
+                }
+            </div>
+            <h3 class="title">
+
+                <a href="@item.link_product" title="@item.product_name">@item.product_name</a>
+            </h3>
+            <div class="flex">
+                <div class="col-2">
+                    <span>Giá về tay</span>
+                    <strong class="price">@Math.Round(item.amount_vnd).ToString("N0") đ</strong>
+                </div>
+            </div>
+            <a class="brand_label" href="@item.link_product"><img src="~/images/graphics/my.png" title="amz">Sản phẩm bán tại Costco Mỹ</a>
+        </div>
+    </div>
+}

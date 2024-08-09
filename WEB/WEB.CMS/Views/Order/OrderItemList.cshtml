@@ -1,0 +1,184 @@
+﻿@{
+    Layout = null;
+}
+@using Utilities
+@using Utilities.Contants
+@using Entities.ViewModels
+@model OrderDetailViewModel
+@{
+    // var _DomainFrontEnd = ReadFile.LoadConfig().API_USEXPRESS;
+    var AmazoneProductDomain = @"https://www.amazon.com/dp/";
+    var _rateCurrent = Model.OrderInfo.RateCurrent ?? 0;
+}
+<div class="title-cate flex">
+    <span>Danh sách sản phẩm</span>
+</div>
+<div class="warp_padding20">
+    <div class="wrap_bg wrap_bg_no-padding mb20">
+        <div class="table-responsive table-default">
+            <table class="table table-nowrap table-product">
+                <thead>
+                    <tr style="background: #ECECEE;">
+                        <th>STT</th>
+                        <th>Mã sản phẩm</th>
+                        <th style="width:350px">Tên sản phẩm</th>
+                        <th class="text-right">Giá bán</th>
+                        <th class="text-right">Phí mua hộ</th>
+                        <th class="text-right">Số lượng</th>
+                        <th class="text-right">Thành tiền</th>
+                        <th class="text-center mfp-hide">Tác vụ</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model.OrderItemList != null && Model.OrderItemList.Count > 0)
+                    {
+                        int counter = 0;
+                        foreach (var item in Model.OrderItemList)
+                        {
+                            counter++;
+                            <tr>
+                                <td>@counter</td>
+                                <td>@item.ProductCode</td>
+                                <td class="name_img">
+                                    <div class="flex">
+                                        <div class="ava tooltip-img">
+                                            <span class="thumb_img thumb_5x5">
+                                                <img src="@(item.ProductImage ?? "/images/icons/noimage.png")" onerror="_imageError(this)" />
+                                            </span>
+                                            <div class="tooltip-inner fade">
+                                                <img src="@(item.ProductImage ?? "/images/icons/noimage.png")" onerror="_imageError(this)" />
+                                            </div>
+                                        </div>
+                                        <div class="content" style=" float: left; width: calc(100% - 42px);">
+                                            <div class="txt_11"></div>
+                                            <div><a @(item.LabelId != (int)LabelType.amazon ? string.Empty : "href=" + AmazoneProductDomain + item.ProductCode + " target=_blank")><strong>@item.ProductName</strong></a></div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="text-right phi_muaho">
+                                    <div>
+                                        <span class="price">
+                                            @(Math.Round(item.Price * _rateCurrent).ToString("N0"))
+                                            <sup>đ</sup>
+                                        </span>
+                                        <span>(@StringHelpers.FormatCurrency(item.Price) $)</span>
+                                    </div>
+                                    @if (item.ShippingFeeUs != 0)
+                                    {
+                                        <div class="txt_11" style="color:#FC9820;">
+                                            <span class="price-title">Phí ship nội địa:</span>
+                                            <span class="price">@(Math.Round(item.ShippingFeeUs * _rateCurrent).ToString("N0")) đ</span>
+                                            <span>(@StringHelpers.FormatCurrency(item.ShippingFeeUs) $)</span>
+                                        </div>
+                                    }
+                                </td>
+                                <td class="text-right phi_muaho">
+                                    <div>
+                                        <span class="price">
+                                            @(Math.Round((item.FirstPoundFee +item.NextPoundFee + item.LuxuryFee) * item.Quantity * _rateCurrent).ToString("N0"))
+                                            <sup>đ</sup>
+                                        </span>
+                                        <span>(@StringHelpers.FormatCurrency((item.FirstPoundFee + item.NextPoundFee + item.LuxuryFee) * item.Quantity) $)</span>
+                                    </div>
+                                    @if (item.FirstPoundFee != 0)
+                                    {
+                                        <div class="blue txt_11">
+                                            <span class="price-title">Phí mua hộ pound đầu:</span>
+                                            <span class="price">@(Math.Round(item.FirstPoundFee * _rateCurrent).ToString("N0")) đ</span>
+                                            <span>(@StringHelpers.FormatCurrency(item.FirstPoundFee) $)</span>
+                                        </div>
+                                    }
+                                    @if (item.LuxuryFee != 0)
+                                    {
+                                        <div class="red txt_11">
+                                            <span class="price-title">Phí luxury:</span>
+                                            <span class="price">@(Math.Round(item.LuxuryFee * _rateCurrent).ToString("N0")) đ</span>
+                                            <span> (@StringHelpers.FormatCurrency(item.LuxuryFee) $)</span>
+                                        </div>
+                                    }
+                                    @if (item.NextPoundFee != 0)
+                                    {
+                                        <div class="red txt_11">
+                                            <span class="price-title">Phí mua hộ pound tiếp theo:</span>
+                                            <span class="price">@(Math.Round(item.NextPoundFee * _rateCurrent).ToString("N0")) đ</span>
+                                            <span>(@StringHelpers.FormatCurrency(item.NextPoundFee) $)</span>
+                                        </div>
+                                    }
+                                </td>
+                                <td class="text-right">@item.Quantity.ToString("N0")</td>
+                                <td class="text-right phi_muaho">
+                                    <div>
+                                        <span class="price" style="margin-right:0px;">
+                                            @(Math.Round((item.Price + item.FirstPoundFee + item.NextPoundFee + item.LuxuryFee) * item.Quantity * _rateCurrent).ToString("N0"))
+                                            <sup>đ</sup>
+                                        </span>
+                                    </div>
+                                </td>
+                                <td class="text-center mfp-hide">
+                                    <a class="delete red" href=""><i class="fa fa-times"></i></a>
+                                    &nbsp;&nbsp;
+                                    <a class="blue" href=""><i class="fa fa-arrows-alt"></i></a>
+                                </td>
+                            </tr>
+                        }
+
+                        <tr class="bold tb-total-line">
+                            <td></td>
+                            <td class="text-left" colspan="2" style="padding-left:12px;">
+                                <span> Tổng cộng</span>
+                            </td>
+                            <td class="text-right">
+                                <span class="price">
+                                    @(Math.Round(Model.OrderItemList.Sum(s => s.Price * s.Quantity * _rateCurrent)).ToString("N0"))
+                                    <sup>đ</sup>
+                                </span>
+                            </td>
+                            <td class="text-right">
+                                <span class="price">
+                                    @(Math.Round(Model.OrderItemList.Sum(s => (s.FirstPoundFee + s.NextPoundFee + s.LuxuryFee) * s.Quantity * _rateCurrent)).ToString("N0"))
+                                    <sup>đ</sup>
+                                </span>
+                            </td>
+                            <td class="text-right">
+                                <div>
+                                    @Model.OrderItemList.Sum(s => s.Quantity).ToString("N0")
+                                </div>
+
+                            </td>
+                            <td class="text-right">
+                                <div>
+                                    <span class="price" style="margin-right:0px;">
+                                        @(Math.Round(Model.OrderItemList.Sum(s => (s.Price + s.FirstPoundFee + s.NextPoundFee + s.LuxuryFee) * s.Quantity * _rateCurrent)).ToString("N0"))
+                                        <sup>đ</sup>
+                                    </span>
+                                </div>
+                            </td>
+                            <td class="mfp-hide"></td>
+                        </tr>
+                        <tr style="background: #E1E8EA;">
+                            <td class="text-right" colspan="7" style="border-top:none">
+                                @if (Model.OrderInfo.TotalDiscount2ndVnd != null && Model.OrderInfo.TotalDiscount2ndVnd != 0)
+                                {
+                                    <div class="txt_11 red">
+                                        <span>Số tiền giảm trên phí mua hộ: @Math.Round(Model.OrderInfo.TotalDiscount2ndVnd.Value).ToString("N0") đ</span>
+                                    </div>
+                                }
+                                @if (Model.OrderInfo.TotalDiscountVoucherVnd != null && Model.OrderInfo.TotalDiscountVoucherVnd != 0)
+                                {
+                                    <div class="txt_11 blue">
+                                        <span>Số tiền giảm của voucher: @Math.Round(Model.OrderInfo.TotalDiscountVoucherVnd.Value).ToString("N0") đ</span>
+                                    </div>
+                                }
+                            </td>
+                            <td class="mfp-hide" style="border-top:none"></td>
+                        </tr>
+                    }
+                    else
+                    {
+                        <tr><td colspan="7"><p class="red" style="margin:0;">Hiện tại đơn hàng chưa được thêm sản phẩm</p></td></tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

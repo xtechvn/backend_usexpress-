@@ -1,0 +1,268 @@
+﻿@{
+    ViewData["Title"] = "Phân loại sản phẩm";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var startDate = DateTime.Now;
+    var endDate = DateTime.Now.AddDays(7);
+    var isFromCampaign = ViewBag.isFromCampaign;
+}
+
+<style>
+    .red-color {
+        color: red;
+    }
+
+    .margin-top-10 {
+        margin-top: 10px;
+    }
+
+    .search-wrapper input {
+        border: 1px solid transparent;
+        padding: 7px;
+        height: 36px;
+        font-size: 12px;
+        border-radius: 5px;
+        margin: 0;
+        padding-left: 36px;
+    }
+
+    .search-wrapper .search-btn {
+        position: absolute;
+        height: 36px;
+        width: 36px;
+        line-height: 37px;
+        left: 0;
+        top: 0;
+        text-align: center;
+    }
+
+        .search-wrapper .search-btn button svg {
+            width: 13px;
+            height: 13px;
+        }
+
+        .search-wrapper .search-btn button {
+            background: none;
+            border: none;
+            color: #ccc;
+        }
+
+    .tab-default1 {
+        margin-bottom: 15px;
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex
+    }
+
+    .tab-default a {
+        color: #000000;
+        padding: 10px
+    }
+
+        .tab-default a.active {
+            border-bottom: 1px solid #49B291
+        }
+</style>
+
+<div class="add-prodcut-popup container mt30">
+    <div class="content_lightbox" style="background: #fff;">
+        <p class="txt_16">Phân loại sản phẩm</p>
+        <div class="wrap-tab">
+            <div class="tab-default">
+                <a class="cur-pointer tab-link @(isFromCampaign ? "" : "active")" data-id="1">Tải về Bản Mẫu</a>
+                <a class="cur-pointer tab-link @(isFromCampaign ? "active" : "")" data-id="2">Mô tả chi tiết</a>
+            </div>
+            <div class="tab-content">
+                <div class="item-tab-content" data-id="1" style="@(isFromCampaign ? "display: none" : string.Empty)">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <label class="radio radio-block mb30">
+                                <input type="radio" name="optradio" checked="">
+                                <span class="checkmark"></span>
+                                Bản mẫu crawl link sản phẩm
+                                <p class="gray txt_13">Bản mẫu cơ bản chứa các trường bắt buộc để liệt kê link sản phẩm sẽ đi crawler. Bản mẫu này có thể được sử dụng cho bất kỳ nhãn hàng nào</p>
+                            </label>
+                            <label class="radio radio-block">
+                                <input type="radio" name="optradio">
+                                <span class="checkmark"></span>
+                                Bản mẫu import sản phẩm
+                                <p class="gray txt_13">Bản mẫu cơ bản chứa các trường bắt buộc để liệt kê link sản phẩm sẽ đi crawler. Bản mẫu này có thể được sử dụng cho bất kỳ nhãn hàng nào</p>
+                            </label>
+                        </div>
+                        <div class="col-md-4">
+                            <div style="background: #F3F3F3;padding: 10px;height: 100%;">
+                                <p><strong>Hướng dẫn:</strong> bạn hãy tải file mẫu về và điền các thông tin yêu cầu vào mẫu để thực hiện.</p>
+                                <strong>Mẫu:</strong>
+                                <div>Bạn có thể tải xuống mẫu ngoại tuyến, lưu ý rằng mẫu chỉ có thể được chỉnh sửa trên máy tính có hệ điều hành Windows.</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group mt20">
+                        <button onclick="" class="btn btn-default bg-main">
+                            <a href="~/Template/Crawler/LinkCrawl_Template.xlsx" style="color:#fff !important">Tải về</a>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="item-tab-content" data-id="2" style="@(isFromCampaign ? string.Empty : "display: none")">
+                    <p>Sau khi hoàn thành chỉnh sửa, vui lòng đăng tập tin Excel lên. Bạn có thể kiểm tra những sản phẩm mới tạo 1 lần nữa ở bên dưới trước khi gửi yêu cầu crawler</p>
+                    <div class="flex align-center">
+                        <label class="choose mb0">
+                            <input type="file" name="myFile" id="uploadExcel" style="display: none;" onchange="_menu.UploadExcel()">
+                            <a class="btn-default" style="color: #fff;cursor: pointer;">Chọn tập tin</a>
+                        </label>
+                        <div class="gray">&nbsp;&nbsp;&nbsp;Kích cỡ tối đa: 10.0 MB - Định dạng: xlsx</div>
+                    </div>
+                    <div class="scrollbar_crawl scrollbar-inner margin-top-10">
+                        <div class="notifi-warp bg_red mt15" id="showLinkWrong">
+                            <p class="red">
+                                <strong>Lỗi xảy ra:</strong> hiện tại hệ thống chưa đáp ứng cho những link này:
+                            </p>
+                            <div id="listLinkWrong">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="scrollbar_crawl scrollbar-inner">
+                        <div class="table-responsive table-default">
+                            <table class="table table-nowrap table-border" id="tbLink">
+                                <thead>
+                                    <tr class="bg-gray">
+                                        <th>Link crawler (<strong><a id="totallink"></a></strong>)</th>
+                                        <th style="width:100px">Nhãn hàng</th>
+                                        <th>Hoạt động</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tbody">
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="warp_gray mb15" style="cursor:pointer">
+                        <div class="search-wrapper mb15" style="max-width:300px">
+                            <div class="form">
+                                <input type="text" class="input_search border" name="" id="searchInput" value=""
+                                       placeholder="Tên nhóm hàng" onchange="searchMenu()">
+                                <span class="search-btn">
+                                    <button type="button" onclick="searchMenu()">
+                                        <svg class="icon-svg">
+                                            <use xlink:href="/images/icons/icon.svg#search"></use>
+                                        </svg>
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="row list_cate">
+                            <ul class="col-md-4 scrollbar-inner" id="parentMenu">
+                            </ul>
+                            <ul class="col-md-4 scrollbar-inner" id="childrenMenu">
+                            </ul>
+                            <ul class="col-md-4 scrollbar-inner" id="grandChildrenMenu">
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="flex align-center mb15" id="selectedMenu">
+                        Đã chọn :
+                        <ul class="flex nav color">
+                            <li id="parrent"> </li>
+                            <li id="children"> </li>
+                            <li id="grandchildren"></li>
+                        </ul>
+                    </div>
+                    <div class="hieu_luc flex mb25">
+                        <label>Hiệu lực :</label>
+                        <div class="wrap">
+                            <div class="form-group">
+                                <div class="datepicker-wrap">
+                                    <input id="fromDate" class="datepicker-input form-control" type="text"
+                                           value="@startDate.ToString("dd'/'MM'/'yyyy")">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="datepicker-wrap">
+                                    <input id="toDate" class="datepicker-input form-control" type="text"
+                                           value="@endDate.ToString("dd'/'MM'/'yyyy") ">
+                                </div>
+                            </div>
+                            <div class="txt_13" style="color: #ADB0B1">Hết hiệu lực. Các link trên sẽ không có tác dụng</div>
+                        </div>
+                    </div>
+                    <div class="hieu_luc flex mb25">
+                        <label>Tên chiến dịch : <a id="tenchiendich"></a></label>
+                        <div class="wrap">
+                            <select class="form-control" id="selectCampaign">
+                                <option value="0" selected id="option0">--- Lựa chọn chiến dịch ---</option>
+                            </select>
+                        </div>
+                        <button class="btn" onclick="_menu.OnOpenCreateCampaign()" title="Khởi tạo chiến dịch">
+                            <i class="fa fa-plus"></i>
+                        </button>
+                        <button class="btn" title="Cập nhật chiến dịch" onclick="_menu.OnOpenEditCampaign()">
+                            <i class="fa fa-edit"></i>
+                        </button>
+                    </div>
+                    <div class="hieu_luc flex mb25">
+                        <label>Utm Source (<span class="red-color ">*</span>) : </label>
+                        <div class="wrap">
+                            <select class="form-control" id="selectUtmSource">
+                                <option value="0" selected id="option0">--- Lựa chọn Utm Source ---</option>
+                            </select>
+                        </div>
+                        <button class="btn" onclick="_menu.OnOpenCreateUtmSource()" title="Khởi tạo utm source">
+                            <i class="fa fa-plus"></i>
+                        </button>
+                        <button class="btn" title="Cập nhật utm source" onclick="_menu.OnOpenEditUtmSource()">
+                            <i class="fa fa-edit"></i>
+                        </button>
+                    </div>
+                    <div class="hieu_luc flex mb25">
+                        <label>Utm Campaign : <a id="utm_campaign"></a></label>
+                        <div class="wrap">
+                            <select class="form-control" id="selectUtmCampaign">
+                                <option value="0" selected id="option0">--- Lựa chọn Utm Campaign ---</option>
+                            </select>
+                        </div>
+                        <button class="btn" onclick="_menu.OnOpenCreateUtmCampaign()" title="Khởi tạo utm campaign">
+                            <i class="fa fa-plus"></i>
+                        </button>
+                        <button class="btn" title="Cập nhật utm campaign" onclick="_menu.OnOpenEditUtmCampaign()">
+                            <i class="fa fa-edit"></i>
+                        </button>
+                    </div>
+                    <div class="hieu_luc flex mb25">
+                        <label>Utm Medium : <a id="utm_medium"></a></label>
+                        <div class="wrap">
+                            <select class="form-control" id="selectUtmMedium">
+                                <option value="0" selected id="option0">--- Lựa chọn Utm Medium---</option>
+                            </select>
+                        </div>
+                        <button class="btn" onclick="_menu.OnOpenCreateUtmMedium()" title="Khởi tạo utm medium">
+                            <i class="fa fa-plus"></i>
+                        </button>
+                        <button class="btn" title="Cập nhật utm medium" onclick="_menu.OnOpenEditUtmMedium()">
+                            <i class="fa fa-edit"></i>
+                        </button>
+                    </div>
+                    <div class="flex align-center mb15" id="selectedMenu">
+                        Link preview : *?utm_campain=<span><a id="utm_cp"></a></span>
+                        &utm_source=<span><a id="utm_sour"></a></span>&utm_medium=<span><a id="utm_medi"></a></span>
+                    </div>
+                    <div class="text-right mb15">
+                        <button type="submit" onclick="_menu.PostData()" class="btn btn-default bg-main">
+                            <i class="iconfont-send"></i>Gửi yêu cầu
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $('.datepicker-input').Zebra_DatePicker({
+        format: 'd/m/Y'
+    });
+    var isFromCampaign = @isFromCampaign;
+</script>
+@section scripts {
+    <script src="~/modules/groupProduct.js"></script>
+}

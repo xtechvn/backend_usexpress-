@@ -1,0 +1,41 @@
+﻿@model WEB.UI.ViewModels.ProductTopEntitiesViewModel
+@if (Model != null)
+{
+    <div class="flash_sale mb25">
+        <div class="head-title flex">
+            <h2 class="title_category"><strong>Flash</strong> sale</h2>
+            
+                @if (Model.obj_tab != null)
+                {
+                    <div class="tab_category">
+                        @{
+                            int d = 0;
+                            foreach (var item in Model.obj_tab)
+                            {
+                                <a class="tab_product_flash_sale @Html.Raw(d == 0 ? "active" : "")" data-slidename="flash_sale" data-boxtype="product_flash_sale_list" style="cursor:pointer" data-id="@item.id">@item.name</a>
+                                d += 1;
+                            }
+                        }
+                    </div>
+                }               
+            
+        <div class="option">            
+            <a class="view-all" href="/camp-all/@Model.campaign_id">Xem tất cả</a>
+        </div>
+        </div>
+        <div class="flex">
+            <div class="banner">
+                <a href="#">
+                    <img src="~/images/graphics/default_top_290x709.png">
+                </a>
+            </div>
+            <div class="list-product flex product_flash_sale_list">
+                @{ await Html.RenderPartialAsync("/Views/Shared/Components/product/blog/product_flash_sale_list.cshtml", Model.product_list);}
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <p>...</p>
+}

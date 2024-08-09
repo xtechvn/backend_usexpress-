@@ -1,0 +1,106 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/LandingPage/PrimeDay2020/_LayoutPrimeDay2020.cshtml";
+}
+
+<section class="section section_s2 clearfix mb60">
+    <h2 class="title_line">
+        <span>Voucher khuyến mãi</span>
+    </h2>
+    <div class="container">
+        <div class="flex">
+            <div class="col_left">
+                <a class="thumb_img" href="" title="#">
+                    <img src="~/landing_page/prime_day_2020/css/images/graphics/bo-sp1.png">
+                </a>
+            </div>
+
+            <div class="col_right">
+                <ul>
+                    <li>
+                        <a>
+                            <img src="~/landing_page/voucher/h1.png">
+                        </a>
+                    </li>
+
+                    <li>
+                        <a>
+                            <img src="~/landing_page/voucher/h2.png">
+                        </a>
+                    </li>
+                    <li>
+                        <a>
+                            <img src="~/landing_page/voucher/h3.png">
+                        </a>
+                    </li>
+                    <li>
+                        <a>
+                            <img src="~/landing_page/voucher/h4.png">
+                        </a>
+                    </li>
+                    <li  class="active">
+                        <a>
+                            <img src="~/landing_page/voucher/primeketthuc.jpg">
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+@await Component.InvokeAsync("landingPage", new { view_comp = "/Views/Shared/Components/landingPage/primeDay2020/boxProductSale/default.cshtml",cache_name = "FOLDER_268" })
+
+
+<section class="section section_s4 clearfix mb60">
+    <div class="container">
+        <h2 class="center mb30">
+            <img src="~/landing_page/prime_day_2020/css/images/graphics/banner-title1.png">
+        </h2>
+        <div class="tab-default tab-category">
+            <a class="tab_group_product btn active" data-folderid="260" >Công nghệ</a>
+            <a class="tab_group_product btn"  data-folderid="261" >Thời trang</a>
+            <a class="tab_group_product btn" data-folderid="262"  >Đồng hồ</a>            
+            <a class="tab_group_product btn" data-folderid="263" >Gia dụng</a>
+            <a class="tab_group_product btn" data-folderid="264" >Sức khỏe</a>
+            <a class="tab_group_product btn" data-folderid="265" >Giày dép</a>
+            <a class="tab_group_product btn" data-folderid="266" >Túi ví</a>
+            <a class="tab_group_product btn" data-folderid="267" >Kính mắt</a>
+        </div>
+
+        <div class="group_product_prime list-product list-product__2 flex">
+
+            @await Component.InvokeAsync("landingPage", new { view_comp = "/Views/Shared/Components/landingPage/primeDay2020/boxGroupProduct/default.cshtml", cache_name = "FOLDER_260" })
+
+        </div>
+        @*<div class="center mt20">
+            <a  class="btn xem_them green">Xem thêm</a>
+        </div>*@
+    </div>
+</section>
+
+<script type="text/javascript">
+    $('.tab_group_product').click(function () {
+        var folder_id = $(this).data('folderid');
+        $('.tab-category').find('.active').removeClass('active');
+        $(this).addClass("active");
+        $.ajax({
+            url: "/Landing/primeday-group-list.json",
+            type: 'POST',
+            data: { folder_id: folder_id},
+            dataType: "json",            
+            success: function (response) {              
+                if (response.status == 0) {
+                    $(".group_product_prime").html(response.render_product_list);
+                } else {
+                    $(".group_product_prime").html("Sản phẩm đang trong quá trình cập nhật...");
+                }               
+            }
+        })     
+    });
+
+    
+</script>

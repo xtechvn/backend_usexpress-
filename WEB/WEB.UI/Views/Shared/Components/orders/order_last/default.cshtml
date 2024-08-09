@@ -1,0 +1,19 @@
+﻿@using WEB.UI.ViewModels;
+@model OrderItemHistoryViewModel
+
+@if (Model != null)
+{
+
+    <div class="txt_18 mb20 mt20 color_green">
+        Đơn hàng gần nhất của bạn đang được chúng tôi mua hộ :
+    </div>
+    <div class="flex head-info">
+        <div>Mã đơn hàng: <a class="color_green" href="/chi-tiet-don-hang-@Model.id"> @Model.orderNo</a></div>
+        <div>Ngày mua : @Model.createdOn</div>
+        <div>Tổng tiền : @Model.amountVnd.ToString("N0") đ</div>
+    </div>
+
+
+    { await Html.RenderPartialAsync("/Views/Order/OrderProgress.cshtml", new ViewDataDictionary(this.ViewData) { { "order_status", Model.orderStatus }, { "payment_status", Model.paymentStatus } });}
+}
+

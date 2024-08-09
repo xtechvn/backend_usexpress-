@@ -1,0 +1,67 @@
+﻿@{
+    var _RateCurrent = (double)ViewBag.RateCurrent;
+    var userId = !string.IsNullOrEmpty(ViewBag.UserId) ? int.Parse(ViewBag.UserId) : 0;
+}
+<section id="topbar" class="section top_bar">
+    <div class="flex container align-center">
+        <a href="javascript:;" class="all-menu all-menu-tablet"><span class="hamburger"></span></a>
+        <a class="logo" href="/"><img src="/images/graphics/logo.svg"></a>
+        <div class="header-right">
+            <ul>
+                <li class="ty-gia">
+                    <div class="color-main txt_11">(Lấy theo Vietcombank)</div>
+                    <div class="txt_666 txt_14">Tỷ giá $ hôm nay: @Math.Round(_RateCurrent, 2).ToString("N2") đ</div>
+                </li>
+                @if (userId != 54)
+                {
+                    <li class="setting">
+                        <a class="cur-pointer" onclick="_productCost.OnOpenForm();">
+                            <strong>Báo giá</strong>
+                            <i class="fa fa-calculator text-secondary"></i>
+                        </a>
+                    </li>
+                }
+                @if (userId != 54 && userId != 59 && userId != 60 && userId != 62)
+                {
+                    <li class="setting">
+
+                        <a href="javascript:void(0);">
+                            <strong>Thiết lập</strong>
+                            <i class="iconfont-setting"></i>
+                        </a>
+                        <ul class="sub-menu">
+                            <li><a href="/user"><i class="fa fa-user"></i>Quản lý người dùng</a></li>
+                            <li><a href="/role"><i class="fa fa-reply-all"></i>Phân quyền nhóm</a></li>
+                            <!--<li><a href="/home/datamonitor"><i class="fa fa-database"></i>Data Monitor</a></li>-->
+                        </ul>
+                    </li>
+                 }
+
+                <li class="user-name menu-bar onclick-togle">
+                    <a class="lk-user-name">
+                        <strong>Chào: @ViewBag.UserName</strong>
+                        <i class="fa fa-user"></i>
+                    </a>
+                    <ul class="sub-menu">
+                        @*
+                            <li>
+                                <a href="#add-user-popup" class="open-popup"><i class="fa fa-key"></i>Đổi mật khẩu</a>
+                            </li>
+                            <li><a href="#"><i class="fa fa-align-left"></i>Xem báo cáo cuối ngày</a></li>
+                            <li><a href="#"><i class="fa fa-reply-all"></i>Chọn hóa đơn trả hàng</a></li>
+                            <li><a href="#"><i class="fa fa-file-word-o"></i>Lập phiếu thu</a></li>
+                            <li><a href="#"><i class="fa fa-upload"></i>Imporrt</a></li>
+                            <li><a href="#"><i class="fa fa-eye-slash"></i>Tùy chọn hiển thị</a></li>
+                        *@
+                        <li><a onclick="_account.OnGetDatailUser()" style="cursor:pointer"><i class="fa fa-user"></i> Thông tin tài khoản</a></li>
+                        <li>
+                            <form method="post" asp-controller="account" asp-action="logout">
+                                <a onclick="$(this).closest('form').submit()" style="cursor:pointer"><i class="fa fa-external-link"></i>Đăng xuất</a>
+                            </form>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</section>

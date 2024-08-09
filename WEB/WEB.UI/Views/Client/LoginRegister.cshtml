@@ -1,0 +1,15 @@
+﻿<div class="form frm_client_sercurity" id="frm_client_sercurity">
+    <div class="tab flex">
+        <a class="login active" href="#tab-dn">Đăng nhập</a>
+        <a class="resign" href="#tab-dk">Tạo tài khoản</a>
+    </div>
+
+    <div id="tab-dn" class="tab-content user-login">
+        @*@await Component.InvokeAsync("Login")*@
+    </div>
+
+    <div id="tab-dk" class="tab-content user-register" style="display: none;">
+        @*@await Component.InvokeAsync("Register")*@
+    </div>
+</div>
+

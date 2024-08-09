@@ -1,0 +1,21 @@
+﻿@using WEB.UI.ViewModels;
+@model List<OrderItemHistoryViewModel>
+
+@if (Model != null)
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th width="16%">Mã đơn hàng</th>
+                @*<th width="12%">Ngày mua</th>*@
+                <th width="49%">Sản phẩm</th>
+                <th width="15%">Tổng tiền</th>
+                <th width="20%" class="text-right">Trạng thái</th>
+            </tr>
+        </thead>
+        <tbody class="tb_order_item">            
+            @{ await Html.RenderPartialAsync("/Views/Shared/Components/orders/listing/tr_item_order.cshtml", Model); }
+        </tbody>
+    </table>
+}
+

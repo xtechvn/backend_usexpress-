@@ -1,0 +1,146 @@
+﻿@{
+    int category_id = ViewBag.category_id == null ? 401 : (int)ViewBag.category_id; //401 : HOME
+}
+@Html.Hidden("category_id",category_id)
+
+<link href="/css/article.css" rel="stylesheet" type="text/css" />
+
+<!-- MAIN CONTAINER -->
+<div class="menu_news"></div>
+
+<section class="container flex space-between">
+    <div class="col-left total_item_news">
+
+        <div class="section_topstory top_news"></div>
+
+        <div class="box_stream news_category_1"></div>
+
+        <!-- BOX VIDEO -->
+        <div class="slide_box_video">
+            <h2 class="title">Video</h2>
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <article class="item-news full-thumb">
+                            <div class="thumb_img thumb_video">
+                                <iframe width="560" height="315" src="https://www.youtube.com/embed/QXdU3g1uekQ"
+                                        frameborder="0"
+                                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                        allowfullscreen></iframe>
+                            </div>
+                            <div class="content">
+                                <h3 class="title-news">
+                                    <a href="" title="">
+                                        iPhone 12 lộ toàn bộ khuôn mẫu, Smartphone bí ẩn của
+                                        Vsmart đã xuất hiện | Hinews
+                                    </a>
+                                </h3>
+                            </div>
+                        </article>
+                    </div>
+                    <div class="swiper-slide">
+                        <article class="item-news full-thumb">
+                            <div class="thumb_img thumb_video">
+                                <iframe width="560" height="315" src="https://www.youtube.com/embed/QXdU3g1uekQ"
+                                        frameborder="0"
+                                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                        allowfullscreen></iframe>
+                            </div>
+                            <div class="content">
+                                <h3 class="title-news">
+                                    <a href="" title="">
+                                        iPhone 12 lộ toàn bộ khuôn mẫu, Smartphone bí ẩn của
+                                        Vsmart đã xuất hiện | Hinews
+                                    </a>
+                                </h3>
+                            </div>
+                        </article>
+                    </div>
+                    <div class="swiper-slide">
+                        <article class="item-news full-thumb">
+                            <div class="thumb_img thumb_video">
+                                <iframe width="560" height="315" src="https://www.youtube.com/embed/QXdU3g1uekQ"
+                                        frameborder="0"
+                                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                        allowfullscreen></iframe>
+                            </div>
+                            <div class="content">
+                                <h3 class="title-news">
+                                    <a href="" title="">
+                                        iPhone 12 lộ toàn bộ khuôn mẫu, Smartphone bí ẩn của
+                                        Vsmart đã xuất hiện | Hinews
+                                    </a>
+                                </h3>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-pagination"></div>
+        </div>
+
+        <div class="box_stream news_category_2 append-data"></div>
+
+        <div class="center">
+            <a class="btn btn_view_more_product">Xem thêm +</a>
+        </div>
+
+    </div>
+    <div class="box_300">
+        <div class="box_category">
+            <a href="/chinh-sach-us-express-affiliate-363" class="cursor">
+                <img class="width-100" src="/images/graphics/banner-300.png">
+            </a>
+        </div>
+
+
+        <div class="top_page_view_news"></div>
+
+
+        <div class="box_category">
+            <h2 class="title">Sản phẩm khuyến mãi</h2>
+            <div class="product-small">
+                <div class="product-item">
+                    <a class="ava" href="">
+                        <img src="/images/graphics/sp1.jpg">
+                    </a>
+                    <div class="content">
+                        <h3><a href="" title="">Cáp sạc lightning cho Apple Iphone</a></h3>
+                        <div class="ct_star">
+                            <svg class="icon-us">
+                                <use xlink:href="/images/icons/icon.svg#star-full"></use>
+                            </svg>
+                            <svg class="icon-us">
+                                <use xlink:href="/images/icons/icon.svg#star-full"></use>
+                            </svg>
+                            <svg class="icon-us">
+                                <use xlink:href="/images/icons/icon.svg#star-full"></use>
+                            </svg>
+                            <svg class="icon-us">
+                                <use xlink:href="/images/icons/icon.svg#star-full"></use>
+                            </svg>
+                            <svg class="icon-us">
+                                <use xlink:href="/images/icons/icon.svg#star-full"></use>
+                            </svg>
+                            <span>11400 đã mua</span>
+                        </div>
+                        <strong class="price">18.990.000 đ</strong>
+                        <div class="sale_old">
+                            <strong class="price old">2,000,293 đ</strong>
+                            <div class="sale-up">-50%</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- END MAIN CONTAINER -->
+<script src="~/js/news/menu.js"></script>
+<script src="~/js/news/home.js"></script>
+<script src="~/js/news/master.js"></script>

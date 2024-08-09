@@ -1,0 +1,263 @@
+/**
+iconfont Webfont
+*/
+@font-face {
+	font-family: 'iconfont';
+	src: url('iconfont.eot?1589532632443');
+	src: url('iconfont.eot?#iefix-1589532632443') format('embedded-opentype'),
+		url('iconfont.woff2?1589532632443') format('woff2'),
+		url('iconfont.woff?1589532632443') format('woff'),
+		url('iconfont.ttf?1589532632443') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+[class^='iconfont-']:before,
+[class*=' iconfont-']:before {
+	font-family: 'iconfont';
+	display: inline-block;
+	vertical-align: middle;
+	line-height: 1;
+	font-weight: normal;
+	font-style: normal;
+	speak: none;
+	text-decoration: inherit;
+	font-size: inherit;
+	text-transform: none;
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+/*
+Glyphs list
+*/
+ .iconfont-address:before {
+			content: '\ea01';
+		}
+
+		 .iconfont-atm-card:before {
+			content: '\ea02';
+		}
+
+		 .iconfont-authentication:before {
+			content: '\ea03';
+		}
+
+		 .iconfont-back:before {
+			content: '\ea04';
+		}
+
+		 .iconfont-bar:before {
+			content: '\ea05';
+		}
+
+		 .iconfont-book:before {
+			content: '\ea06';
+		}
+
+		 .iconfont-calendar:before {
+			content: '\ea07';
+		}
+
+		 .iconfont-cart:before {
+			content: '\ea08';
+		}
+
+		 .iconfont-check-box:before {
+			content: '\ea09';
+		}
+
+		 .iconfont-checked:before {
+			content: '\ea0a';
+		}
+
+		 .iconfont-close:before {
+			content: '\ea0b';
+		}
+
+		 .iconfont-close2:before {
+			content: '\ea0c';
+		}
+
+		 .iconfont-compass:before {
+			content: '\ea0d';
+		}
+
+		 .iconfont-dam-bao:before {
+			content: '\ea0e';
+		}
+
+		 .iconfont-date:before {
+			content: '\ea0f';
+		}
+
+		 .iconfont-delete:before {
+			content: '\ea10';
+		}
+
+		 .iconfont-edit:before {
+			content: '\ea11';
+		}
+
+		 .iconfont-exclamation-mark:before {
+			content: '\ea12';
+		}
+
+		 .iconfont-file:before {
+			content: '\ea13';
+		}
+
+		 .iconfont-giasoc:before {
+			content: '\ea14';
+		}
+
+		 .iconfont-gioihan:before {
+			content: '\ea15';
+		}
+
+		 .iconfont-heart:before {
+			content: '\ea16';
+		}
+
+		 .iconfont-heart2:before {
+			content: '\ea17';
+		}
+
+		 .iconfont-help:before {
+			content: '\ea18';
+		}
+
+		 .iconfont-home:before {
+			content: '\ea19';
+		}
+
+		 .iconfont-home2:before {
+			content: '\ea1a';
+		}
+
+		 .iconfont-hotline:before {
+			content: '\ea1b';
+		}
+
+		 .iconfont-language:before {
+			content: '\ea1c';
+		}
+
+		 .iconfont-like:before {
+			content: '\ea1d';
+		}
+
+		 .iconfont-link:before {
+			content: '\ea1e';
+		}
+
+		 .iconfont-mail:before {
+			content: '\ea1f';
+		}
+
+		 .iconfont-map:before {
+			content: '\ea20';
+		}
+
+		 .iconfont-next:before {
+			content: '\ea21';
+		}
+
+		 .iconfont-next1:before {
+			content: '\ea22';
+		}
+
+		 .iconfont-next2:before {
+			content: '\ea23';
+		}
+
+		 .iconfont-notifi:before {
+			content: '\ea24';
+		}
+
+		 .iconfont-notifi2:before {
+			content: '\ea25';
+		}
+
+		 .iconfont-notifi3:before {
+			content: '\ea26';
+		}
+
+		 .iconfont-padlock:before {
+			content: '\ea27';
+		}
+
+		 .iconfont-phone:before {
+			content: '\ea28';
+		}
+
+		 .iconfont-prev1:before {
+			content: '\ea29';
+		}
+
+		 .iconfont-prev2:before {
+			content: '\ea2a';
+		}
+
+		 .iconfont-review:before {
+			content: '\ea2b';
+		}
+
+		 .iconfont-rss:before {
+			content: '\ea2c';
+		}
+
+		 .iconfont-search:before {
+			content: '\ea2d';
+		}
+
+		 .iconfont-send_bank:before {
+			content: '\ea2e';
+		}
+
+		 .iconfont-smartphone:before {
+			content: '\ea2f';
+		}
+
+		 .iconfont-sosanh:before {
+			content: '\ea30';
+		}
+
+		 .iconfont-star-full:before {
+			content: '\ea31';
+		}
+
+		 .iconfont-star-half:before {
+			content: '\ea32';
+		}
+
+		 .iconfont-superscript2:before {
+			content: '\ea33';
+		}
+
+		 .iconfont-thutuc:before {
+			content: '\ea34';
+		}
+
+		 .iconfont-tietkiem:before {
+			content: '\ea35';
+		}
+
+		 .iconfont-upfile:before {
+			content: '\ea36';
+		}
+
+		 .iconfont-user:before {
+			content: '\ea37';
+		}
+
+		 .iconfont-vector:before {
+			content: '\ea38';
+		}
+
+		 .iconfont-visa:before {
+			content: '\ea39';
+		}
+
+		

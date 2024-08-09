@@ -1,0 +1,59 @@
+<table style="border-collapse: collapse; width: 100%;" border="1">
+    <tbody>
+        <tr>
+            <td style="text-align: center; padding: 10px 0; background: #d9eec3;" colspan="2"><span style="color: #1b5f43;"><strong>MUA TỰ ĐỘNG ${title}</strong></span></td>
+        </tr>
+        <tr>
+            <td style="text-align: justify;width:30%">ID Mua Tự động:</td>
+            <td> <strong> ${AutoPurchaseID}</strong> (<a href="http://usexpressvn.com/order/detail/${order_id}">Xem chi tiết</a>)</td>
+        </tr>
+        <tr>
+            <td style="text-align: justify;width:30%">URL Mua:</td>
+            <td> <strong> ${PurchaseURL}</strong></td>
+        </tr>
+        <tr>
+            <td style="text-align: justify;width:30%">ASIN:</td>
+            <td> <strong> ${ASIN}</strong></td>
+        </tr>
+        <tr>
+            <td style="text-align: justify; width:30%">Mã đơn hàng:</td>
+            <td><strong> <span style="color: #226852;">${Code}</span></strong> (<a href="http://usexpressvn.com/order/detail/${order_id}">Xem chi tiết</a>)</td>
+        </tr>
+        <tr>
+            <td style="text-align: justify;width:30%">Direct Buy Message:</td>
+            <td> <strong> ${direct_buy_msg}</strong></td>
+        </tr>
+        <tr>
+            <td style="text-align: justify;width:30%">Offer Listing Buy Message:</td>
+            <td> <strong> ${offer_listing_msg}</strong></td>
+        </tr>
+        <tr>
+            <td style="text-align: justify;width:30%">URL đặt hàng thành công (nếu có)</td>
+            <td> <strong> ${buy_success_URL}</strong></td>
+        </tr>
+        <tr>
+            <td style="text-align: justify;width:30%">URL chi tiết đơn hàng (nếu có)</td>
+            <td> <strong> ${buy_success_order_detail_url}</strong></td>
+        </tr>
+        <tr>
+            <td style="text-align: justify;width:30%">Ngày đặt hàng:</td>
+            <td> ${CreateDate}</td>
+        </tr>
+    </tbody>
+</table>
+<table style="border-collapse: collapse; width: 100%;" border="1">
+    <tbody>
+        <tr>
+            <td style="text-align: center; padding: 10px 0; background: #d9eec3;" colspan="2"><span style="color: #1b5f43;"><strong>ẢNH CHỤP ORDER</strong></span></td>
+        </tr>
+       ${IMG_source}
+    </tbody>
+</table>
+<table style="border-collapse: collapse; width: 100%;" border="1">
+    <tbody>
+        <tr>
+            <td style="text-align: center; padding: 10px 0; background: #d9eec3;" colspan="2"><span style="color: #1b5f43;"><strong>ẢNH CHỤP OFFER LISTINGS</strong></span></td>
+        </tr>
+        ${IMG_source_2}
+    </tbody>
+</table>

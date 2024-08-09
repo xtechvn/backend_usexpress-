@@ -1,0 +1,519 @@
+﻿@using Entities.Models
+@{
+    ViewData["Title"] = "Cài đặt thủ công";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var rate = (double)ViewBag.rateVietCom;
+    var ListSpecialIndustry = (List<AllCode>)ViewBag.IndustrySpecialList;
+    var product_code = (string)ViewBag.product_code;
+    var label_id = (string)ViewBag.label_id;
+}
+@model Entities.ViewModels.ProductViewModel
+<div class="container">
+    <div class="row">
+        <div class="col-xl-8">
+            <div class="wrap_bg mb20">
+                <p class="txt_16">Cấu hình sản phẩm</p>
+                <div class="wrap-tab">
+                    <div class="tab-default1" style="border-bottom: 1px solid #CCCCCC;">
+                        <a href="#setting-tab1" class="active">Tạo sản phẩm</a>
+                        <a href="#setting-tab2">Tạo bằng mã lệnh</a>
+                    </div>
+                    <div class="tab-content">
+                        <div id="setting-tab1">
+                            <form id="form-create-product-manual">
+                                <div class="form-default2 form-cauhinh row">
+                                    <div class="red col-12 mb10 txt_12">(Dấu * là dấu bắt buộc phải nhập)</div>
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            <label class="lbl mt0">Label</label>
+                                            <div class="wrap_input">
+                                                <label class="radio mb0 ml5">
+                                                    <input type="radio" id="amz" @(label_id == "1" || label_id == null || label_id == "" ? "checked=checked" : "") name="optradio" value="1">
+                                                    <span class="checkmark"></span>
+                                                    Amazon
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            <label class="lbl">
+                                                <b>Product Id</b>
+                                                <a style="color: #666;" href="#" data-toggle="tooltip" data-placement="right"
+                                                   title="Mã sản phẩm, vui lòng nhập trước.">
+                                                    <i class="fa fa-exclamation-circle"></i>
+                                                </a>
+                                                <sup class="red">*</sup>
+                                            </label>
+                                            <div class="wrap_input flex">
+                                                <input type="text" class="form-control" id="ASIN" asp-for="@Model.product_code" value="@product_code" style="width: 177px;" placeholder="Nhập mã sản phẩm.">
+                                                <button id="edit" type="button" class="btn btn-default" style="padding: 0 30px;"
+                                                        onclick="menu.GetDetailByAsin()">
+                                                    Edit
+                                                </button>
+                                                <button id="btn_create" type="button" class="btn btn-default" style="padding: 0 30px;"
+                                                        onclick="menu.CreateNewManualProduct()">
+                                                    Create
+                                                </button>
+                                                <button id="btn_delete_redis" type="button" class="btn btn-danger" style="padding: 0 30px; margin-left:auto;"
+                                                        onclick="menu.DeleteProductOnRedis()">
+                                                    Delete from Redis
+                                                </button>
+                                                <button id="btn_delete" type="button" class="btn btn-danger" style="padding: 0 30px;"
+                                                        onclick="menu.DeleteProductOnES()">
+                                                    Delete from ES
+                                                </button>
+                                                <i class="fa fa-refresh fa-spin create_spin"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            <label class="lbl">
+                                                Title
+                                                <a style="color: #666;" href="#" data-toggle="tooltip" data-placement="right"
+                                                   title="Tên sản phẩm">
+                                                    <i class="fa fa-exclamation-circle"></i>
+                                                </a>
+                                                <sup class="red">*</sup>
+                                            </label>
+                                            <div class="wrap_input">
+                                                <textarea type="text" style="height:70px;" class="form-control" id="product_name" asp-for="@Model.product_name"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            <label class="lbl">
+                                                Trạng thái
+                                                <a style="color: #666;" href="#" data-toggle="tooltip" data-placement="right"
+                                                   title="Trạng thái sản phẩm">
+                                                    <i class="fa fa-exclamation-circle"></i>
+                                                </a>
+                                            </label>
+                                            <div class="wrap_input">
+                                                <div style="padding-top: 8px; font-weight: bold;" id="product_status"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4  mb15">
+                                        <div class="form-group">
+                                            <label class="lbl">
+                                                Rate (Vietcombank)
+                                            </label>
+                                            <div class="wrap_input">
+                                                <input type="text" class="form-control" id="rate" value="@rate.ToString("N0")" readonly>
+                                            </div>
+                                            <div class="notifi">đ</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 mb15">
+                                        <div class="form-group pr30">
+                                            <label class="lbl">
+                                                Price
+                                                <a style="color: #666;" href="#" data-toggle="tooltip" data-placement="right"
+                                                   title="Giá sản phẩm">
+                                                    <i class="fa fa-exclamation-circle"></i>
+                                                </a>
+                                                <sup class="red">*</sup>
+                                            </label>
+                                            <div class="notifi">$</div>
+                                            <div class="wrap_input">
+                                                <input type="text" class="form-control" asp-for="@Model.price" id="price" value="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 mb15">
+                                        <div class="form-group pr30">
+                                            <label class="lbl">
+                                                Price shipping US
+                                                <a style="color: #666;" href="#" data-toggle="tooltip" data-placement="right"
+                                                   title="Phí ship nội địa Mỹ">
+                                                    <i class="fa fa-exclamation-circle"></i>
+                                                </a>
+                                                <sup class="red">*</sup>
+                                            </label>
+                                            <div class="notifi">$</div>
+                                            <div class="wrap_input">
+                                                <input type="text" class="form-control" id="shiping_fee" asp-for="@Model.shiping_fee" value="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 mb15">
+                                        <div class="form-group pr30">
+                                            <label class="lbl">
+                                                Discount
+                                                <a style="color: #666;" href="#" data-toggle="tooltip" data-placement="right"
+                                                   title="Số tiền giảm trên sản phẩm, tính theo USD">
+                                                </a>
+                                            </label>
+                                            <div class="notifi">$</div>
+                                            <div class="wrap_input">
+                                                <input type="text" class="form-control" id="discount" asp-for="@Model.discount" value="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            <label class="lbl">
+                                                Danh mục
+                                                <a style="color: #666;" href="#" data-toggle="tooltip" data-placement="right"
+                                                   title="Sản phẩm thuộc nhóm đặc thù, tính thêm phí tiêu thụ hàng hoá đặc biệt">
+                                                    <i class="fa fa-exclamation-circle"></i>
+                                                </a>
+                                                <sup class="red">*</sup>
+                                            </label>
+                                            <div class="wrap_input flex">
+                                                <select class="form-control mr20" id="special_industry" name="special_industry">
+                                                    <option value="-1" selected>Không nằm trong danh mục hàng hoá đặc thù</option>
+                                                    @foreach (var item in ListSpecialIndustry)
+                                                    {
+                                                        <option value="@item.CodeValue">@item.Description</option>
+                                                    }
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            <label class="lbl">Thuộc nhóm hàng</label>
+                                            <div class="wrap_input flex">
+                                                <input type="text" class="form-control" id="group_name" disabled style="background-color:#ececee">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            <label class="lbl">
+                                                Image Thumb
+                                                <a style="color: #666;" href="#" data-toggle="tooltip" data-placement="right"
+                                                   title="URL ảnh đại diện của sản phẩm">
+                                                    <i class="fa fa-exclamation-circle"></i>
+                                                </a>
+                                                <sup class="red">*</sup>
+                                            </label>
+                                            <div class="wrap_input">
+                                                <input type="text" class="form-control" id="image_thumb" asp-for="@Model.image_thumb" value="">
+                                                <img id="img_thumb_preview" src="" style="width:200px;height:auto;" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            <label class="lbl">Seller ID <sup class="red">*</sup></label>
+                                            <div class="wrap_input flex">
+                                                <input type="text" class="form-control" id="seller_id" asp-for="@Model.seller_id" value="" style="width: 177px;">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            <label class="lbl">
+                                                Seller Name
+                                                <sup class="red">*</sup>
+                                            </label>
+                                            <div class="wrap_input">
+                                                <input type="text" class="form-control" id="seller_name" asp-for="@Model.seller_name">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            <label class="lbl">Shipping weight <sup class="red">*</sup></label>
+                                            <div class="wrap_input flex">
+                                                <input type="text" class="form-control" id="item_weight" asp-for="@Model.item_weight" value="" style="width: 110px;">
+                                                <select class="form-control mr20" style="width: 110px;margin-left: 6px;" id="shipping_weight_unit" name="shipping_weight_unit">
+                                                    <option value="1" selected>pounds</option>
+                                                    <option value="0">ounces</option>
+                                                    <option value="2">grams</option>
+                                                    <option value="3">kilograms</option>
+                                                    <option value="4">tonne</option>
+                                                    <option value="5">kiloton</option>
+                                                </select>
+                                                <div class="flex mt10 ml30">
+                                                    <label class="check-list mr10 txt_13">
+                                                        <input type="checkbox" id="is_prime_eligible" class="is_prime_eligible" asp-for="@Model.is_prime_eligible">
+                                                        <span class="checkmark"></span>
+                                                        Hàng Prime
+                                                    </label>
+                                                    <a style="color: #666;" href="#" data-toggle="tooltip" data-placement="right"
+                                                       title="Hàng prime sẽ được chuyển về kho Mỹ từ 1-3 ngày">
+                                                        <i class="fa fa-exclamation-circle"></i>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            <label class="lbl">
+                                                Product Images
+                                                <a style="color: #666;" href="#" data-toggle="tooltip" data-placement="right"
+                                                   title="Large:-url + Enter + Thumb:-url + Enter + Enter">
+                                                    <i class="fa fa-exclamation-circle"></i>
+                                                </a>
+                                            </label>
+                                            <div class="wrap_input">
+                                                <textarea class="form-control" id="image_size_product" style="height:120px; "> </textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 mb15">
+                                        <div class="form-group pr30">
+                                            <label class="lbl">
+                                                Star
+                                            </label>
+                                            <div class="wrap_input">
+                                                <div class="list-star mt10">
+                                                    <a class="s_star_select fa fa-star-o" id="1" onclick="menu.SelectStar(this);"></a>
+                                                    <a class="s_star_select fa fa-star-o" id="2" onclick="menu.SelectStar(this);"></a>
+                                                    <a class="s_star_select fa fa-star-o" id="3" onclick="menu.SelectStar(this);"></a>
+                                                    <a class="s_star_select fa fa-star-o" id="4" onclick="menu.SelectStar(this); "></a>
+                                                    <a class="s_star_select fa fa-star-o" id="5" onclick="menu.SelectStar(this); "></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 mb15">
+                                        <div class="form-group pr30">
+                                            <label class="lbl">
+                                                Ratings
+                                            </label>
+                                            <div class="wrap_input">
+                                                <input type="text" class="form-control" id="rating" asp-for="@Model.rating" value="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 mb15">
+                                        <div class="form-group pr30">
+                                            <label class="lbl">
+                                                Review Counts
+                                            </label>
+                                            <div class="wrap_input">
+                                                <input type="text" class="form-control" id="reviews_count" asp-for="@Model.reviews_count" value="">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </form>
+                            <div class="form-group flex flex-end">
+                                <i class="fa fa-refresh fa-spin create_spin"></i>
+                                <a class="summit_form1" onclick="menu.CheckOut()" id="preview" style="color:#0052CC;padding: 7px 20px; cursor:pointer;">Preview</a>
+                                <button type="submit" class="btn btn-default summit_form1" onclick="menu.CreateProductManual()">Apply</button>
+                                <button id="btn_lock_product" type="button" class="btn btn-danger summit_form1" onclick="menu.BlockProductManual()" style="color:#FFFFFF;">Block</button>
+                            </div>
+                        </div>
+                        <div id="setting-tab2" style="display: none;">
+                            <div class="form-default2">
+                                <div class="form-group">
+                                    <div class="flex">
+                                        <input type="text" class="form-control" id="ASINCmd" placeholder="Nhập mã sản phẩm..." style="width:300px">
+                                        <a class="ml20"><i class="fa fa-refresh fa-spin create_spin"></i></a>
+                                        <button type="button" class="btn btn-default" style="padding: 0 30px;" onclick="menu.GetDetailJSON(2)">
+                                            Get detail
+                                        </button>
+                                        <a href="#" onclick="menu.GetDetailJSON(0)" class="fix-a"> <strong class="blue mt10 ml10">Sample data</strong></a>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <textarea class="form-control" style="height: 350px;" id="json_product" placeholder="Chuỗi json của sản phẩm"></textarea>
+                                </div>
+                                <div class="form-group flex flex-end">
+                                    <a class="ml20"><i class="fa fa-refresh fa-spin create_spin"></i></a>
+                                    <button type="button" class="btn btn-default" style="padding: 0 30px;" onclick="menu.Save()">
+                                        Save
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-4">
+            <div class="wrap_bg mb20" id="product_preview_after" style="display:none;">
+                <div class="head color-main mb10" id="title_review">
+                </div>
+                <div class="flex space-between mb10">
+                    <div>
+                        <div>Người bán: <span id="seller_name_review"></span></div>
+                        <div class="list-star mt10">
+                            <a class="fa fa-star" id="1star"></a>
+                            <a class="fa fa-star" id="2star"></a>
+                            <a class="fa fa-star" id="3star"></a>
+                            <a class="fa fa-star" id="4star"></a>
+                            <a class="fa fa-star" id="5star"></a>
+                            <span class="mt10 ml10" id="sales_rank"></span>
+                        </div>
+                    </div>
+                    <a href="#" target="_blank" id="link_amazon" class="color-main">Xem link</a>
+                </div>
+                <div class="box-create-api">
+                    <div class="item">
+                        <div class="tr">
+                            <div>Giá sản phẩm trên Amazon:</div>
+                            <div class="price" id="price_review"></div>
+                        </div>
+                        <div class="tr">
+                            <div>Phí ship nội địa Mỹ:</div>
+                            <div class="price" id="ship_price_us_review"></div>
+                        </div>
+                        <div class="tr">
+                            <div>Phí mua hộ từ US Express:</div>
+                            <div class="price" id="ship_buy_fee_review"></div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="tr">
+                            <div><strong>Chi tiết bảng giá phí mua hộ</strong></div>
+                        </div>
+                        <div class="tr">
+                            <div>Phí mua hộ pound đầu tiên:</div>
+                            <div class="price" id="shipping_details_first_pound"></div>
+                        </div>
+                        <div class="tr">
+                            <div>Phí mua hộ các pound tiếp theo:</div>
+                            <div class="price" id="shipping_details_next_pounds"></div>
+                        </div>
+                        <div class="tr">
+                            <div>Phụ thu hàng hóa đặc biệt:</div>
+                            <div class="price" id="shipping_details_luxury_pound"></div>
+                        </div>
+                        <div class="tr">
+                            <div>Tổng giá trị mua hộ:</div>
+                            <div class="price" id="shipping_details_total_shipping_fee"></div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="tr">
+                            <div>Tổng giá (đã bao gồm thuế, phí):</div>
+                            <div class="price" id="price_last"></div>
+                        </div>
+                        <div class="tr">
+                            <div>Tổng giá bằng VNĐ (đã bao gồm thuế, phí):</div>
+                            <div class="price red"><strong id="price_last_vnd"></strong></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="wrap_bg mb20" id="product_preview_above">
+                <div class="placeholder mb10" style="height: 40px;"></div>
+                <div class="placeholder mb10" style="height: 40px;width: 200px;"></div>
+                <div class="box-create-api" style="padding:10px;">
+                    <div class="placeholder mb10" style="height: 70px;"></div>
+                    <div class="placeholder mb10" style="height: 70px;"></div>
+                    <div class="placeholder" style="height: 70px;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts {
+    <script src="~/modules/setupmanual.js"></script>
+    <script>
+        $('.input_search').on('keyup', (e) => {
+            let query = $(e.currentTarget).val();
+            if (query.length) {
+                $(e.currentTarget).parents('.form_suggest').addClass('active');
+                return;
+            } else {
+                $(e.currentTarget).parents('.form_suggest').removeClass('active');
+                return;
+            }
+        });
+        $(".tab-default1 a").click(function (event) {
+            $(".tab-default1 a").removeClass("active")
+            if (!$(this).hasClass("active")) {
+                $(this).addClass("active");
+            } else {
+                $(this).removeClass("active");
+            }
+            event.preventDefault();
+            var tab = $(this).attr("href");
+            $(".tab-content > div").not(tab).css("display", "none");
+            $(tab).fadeIn();
+        });
+        $('#ASIN').on('keyup', (e) => {
+            let query = $(e.currentTarget).val();
+            if (query.length) {
+                $('#edit').prop('disabled', false);
+                $('#btn_create').prop('disabled', false);
+                $('#btn_delete').prop('disabled', false);
+                return;
+            } else {
+                $('#edit').prop('disabled', true);
+                $('#btn_create').prop('disabled', true);
+                $('#btn_delete').prop('disabled', true);
+                return;
+            }
+
+        });
+    </script>
+}
+<style>
+    .fix-checkbox {
+        margin: 20px 5px 0 10px;
+    }
+
+    .fix-checkbox-text {
+        margin: 17px 5px 0 10px;
+    }
+
+    .fix-a {
+        margin-top: 10px;
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 13px;
+        line-height: 15px;
+        display: flex;
+        align-items: center;
+        color: #056BD3;
+    }
+
+    .bg-orange {
+        color: #FF8000 !important;
+    }
+
+    .margin-top-10 {
+        margin-top: 10px;
+    }
+
+    .tab-default1 {
+        margin-bottom: 15px;
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex
+    }
+
+        .tab-default1 a {
+            color: #000000;
+            padding: 10px
+        }
+
+            .tab-default1 a.active {
+                border-bottom: 1px solid #49B291
+            }
+
+    #preview:hover {
+        text-decoration: underline !important;
+    }
+
+    .error {
+        width: 100%;
+        float: left;
+        color: #D30606;
+        font-size: 12px;
+        display: block;
+        margin-top: 5px;
+        font-family: Arial;
+    }
+
+    a.disabled {
+        pointer-events: none;
+        color: #ccc;
+    }
+</style>

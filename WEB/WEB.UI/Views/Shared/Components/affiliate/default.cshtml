@@ -1,0 +1,25 @@
+﻿@{
+    ViewData["Title"] = "Tạo link giới thiệu";
+    Layout = null;
+    string referral_id = (string)ViewBag.referral_id;
+    string domain = (string)ViewBag.domain;    
+}
+
+<div class="affiliate_item flex">
+    <label>Link giới thiệu website</label>
+    <input type="text" class="form-control copy txt_link_aff_website_full" id="txt_link_aff_website_full" value="@domain?utm_source=usexpress&utm_medium=us_@referral_id">
+    <a class="pointer-event btn default btn_copy"  data-valueid="txt_link_aff_website_full">Sao chép</a>
+</div>
+<div class="mb20">&nbsp;</div>
+<div class="head head_affiliate flex">
+    <h2 class="name"><strong>Nhập link giới thiệu</strong></h2>
+    <input type="text" class="form-control" id="txt_link_aff" placeholder="VD: @domain/product/amazon/Peripera-Ink-the-Velvet-Liquid-...">
+    <div class="btn btn_add_link_aff">Tạo link giới thiệu</div>
+</div>
+<div class="affiliate_item flex">
+    <label>Link giới thiệu đầy đủ</label>
+    <input type="text" class="form-control" id="txt_link_aff_full">
+    <a  class="pointer-event btn default btn_copy" data-valueid="txt_link_aff_full">
+        Sao chép      
+    </a>
+</div>

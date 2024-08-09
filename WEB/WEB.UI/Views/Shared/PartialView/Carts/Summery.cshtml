@@ -1,0 +1,33 @@
+﻿<div class="checkout_sidebar">
+    <div class="checkout_tr">
+        <div class="item">
+            <p>Tiền hàng :</p>
+            <span class="price total_amount_vnd" >0 <em>đ</em></span>
+        </div>
+        <div class="item">
+            <p>Giảm giá :</p>
+            <span class="price total_discount_amount">0 <em>đ</em></span>
+        </div>
+        <div class="item  price_all">
+            <p><strong>TỔNG TIỀN</strong> (tạm tính) </p>
+            <strong class="price total_amount_last_vnd">0 <em>đ</em></strong>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+    <a class="btn btn-order btn-confirm-cart">XÁC NHẬN GIỎ HÀNG</a>
+</div>
+
+<script type="text/javascript">
+    $('.btn-confirm-cart').click(function () {
+        
+        var item_check = $('input:checkbox:checked').length;
+        if (item_check == 0) {
+            alert("Bạn vẫn chưa chọn sản phẩm nào để mua.");
+            return;
+        } else {
+            window.location.href = "/payment/checkout";
+        }
+    });
+
+
+</script>

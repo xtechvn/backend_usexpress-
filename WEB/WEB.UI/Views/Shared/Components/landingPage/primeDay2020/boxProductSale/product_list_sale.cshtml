@@ -1,0 +1,77 @@
+﻿@model List<Entities.ViewModels.ProductViewModel>
+
+@if (Model != null)
+{
+    
+    <section class="section section_s3 clearfix mb60">
+        <div class="container">
+            <h2 class="title-cate mb30">
+                Sản Phẩm Khuyến Mãi
+            </h2>
+            <div class="list-product slide">
+                <div class="swiper-container">
+                    <div class="swiper-wrapper">
+                        @foreach (var item in Model)
+                        {
+                            var rd = new Random();
+                            string product_name = Utilities.CommonHelper.CheckMaxLength((item.product_name).ToString(), 100);
+
+                            int dc = rd.Next(20, 50);
+                            <div class="swiper-slide">
+                                <div class="product-item">
+                                    <div class="wrap">
+                                        <div class="sale">-@dc%</div>
+                                        <a class="ava" href="@item.link_product" target="_blank">
+                                            <img src="@item.image_size_product[0].Larger">
+                                        </a>
+                                        <div class="content">
+                                            <h3 class="title">
+                                                <a href="@item.link_product" target="_blank">
+                                                    @item.product_name
+                                                </a>
+                                            </h3>
+                                            <div class="price">
+
+                                                @if (item.amount_vnd > 0)
+                                                {
+                                                    <strong>@Html.Raw(((item.list_product_fee.list_product_fee["PRICE_LAST"] * item.rate).ToString("N0"))) đ</strong>
+                                                }
+                                                else
+                                                {
+                                                    <strong>@Html.Raw("Hết Hàng")</strong>
+                                                }
+
+                                                @*<div class="old">2,000,293 đ</div>*@
+                                            </div>
+                                            @*<div class="exist">
+                                                    <span class="set">
+                                                        <img src="~/landing_page/prime_day_2020/css/images/icons/sale.png">
+                                                    </span>
+                                                    <span>Còn lại : 80%</span>
+                                                    <div class="rest rest_80"></div>
+                                                </div>*@
+                                            <div class="center mt20">
+                                                <a href="@item.link_product" class="btn" target="_blank">XEM NGAY</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        }
+                    </div>
+                </div>
+                <!-- Add Arrows -->
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+                <!-- Add Pagination -->
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+    </section>
+
+
+}
+
+
+

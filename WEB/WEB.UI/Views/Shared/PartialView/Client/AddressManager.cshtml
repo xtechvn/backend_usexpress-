@@ -1,0 +1,84 @@
+﻿@using Entities.ViewModels;
+@model List<AddressModel>
+@{
+    ViewData["Title"] = "Địa chỉ giao hàng";
+    Layout = null;
+    bool is_has_address = true;
+}
+
+<ul class="pay-list-user">
+
+    @foreach (var item in Model.OrderByDescending(x => x.IsActive))
+    {
+        <li class="@(Html.Raw(item.IsActive?"checked":""))">
+            <div class="warp">
+                <label class="lbl confir_res">
+                    @if (item.IsActive)
+                    {
+                        <span class="default">Địa chỉ mặc định</span>
+                    }
+                    else
+                    {
+                        <a class="delete delete_address" data-addressid="@item.Id">
+                            <svg class="icon-us">
+                                <use xlink:href="/images/icons/icon.svg#delete"></use>
+                            </svg>
+                        </a>
+                    }
+                    <h3>@item.ReceiverName</h3>
+                    <p>
+                        <span>Địa chỉ:</span> @item.FullAddress
+                    </p>
+                    <div class="bottom">
+                        <div class="phone"><span>Điện thoại:</span> @item.Phone</div>
+                        <div class="option">
+                            @if (item.IsActive && item.ProvinceId == null && item.DistrictId == null)
+                            {
+                                is_has_address = false;
+                                <a href="#usexpress-address-popup" class="select edit btn_edit_address open-popup-link" data-addressid="@item.Id">
+                                    Bổ sung địa chỉ giao hàng
+                                </a>
+                            }
+                            else
+                            {
+                                <a href="#usexpress-address-popup" class="edit btn_edit_address open-popup-link" data-addressid="@item.Id">
+                                    Chỉnh sửa
+                                </a>
+                                <a class="select btn_choice_address" data-addressid="@item.Id" data-name="@item.ReceiverName" data-phone="@item.Phone" data-address="@item.FullAddress" href="#">
+                                    Chọn địa chỉ này
+                                </a>
+                            }
+                        </div>
+                    </div>
+                </label>
+            </div>
+        </li>
+    }
+
+</ul>
+
+@if (is_has_address)
+{
+    <div class="center mb30">
+        <a href="#" class="open-popup-link btn btn_edit_address" data-addressid="-1">+ &nbsp;Thêm địa chỉ giao hàng mới</a>
+    </div>
+}
+
+<!--POPUP TẠO ĐỊA CHỈ GIAO HÀNG-->
+<div id="address-popup" class="address-popup white-popup mfp-hide"></div>
+<!--END POPUP TẠO ĐỊA CHỈ GIAO HÀNG-->
+<!--POPUP CONFIRM-->
+<div id="frm_delete_address_popup" class="notifi-popup white-popup medium-popup mfp-hide">
+    <div class="content_poup">
+        <p class="mb30">Bạn có chắc chắn xóa địa chỉ này không ?</p>
+        <div class="control_btn row">
+            <div class="col-xs-6"><button class="btn full btn_confirm_delete_address">Xóa</button></div>
+            <div class="col-xs-6"><button class="btn full agray btn_destroy">Trở lại</button></div>
+        </div>
+    </div>
+</div>
+<!--END POPUP CONFIRM-->
+
+
+<script src="~/js/address_manager/default.js"></script>
+

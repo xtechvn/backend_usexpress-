@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Worker">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UserSecretsId>dotnet-AppAnalysProductCrawler-71943648-CEDA-4C5C-8CF1-FD81487DF3EB</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Remove="app.config" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="app.config" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="3.1.8" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="5.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\WEB\Entities\Entities.csproj" />
+    <ProjectReference Include="..\..\WEB\Repositories\Repositories.csproj" />
+  </ItemGroup>
+</Project>

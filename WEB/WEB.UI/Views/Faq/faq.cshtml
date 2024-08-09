@@ -1,0 +1,91 @@
+﻿@using WEB.UI.ViewModels;
+@model WEB.UI.ViewModels.FaqViewModel
+@{
+    ViewData["Title"] = "faq";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style type="text/css">
+    body {
+        background-color: white !important
+    }
+</style>
+<link href="/css/article.css" rel="stylesheet" type="text/css" />
+
+<!-- MAIN CONTAINER -->
+<section class="bg_search clearfix">
+    <div class="container">
+        <h2>Chào mừng quý khách !</h2>
+        <h3>Usexpress có thể giúp được gì cho quý khách ?</h3>
+        <div class="search">
+            <input type="text" class="input_search" id="txt_faq_search" name="txt_faq" value="" placeholder="Câu hỏi, thắc mắc của quý khách...">
+            <button class="icon_search_faq icon_seach_web">
+                <svg class="icon-us">
+                    <use xlink:href="/images/icons/icon.svg#search"></use>
+                </svg>
+            </button>
+        </div>
+    </div>
+</section>
+<section class="flex container gird_help">
+    <div class="col_left">
+        @foreach (var item in Model.list_faq_menu)
+        {
+            <h3 class="@Html.Raw(item.path == Model.path_help_active ?"active":"")"><a href="@item.path">@item.name</a></h3>
+        }
+    </div>
+    <div class="col_right" id="result_search_help">
+        @await Html.PartialAsync("PartialView/Help/contentFaq", Model.article_list, new ViewDataDictionary(ViewData) { { "title_cate_help", Model.cate_name_active.ToString() } })
+    </div>
+</section>
+
+
+<!-- END MAIN CONTAINER -->
+<script>
+    window.onload = function () {
+        var path_name = window.location.pathname;
+        if (path_name.includes('/lien-he-288')) {
+            $(".in-expand").addClass("active");
+            $(".out-expand").css("display", "block");
+        }
+    };
+
+    $('body').addClass('bg-white');
+    
+
+    $('#txt_faq_search').keyup(function (e) {
+        if (e.keyCode == 13) {
+            $('.icon_search_faq').click();
+        }
+    });
+
+    $('.icon_search_faq').click(function () {
+        $(".col_left").find('h3').removeClass('active');
+        var txt_faq_search = $("#txt_faq_search").val();
+        if (txt_faq_search.length == 0) {
+            $("#txt_faq_search").attr("placeholder", "Bạn hãy nhập 1 từ khóa vào đây");
+            return;
+        }
+        $(".icon_search_faq").html('<svg class="icon-us refresh"><use xlink:href="/images/icons/icon.svg#refresh"></use></svg>');
+        $.ajax({
+            dataType: 'json',
+            type: 'POST',
+            url: '/Faq/search',
+            data: { faq_search: txt_faq_search },
+            success: function (data) {
+                $(".icon_search_faq").html('<svg class="icon-us"><use xlink:href="/images/icons/icon.svg#search"></use></svg>');                
+                if (data.status == SUCCESS) {
+                    $("#result_search_help").html(data.render_search);
+                    $(".title-cate").html("Có “"+ data.count +" kết quả”");
+                } else {                    
+                    $(".title-cate").html("Không tìm thấy kết quả chứa từ khóa của bạn");
+                    $("#content_cate_help").html("");                    
+                }
+            },
+            failure: function (response) {
+                $(".icon_search_faq").html('<svg class="icon-us"><use xlink:href="/images/icons/icon.svg#search"></use></svg>');
+                console.log(response);
+            }
+        });
+    });
+
+</script>

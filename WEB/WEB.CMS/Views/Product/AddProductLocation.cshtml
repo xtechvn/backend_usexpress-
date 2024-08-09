@@ -1,0 +1,34 @@
+﻿@{
+    Layout = null;
+    var html = (string)ViewBag.html;
+}
+<style>
+    .user-hierarchy-tag ul .lever2 {
+        padding-left: 15px;
+    }
+
+    /* Chrome, Safari, Edge, Opera */
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    /* Firefox */
+    input[type=number] {
+        -moz-appearance: textfield;
+    }
+</style>
+<div class="form-default">
+    <div class="form-group">
+        <div class="wrap_input user-hierarchy-tag scrollbar" style="margin: 0px; max-height:500px; width:100% !important; overflow-y: auto;">
+            <ul class="user-hierarchy-ul check-list-edit mb0" id="grid-category-data">
+                @Html.Raw(html)
+            </ul>
+        </div>
+    </div>
+    <div class="form-group align-right mt20 block">
+        <button type="button" class="btn btn-default bg-main" onclick="_setupmanualv2.OnSelectedProductLocation()">Hoàn thành</button>
+        <button type="button" class="btn btn-default cancel" onclick="$.magnificPopup.close();"><i class="fa fa-minus-circle"></i>Bỏ qua</button>
+    </div>
+</div>

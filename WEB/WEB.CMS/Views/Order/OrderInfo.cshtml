@@ -1,0 +1,203 @@
+﻿@{
+    Layout = null;
+}
+@using Utilities.Contants
+@using Entities.Models
+@using Entities.ViewModels
+@model OrderViewModel
+@{
+    var _ListOrderStatus = (List<AllCode>)ViewBag.ListOrderStatus;
+    var _ListPaymentType = (List<AllCode>)ViewBag.ListPaymentType;
+}
+<div class="title-cate flex">
+    <span>Thông tin đơn hàng</span>
+    <button class="btn btn-default" title="Click để hiển thị thông tin lịch sử đơn hàng" onclick="_orderDetail.OnShowHistory('@Model.OrderNo')">Lịch sử đơn hàng</button>
+</div>
+@if (Model != null)
+{
+    <div class="warp_padding20">
+        <div class="form-default form_donhang row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="lbl">Mã đơn hàng</label>
+                    <div class="wrap_input">
+                        <input type="text" class="form-control bold" value="@Model.OrderNo" disabled />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="lbl">Tên khách hàng</label>
+                    <div class="wrap_input">
+                        <input type="text" class="form-control bold" value="@Model.ClientName" disabled />
+                    </div>
+                </div>
+                <div class="form-group icon-block">
+                    <label class="lbl">Số điện thoại</label>
+                    <div class="wrap_input">
+                        <input type="text" class="form-control bold" value="@Model.Phone" disabled />
+                    </div>
+                </div>
+                <div class="form-group icon-block">
+                    <label class="lbl">Địa chỉ</label>
+                    <div class="wrap_input">
+                        <div class="form-control bold" style="line-height:30px;">
+                            <span>@Model.Address</span>
+                            @if (Model.OrderStatus == (int)Constants.OrderStatus.BOUGHT_ORDER
+                      || Model.OrderStatus == (int)Constants.OrderStatus.VN_TRANSPORT_ORDER
+                      || Model.OrderStatus == (int)Constants.OrderStatus.VN_TRANSPORT_STORAGE_ORDER
+                      || Model.OrderStatus == (int)Constants.OrderStatus.VN_STORAGE_ORDER
+                      || Model.OrderStatus == (int)Constants.OrderStatus.PAID_ORDER
+                      || Model.OrderStatus == (int)Constants.OrderStatus.CREATED_ORDER)
+                            {
+                                <a class="cur-pointer" style="position:absolute;top:0;right:0" onclick="_orderDetail.OnEditAddress('@Model.AddressId','@Model.Id')">
+                                    <i class="color-main fa fa-pencil"></i>
+                                </a>
+                            }
+
+                        </div>
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="lbl">Tổng giá trị đơn hàng</label>
+                    <div class="wrap_input">
+                        <input type="text" id="data-order-amount" class="form-control bold" value="@(Model.AmountVnd != null ? Math.Round(Model.AmountVnd.Value).ToString("N0") : string.Empty)" disabled />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="lbl">Tỷ giá</label>
+                    <div class="wrap_input">
+                        <input type="text" class="form-control bold" value="@((Model.RateCurrent ?? 0).ToString("N0"))" disabled />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="lbl">Order Map Id</label>
+                    <div class="wrap_input">
+                        <input type="text" class="form-control bold" value="@Model.OrderMapId" disabled />
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="lbl">Trạng thái đơn</label>
+                    <div class="wrap_input">
+                        @if (Model.OrderStatus == (int)Constants.OrderStatus.SUCCEED_ORDER)
+                        {
+                            <select class="form-control bold" asp-for="@Model.OrderStatus" disabled>
+                                @foreach (var item in _ListOrderStatus)
+                                {
+                                    <option value="@item.CodeValue">@item.Description</option>
+                                }
+                            </select>
+                        }
+                        else
+                        {
+                            <select class="form-control" asp-for="@Model.OrderStatus">
+                                @foreach (var item in _ListOrderStatus)
+                                {
+                                    <option value="@item.CodeValue">@item.Description</option>
+                                }
+                            </select>
+                        }
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="lbl">Ngày tạo</label>
+                    <div class="datepicker-wrap">
+                        <input class="form-control bold" type="text" value="@(Model.CreatedOn != null ? Model.CreatedOn.Value.ToString("dd/MM/yyyy HH:mm"): "")" disabled />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="lbl">Hình thức thanh toán</label>
+                    <div class="wrap_input">
+                        @if (Model.OrderStatus == (int)Constants.OrderStatus.SUCCEED_ORDER)
+                        {
+                            <select class="form-control bold" asp-for="@Model.PaymentType" disabled>
+                                @foreach (var item in _ListPaymentType)
+                                {
+                                    <option value="@item.CodeValue">@item.Description</option>
+                                }
+                            </select>
+                        }
+                        else
+                        {
+                            <select class="form-control" asp-for="@Model.PaymentType">
+                                @foreach (var item in _ListPaymentType)
+                                {
+                                    <option value="@item.CodeValue">@item.Description</option>
+                                }
+                            </select>
+                        }
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="lbl">Ngày thanh toán</label>
+                    <div class="datepicker-wrap">
+                        @if (Model.OrderStatus == (int)Constants.OrderStatus.SUCCEED_ORDER)
+                        {
+                            <input class="form-control bold" type="text" value="@(Model.PaymentDate != null && Model.PaymentDate.Value.Year > 2016 ? Model.PaymentDate.Value.ToString("dd/MM/yyyy HH:mm") : string.Empty)" disabled />
+                        }
+                        else
+                        {
+                            <input class="form-control datetimepicker-input" id="PaymentDate" type="text" value="@(Model.PaymentDate != null && Model.PaymentDate.Value.Year > 2016 ? Model.PaymentDate.Value.ToString("dd/MM/yyyy HH:mm") : string.Empty)" />
+                        }
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="lbl">Utm source</label>
+                    <div class="wrap_input">
+                        <input type="text" class="form-control bold" value="@Model.UtmSource" disabled />
+                    </div>
+                </div>
+                @if (Model.UtmSource.Trim().ToLower() == "usexpress")
+                {
+                    <div class="form-group">
+                        <label class="lbl">Utm Medium</label>
+                        <div class="wrap_input">
+                            <input type="text" class="form-control bold" value="@Model.UtmMedium" disabled />
+                        </div>
+                    </div>
+                }
+                <div class="form-group">
+                    <label class="lbl">
+                        Voucher
+                        @if (!string.IsNullOrEmpty(Model.Voucher))
+                        {
+                            <a style="color: #666;margin-left: 5px;" href="#" data-toggle="tooltip"
+                               data-placement="right"
+                               title="@Model.VoucherDescription">
+                                <i class="fa fa-exclamation-circle"></i>
+                            </a>
+                        }
+                    </label>
+                    <div class="wrap_input">
+                        <input type="text" class="form-control bold" value="@Model.Voucher" disabled />
+                    </div>
+                </div>
+                <!--<div class="form-group">
+                    <label class="lbl">Ngày về dự kiến</label>
+                    <div class="wrap_input">
+                        <input type="text" class="form-control bold" value="" disabled />
+                    </div>
+                </div>-->
+                <div class="form-group">
+                    <label class="lbl">Tracking Id</label>
+                    <div class="wrap_input">
+                        <input type="text" class="form-control bold" value="@Model.TrackingId" disabled />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-default form_donhang flex justify-content-end">
+            @if (Model.OrderStatus != (int)Constants.OrderStatus.SUCCEED_ORDER)
+            {
+                <button class="btn btn-default" onclick="_orderDetail.UpdateOrder();" style="margin:0 5px 0 5px;" title="Cập nhật trạng thái đơn hàng"><i class="fa fa-save"></i> Cập nhật</button>
+            }
+
+            @if (Model.UtmSource.ToLower() != "direct")
+            {
+                <button class="btn btn-default" id="btn_pushaff" style="margin:0 5px 0 5px;" title="Click để chuyển thông tin đơn hàng qua đối tác Affilliate" onclick="_orderDetail.PushOrderToAffilliate('@Model.Id', '@Model.UtmSource');">Push đơn sang đối tác</button>
+                <button class="btn btn-default" id="btn_updateaff" disabled style="margin:0 5px 0 5px;" title="Click để cập nhật thông tin đơn hàng bên Affilliate" onclick="_orderDetail.UpdateOrderAffilliate('@Model.Id', '@Model.UtmSource');">Cập nhật đơn bên đối tác</button>
+            }
+        </div>
+    </div>
+}

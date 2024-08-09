@@ -1,0 +1,72 @@
+﻿@using WEB.UI.ViewModels;
+@model searchModel
+
+<form asp-controller="product" asp-action="search"
+      data-ajax="true"
+      data-ajax-begin="beginSearch"
+      data-ajax-complete="completeSearch"
+      id="search"
+      method="get">
+
+    @Html.HiddenFor(x => x.search_type, new { @id = "txt_search_type" })
+    <div class="warp-search">
+        @Html.TextBoxFor(x => x.keywords, new { @placeholder = "Nhập link sản phẩm Amazon cần tìm...", @class = "input_search keyword_search", @autocomplete = "off" })
+
+        <div class="suggest-search">
+            <div class="suggest_search_data">
+                <!--render search-->
+            </div>
+
+            <div class="history">
+
+                @*<ul class="keyword-popular">
+                        <h3>Tìm kiếm phổ biến</h3>
+                        <li><a href="">Iphone xs max</a></li>
+                        <li><a href="">Quạt điều hòa</a></li>
+                        <li><a href="">Quạt điều hòa</a></li>
+                        <li><a href="">Quạt điều hòa</a></li>
+                    </ul>*@
+                <ul class="end history-search"></ul>
+            </div>
+
+            @*<div class="key-search">
+                    <ul>
+                        <li><a href="">Apple iphone </a></li>
+                        <li>
+                            <a href="">
+                                Apple iphone trong <span class="color_ylow">
+                                    Điện Thoại - Máy Tính
+                                    Bảng
+                                </span>
+                            </a>
+                        </li>
+                        <li><a href="">Apple iphone xs</a></li>
+                        <li><a href="">Apple iphone xs max 512GB</a></li>
+                        <li><a href="">Apple iphone 6s</a></li>
+                    </ul>
+                </div>*@
+
+        </div>
+
+    </div>
+    <div class="op_thuonghieu dropdown">
+        <div class="txt_hang dropbtn">
+            <span>Tất cả</span>
+        </div>
+        <div class="options dropdown-content search_type">
+            <a data-groupId="-1">Tất cả</a>
+            <a data-groupId="1">Điện tử và công nghệ</a>
+            <a data-groupId="2">Phụ kiện thời trang</a>
+            <a data-groupId="3">Sức khỏe và làm đẹp</a>
+
+        </div>
+    </div>
+    <button type="submit" class="icon_seach_web search_product">
+        <svg class="icon-us"><use xlink:href="/images/icons/icon.svg#search"></use></svg>
+    </button>
+</form>
+
+
+
+@*<script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+<script src="~/lib/jquery-ajax-unobtrusive/dist/jquery.unobtrusive-ajax.min.js"></script>*@

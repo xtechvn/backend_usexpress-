@@ -1,0 +1,110 @@
+﻿
+@{
+    ViewData["Title"] = "Primeday 2021";
+    Layout = "~/Views/Shared/LandingPage/PrimeDay2020/_LayoutPrimeDay2020.cshtml";
+}
+
+<section class="section section_s2 clearfix mb60">
+    <h2 class="title_line">
+        <span>Voucher khuyến mãi</span>
+    </h2>
+    <div class="container">
+        <div class="flex">
+            <div class="col_left">
+                <a class="thumb_img" href="" title="#">
+                    <img src="/landing_page/prime_day_2020/css/images/graphics/bo-sp1.png">
+                </a>
+            </div>
+
+            <div class="col_right">
+                @{
+                    var current = DateTime.Now;
+                }
+                <ul>
+
+                    @if (!(current >= Convert.ToDateTime("2021-06-23 11:45:00.000") && current <= Convert.ToDateTime("2021-06-23 13:59:00.000")))
+                    {
+                        <li class="@Html.Raw((current >= Convert.ToDateTime("2021-06-22 13:45:00.000") && current <= Convert.ToDateTime("2021-06-22 14:59:00.000")) ? "active" : "")">
+                            <a>
+                                <img class="img_vc" data-vc="PRDBATDAU" src="~/landing_page/voucher/@Html.Raw((current >= Convert.ToDateTime("2021-06-22 13:45:00.000") && current <= Convert.ToDateTime("2021-06-22 14:59:00.000")) ? "BATDAU-14_15-50.png" : "BATDAU-14_15-50_hide.png")" />
+                            </a>
+                        </li>
+                    }
+                    <li class="@Html.Raw((current >= Convert.ToDateTime("2021-06-22 16:45:00.000") && current<= Convert.ToDateTime("2021-06-22 18:59:00.000")) ?"active":"" )">
+                        <a>
+                            <img class="img_vc" data-vc="PRD1719"  src="~/landing_page/voucher/@Html.Raw((current >= Convert.ToDateTime("2021-06-22 16:45:00.000") && current<= Convert.ToDateTime("2021-06-22 18:59:00.000")) ?"17_19-20.png":"17_19-20_hide.png" )" />
+                        </a>
+                    </li>
+                    <li class="@Html.Raw((current >= Convert.ToDateTime("2021-06-22 19:45:00.000") && current<= Convert.ToDateTime("2021-06-22 21:59:00.000")) ?"active":"" )">
+                        <a>
+                            <img  class="img_vc" data-vc="PRD2022" src="~/landing_page/voucher/@Html.Raw((current >= Convert.ToDateTime("2021-06-22 19:45:00.000") && current<= Convert.ToDateTime("2021-06-22 21:59:00.000")) ?"20_22-30.png":"20_22-30_hide.png" )" />
+                        </a>
+                    </li>
+                    <li class="@Html.Raw((current >= Convert.ToDateTime("2021-06-22 22:45:00.000") && current<= Convert.ToDateTime("2021-06-23 00:59:00.000")) ?"active":"" )">
+                        <a>
+                            <img  class="img_vc" data-vc="PRD2301" src="~/landing_page/voucher/@Html.Raw((current >= Convert.ToDateTime("2021-06-22 22:45:00.000") && current<= Convert.ToDateTime("2021-06-22 00:59:00.000")) ?"23-01-20.png":"23-01-20_hide.png" )" />
+                        </a>
+                    </li>
+                    <li class="@Html.Raw((current >= Convert.ToDateTime("2021-06-23 05:45:00.000") && current<= Convert.ToDateTime("2021-06-23 07:59:00.000")) ?"active":"" )">
+                        <a>
+                            <img  class="img_vc" data-vc="PRD0608" src="~/landing_page/voucher/@Html.Raw((current >= Convert.ToDateTime("2021-06-23 05:45:00.000") && current<= Convert.ToDateTime("2021-06-23 07:59:00.000")) ?"06_08-30.png":"06_08-30_hide.png" )" />
+                        </a>
+                    </li>
+                    <li class="@Html.Raw((current >= Convert.ToDateTime("2021-06-23 08:45:00.000") && current<= Convert.ToDateTime("2021-06-23 10:59:00.000")) ?"active":"" )">
+                        <a>
+                            <img  class="img_vc" data-vc="PRD0911" src="~/landing_page/voucher/@Html.Raw((current >= Convert.ToDateTime("2021-06-23 08:45:00.000") && current<= Convert.ToDateTime("2021-06-23 10:59:00.000")) ?"09_11-20.png":"09_11-20_hide.png" )" />
+                        </a>
+                    </li>
+
+                    @if (current >= Convert.ToDateTime("2021-06-23 11:45:00.000") && current <= Convert.ToDateTime("2021-06-23 13:59:00.000"))
+                    {
+
+                        <li class="@Html.Raw((current >= Convert.ToDateTime("2021-06-23 11:45:00.000") && current<= Convert.ToDateTime("2021-06-23 13:59:00.000")) ?"active":"" )">
+                            <a>
+                                <img  class="img_vc" data-vc="PRDKETTHUC" src="~/landing_page/voucher/@Html.Raw((current >= Convert.ToDateTime("2021-06-23 11:45:00.000") && current<= Convert.ToDateTime("2021-06-23 13:59:00.000")) ?"KETHUC-12_14-50.png":"KETHUC-12_14-50_hide.png" )" />
+                            </a>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+@await Component.InvokeAsync("groupProduct", new { group_id = 268, view = "/Views/Shared/Components/landingPage/primeDay2020/boxProductSale/product_list_sale.cshtml", take = 64, redis_db_index = 2 })
+
+@await Component.InvokeAsync("productTop", new { campaign_id = 19, view = "/Views/Shared/Components/landingPage/primeDay2020/boxProductSale/default.cshtml", skip = 0, take = 50, redis_db_index = 2, is_has_tab = true })
+
+
+<script type="text/javascript">
+  
+    //$(document.body).on('click', '.img_vc', function (e) {
+    //    var copyText = $(this).data('vc');
+    //    copyText.select();
+    //    copyText.setSelectionRange(0, 99999)
+    //    document.execCommand("copy");
+    //    alert("Copy mã " + copyText + " thành công !");
+    //});
+    $('.tab_group_product').click(function () {
+        var folder_id = $(this).data('folderid');
+        $('.tab-category').find('.active').removeClass('active');
+        $(this).addClass("active");
+        $.ajax({
+            url: "/Landing/group-list.json",
+            type: 'POST',
+            data: { folder_id: folder_id, top: 50 },
+            dataType: "json",
+            success: function (response) {
+                if (response.status == 0) {
+                    $(".group_product_prime").html(response.render_product_list);                   
+                } else {
+                    $(".group_product_prime").html("Sản phẩm đang trong quá trình cập nhật...");
+                }
+            }
+        })
+    });
+
+
+</script>

@@ -1,0 +1,62 @@
+{
+    "amazon": {
+      "title": [
+        "//span[contains(@id,\"productTitle\")]"
+      ],
+      "weight": [
+        "detailBullets_feature_div",
+        "productDetails_techSpec_section_2",
+        "productDetails_techSpec_section_1",
+        "prodDetails",
+        "dpx-aplus-product-description_feature_div",
+        "productDetails_detailBullets_sections1",
+        "content-grid-widget-v1.0"
+      ],
+      "product_name": [
+        "//*[@id=\"productTitle\"]",
+        "//*[@id=\"ebooksProductTitle\"]"
+      ],
+      "item_weight": [
+        "//*[@id=\"detailBullets_feature_div\"]//span[@class=\"a-list-item\"]",
+        "//*[contains(@id,\"productDetails_detailBullets\")]//tr"
+      ],
+      "shiping_fee": [
+        "//*[@data-csa-c-delivery-type=\"delivery\"]"
+      ],
+      "price": [
+        "//*[contains(@class,'apexPriceToPay')]/*[contains(@class,'a-offscreen')]",
+        "//*[contains(@class,'qa-price-block-our-price')]",
+        "//div[@id=\"corePrice_feature_div\"]//*[contains(@class,\"a-price a-text-price\") and @data-a-size=\"b\"]//span[@class=\"a-offscreen\"]",
+        "//*[@id=\"corePrice_feature_div\"]//*[contains(@class,\"a-price\")]//span[@class=\"a-offscreen\"]",
+        "//*[@id=\"newBuyBoxPrice\"]",
+        "//*[contains(@id,\"dbsUnifiedBuybox\")]//span[contains(@class,\"a-color-price\")]",
+        "//div[@id=\"corePrice_feature_div\"]//span[contains(@class,\"a-price a-text-price a-size-medium\")]//span[@class=\"a-offscreen\"]",
+        "//div[@id=\"corePrice_desktop\"]//span[contains(@class,\"a-price a-text-price a-size-medium\")]//span[@class=\"a-offscreen\"]",
+        "//*[@id=\"price\"]",
+        "//*[contains(@class,\"offer-price\")]"
+      ]
+    },
+    "jomashop": {
+      "price": [
+        "//*[@class=\"now-price\"]//span[not(@class)]"
+      ],
+      "soldouttext": [
+        "//*[contains(@class,\"sold-out-text\")]"
+      ],
+      "pagenotfound": [
+        "//div[contains(@class,\"text-404\")]"
+      ],
+      "adsbanner": [
+        "//a[contains(@class,\"bx-close-link\") and@data-click=\"close\"]"
+      ],
+      "shipping_fee": [
+        "//*[@class=\"shipping-availability\"]//div[@class=\"price-message\"]"
+      ],
+      "product_name": [
+        "//*[@class=\"product-name\"]"
+      ],
+      "product_description": [
+        "//*[contains(@class,\"pdp-content-wrapper\")]"
+      ]
+    }
+  }

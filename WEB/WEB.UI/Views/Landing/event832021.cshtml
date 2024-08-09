@@ -1,0 +1,240 @@
+﻿@{ 
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="vi" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <meta name="description" content="design 2018">
+    <meta name="keywords" content="design 2018">
+    <title>
+        Landing page 8/3
+    </title>
+    <link type="image/x-icon" href="http://ssl.gstatic.com/docs/doclist/images/infinite_arrow_favicon_5.ico"
+          rel="shortcut icon" />
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet"> -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <link href="~/landing_page/8_3_2021/css/style-old.css" rel="stylesheet" />
+
+    <!-- build:head2 -->
+</head>
+
+<body>
+
+    <div class="hidden-mobile"><img src="~/landing_page/8_3_2021/images/8-3/banner-pc.png" style="width: 100%; height: auto;" alt=""></div>
+
+    <!-- MAIN CONTAINER -->
+
+    <section class="section section_s1 bg-frame clearfix mb30">
+        <h2 class="center">
+            <img src="~/landing_page/8_3_2021/images/8-3/banner-title1.png">            
+        </h2>
+        <div class="container">
+            <div class="list-product bg-white flex" id="panel-product-top">
+                <!-- BlockTop-->
+            </div>
+        </div>
+    </section>
+
+    <section class="section section_s3 bg-frame clearfix mb30">
+        <h2 class="center">
+            <img src="~/landing_page/8_3_2021/images/8-3/banner-title2.png">
+        </h2>
+        <div class="container">
+            <div class="tab-default tab-category">
+                <a class="btn active" data-id="2000" data-panel="1">Tất cả</a>
+                <a class="btn" data-id="296" data-panel="1">Túi xách</a>
+                <a class="btn" data-id="297" data-panel="1">Giày nữ</a>
+                <a class="btn" data-id="298" data-panel="1">Đầm váy</a>
+                <!-- <a class="btn" href="#tab4" data-id=""></a> -->
+            </div>
+            <div style="background: #fff;padding: 10px 0 20px 0;">
+                <div class="list-product list-product__2 flex" id="panel-product-cate-first">
+
+                </div>
+                <div class="center mt20">
+                    <a class="btn xem_them white btn-show-more-cate" data-page="0">Xem thêm</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section section_s2 bg-frame clearfix mb30">
+        <h2 class="center">
+            <img src="~/landing_page/8_3_2021/images/8-3/banner-title3.png">
+        </h2>
+        <div class="container">
+            <div class="tab-default tab-category">
+                <a class="btn active" data-id="3000" data-panel="2">Tất cả</a>
+                <a class="btn" data-id="293" data-panel="2">Son môi</a>
+                <a class="btn" data-id="294" data-panel="2">Makeup</a>
+                <a class="btn" data-id="295" data-panel="2">Chăm sóc da</a>
+            </div>
+            <div style="background: #fff;padding: 10px 0 20px 0;">
+                <div class="list-product list-product__2 flex" id="panel-product-cate-second">
+
+                </div>
+                <div class="center mt20">
+                    <a class="btn xem_them white btn-show-more-cate" data-page="0">Xem thêm</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- END MAIN CONTAINER -->
+    <!--FOOTER-->
+    <script>
+        var rootURL = 'https://usexpress.vn/';
+        var url = "Home/AccountSubcribeEmail";
+        function sendEmail() {
+            var emailSd = $("#emailSendy").val();
+            $.ajax({
+                type: "POST",
+                url: rootURL + url,
+                data: {
+                    email: emailSd
+                },
+                success: function (result) {
+                    alert(result);
+                    $("#emailSendy").val('');
+                },
+                dataType: 'text',
+                error: function (result) {
+                    $("#receive").html(result);
+                    var a = document.querySelector('#wrapper > h2').innerText;
+                    alert(result);
+                }
+            });
+        }
+    </script>
+    <footer id="footer" class="clearfix">
+        <div class="footer-top">
+            <div class="container">
+                <div class="newsletter">
+                    <img src="~/landing_page/8_3_2021/images/graphics/newsletter.svg">
+                    <strong>Đăng ký nhận Bản tin Giảm giá</strong>
+                    <p>Để không bỏ lỡ những đợt Sale hấp dẫn từ Mỹ</p>
+                </div>
+                <form action="">
+                    <input type="email" class="input_search" id="emailSendy" name="emailSendy" value="" placeholder="Nhập email của bạn">
+                    <button type="button" class="" onclick="sendEmail()">Đăng ký</button>
+                </form>
+                <a class="messenger" href="javascript:;" onclick="ShowChatAuto()"><img src="images/icons/chat.png"></a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="row">
+                    <div class="td">
+                        <h3>Hỗ trợ khách hàng</h3>
+                        <div class="hotline">
+                            <p class="color_green2"><strong>Hotline CSKH: 1900 633 600</strong></p>
+                            <p>(Từ 8h30-17h30 Thứ 2 đến Thứ 6)</p>
+                        </div>
+                        <ul>
+                            <li><a href="">Câu hỏi thường gặp</a></li>
+                            <li><a href="">Hướng dẫn đặt hàng</a></li>
+                            <li><a href="">Trung tâm trợ giúp</a></li>
+                        </ul>
+                    </div>
+                    <div class="td">
+                        <h3>Hiểu thêm về US</h3>
+                        <ul>
+                            <li><a href="https://usexpress.vn/about">Giới thiệu về US Express</a></li>
+                            <li><a href="https://usexpress.vn/Home/faq?p=faq-tb8">Cơ hội nghề nghiệp</a></li>
+                            <li><a href="https://usexpress.vn/Home/faq?p=faq-tb9">Liên hệ </a></li>
+                        </ul>
+                    </div>
+                    <div class="td">
+                        <h3>Chăm sóc khách hàng</h3>
+                        <ul>
+                            <li><a href="https://usexpress.vn/Home/faq?p=faq-tb0">Trung t&#226;m hỗ trợ</a></li>
+                            <li><a href="https://usexpress.vn/Home/faq?p=faq-tb1">Ch&#237;nh s&#225;ch bảo mật</a></li>
+                            <li><a href="https://usexpress.vn/Home/faq?p=faq-tb2">Ch&#237;nh s&#225;ch giao dịch</a></li>
+                            <li><a href="https://usexpress.vn/Home/faq?p=faq-tb3">Ch&#237;nh s&#225;ch gi&#225; của US Express</a></li>
+                            <li><a href="https://usexpress.vn/Home/faq?p=faq-tb4">Ch&#237;nh s&#225;ch thanh to&#225;n</a></li>
+                            <li><a href="https://usexpress.vn/Home/faq?p=faq-tb7">Ch&#237;nh s&#225;ch US Express AFFILIATE</a></li>
+                        </ul>
+                    </div>
+                    <div class="td">
+                        <h3>Chính sách giao hàng</h3>
+                        <ul>
+                            <li><a href="https://usexpress.vn/Home/faq?p=faq-tb5">Ch&#237;nh s&#225;ch đặt h&#224;ng v&#224; giao nhận của US Express</a></li>
+                            <li><a href="https://usexpress.vn/Home/faq?p=faq-tb6">Ch&#237;nh s&#225;ch về h&#224;ng h&#243;a v&#224; bảo h&#224;nh của US Express</a></li>
+                        </ul>
+                    </div>
+                    <div class="td">
+                        <h3>Hình thức thanh toán</h3>
+                        <div class="visa">
+                            <a href="#"><img src="~/landing_page/8_3_2021/images/graphics/visa.png"></a>
+                            <a href="#"><img src="~/landing_page/8_3_2021/images/graphics/visa2.png"></a>
+                            <a href="#"><img src="~/landing_page/8_3_2021/images/graphics/visa3.png"></a>
+                            <a href="#"><img src="~/landing_page/8_3_2021/images/graphics/visa4.png"></a>
+                            <a href="#"><img src="~/landing_page/8_3_2021/images/graphics/visa5.png"></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="address">
+                    <div class="left">
+                        <h3>địa chỉ Văn phòng US Express</h3>
+                        <p>
+                            <strong>Trung tâm kho vận tại Mỹ:</strong> 6210 NE 92ND DR, STE 105 Portland, Bang Oregon
+                            97220-1341
+                        </p>
+                        <p>
+                            <strong>Văn phòng tại Hà Nội:</strong> Tầng 5, tòa nhà Diamond Flower, Số 1 Hoàng Đạo Thúy,
+                            Q. Thanh Xuân
+                        </p>
+                        <p>
+                            <strong>Văn phòng tại Tp.HCM:</strong> 04.54 Lầu 4, Tháp B, Tòa nhà River Gate, Số 151-155
+                            Bến Vân Đồn, P.6, Q.4
+                        </p>
+                    </div>
+                    <div class="right social">
+                        <a href="https://www.facebook.com/US.ExpressVietnam/"><img src="images/icons/facebook.svg"></a>
+                        <a href="https://www.youtube.com/channel/UC14AsBzefh_qX3PzoTXEbXg"><img src="images/icons/youtube.svg"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <div class="container flex">
+                <div class="text">
+                    <p>© 2019 - Bản quyền của Công ty Cổ Phần US Express - usexpress.vn</p>
+                    <p>Giấy chứng nhận Đăng ký Kinh doanh số 3002090565, cấp ngày 23/11/2017</p>
+                </div>
+                <div class="social">
+                    <a href=""><img src="~/landing_page/8_3_2021/images/graphics/bocongthuong.png"></a>                    
+                    <a href=""><img src="~/landing_page/8_3_2021/images/graphics/shield.svg"></a>
+                    <a href=""><img src="~/landing_page/8_3_2021/images/graphics/dss.png"></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <div class="fb-customerchat" style="display: none"
+         page_id="1719868504764368"
+         logged_in_greeting="Chào bạn! US Express có thể giúp gì cho bạn ạ?"
+         logged_out_greeting="Chào bạn! US Express có thể giúp gì cho bạn ạ?">
+    </div>
+    <!--END FOOTER-->
+    <!--Back to top-->
+    <a href="javascript:;" id="to_top">
+    </a>
+    <!--Jquery lib-->
+    <script type="text/javascript" src="~/landing_page/8_3_2021/js/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="~/landing_page/8_3_2021/js/swiper.min.js"></script>
+    <script type="text/javascript" src="~/landing_page/8_3_2021/js/landing-page.js"></script>
+
+    <!-- build:script -->
+    <!-- build:script2 -->
+    <script>
+        $(document).ready(function () {
+            DataReady();
+        });
+    </script>
+</body>
+
+</html>

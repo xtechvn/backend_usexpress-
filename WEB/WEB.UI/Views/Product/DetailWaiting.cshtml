@@ -1,0 +1,322 @@
+﻿@{ 
+    string product_code =  (string)ViewBag.product_code;
+}
+@section SocialMetaTags {
+    <!--Facebook Open Graph-->
+    <meta property="fb:app_id" content="892696148005813">
+    <meta property="og:site_name" content="usexpress.vn" />    
+}
+
+<link href="~/css/detail.css" rel="stylesheet" />
+
+<section class="container product_detail clearfix">
+    <div class="menu_control mb10">
+        <div class="container">
+            <ul class="breadcrumb">
+                <li class="active"><a href="/">Xin vui lòng chờ trong giây lát. Hệ thống đang download sản phẩm về cho bạn...</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="pin_detail">
+        <div class="container flex space-between">
+            <div class="top-bar-left">
+                <a href="">
+                    <svg class="icon-us">
+                        <use xlink:href="/images/icons/icon.svg#help"></use>
+                    </svg>Hỗ trợ
+                </a>
+                <a href="">
+                    <svg class="icon-us">
+                        <use xlink:href="/images/icons/icon.svg#language"></use>
+                    </svg>Ngôn ngữ
+                </a>
+                <a href="">
+                    <svg class="icon-us">
+                        <use xlink:href="/images/icons/icon.svg#phone"></use>
+                    </svg>Hotline 1900 633 376
+                </a>
+            </div>
+            <div class="top-bar-right">
+                <a href="">
+                    <svg class="icon-us">
+                        <use xlink:href="/images/icons/icon.svg#rss"></use>
+                    </svg>Tin tức
+                </a>
+                <a href="">
+                    <svg class="icon-us">
+                        <use xlink:href="/images/icons/icon.svg#review"></use>
+                    </svg>Reviews sản phẩm
+                </a>
+                <!-- <a href="" class="show-mb"><svg class="icon-us">
+                <use xlink:href="/images/icons/icon.svg#calendar"></use>
+            </svg>kiểm tra đơn hàng</a> -->
+                <a href="" class="show-mb">
+                    <svg class="icon-us">
+                        <use xlink:href="/images/icons/icon.svg#download"></use>
+                    </svg>Tải Extension
+                </a>
+                <div class="my_us">
+                    <a href="#login-popup" class="open-popup-link" style="display: none;">
+                        <svg class="icon-us">
+                            <use xlink:href="/images/icons/icon.svg#user"></use>
+                        </svg>Đăng nhập / Đăng ký
+                    </a>
+                    <div class="user">
+                        <a class="onclick" href="javascript:;">
+                            <span class="avatar">
+                                <img src="/images/graphics/thumb_1x1.png">
+                            </span>
+                            <h4 class="name">Trịnh Thăng Bình</h4>
+                        </a>
+                        <div class="wrap_user">
+                            <ul>
+                                <li>
+                                    <a href="#">
+                                        <svg class="icon-us">
+                                            <use xlink:href="/images/icons/icon.svg#user"></use>
+                                        </svg>
+                                        Thông tin tài khoản
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <svg class="icon-us">
+                                            <use xlink:href="/images/icons/icon.svg#thutuc"></use>
+                                        </svg>
+                                        Quản lý đơn hàng
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <svg class="icon-us">
+                                            <use xlink:href="/images/icons/icon.svg#notifi2"></use>
+                                        </svg>
+                                        Thông báo của tôi
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <svg class="icon-us">
+                                            <use xlink:href="/images/icons/icon.svg#book"></use>
+                                        </svg>
+                                        Sổ địa chỉ
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <svg class="icon-us">
+                                            <use xlink:href="/images/icons/icon.svg#heart2"></use>
+                                        </svg>
+                                        Sản phẩm yêu thích
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <img src="/images/icons/u-xu.svg">
+                                        Quản lý U-Xu của tôi
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <img src="/images/icons/affiliate.svg">
+                                        Tài khoản Affiliate của tôi
+                                    </a>
+                                </li>
+                            </ul>
+                            <a class="out" href="#">Đăng xuất</a>
+                        </div>
+                    </div>
+                    <div class="notifi">
+                        <a class="onclick" href="javascript:;">
+                            <svg class="icon-us">
+                                <use xlink:href="/images/icons/icon.svg#notifi"></use>
+                            </svg>
+                            <span class="count">8</span>
+                        </a>
+                        <div class="wrap_notifi">
+                            <ul>
+                                <li>
+                                    <a href="#">
+                                        <span class="icon">
+                                            <svg class="icon-us">
+                                                <use xlink:href="/images/icons/icon.svg#thutuc"></use>
+                                            </svg>
+                                        </span>
+                                        Đơn hàng số 953929993 của quý khách có sản phẩm nằm ở nhiều kho khác nhau, vì
+                                        vậy UsExpress xin phép tách ...
+                                        <span class="date">20/07/2019</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span class="icon">
+                                            <svg class="icon-us">
+                                                <use xlink:href="/images/icons/icon.svg#thutuc"></use>
+                                            </svg>
+                                        </span>
+                                        Đơn hàng số 953929993 của quý khách có sản phẩm nằm ở nhiều kho khác nhau, vì
+                                        vậy UsExpress xin phép tách ...
+                                        <span class="date">20/07/2019</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span class="icon">
+                                            <svg class="icon-us">
+                                                <use xlink:href="/images/icons/icon.svg#thutuc"></use>
+                                            </svg>
+                                        </span>
+                                        Đơn hàng số 953929993 của quý khách có sản phẩm nằm ở nhiều kho khác nhau, vì
+                                        vậy UsExpress xin phép tách ...
+                                        <span class="date">20/07/2019</span>
+                                    </a>
+                                </li>
+                                <li class="visited">
+                                    <a href="#">
+                                        <span class="icon">
+                                            <svg class="icon-us">
+                                                <use xlink:href="/images/icons/icon.svg#thutuc"></use>
+                                            </svg>
+                                        </span>
+                                        Đơn hàng số 953929993 của quý khách có sản phẩm nằm ở nhiều kho khác nhau, vì
+                                        vậy UsExpress xin phép tách ...
+                                        <span class="date">20/07/2019</span>
+                                    </a>
+                                </li>
+                                <li class="visited">
+                                    <a href="#">
+                                        <span class="icon">
+                                            <svg class="icon-us">
+                                                <use xlink:href="/images/icons/icon.svg#thutuc"></use>
+                                            </svg>
+                                        </span>
+                                        Đơn hàng số 953929993 của quý khách có sản phẩm nằm ở nhiều kho khác nhau, vì
+                                        vậy UsExpress xin phép tách ...
+                                        <span class="date">20/07/2019</span>
+                                    </a>
+                                </li>
+                            </ul>
+                            <div class="center mt20 mb15">
+                                <a class="btn btn-default none" href="#">Xem tất cả thông báo</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="product-info flex mb20">
+        <div class="col_left">
+            <div class="PD_Media">
+                <div class="placeholder" style="width: 100%;padding-bottom: 100%;"></div>
+               
+            </div>
+        </div>
+        <div class="col_right tt_sp_chitiet">
+
+            <div class="sidebar_1">
+                <h1 class="title_name placeholder">                                     </h1>
+                <div class="sidebar_1_head flex">
+                    <div class="ct_star placeholder" style="width: 120px;height: 20px;"></div>
+                    <span class="choice placeholder" style="width: 100px;height: 20px;"></span>
+                    <div class="placeholder" style="width: 60px;height: 20px;"></div>
+                    <div class="th placeholder" style="margin-left: 10px;width: 60px;height: 20px;"></div>
+                </div>
+                <div class="ct_danhgia placeholder" style="width: 150px;height: 20px;"></div>
+                <div class="ct_price">
+                    <div class="price-old placeholder" style="width: 150px;height: 20px;"></div>
+                    <div class="price placeholder" style="width: 250px;height: 20px;"></div>
+                </div>
+                <div class="placeholder mb20" style="width: 100%;height: 140px;"></div>
+                <div class="ct_size">
+                    <div class="placeholder" style="width: 250px;height: 20px;"></div>
+                    <div class="size placeholder" style="width: 250px;height: 25px;"></div>
+                </div>
+
+                <div class="ct_color">
+                    <div class="placeholder mb10" style="width: 250px;height: 20px;"></div>
+                    <div class="size placeholder" style="width: 300px;height: 55px;"></div>
+                </div>
+                <div class="ct_button">
+                    <a class="btn add_to_cart placeholder" style="width:150px"></a>
+                    <a class="btn buy placeholder" style="width:100px"></a>
+                </div>
+                <div class="ct_tinhnang placeholder">
+                    <h3>Tính năng nổi bật</h3>
+                    <div class="content-danhgia built-toggle">
+                        <ul>
+                            <li>Loading..........</li>
+                            <li>Loading..........</li>
+                        </ul>
+                    </div>
+                    <div class="view-full"><a href="javascript:;">Loading..........</a></div>
+                </div>
+            </div>
+
+            <div class="sidebar_2">
+                <a class="kt_hang placeholder" href="" style="width: 100px;height: 20px;"></a>
+                <div class="wrap">
+                    <div class="ct_dichvu">
+                        <div class="head">
+                            <p class="info placeholder" style="width: 100%;height: 20px;"></p>
+                            <p class="Store placeholder" style="width: 70%;height: 20px;"></p>
+                            <div class="ct_star placeholder" style="width: 100%;height: 20px;"></div>
+                        </div>
+                        <ul>
+                            <li>
+                                <svg class="icon-us">
+                                    <use xlink:href="/images/icons/icon.svg#like"></use>
+                                </svg>
+                                <h4>Chi phí minh bạch</h4>
+                            </li>
+                            <li>
+                                <svg class="icon-us">
+                                    <use xlink:href="/images/icons/icon.svg#dam-bao"></use>
+                                </svg>
+                                <h4>Hàng hóa được đảm bảo</h4>
+                            </li>
+                            <li>
+                                <svg class="icon-us">
+                                    <use xlink:href="/images/icons/icon.svg#date"></use>
+                                </svg>
+                                <h4>Giao hàng từ 10 - 15 ngày làm việc</h4>
+                            </li>
+                            <li>
+                                <svg class="icon-us" style="width: 35px;height: 35px;">
+                                    <use xlink:href="/images/icons/icon.svg#tietkiem"></use>
+                                </svg>
+                                <h4>Mua càng nhiều, tiết kiệm càng nhiều</h4>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="ct_hotline">
+                        <span>Hotline</span>
+                        <strong>
+                            <a href="">
+                                <svg class="icon-us">
+                                    <use xlink:href="/images/icons/icon.svg#hotline"></use>
+                                </svg>
+                                1900 633 600
+                            </a>
+                        </strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</section>
+
+<section class="container clearfix">
+    <div class="product-history">
+        <!--SP đã xem -->
+        @{ await Html.RenderPartialAsync("PartialView/Product/ListingProductHistory", null, new ViewDataDictionary(this.ViewData) { { "is_waiting", "1" } });}
+    </div>
+</section>
+
+
+<script type="text/javascript">
+    var product_code = "@product_code";   
+</script>
+<script type="text/javascript" src="~/js/product_detail/default_waiting.js"></script>

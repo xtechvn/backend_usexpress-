@@ -1,0 +1,107 @@
+﻿@{
+    Layout = null;
+}
+@using Entities.Models
+@{
+    var CampangeList = (List<CampaignAds>)ViewBag.CampaignList;
+}
+<style>
+    .user-hierarchy-tag ul .lever2 {
+        padding-left: 15px;
+    }
+
+    /* Chrome, Safari, Edge, Opera */
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    /* Firefox */
+    input[type=number] {
+        -moz-appearance: textfield;
+    }
+</style>
+<div class="form-default">
+    <div class="form-group">
+        <label class="lbl">Tên chiến dịch</label>
+        <div class="wrap_input">
+            <div class="flex flex_btn">
+                <select class="form-control border" id="elm-campaign-dropdown" onchange="_menu.OnChangeCampaign()" style="width: 220px;">
+                    <option value="-1">Lựa chọn chiến dịch</option>
+                    @if (CampangeList != null && CampangeList.Count > 0)
+                    {
+                        foreach (var item in CampangeList)
+                        {
+                            <option value="@item.Id"
+                                    data-start="@(item.StartDate != null ? item.StartDate.Value.ToString("dd/MM/yyyy") : string.Empty)"
+                                    data-end="@(item.EndDate != null ? item.EndDate.Value.ToString("dd/MM/yyyy") : string.Empty)"
+                                    data-link="@item.ScriptSocial">
+                                @item.CampaignName
+                            </option>
+                        }
+                    }
+                </select>
+                <a class="cur-pointer edit btn" onclick="_menu.OnEditCampaign();"><i class="fa fa-pencil-square-o"></i></a>
+                <a class="cur-pointer add btn" onclick="_menu.OnCreateCampaign();">+</a>
+            </div>
+            <form id="form-create-campaign">
+                <div class="flex mt20 mfp-hide" id="panel-create-campaign">
+                    <div class="form-default" style="width: 220px;">
+                        <input type="hidden" id="campaign-id" value="0" />
+                        <input class="form-control border" id="campaign-name" name="CampaignName" placeholder="Nhập tên chiến dịch" style="height:34px;" />
+                    </div>
+                    <button type="button" class="btn btn-default" onclick="_menu.OnSaveCampaign();"><i class="fa fa-save"></i> Lưu</button>
+                    <button type="button" class="btn btn-default cancel" onclick="_menu.OnCloseForm();"><i class="fa fa-minus-circle"></i> Đóng</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="lbl mt0">Ngành hàng</label>
+        <div class="wrap_input user-hierarchy-tag scrollbar" style="margin: 0px; max-height: 250px; overflow-y: auto;">
+            <ul class="user-hierarchy-ul check-list-edit mb0" id="grid-category-data">
+            </ul>
+        </div>
+    </div>
+    <div class="form-group campaign_prop mfp-hide">
+        <label class="lbl mt0">Scripts Social</label>
+        <div class="wrap_input">
+            <textarea id="social_link" style="resize: unset; min-height: 80px;" placeholder="Địa chỉ url chiến dịch"></textarea>
+        </div>
+    </div>
+    <div class="form-group campaign_prop mfp-hide">
+        <label class="lbl mt0">Hiệu lực</label>
+        <div class="flex wrap_input">
+            <div class="col-md-6 pl-0">
+                <input id="camp_start_date" class="form-control" type="text" placeholder="Từ ngày" />
+            </div>
+            <div class="col-md-6 pr-0">
+                <input id="camp_end_date" class="form-control" type="text" placeholder="Đến ngày" />
+            </div>
+        </div>
+    </div>
+    <div class="form-group align-right mt20 block">
+        <button type="button" class="btn btn-default bg-main" onclick="_menu.OnSaveCampaignGroupProduct()">Cập nhật</button>
+        <button type="button" class="btn btn-default cancel" onclick="$.magnificPopup.close();"><i class="fa fa-minus-circle"></i>Bỏ qua</button>
+    </div>
+</div>
+<script type="text/javascript">
+    $('#camp_start_date').Zebra_DatePicker({
+        format: 'd/m/Y',
+        direction: false,
+        pair: $('#camp_end_date'),
+        onSelect: function () {
+            $(this).change();
+        }
+    });
+
+    $('#camp_end_date').Zebra_DatePicker({
+        format: 'd/m/Y',
+        direction: true,
+        onSelect: function () {
+            $(this).change();
+        }
+    });
+</script>

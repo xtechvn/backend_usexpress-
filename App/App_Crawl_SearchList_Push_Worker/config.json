@@ -1,0 +1,16 @@
+{
+  "EncryptApi": "5fDmJ8Ze",
+  //"API_BASE_URL": "https://localhost:44366",
+  //"API_BASE_URL": "http://103.74.121.155:4455",
+  "API_BASE_URL": "http://103.74.121.155:44355",
+  "API_LIVE_URL": "http://103.74.121.155:44355",
+  "Default_url": "https://www.amazon.com/",
+  "API_PUSH_QUEUE": "/api/QueueService/data-push.json",
+  "API_GET_GROUP_PRODUCT": "/api/AppData/get-all-group-product.json",
+  "API_GET_GROUP_PRODUCT_STORE": "/api/AppData/get-all-group-product-store.json",
+  "API_GET_PRODUCT_CLASSIFICATION": "/api/AppData/get-all-product-classification.json",
+  "API_FILTER_PCODE_NOT_EXISTS": "/api/GroupProduct/get-list-id-not-exits-product.json",
+  "API_Key": "1372498309AAH0fVJfnZQFg5Qaqro47y1o5mIIcwVkR3k",
+  "token_id": "618456",
+  "delay_time": "43200"
+}

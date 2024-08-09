@@ -1,0 +1,333 @@
+﻿@{
+    Layout = null;
+}
+@using Utilities.Contants
+@using Entities.ViewModels
+@model ClientDetailViewModel
+@{
+    var tabActive = (int)ViewBag.TabActive;
+}
+
+<tr class="info-detail">
+    <td colspan="8">
+        <div class="tab-default">
+            <a class="@(tabActive == 1 ?"active":"")" data-tab="1">Thông tin</a>
+            <a class="@(tabActive == 4 ?"active":"")" data-tab="4">Đơn hàng liên kết</a>
+            <a class="@(tabActive == 2 ?"active":"")" data-tab="2">Lịch sử đơn hàng</a>
+            <a data-tab="3">Danh sách địa chỉ</a>
+        </div>
+        <div class="wrap">
+            <div class="tab-content">
+                <div class="tab-item @(tabActive == 1 ? "" : "mfp-hide")" data-id="1">
+                    @if (Model.Detail != null)
+                    {
+                        <div class="flex form-default">
+                            <div class="name">
+                                <h4>@Model.Detail.ClientName</h4>
+                                <div class="text-client-status status"> @(Model.Detail.Status == 0 ? "Đang hoạt động":"Khóa/Tạm ngừng")</div>
+                            </div>
+                            <div class="info">
+                                <div class="ava">
+                                    <span class="thumb_img thumb_5x5">
+                                        <img src="@(Model.Detail.Avartar ?? string.Empty)" onerror="_imageError(this)" />
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="info-form row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="lbl">
+                                            <span class="col-4">Tên khách hàng:</span>
+                                            <span class="col-8">@Model.Detail.ClientName</span>
+                                        </label>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="lbl">
+                                            <span class="col-4">Email:</span>
+                                            <span class="col-8">@Model.Detail.Email</span>
+                                        </label>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="lbl">
+                                            <span class="col-4">Số điện thoại:</span>
+                                            <span class="col-8">@Model.Detail.Phone</span>
+                                        </label>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="lbl">
+                                            <span class="col-4">Ngày đăng ký:</span>
+                                            <span class="col-8">@Model.Detail.JoinDate.ToString("dd/MM/yyyy HH:mm")</span>
+                                        </label>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="lbl">
+                                            <span class="col-4">Client ID:</span>
+                                            <span class="col-8">@Model.Detail.Id</span>
+                                        </label>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="lbl">
+                                            <span class="col-4">Referral ID:</span>
+                                            <span class="col-8">@Model.Detail.ReferralId</span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="lbl">
+                                            <span class="col-4">Tỉnh/Thành phố:</span>
+                                            <span class="col-8">@Model.Detail.Province</span>
+                                        </label>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="lbl">
+                                            <span class="col-4">Quận/Huyện:</span>
+                                            <span class="col-8">@Model.Detail.District</span>
+                                        </label>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="lbl">
+                                            <span class="col-4">Phường/Xã:</span>
+                                            <span class="col-8">@Model.Detail.Ward</span>
+                                        </label>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="lbl">
+                                            <span class="col-4">Địa chỉ:</span>
+                                            <span class="col-8">@Model.Detail.Address</span>
+                                        </label>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="lbl">
+                                            <span class="col-4">Client Map ID:</span>
+                                            <span class="col-8">@Model.Detail.ClientMapId</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group align-right col-12 mt20 block">
+                                <button type="button" class="btn btn-default bg-main" onclick="_client.PushToUsexpressOld('@Model.Detail.Id')">
+                                    <i class="iconfont-history"></i>Push To Usexpress Old
+                                </button>
+                                <button type="button" class="btn btn-default bg-main" onclick="_client.OnGetHistory('@Model.Detail.Id')">
+                                    <i class="iconfont-history"></i>Lịch sử truy cập
+                                </button>
+                                <button type="button" class="btn btn-default bg-main" style="display:none;"
+                                        onclick="_client.OnResetPassword('@Model.Detail.Id')">
+                                    <i class="fa fa-key"></i>Reset mật khẩu
+                                </button>
+                                @if (Model.Detail.ClientMapId > 0)
+                                {
+                                    <button type="button" class="btn btn-default bg-main" onclick="_client.OnResetPasswordDefault('@Model.Detail.Id')">
+                                        <i class="fa fa-key"></i>Reset mật khẩu mặc định
+                                    </button>
+                                }
+                                <button type="button" class="btn btn-default red btn-update-status" data-id="@Model.Detail.Id">
+                                    <i class="fa fa-lock"></i>
+                                    @if (Model.Detail.Status == 0)
+                                    {
+                                        <span>Khóa tài khoản</span>
+                                    }
+                                    else
+                                    {
+                                        <span>Mở tài khoản</span>
+                                    }
+                                </button>
+                            </div>
+                        </div>
+                    }
+                </div>
+                <div class="tab-item @(tabActive == 2 ? "" : "mfp-hide")" data-id="2">
+                    @if (Model.OrderList != null && Model.OrderList.Count > 0)
+                    {
+                        var _OrderGridList = Model.OrderList;
+                        var _PaidOrder = Model.OrderList.Where(s => s.PaymentStatus == (int)OrderConstants.Payment_Status.DA_THANH_TOAN);
+                        var _NotPaidOrder = Model.OrderList.Where(s => s.PaymentStatus == (int)OrderConstants.Payment_Status.CHUA_THANH_TOAN);
+                        <div class="flex tong-sp tong-sp__4 mb20">
+                            <div class="item">
+                                <span>Đơn đã thanh toán</span>
+                                <strong class="btn-paid-order" data-clientid="@Model.Detail.Id" style="color:#056BD3;">@_PaidOrder.Count()</strong>
+                            </div>
+                            <div class="item">
+                                <span>Đơn chưa thanh toán</span>
+                                <strong class="btn-not-paid-order" data-clientid="@Model.Detail.Id" style="color:#056BD3;">@_NotPaidOrder.Count()</strong>
+                            </div>
+                            <div class="item">
+                                <span>Tổng tiền</span>
+                                <strong>@_OrderGridList.Sum(s => (double)s.AmountVnd).ToString("N0")</strong>
+                            </div>
+                            <div class="item">
+                                <span>Đã thanh toán</span>
+                                <strong>@_PaidOrder.Sum(s => (double)s.AmountVnd).ToString("N0")</strong>
+                            </div>
+                        </div>
+                        <div class="table-responsive table-default">
+                            <table class="table table-nowrap line">
+                                <thead>
+                                    <tr class="bg-gray">
+                                        <th>Mã đơn hàng</th>
+                                        <th>Ngày mua</th>
+                                        <th class="text-right">Phí mua hộ</th>
+                                        <th class="text-right">Tổng tiền</th>
+                                        <th>Hình thức thanh toán</th>
+                                        <th class="text-right">Trạng thái</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="tbody-@Model.Detail.Id">
+                                    @foreach (var item in _OrderGridList)
+                                    {
+                                        <tr class="@((item.PaymentStatus ?? 1) == 0 ? "paid-order" : "not-paid-order")">
+                                            <td><a class="blue" href="/order/detail/@item.Id" target="_blank">@item.OrderNo</a></td>
+                                            <td>@(item.CreatedOn != null ? item.CreatedOn.Value.ToString("dd-MM-yyyy HH:mm") : string.Empty)</td>
+                                            <td class="text-right">@((item.TotalShippingFeeVnd ?? 0).ToString("N0"))</td>
+                                            <td class="text-right">@((item.AmountVnd ?? 0).ToString("N0"))</td>
+                                            <td>@item.PaymentTypeName</td>
+                                            @if (item.OrderStatus == (int)Constants.OrderStatus.SUCCEED_ORDER)
+                                            {
+                                                <td class="success text-right">@item.OrderStatusName</td>
+                                            }
+                                            else if (item.OrderStatus == (int)Constants.OrderStatus.CANCEL_ORDER)
+                                            {
+                                                <td class="red text-right">@item.OrderStatusName</td>
+                                            }
+                                            else if (item.OrderStatus == (int)Constants.OrderStatus.CREATED_ORDER)
+                                            {
+                                                <td class="oranger text-right">@item.OrderStatusName</td>
+                                            }
+                                            else
+                                            {
+                                                <td class="blue text-right">@item.OrderStatusName</td>
+                                            }
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    }
+                    else
+                    {
+                        <p class="red" style="margin:0;">Khách hàng chưa có đơn hàng</p>
+                    }
+                </div>
+                <div class="tab-item @(tabActive == 4 ? "" : "mfp-hide")" data-id="4">
+                    @if (Model.ReferralOrderList != null && Model.ReferralOrderList.Count > 0)
+                    {
+                        var _PaidOrder = Model.ReferralOrderList.Where(s => s.PaymentStatus == (int)OrderConstants.Payment_Status.DA_THANH_TOAN);
+                        var _NotPaidOrder = Model.ReferralOrderList.Where(s => s.PaymentStatus == (int)OrderConstants.Payment_Status.CHUA_THANH_TOAN);
+                        <div class="flex tong-sp tong-sp__4 mb20">
+                            <div class="item">
+                                <span>Đơn đã thanh toán</span>
+                                <strong class="btn-paid-order" data-clientid="@Model.Detail.Id" style="color:#056BD3;">@_PaidOrder.Count()</strong>
+                            </div>
+                            <div class="item">
+                                <span>Đơn chưa thanh toán</span>
+                                <strong class="btn-not-paid-order" data-clientid="@Model.Detail.Id" style="color:#056BD3;">@_NotPaidOrder.Count()</strong>
+                            </div>
+                            <div class="item">
+                                <span>Tổng tiền</span>
+                                <strong>@Model.ReferralOrderList.Sum(s => (double)s.AmountVnd).ToString("N0")</strong>
+                            </div>
+                            <div class="item">
+                                <span>Đã thanh toán</span>
+                                <strong>@_PaidOrder.Sum(s => (double)s.AmountVnd).ToString("N0")</strong>
+                            </div>
+                        </div>
+                        <div class="table-responsive table-default">
+                            <table class="table table-nowrap line">
+                                <thead>
+                                    <tr class="bg-gray">
+                                        <th>Mã đơn hàng</th>
+                                        <th>Ngày mua</th>
+                                        <th class="text-right">Phí mua hộ</th>
+                                        <th class="text-right">Tổng tiền</th>
+                                        <th>Hình thức thanh toán</th>
+                                        <th class="text-right">Trạng thái</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="tbody-@Model.Detail.Id">
+                                    @foreach (var item in Model.ReferralOrderList)
+                                    {
+                                        <tr class="@((item.PaymentStatus ?? 1) == 0 ? "paid-order" : "not-paid-order")">
+                                            <td><a class="blue" href="/order/detail/@item.Id" target="_blank">@item.OrderNo</a></td>
+                                            <td>@(item.CreatedOn != null ? item.CreatedOn.Value.ToString("dd-MM-yyyy HH:mm") : string.Empty)</td>
+                                            <td class="text-right">@((item.TotalShippingFeeVnd ?? 0).ToString("N0"))</td>
+                                            <td class="text-right">@((item.AmountVnd ?? 0).ToString("N0"))</td>
+                                            <td>@item.PaymentTypeName</td>
+                                            @if (item.OrderStatus == (int)Constants.OrderStatus.SUCCEED_ORDER)
+                                            {
+                                                <td class="success text-right">@item.OrderStatusName</td>
+                                            }
+                                            else if (item.OrderStatus == (int)Constants.OrderStatus.CANCEL_ORDER)
+                                            {
+                                                <td class="red text-right">@item.OrderStatusName</td>
+                                            }
+                                            else if (item.OrderStatus == (int)Constants.OrderStatus.CREATED_ORDER)
+                                            {
+                                                <td class="oranger text-right">@item.OrderStatusName</td>
+                                            }
+                                            else
+                                            {
+                                                <td class="blue text-right">@item.OrderStatusName</td>
+                                            }
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    }
+                    else
+                    {
+                        <p class="red" style="margin:0;">Khách hàng chưa có đơn hàng được liên kết</p>
+                    }
+                </div>
+                <div class="tab-item mfp-hide" data-id="3">
+                    <div class="address-receive">
+                        <div class="items flex space-between align-center">
+                            <div class="td1">Địa chỉ nhận hàng</div>
+                            <div class="td2">
+                                <a class="btn btn-default mfp-hide" href="">
+                                    + Thêm địa chỉ mới
+                                </a>
+                            </div>
+                        </div>
+                        @if (Model.AddressList != null && Model.AddressList.Count > 0)
+                        {
+                            foreach (var item in Model.AddressList)
+                            {
+                                <div class="item-address items flex space-between">
+                                    <div class="td1">
+                                        <ul>
+                                            <li>
+                                                <label>Họ & Tên</label>
+                                                <div class="item-address-name @(item.IsActive ? "actived" : "")">
+                                                    <span>@(item.ReceiverName ?? Model.Detail.ClientName)</span>
+                                                    @if (item.IsActive)
+                                                    {
+                                                        <span class="icon-active-status active">Đang sử dụng</span>
+                                                    }
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <label>Số Điện Thoại</label>
+                                                <div>@item.Phone</div>
+                                            </li>
+                                            <li>
+                                                <label>Địa Chỉ</label>
+                                                <div>@item.FullAddress</div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="td2">
+                                        <a class="btn btn-default white btn-change-default-address @(item.IsActive ? "disabled": "")" data-id="@item.Id">
+                                            Thiết lập mặc định
+                                        </a>
+                                    </div>
+                                </div>
+                            }
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </td>
+</tr>

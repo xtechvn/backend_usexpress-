@@ -1,0 +1,650 @@
+﻿using HtmlAgilityPack;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Text.RegularExpressions;
+using System.Web;
+using Tesseract;
+using Utilities.Contants;
+
+namespace Utilities.Common
+{
+    public class CommonHelper
+    {
+        public static string dollarCurrencyFormat = @"\$(\d{1,3}(,\d{3})*).(\d{2})";
+        public static bool GetParamWithKey(string Token, out JArray objParr, string EncryptApi)
+        {
+            objParr = null;
+            try
+            {
+                Token = Token.Replace(" ", "+");
+                // var serializer = new JavaScriptSerializer();                
+                var jsonContent = GetContentObject(Token, EncryptApi);
+                objParr = JArray.Parse("[" + jsonContent + "]");
+                if (objParr != null && objParr.Count > 0)
+                {
+                    return true;
+                }
+                else { return false; }
+            }
+            catch (Exception ex)
+            {
+                LogHelper.InsertLogTelegram("GetParamWithKey - CommonHelper: " + ex + "==>Token=" + Token);
+                //  ErrorWriter.WriteLog(HttpContext.Current.Server.MapPath("~"), "GetParamWithKey: ===>" + ex.ToString());
+                return false;
+            }
+        }
+
+        public static string GetContentObject(string sContentEncode, string sKey)
+        {
+            try
+            {
+                // api.insidekp: Key quy uoc giua  2 ben | parramKey: tham so dong
+                sContentEncode = sContentEncode.Replace(" ", "+");
+
+                string data = Decode(sContentEncode, sKey); // Lay ra content 
+                return data;
+            }
+            catch (Exception ex)
+            {
+                LogHelper.InsertLogTelegram("GetContentObject - CommonHelper: " + ex);
+                // ErrorWriter.WriteLog(System.Web.HttpContext.Current.Server.MapPath("~"), "GiaiMa()", ex.ToString());
+                return string.Empty;
+            }
+
+        }
+        public static string Decode(string strString, string strKeyPhrase)
+        {
+            try
+            {
+                Byte[] byt = Convert.FromBase64String(strString);
+                strString = System.Text.Encoding.UTF8.GetString(byt);
+                strString = KeyED(strString, strKeyPhrase);
+                return strString;
+            }
+            catch (Exception ex)
+            {
+
+                return strString;
+            }
+        }
+        public static string Encode(string strString, string strKeyPhrase)
+        {
+
+            strString = KeyED(strString, strKeyPhrase);
+            Byte[] byt = System.Text.Encoding.UTF8.GetBytes(strString);
+            strString = Convert.ToBase64String(byt);
+            return strString;
+        }
+        private static string KeyED(string strString, string strKeyphrase)
+        {
+            int strStringLength = strString.Length;
+            int strKeyPhraseLength = strKeyphrase.Length;
+
+            System.Text.StringBuilder builder = new System.Text.StringBuilder(strString);
+
+            for (int i = 0; i < strStringLength; i++)
+            {
+                int pos = i % strKeyPhraseLength;
+                int xorCurrPos = (int)(strString[i]) ^ (int)(strKeyphrase[pos]);
+                builder[i] = Convert.ToChar(xorCurrPos);
+            }
+
+            return builder.ToString();
+        }
+
+        public static double convertToPound(double value, string unit)
+        {
+            try
+            {
+                double rs = 0;
+                switch (unit)
+                {
+                    case "ounces":
+                    case "oz":
+                        rs = value * 0.0625;
+                        break;
+                    case "grams":
+                    case "g":
+                        rs = value * 0.0022046;
+                        break;
+                    case "kilograms":
+                        rs = value * 2.2046;
+                        break;
+                    case "tonne":
+                        rs = value * 2204.62262;
+                        break;
+                    case "kiloton":
+                        rs = value * 2204622.6218;
+                        break;
+                    case "pounds":
+                        rs = value;
+                        break;
+                    default:
+                        rs = value;
+                        break;
+                }
+                return rs;
+            }
+            catch (Exception ex)
+            {
+                LogHelper.InsertLogTelegram("convertToPound: value = " + value + " error:" + ex.ToString());
+                return 1; // Nếu k có đơn vị nào thỏa mãn sẽ coi như là k có cân nặng và báo mail về cho cskh
+            }
+
+        }
+
+        public static bool isCheckLink(string strURL)
+        {
+            strURL = strURL.Replace("https", "http").Replace("%", "");
+            Uri uriResult;
+            return Uri.TryCreate(strURL, UriKind.Absolute, out uriResult) && uriResult.Scheme == Uri.UriSchemeHttp;
+        }
+        public static int getLabelTypeByLink(string str)
+        {
+            try
+            {
+                if (str.ToLower().IndexOf(LabelType.amazon.ToString().ToLower()) >= 0)
+                {
+                    return (int)LabelType.amazon;
+                }
+
+                if (str.ToLower().IndexOf(LabelType.jomashop.ToString().ToLower()) >= 0)
+                {
+                    return (int)LabelType.jomashop;
+                }
+                return -1;
+            }
+            catch (Exception ex)
+            {
+                LogHelper.InsertLogTelegram("getLabelTypeByLink: str = " + str + " error:" + ex.ToString());
+                return -1;
+            }
+        }
+        public static string genLinkDetailProduct(string label_name, string product_code, string product_name)
+        {
+            product_name = RemoveUnicode(CheckMaxLength(product_name.Trim(), 50));
+            product_name = product_name.Replace(" ", "-");
+            return ("/product/" + label_name + "/" + product_name + "-" + product_code + ".html").ToLower();
+        }
+
+        public static string RemoveUnicode(string text)
+        {
+            string[] arr1 = new string[] { "á", "à", "ả", "ã", "ạ", "â", "ấ", "ầ", "ẩ", "ẫ", "ậ", "ă", "ắ", "ằ", "ẳ", "ẵ", "ặ",
+    "đ",
+    "é","è","ẻ","ẽ","ẹ","ê","ế","ề","ể","ễ","ệ",
+    "í","ì","ỉ","ĩ","ị",
+    "ó","ò","ỏ","õ","ọ","ô","ố","ồ","ổ","ỗ","ộ","ơ","ớ","ờ","ở","ỡ","ợ",
+    "ú","ù","ủ","ũ","ụ","ư","ứ","ừ","ử","ữ","ự",
+    "ý","ỳ","ỷ","ỹ","ỵ",};
+            string[] arr2 = new string[] { "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a",
+    "d",
+    "e","e","e","e","e","e","e","e","e","e","e",
+    "i","i","i","i","i",
+    "o","o","o","o","o","o","o","o","o","o","o","o","o","o","o","o","o",
+    "u","u","u","u","u","u","u","u","u","u","u",
+    "y","y","y","y","y",};
+            for (int i = 0; i < arr1.Length; i++)
+            {
+                text = text.Replace(arr1[i], arr2[i]);
+                text = text.Replace(arr1[i].ToUpper(), arr2[i].ToUpper());
+            }
+            return text;
+        }
+
+        // xử lý chuỗi quá dài
+        //str: Chuoi truyen vao
+        // So ky tu toi da cho phep
+        // OUPUT: Tra ra chuoi sau khi xu ly
+        public static string CheckMaxLength(string str, int MaxLength)
+        {
+            try
+            {
+                str = RemoveSpecialCharacters(str);
+                if (str.Length > MaxLength)
+                {
+
+                    str = str.Substring(0, MaxLength + 1); // cat chuoi
+                    if (str != " ") //  ky tu sau truoc khi cat co chua ky tu ko
+                    {
+                        while (str.Last().ToString() != " ") // cat not cac cu tu chu cho den dau cach gan nhat
+                        {
+                            str = str.Substring(0, str.Length - 1); // dich trai
+                        }
+                    }
+                    //str = str + "...";
+                }
+                return str;
+            }
+            catch (Exception ex)
+            {
+                // Utilities.Common.WriteLog(Models.Contants.FOLDER_LOG, "ERROR CheckMaxLength : " + ex.Message);
+                return string.Empty;
+            }
+        }
+
+        public static string RemoveSpecialCharacters(string input)
+        {
+            try
+            {
+                Regex r = new Regex("(?:[^a-z0-9 ]|(?<=['\"])s)", RegexOptions.IgnoreCase | RegexOptions.CultureInvariant | RegexOptions.Compiled);
+                return r.Replace(input, String.Empty);
+            }
+            catch (Exception e)
+            {
+                return input ?? string.Empty;
+            }
+        }
+        public static bool CheckAsinByLink(string Link, out string ASIN)
+        {
+            ASIN = Link;
+            try
+            {
+                // regex lấy ra domain theo link
+                Link = Link.Replace("http://", "https://").Replace("%", "");
+                var uri = new Uri(Link);
+                string sDomainLite = uri.Host;
+
+                // regex lay ra link ID sản phẩm
+                //M1: "https://www.amazon.com/gp/aw/d/B07GB4X6T7/ref=ox_sc_act_image_1?smid=AY8DYQ3EFA9NJ&psc=1"
+                //M2: https://www.amazon.com/d/Eye-Creams/Hada-Labo-Tokyo-Correcting-Cream/B00OFTIP86/ref=sr_1_2_a_it?ie=UTF8&qid=1542617568&sr=8-2-spons&keywords=Hada+Labo+Tokyo&psc=1#customerReviews
+
+                var match = Regex.Match(Link, "https://" + sDomainLite + "/([\\w-]+/)?(dp|gp/product|gp/aw/d)/(\\w+/)?(\\w{10})", RegexOptions.Singleline); //spelling error
+                var url = match.Groups[0].Value;
+
+                //Detect Truong hop 2
+                if (url == string.Empty)
+                {
+                    match = Regex.Match(Link, "(?:[/dp/]|$)([A-Z0-9]{10})", RegexOptions.Singleline); //spelling error
+                    url = match.Groups[0].Value;
+                }
+
+                // Lấy ra ASIN trên link
+                ASIN = url == "" ? "" : url.Split('/').Last();
+
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                LogHelper.InsertLogTelegram("CheckAsinAmz - CommonHelper: Link = " + Link + " error:" + ex.ToString());
+                return false;
+            }
+        }
+
+        public static bool CheckAsinByKeyword(string Keywords, out string ASIN)
+        {
+            ASIN = Keywords;
+            try
+            {
+                var match = Regex.Match(Keywords, "(?:[/dp/]|$)([A-Z0-9]{10})", RegexOptions.Singleline); //spelling error
+                ASIN = match.Groups[0].Value;
+                return ASIN == string.Empty ? false : true;
+            }
+            catch (Exception ex)
+            {
+                LogHelper.InsertLogTelegram("CheckAsinByKeyword - CommonHelper: Keywords = " + Keywords + " error:" + ex.ToString());
+                return false;
+            }
+        }
+
+        public static string ConvertAllNonCharacterToSpace(string text)
+        {
+            string rs = Regex.Replace(text, @"\s+", " ", RegexOptions.Singleline);
+            return rs.Trim();
+        }
+        /// <summary>
+        /// Attempts to match the supplied pattern to the input
+        /// string. Only obtains a single match and returns the
+        /// matching string if successful and an empty string if not.
+        /// </summary>
+        /// <param name="inputString">String to be searched</param>
+        /// <param name="regExPattern">Pattern to be matched</param>
+        /// <returns>String match or empty string if match not found</returns>
+        public static string GetSingleRegExMatch(string inputString,
+            string regExPattern)
+        {
+            string msg;
+            string result = "";
+            try
+            {
+                Match match = Regex.Match(inputString,
+                    regExPattern,
+                    RegexOptions.Singleline);
+                if (match.Success)
+                {
+                    result = match.Value;
+                }
+            }
+            catch (ArgumentException ex)
+            {
+                msg = regExPattern;
+                //Debug.WriteLine(ex.InnerException +     " argument exception for pattern " + msg);
+                LogHelper.InsertLogTelegram(ex.InnerException + " argument exception for pattern " + msg);
+            }
+            catch (RegexMatchTimeoutException ex)
+            {
+                msg = regExPattern;
+                LogHelper.InsertLogTelegram(ex.InnerException + " timeout exception for pattern " + msg);
+                //Debug.WriteLine(ex.InnerException +    " timeout exception for pattern " + msg);
+            }
+            return result;
+        }
+        public static string RemoveAllNonCharacter(string text)
+        {
+            string rs = Regex.Replace(text, @"\s+", "", RegexOptions.Singleline);
+            return rs.Trim();
+        }
+        public static T ConvertFromJsonString<T>(string jsonString)
+        {
+            try
+            {
+                T rs = JsonConvert.DeserializeObject<T>(jsonString);
+                return rs;
+            }
+            catch
+            {
+                return default(T);
+            }
+
+        }
+        public static string DecodeHTML(string html)
+        {
+            string result = "";
+            try
+            {
+                result = HttpUtility.HtmlDecode(html);
+            }
+            catch
+            {
+                string msg = "Unable to decode HTML: " + html;
+                throw new ArgumentException(msg);
+            }
+
+            return result;
+        }
+
+        /// <summary>
+        /// Finds and returns a list of signed/unsigned integers/doubles 
+        /// parsed from the supplied string. Comma-formatted numbers are
+        /// recognized.
+        /// </summary>
+        /// Only recognizes "correctly formatted" comma pattern:
+        /// e.g. 1,234.123 or 12,345,678.123 but not 1,23,4.123
+        /// Optional parameter parseCount allows the user to limit the number
+        ///  of numbers returned.
+        /// Note: limiting the amount of results does NOT improve performance;
+        ///  it simply returns the firs N results found.
+        /// <param name="text">The string to parse</param>
+        /// <param name="parseCount">The number of double values 
+        /// it will attempt to parse</param>
+        /// <returns>List of Double values</returns>
+        public static List<Double> ParseDoubleValues(string text,
+            int parseCount = -1)
+        {
+            // Full pattern:
+            // (((-?)(\d{1,3}(,\d{3})+)|(-?)(\d)+)(\.(\d)*)?)|((-)?\.(\d)+)
+
+            List<Double> results = new List<Double>();
+            if (text == null) { return results; }
+
+            // Optional negative sign and one or more digits
+            // Valid: "1234", "-1234", "0", "-0"
+            string signedIntegerNoCommas = @"(-?)(\d)+";
+
+            // Optional negative sign and digits grouped by commas
+            // Valid: "1,234", "-1,234", "1,234,567"
+            // INVALID: "12,34" <-- does not fit "normal" comma pattern
+            string signedIntegerCommas = @"(-?)(\d{1,3}(,\d{3})+)";
+
+            string or = @"|";
+
+            // Optional decimal point and digits            
+            // Valid: ".123", ".0", "", ".12345", "."
+            string optionalUnsignedDecimalAndTrailingNumbers = @"(\.(\d)*)?";
+
+            // Optional negative sign, decimal point and at least one digit
+            // Valid: "-.12", ".123"
+            // INVALID: "", ".", "-."
+            string requiredSignedDecimalAndTrailingNumbers = @"((-)?\.(\d)+)";
+
+            string pattern = @"";
+
+            // Allow a signed integer with or without commas
+            // and an optional decimal portion
+            pattern += @"(" + signedIntegerCommas + or + signedIntegerNoCommas
+                + @")" + optionalUnsignedDecimalAndTrailingNumbers;
+
+            // OR allow just a decimal portion (with or without sign)
+            pattern = @"(" + pattern + @")" + or
+                + requiredSignedDecimalAndTrailingNumbers;
+
+            List<string> matches = GetMultipleRegExMatches(text, pattern);
+
+            int matchIndex = 0;
+            foreach (string match in matches)
+            {
+                // If the user supplied a max number of
+                // doubles to parse, check to make sure we don't exceed it
+                if (parseCount > 0)
+                {
+                    if (matchIndex + 1 > parseCount) break;
+                }
+
+                try
+                {
+                    // Get rid of any commas before converting
+                    results.Add(Convert.ToDouble(match.Replace(",", "")));
+                }
+                catch
+                {
+                    string msg = "Unable to convert {0} to a double";
+                    //Debug.WriteLine(string.Format(msg, match));
+                }
+                matchIndex += 1;
+            }
+
+            return results;
+        }
+        /// <summary>
+        /// Attempts to match the supplied pattern to the input
+        /// string. Obtains multiple matches and returns a
+        /// list of string matches if successful and an empty
+        /// list of strings if no matches found.
+        /// </summary>
+        /// <param name="inputString">String to search</param>
+        /// <param name="regExPattern">RegEx pattern to search for</param>
+        /// <returns>List of matches or empty list if no matches</returns>
+        public static List<string> GetMultipleRegExMatches(
+            string inputString,
+            string regExPattern)
+        {
+            string msg;
+            List<string> results = new List<string>();
+            try
+            {
+                MatchCollection matches = Regex.Matches(inputString,
+                    regExPattern,
+                    RegexOptions.Singleline);
+                if (matches.Count == 0) return results;
+
+                IEnumerator e = matches.GetEnumerator();
+                while (e.MoveNext())
+                {
+                    results.Add(((Match)e.Current).Value);
+                }
+            }
+            catch (ArgumentException ex)
+            {
+                msg = regExPattern;
+                LogHelper.InsertLogTelegram(ex.InnerException +
+                    " argument exception for pattern " + msg);
+            }
+            catch (RegexMatchTimeoutException ex)
+            {
+                msg = regExPattern;
+                LogHelper.InsertLogTelegram(ex.InnerException + " timeout exception for pattern " + msg);
+            }
+            return results;
+
+        }
+
+
+        public static double RegexPriceInHtmlPage(string dom_has_price)
+        {
+            try
+            {
+                // Dollarsign and Digits grouped by commas plus decimal
+                // and change (change is required)
+                //  string dollarCurrencyFormat = @"\$(\d{1,3}(,\d{3})*).(\d{2})";
+
+                // Optional spaces and hyphen
+                string spacesAndHyphen = @"\s+-\s+";
+
+                // Grab the end of the preceeding tag, the dollar amount, and
+                // optionally a hyphen and a high range amount before the
+                // beginning bracket of the next tag
+                string pricePattern = ">" + dollarCurrencyFormat + "(" + spacesAndHyphen + dollarCurrencyFormat + ")?" + "<";
+
+                string match = CommonHelper.GetSingleRegExMatch(dom_has_price, pricePattern);
+
+                // Need to remove the tag beginning and end:
+                match = match.Trim(new char[] { '<', '>' });
+
+                if (match.Length == 0)
+                {
+                    return 0;
+                }
+
+                List<Double> prices = CommonHelper.ParseDoubleValues(match, 2);
+                return prices[0];
+
+            }
+            catch (Exception ex)
+            {
+                LogHelper.InsertLogTelegram("RegexPrice error" + ex.ToString());
+                return 0;
+            }
+        }
+
+        public static string SearchKey(string json, string value_search)
+        {
+            try
+            {
+                // return jarray.Where(x => x is JObject y && y.ContainsKey(key)).ToArray();
+                //JObject obj = JObject.Parse(json);               // Parse the JSON to a JObject                
+
+                //JToken acme = obj.SelectToken("$.Purple[?(@.asin == 'B07MV14VWY')]");
+                var _json = JToken.Parse(json);
+                var fieldsCollector = new JsonFieldsCollector(_json);
+                var fields = fieldsCollector.GetAllFields();
+
+                foreach (var field in fields)
+                {
+                    if (field.Value.ToString() == value_search)
+                    {
+                        return field.Value.ToString();
+                    }
+                }
+                //Console.WriteLine($"{field.Key}: '{field.Value}'");
+
+
+                return null;
+
+
+            }
+            catch (Exception ex)
+            {
+                LogHelper.InsertLogTelegram("SearchKey error" + ex.ToString());
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// Lấy ra tỷ giá hiện tại theo vietcombank
+        /// </summary>
+        /// <returns></returns>
+        public static double getRateCurrent(string url_api)
+        {
+            string JsonContent = string.Empty;
+            try
+            {
+                using (var webclient = new System.Net.WebClient())
+                {
+                    JsonContent = webclient.DownloadString(url_api);
+                }
+                return Convert.ToDouble(JsonContent);
+            }
+            catch (Exception ex)
+            {
+                LogHelper.InsertLogTelegram("getRateCurrent error = url_api=" + url_api + "" + ex.ToString());
+                return ((23450 + (23450 * 2.5) / 100));// mac dinh
+            }
+        }
+        public static HtmlDocument Removelement(HtmlDocument current_html, List<string> regex_paths)
+        {
+            HtmlDocument document = current_html;
+            try
+            {
+                //-- Remove Grid:
+                if (regex_paths.Count > 0)
+                {
+                    foreach (var regex in regex_paths)
+                    {
+                        if (regex != null && regex != "")
+                        {
+                            //Remove login div
+                            HtmlNode remove_section = document.DocumentNode.SelectSingleNode(regex);
+                            remove_section.ParentNode.RemoveChild(remove_section);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                LogHelper.InsertLogTelegram("CommonHelper - Removelement: Error - " + ex.ToString());
+            }
+            return document;
+        }
+        public static string RemoveSpecialCharactersInAddress(string orginal_address)
+        {
+            string result = orginal_address;
+            try
+            {
+                result = orginal_address.Replace("/[^a-zA-Z0-9.- ]/g", "");
+                if (result == null && result.Trim() == "")
+                {
+                    return result;
+                }
+                
+            }
+            catch (Exception )
+            {
+            }
+            return result;
+        }
+        public static bool CheckIfStringIsPhoneNumber(string orginal, out string number)
+        {
+            try
+            {
+                number = orginal.Replace("/[^0-9]/g", "");
+                if (number == null && number.Trim() == "" && number.ToCharArray().Length>11 && number.ToCharArray().Length < 8)
+                {
+                    return false;
+                }
+                return true;
+            }
+            catch (Exception)
+            {
+
+            }
+            number = null;
+            return false;
+        }
+        
+    }
+}

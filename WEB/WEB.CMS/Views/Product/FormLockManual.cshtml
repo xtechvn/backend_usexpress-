@@ -1,0 +1,92 @@
+﻿@using Entities.Models
+@{
+    Layout = null;
+    var LabelList = (List<Label>)ViewBag.LabelList;
+}
+
+<style>
+    .user-hierarchy-tag ul .lever2 {
+        padding-left: 15px;
+    }
+
+    /* Chrome, Safari, Edge, Opera */
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    /* Firefox */
+    input[type=number] {
+        -moz-appearance: textfield;
+    }
+</style>
+<form id="form_lockproductform">
+    <div class="form-default">
+        <div class="col-12">
+            <div class="form-group">
+                <label class="lbl">
+                    Hành động
+                    <sup class="red">*</sup>
+                </label>
+                <div class="wrap_input">
+                    <label class="radio" style="margin-right:20px;">
+                        <input type="radio" class="select_lock_action" name="form_lockproductaction" value="-1">
+                        <span class="checkmark lockaction_span"></span>
+                        Khoá
+                    </label>
+                    <label class="radio" style="margin-right:20px;">
+                        <input type="radio" class="select_lock_action" name="form_lockproductaction" value="2">
+                        <span class="checkmark lockaction_span"></span>
+                        Mở khoá
+                    </label>
+                    <label class="radio" style="margin-right:20px;">
+                        <input type="radio" class="select_lock_action" name="form_lockproductaction" value="1">
+                        <span class="checkmark lockaction_span"></span>
+                        Chặn
+                    </label>
+                    <label class="radio" style="margin-right:20px;">
+                        <input type="radio" class="select_lock_action" name="form_lockproductaction" value="0">
+                        <span class="checkmark lockaction_span"></span>
+                        Bỏ chặn
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="form-group">
+                <label class="lbl">
+                    Nhãn hàng áp dụng
+                    <sup class="red">*</sup>
+                </label>
+                <div class="wrap_input">
+                    <div class="wrap_input">
+                        <select id="form_label" class="form-control">
+                            @foreach (var item in LabelList)
+                             {
+                                <option value="@item.Id">@item.StoreName</option>
+                             }
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="form-group">
+                <label class="lbl">
+                    Danh sách ASIN
+                    <sup class="red">*</sup>
+                </label>
+                <div class="wrap_input">
+                    <textarea type="text" class="form-control" style="height: 100px;" placeholder="Nhập danh sách mã sản phẩm vào khung này, phân cách nhau bởi dấu phẩy" id="asin_list"></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="form-group align-right mt20 block">
+                <button type="button" class="btn btn-default bg-main onlocked_product"><i class="fa fa-floppy-o"></i>Áp dụng</button>
+                <button type="button" class="btn btn-default cancel" onclick="$.magnificPopup.close();"><i class="fa fa-minus-circle"></i>Bỏ qua</button>
+            </div>
+        </div>
+    </div>
+</form>

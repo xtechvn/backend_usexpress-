@@ -1,0 +1,270 @@
+.text_line {
+    font-size: 18px;
+    color: #242424;
+    border-bottom: 1px solid #EBEBEB;
+    padding-bottom: 10px;
+    margin: 0 0 10px 0;
+
+    &.margin {
+        margin-left: -20px;
+        margin-right: -20px;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    svg {
+        width: 18px;
+        height: 18px;
+        color: var(--yellow);
+        vertical-align: top;
+        margin-right: 5px;
+    }
+}
+
+.bg_changer_pass {
+    background: #fff url(images/graphics/bg-change.png) no-repeat right;
+    padding-bottom: 50px;
+    min-height: 380px
+}
+
+.bg_notifi1 {
+    border-radius: 6px;
+    border: 1px solid #FFAA00;
+    background: #FCF8EF;
+    padding: 15px 20px;
+    color: #DFAF5A;
+    line-height: 1.5;
+}
+
+.bg_notifi2 {
+    border-radius: 6px;
+    border: 1px solid #37A07F;
+    background: #ECFFF8;
+    padding: 15px 20px;
+    color: #236852;
+    line-height: 1.5;
+}
+
+.bg_notifi3 {
+    border-radius: 6px;
+    border: 1px solid #DE0028;
+    background: #FFF7F8;
+    padding: 15px 20px;
+    color: #DE0028;
+    line-height: 1.5;
+}
+
+// FORM DEFAULT
+.title_form {
+    text-align: center;
+    font-weight: 500;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+
+.form_default {
+    .icon-visible {
+        svg {
+            fill: var(--green1);
+            position: absolute;
+            top: 11px;
+            left: 10px;
+        }
+
+        .form-control {
+            padding-left: 35px;
+        }
+    }
+
+    .form-group {
+        margin-bottom: 17px;
+    }
+
+    .control_btn {
+        display: flex;
+
+        .btn {
+            height: 42px;
+            line-height: 42px;
+        }
+
+        .cancel {
+            width: 30%;
+        }
+
+        .confirm {
+            width: 67%;
+            margin-left: 3%;
+            color: #fff;
+        }
+    }
+
+    .confir_res {
+        font-weight: 300;
+        color: #666
+    }
+}
+
+
+/*login-popup*/
+.login-popup {
+    max-width: 990px;
+    @extend .radius10;
+
+    .content_poup {
+        padding: 0;
+    }
+
+    .tien_ich {
+        width: 297px;
+        background: #236852 url(images/graphics/map.png);
+        padding: 20px 35px;
+        background-size: cover;
+        display: flex;
+        align-items: center;
+
+        ul {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        li {
+            display: flex;
+            width: 100%;
+            align-items: center;
+            position: relative;
+            color: #fff;
+            font-weight: 300;
+            margin: 20px 0;
+
+            h4 {
+                font-weight: 500;
+                margin-bottom: 0;
+                font-size: 15px;
+            }
+
+            svg {
+                width: 30px;
+                height: 30px;
+                fill: #fff;
+                margin-right: 20px;
+            }
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+
+    .form {
+        width: 653px;
+        width: calc(100% - 297px);
+        padding: 30px 83.5px 30px 83.5px;
+
+        .tab {
+            text-align: center;
+            justify-content: center;
+            margin: -30px -83.5px 35px -83.5px;
+            border-bottom: 1px solid #eaeaea;
+
+            .login {
+                text-align: right;
+                position: relative;
+
+                &::before {
+                    content: "";
+                    background: #eaeaea;
+                    width: 1px;
+                    bottom: -1px;
+                    position: absolute;
+                    right: -30px;
+                    top: 0;
+                }
+            }
+
+            .resign {
+                text-align: left;
+            }
+
+            a {
+                font-size: 18px;
+                font-weight: 500;
+                color: #666;
+                display: inline-block;
+                padding: 20px 10px 14px 10px;
+                position: relative;
+                margin: 0 30px;
+
+                &.active {
+                    color: var(--green1);
+                    border-bottom: 2px solid var(--green2);
+                }
+            }
+        }
+
+        .icon-visible {
+            .form-control {
+                padding-left: 40px;
+            }
+
+            svg {
+                fill: var(--green1);
+                position: absolute;
+                top: 10px;
+                left: 10px
+            }
+        }
+
+        .btn {
+            width: 100%;
+            @extend .radius10;
+            margin-top: 20px;
+            height: 42px;
+        }
+
+        .login-social {
+            margin-top: 25px;
+
+            .center {
+                position: relative;
+                font-weight: 300;
+                color: #666;
+                font-size: 14px;
+                margin-bottom: 25px;
+
+                &:before {
+                    content: "";
+                    background: #eee;
+                    height: 1px;
+                    width: 100%;
+                    position: absolute;
+                    top: 10px;
+                    left: 0;
+                }
+
+                span {
+                    position: relative;
+                    background: #fff;
+                    padding: 0 10px;
+                }
+            }
+
+            .flex {
+                margin: 0 -15px;
+
+                a {
+                    width: 50%;
+                    display: inline-block;
+                    padding: 0 15px;
+
+                    img {
+                        width: 100%
+                    }
+                }
+            }
+        }
+    }
+}
+
+/*End login-popup*/

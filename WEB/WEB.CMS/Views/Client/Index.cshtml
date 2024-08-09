@@ -1,0 +1,314 @@
+﻿@{
+    ViewData["Title"] = "Quản lý khách hàng";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using Entities.Models
+@using Entities.ViewModels
+@{
+    var ListProvince = (List<Province>)ViewBag.ProvinceList;
+    var ListLabel = (List<Label>)ViewBag.LabelList;
+    var FilterDate = (string)ViewBag.FilterDate;
+    var RevenueMinMax = (RevenueMinMax)ViewBag.RevenueMinMax;
+}
+
+
+<div class="row-main container flex">
+    <div class="row-main_col200">
+        <a class="close-menu" href="javascrip:;">×</a>
+        <h2 class="title_page">Khách hàng</h2>
+
+        <div class="wrap_bg wrap_bg2">
+            <div class="vai-tro">
+                <h3 class="title-margin">Địa chỉ</h3>
+                <div class="form-default">
+                    <div class="form-group no-line">
+                        <select class="form-control select2" id="sl-client-province" onchange="_client.OnChangeProvince(event.target.value)">
+                            <option value="">Tỉnh / Thành phố</option>
+                            @foreach (var item in ListProvince)
+                            {
+                                <option value="@item.ProvinceId">@item.Name</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="form-group no-line">
+                        <select class="form-control select2" id="sl-client-district" onchange="_client.OnChangeDistrict(event.target.value)">
+                            <option>Quận / Huyện</option>
+                        </select>
+                    </div>
+                    <div class="form-group no-line">
+                        <select class="form-control select2" id="sl-client-ward" onchange="_client.OnChangeWard(event.target.value)">
+                            <option value="">Phường / Xã</option>
+                        </select>
+                    </div>
+                    <div class="form-group no-line">
+                        <input type="text" class="form-control" id="ip-client-address" placeholder="Nhập địa chỉ" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="wrap_bg wrap_bg2">
+            <h3 class="title-margin">
+                Ngày đăng ký
+                <a href="#popup-them-nhom" class="open-popup fa fa-plus-circle"></a>
+            </h3>
+            <div class="form-default">
+                <input type="hidden" id="ip-returning-client" value="@ViewBag.IsReturningClient" />
+                <input type="hidden" id="ip-payment-inday" value="@ViewBag.IsPaymentInDay" />
+
+                <label class="radio radio-block">
+                    <input type="radio" name="radio-registered-date" />
+                    <span class="checkmark"></span>
+                    Tất cả
+                </label>
+                <label class="radio radio-block">
+                    <input type="radio" name="radio-registered-date" value="1" />
+                    <span class="checkmark"></span>
+                    7 ngày qua
+                </label>
+                <label class="radio radio-block">
+                    <input type="radio" name="radio-registered-date" value="2" />
+                    <span class="checkmark"></span>
+                    1 tháng qua
+                </label>
+                <label class="radio radio-block">
+                    <input type="radio" name="radio-registered-date" value="3" @(string.IsNullOrEmpty(FilterDate) ? "checked" : string.Empty) />
+                    <span class="checkmark"></span>
+                    1 năm qua
+                </label>
+                <label class="radio radio-block">
+                    <input type="radio" name="radio-registered-date" @(!string.IsNullOrEmpty(FilterDate) ? "checked" : string.Empty) value="4" />
+                    <span class="checkmark"></span>
+                    Tùy chọn
+                </label>
+                <div class="registered-date-option  @(string.IsNullOrEmpty(FilterDate) ? "mfp-hide" : string.Empty)">
+                    <div class="form-group">
+                        <div class="datepicker-wrap" style="width:100%">
+                            <input type="text" class="datepicker-input form-control" id="from-join-date" onchange="_client.OnChangeInputJoinDate()" placeholder="Từ ngày" value="@(!string.IsNullOrEmpty(FilterDate) ? FilterDate: DateTime.Now.AddYears(-1).ToString("dd/MM/yyyy"))" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="datepicker-wrap" style="width:100%">
+                            <input type="text" class="datepicker-input form-control" id="to-join-date" onchange="_client.OnChangeInputJoinDate()" placeholder="Đến ngày" value="@(!string.IsNullOrEmpty(FilterDate) ? FilterDate: DateTime.Now.ToString("dd/MM/yyyy"))" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="wrap_bg wrap_bg2">
+            <h3 class="title-margin">
+                Đơn hàng
+                <a href="#popup-them-nhom" class="open-popup fa fa-plus-circle"></a>
+            </h3>
+            <label class="radio radio-block">
+                <input type="radio" name="radio-client-order-quantity" checked="checked" onclick="_client.OnChangeOrderRange(0,10000)" />
+                <span class="checkmark"></span>
+                Tất cả
+            </label>
+            <label class="radio radio-block">
+                <input type="radio" name="radio-client-order-quantity" onclick="_client.OnChangeOrderRange(0,5)" />
+                <span class="checkmark"></span>
+                Dưới 5 đơn
+            </label>
+            <label class="radio radio-block">
+                <input type="radio" name="radio-client-order-quantity" onclick="_client.OnChangeOrderRange(5,10)" />
+                <span class="checkmark"></span>
+                Từ 5 - 10 đơn
+            </label>
+            <label class="radio radio-block">
+                <input type="radio" name="radio-client-order-quantity" onclick="_client.OnChangeOrderRange(10,20)" />
+                <span class="checkmark"></span>
+                Từ 10 - 20 đơn
+            </label>
+            <label class="radio radio-block">
+                <input type="radio" name="radio-client-order-quantity" onclick="_client.OnChangeOrderRange(20,30)" />
+                <span class="checkmark"></span>
+                Từ 20 - 30 đơn
+            </label>
+            <label class="radio radio-block">
+                <input type="radio" name="radio-client-order-quantity" onclick="_client.OnChangeOrderRange(30,10000)" />
+                <span class="checkmark"></span>
+                Trên 30 đơn
+            </label>
+        </div>
+
+        <div class="wrap_bg wrap_bg2">
+            <h3 class="title-margin">
+                Nhãn hàng
+                <a href="#popup-them-nhom" class="open-popup fa fa-plus-circle"></a>
+            </h3>
+            @foreach (var item in ListLabel)
+            {
+                <label class="check-list mb10">
+                    <input type="checkbox" class="cbk-client-label" value="@item.Id" onclick="_client.OnSearchByLabelId()" />
+                    <span class="checkmark"></span>
+                    @item.StoreName
+                </label>
+            }
+        </div>
+
+        <div class="wrap_bg wrap_bg2">
+            <div class="trang-thai">
+                <h3 class="title-margin">Doanh thu</h3>
+                <div class="form-default">
+                    <div class="form-group number no-line">
+                        <label class="lbl">Từ</label>
+                        <div class="wrap_input">
+                            <input type="text" class="form-control currency" id="ip-client-amount-min" />
+                            <a class="click cur-pointer btn-bind-revenue" data-value="@RevenueMinMax.Min">Min</a>
+                        </div>
+                    </div>
+                    <div class="form-group number no-line">
+                        <label class="lbl">Đến</label>
+                        <div class="wrap_input">
+                            <input type="text" class="form-control currency" id="ip-client-amount-max">
+                            <a class="click cur-pointer btn-bind-revenue" data-value="@RevenueMinMax.Max">Max</a>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="datepicker-wrap" style="width:100%">
+                            <input class="datepicker-input form-control" id="from-payment-date" onchange="_client.OnChangeInputPaymentDate()" type="text" placeholder="Từ ngày">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="datepicker-wrap" style="width:100%">
+                            <input class="datepicker-input form-control" id="to-payment-date" onchange="_client.OnChangeInputPaymentDate()" type="text" placeholder="Đến ngày">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="wrap_bg wrap_bg2 mfp-hide">
+            <h3 class="title-margin">
+                Nhóm hàng
+                <a href="#popup-them-nhom" class="open-popup fa fa-plus-circle"></a>
+            </h3>
+            <div class="search-wrapper">
+                <form action="" id="search">
+                    <input type="text" class="input_search" name="" value="" placeholder="Tìm theo nhóm hàng">
+                    <span class="search-btn">
+                        <button type="submit">
+                            <svg class="icon-svg">
+                                <use xlink:href="images/icons/icon.svg#search"></use>
+                            </svg>
+                        </button>
+                    </span>
+                </form>
+            </div>
+            <ul class="ul-cate">
+                <li class="all">
+                    <label class="check-list">
+                        <input type="checkbox" checked="">
+                        <span class="checkmark"></span>
+                        Tất cả
+                    </label>
+                    <div class="lever2">
+                        <label class="check-list">
+                            <input type="checkbox" checked="">
+                            <span class="checkmark"></span>
+                            Sản phẩm nổi bật
+                        </label>
+                        <label class="check-list">
+                            <input type="checkbox" checked="">
+                            <span class="checkmark"></span>
+                            Laptop, tablet
+                        </label>
+                    </div>
+                </li>
+                <li class="lever1">
+                    <a class="onclick-togle" href="javascrip:;">Đồ điện tử và công nghệ</a>
+                    <ul class="expand lever2">
+                        <li>
+                            <a href="">Laptop, tablet</a>
+                            <div class="control">
+                                <a href=""><img src="images/icons/sql.png"></a>
+                                <a href=""><img src="images/icons/edit.png"></a>
+                            </div>
+                        </li>
+                        <li><a href="">Màn hình</a></li>
+                    </ul>
+                </li>
+                <li class="lever1">
+                    <a class="onclick-togle" href="javascrip:;">Máy tính và phụ kiện</a>
+                    <ul class="expand lever2">
+                        <li>
+                            <a href="">Laptop, tablet</a>
+                            <div class="control">
+                                <a href=""><img src="images/icons/sql.png"></a>
+                                <a href=""><img src="images/icons/edit.png"></a>
+                            </div>
+                        </li>
+                        <li><a href="">Màn hình</a></li>
+                    </ul>
+                </li>
+                <li class="lever1"><a class="onclick-togle" href="javascrip:;">Điện thoại và phụ kiện</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="row-main_col800">
+        <a class="btn_show" href="javascrip:;">Hiển thị danh mục <i class="fa fa-caret-right"></i></a>
+        <div class="flex row-main-head">
+            <div class="search-wrapper">
+                <div class="form dropdown" action="" id="search">
+                    <input type="search" class="input_search" id="ip-kup-client-email" autocomplete="off" placeholder="Email" />
+                    <button type="button" class="btn_reset mfp-hide" onclick="_client.OnResetAdvance()">×</button>
+                    <span class="search-btn">
+                        <button type="submit">
+                            <svg class="icon-svg">
+                                <use xlink:href="images/icons/icon.svg#search"></use>
+                            </svg>
+                        </button>
+                    </span>
+                    <button class="dropdown-toggle dropbtn"></button>
+                    <div class="suggest-search2 news-dropdown dropdown-content">
+                        <div class="form-default">
+                            <div class="form-group mb10">
+                                <input type="text" class="form-control" id="ip-search-client" placeholder="Tên khách hàng " />
+                            </div>
+                            <div class="form-group mb10">
+                                <input type="text" class="form-control" id="ip-client-phone" placeholder="Số điện thoại" />
+                            </div>
+                            <div class="form-group mb10">
+                                <input type="text" class="form-control" id="ip-client-referralid" placeholder="Mã liên kết" />
+                            </div>
+                            <div class="form-group mb10">
+                                <input type="text" class="form-control" id="ip-client-order-code" placeholder="Mã đơn hàng" />
+                            </div>
+                            <div class="align-right mt20">
+                                <button type="button" class="btn btn-default bg-main" onclick="_client.OnSearchAdvance();">
+                                    <svg class="icon-svg" style="vertical-align: sub;">
+                                        <use xlink:href="images/icons/icon.svg#search"></use>
+                                    </svg>
+                                    Tìm kiếm
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="btn-right text-right">
+                <a class="btn btn-default" href="#" onclick="_client.OnOpenMappingClient()">
+                    <i class="fa fa-refresh"></i>
+                    Đồng bộ khách hàng
+                </a>
+                <a class="btn btn-default" href="#" onclick="_client.ExportExcel()">
+                    <i class="fa fa-file-excel-o" id="icon-export"></i>
+                    Xuất file
+                </a>
+            </div>
+        </div>
+        <div class="wrap_bg wrap_bg_no-padding mb20">
+            <div class="table-responsive table-default" id="grid-data">
+                <div style="text-align:center;">
+                    <img src="/images/icons/loading.gif" style="width: 50px;height: 50px;" id="imgLoading">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts {
+<script src="~/modules/client.js"></script>
+}

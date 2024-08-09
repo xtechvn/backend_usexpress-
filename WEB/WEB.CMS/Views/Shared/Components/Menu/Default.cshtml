@@ -1,0 +1,136 @@
+﻿@using Microsoft.AspNetCore.Mvc;
+@using System.Security.Claims
+@{
+    var listMenu = (List<Entities.ViewModels.MenuViewModel>)ViewBag.Menu;
+    var userId = int.Parse(ViewBag.UserId);
+}
+<section class="section head-top">
+    <div class="flex container">
+        <div class="header-tab tab-default">
+            <ul class="flex">
+                <li>
+                    <a href="/"><i class="fa fa-home"></i>Trang chủ</a>
+                </li>
+                @foreach (var item in listMenu)
+                {
+                    @if (userId == 54 || userId == 59 || userId == 60)
+                    {
+                        if (item.Parent.Id == 1 || item.Parent.Id == 13)
+                        {
+
+                            <li>
+                                <a href="@item.Parent.Link"><i class="@item.Parent.Icon"></i>@item.Parent.Name</a>
+                                <ul class="lever2">
+                                    @foreach (var subMenu in item.ChildList)
+                                    {
+                                        <li>
+                                            <a href="@subMenu.Link"><i class="@subMenu.Icon"></i>&nbsp;@subMenu.Name</a>
+                                        </li>
+                                    }
+                                </ul>
+                            </li>
+                        }
+                    }
+                    else if (userId == 62)
+                    {
+                        if (item.Parent.Id == 1 || item.Parent.Id==30)
+                        {
+
+                            <li>
+                                <a href="@item.Parent.Link"><i class="@item.Parent.Icon"></i>@item.Parent.Name</a>
+                                <ul class="lever2">
+                                    @foreach (var subMenu in item.ChildList)
+                                    {
+                                        <li>
+                                            <a href="@subMenu.Link"><i class="@subMenu.Icon"></i>&nbsp;@subMenu.Name</a>
+                                        </li>
+                                    }
+                                </ul>
+                            </li>
+                        }
+                    }
+                    else
+                    {
+                        <li>
+                            <a href="@item.Parent.Link"><i class="@item.Parent.Icon"></i>@item.Parent.Name</a>
+                            <ul class="lever2">
+                                @foreach (var subMenu in item.ChildList)
+                                {
+                                    <li>
+                                        <a href="@subMenu.Link"><i class="@subMenu.Icon"></i>&nbsp;@subMenu.Name</a>
+                                    </li>
+                                }
+                            </ul>
+                        </li>
+                    }
+
+                    @*@if (item.Parent.Id == 1)
+            {
+                @if (userId == 54)
+                {
+                    <li>
+                        <a href="@item.Parent.Link">@item.Parent.Name</a>
+                        <ul class="lever2">
+                            @foreach (var subMenu in item.ChildList)
+                            {
+                                <li>
+                                    <a href="@subMenu.Link"><i class="@subMenu.Icon"></i>&nbsp;@subMenu.Name</a>
+                                </li>
+                            }
+                        </ul>
+                    </li>
+                }
+            }
+            else
+            {
+                <li>
+                    <a href="@item.Parent.Link">@item.Parent.Name</a>
+                    <ul class="lever2">
+                        @foreach (var subMenu in item.ChildList)
+                        {
+                            <li>
+                                <a href="@subMenu.Link"><i class="@subMenu.Icon"></i>&nbsp;@subMenu.Name</a>
+                            </li>
+                        }
+                    </ul>
+                </li>
+            }*@
+
+                }
+            </ul>
+        </div>
+        <div class="wrap-notifi">
+            <a class="notifi" href="#">
+                <i class="fa fa-bell-o"></i>
+                <span class="coutn">8</span>
+                <span>Thông báo</span>
+            </a>
+            <div class="list">
+                <span class="note">Thông báo từ hệ thống</span>
+                <ul>
+                    <li class="active">
+                        <a href="#">
+                            <strong class="color-main">cuongle</strong> vừa thêm 2 sản phẩm vào giỏ hàng cách đây 15
+                            phút nhưng chưa tạo đơn
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            Đơn UAM-8B858 được khởi tạo thành công cách đây 1 tiếng nhưng chưa thanh
+                            toán
+                        </a>
+                    </li>
+                    <li>
+                        <a>
+                            Sản phẩm <span class="color-main">
+                                Kirkland Signature Ibuprofen IB, 200 mg., 1,000
+                                Caplets
+                            </span> vừa được published
+                        </a>
+                    </li>
+                </ul>
+                <a class="view-all" href="#">Xem tất cả</a>
+            </div>
+        </div>
+    </div>
+</section>

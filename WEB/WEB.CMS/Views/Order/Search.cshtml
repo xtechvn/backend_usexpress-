@@ -1,0 +1,134 @@
+﻿@{
+    Layout = null;
+}
+
+@using Utilities
+@using Entities.ViewModels
+@using Entities.Models
+@model GenericViewModel<OrderGridModel>
+
+<div class="table-responsive table-default">
+    <table class="table table-nowrap">
+        <thead>
+            <tr class="bg-main2">
+                <th>STT</th>
+                <th>Mã đơn hàng</th>
+                <th class="mfp-hide">Mã Tracking</th>
+                <th>Tên khách hàng</th>
+                <th class="mfp-hide">Email</th>
+                <th class="mfp-hide">Số điện thoại</th>
+                <th class="mfp-hide">Địa chỉ</th>
+                <th>Ngày tạo đơn</th>
+                <th class="mfp-hide">Tỷ giá</th>
+                <th class="mfp-hide">Mã Voucher</th>
+                <th class="mfp-hide">UTM-Source</th>
+                <th class="text-right">Tổng tiền <a class="btn-trans-money"></a></th>
+                <th class="text-right">Tổng tiền phí mua hộ <a class="btn-trans-money"></a></th>
+                <th>Trạng thái đơn hàng</th>
+                <th>Trạng thái thanh toán</th>
+                <th>Hình thức thanh toán</th>
+                <th class="mfp-hide">Ngày thanh toán</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.ListData != null && Model.ListData.Count > 0)
+            {
+                var counter = (Model.CurrentPage - 1) * Model.PageSize;
+                foreach (var item in Model.ListData)
+                {
+                    counter++;
+                    <tr>
+                        <td>@counter</td>
+                        <td>
+                            <a href="/order/detail/@item.Id" style="color:#49b391;">
+                                @item.OrderNo
+                            </a>
+                            <i class="fa fa-history" style="color: #236852; margin-left:10px;font-size:15px"
+                               onclick="_order.PushOrderToUsOld(@item.Id)" id="push-order-@item.Id"
+                               title="Push đơn hàng : @item.OrderNo"></i>
+                        </td>
+                        <td class="mfp-hide">@item.TrackingId</td>
+                        <td>@item.ClientName</td>
+                        <td class="mfp-hide">@item.Email</td>
+                        <td class="mfp-hide">@item.Phone</td>
+                        <td class="mfp-hide">@item.Address</td>
+                        <td>@(item.CreatedOn!=null ? item.CreatedOn.Value.ToString("dd/MM/yyyy HH:mm"): string.Empty)</td>
+                        <td class="mfp-hide">
+                            <span class="price">
+                                @(item.RateCurrent!= null ? item.RateCurrent.Value.ToString("N0"): string.Empty)
+                                <sup>đ</sup>
+                            </span>
+                        </td>
+                        <td class="mfp-hide">@item.VoucherCode</td>
+                        <td class="mfp-hide">@item.UtmSource</td>
+                        <td class="text-right">
+                            <span class="price">
+                                @Math.Round(item.AmountVnd ?? 0).ToString("N0")
+                                <sup>đ</sup>
+                            </span>
+                            <br />
+                            @if (item.AmountUsd != 0)
+                            {
+                                <span style="color: #C3895C;font-size:13px;">
+                                    @StringHelpers.FormatCurrency(item.AmountUsd.Value) $
+                                </span>
+                            }
+                            else
+                            {
+                                <span style="color: #C3895C;font-size:13px;">
+                                    @StringHelpers.FormatCurrency(item.AmountVnd.Value / item.RateCurrent.Value) $
+                                </span>
+                            }
+                        </td>
+                        <td class="text-right">
+                            <span class="price">
+                                @{
+                                    var TotalShippingFeeVND = (item.TotalShippingFeeVnd ?? 0) - (item.TotalDiscountVoucherVnd ?? 0) - (item.TotalDiscount2ndVnd ?? 0);
+                                }
+                                @Math.Round(TotalShippingFeeVND).ToString("N0")
+                                <sup>đ</sup>
+                            </span>
+                            <br />
+                            <span style="color: #C3895C;font-size:13px;">
+                                @StringHelpers.FormatCurrency(TotalShippingFeeVND / (double)item.RateCurrent) $
+                            </span>
+                        </td>
+                        <td>
+                            @item.OrderStatusName
+                            @*<i class="fa fa-refresh" style="color: #236852; margin-left:10px;font-size:15px"
+                                onclick="_order.MappingOneOrder(@item.Id)" id="mapping-order-@item.Id"
+                                title="Đồng bộ đơn hàng : @item.OrderNo"></i>*@
+                        </td>
+                        <td>@item.PaymentStatusName</td>
+                        <td>@item.PaymentTypeName</td>
+                        <td class="mfp-hide">
+                            @if (item.PaymentDate != DateTime.MinValue && item.PaymentDate.Value.Year > 2016)
+                            {
+                                @item.PaymentDate.Value.ToString("dd/MM/yyyy HH:mm")
+                            }
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
+<style>
+    .fa-spin {
+        line-height: 16px;
+        width: 20px;
+        height: 14px;
+    }
+</style>
+@await Component.InvokeAsync("Paging", new
+{
+    pageModel = new Paging()
+    {
+        TotalRecord = Model.TotalRecord,
+        TotalPage = Model.TotalPage,
+        CurrentPage = Model.CurrentPage,
+        PageSize = Model.PageSize,
+        RecordName = "đơn hàng",
+        PageAction = "_order.OnPaging({0})"
+    }
+})

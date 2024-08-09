@@ -1,0 +1,25 @@
+﻿@{
+    Layout = null;
+}
+@model Entities.Models.CampaignAds
+<!--POPUP CẬP NHẬT CHIẾN DỊCH-->
+<div id="cap-nhat-chien-dich" class="white-popup">
+    <div class="content_lightbox">
+        <div class="form-default">
+            <div class="form-group">
+                <label class="lbl">Tên chiến dịch</label>
+                <div class="wrap_input">
+                    <input type="text" class="form-control error" id="tenchiendich-update" value="@Model.CampaignName">
+                </div>
+            </div>
+            <div class="form-group align-right mt20 block">
+                <button onclick="_menu.EditCampaign(@Model.Id)" class="btn btn-default bg-main">
+                    <i class="fa fa-floppy-o"></i>Lưu
+                </button>
+                <button type="button" class="btn btn-default cancel" onclick="$.magnificPopup.close();">
+                    <i class="fa fa-minus-circle"></i>Bỏ qua
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,16 @@
+{
+  "EncryptApi": "5fDmJ8Ze",
+  "BOT_TOKEN_TELEGRAM": "1264151832:AAFKCM7CoaBerVhcYCHQba1AyY13X41rT5s",
+  "GROUP_ID_TELEGRAM": "-406438822",
+  "INDEX_ES_PRODUCT": "usexpress_products",
+  "email": "usexpressvietnam@gmail.com",
+  "password_email": "usexpress2018",
+  "KEY_ENCODE_TOKEN_PUT_QUEUE": "AAFKCM7CoaBerVhcYCHQba1AyY13X41rT5s",
+  //"PRODUCT_GROUP_LIST": "1,2,4,5,6",
+  "PRODUCT_GROUP_LIST": "260,261,262,263,264,265,266,267,268",
+  "API_CMS_URL": "http://103.74.121.155:4455",
+  "API_CMS_LIVE_URL": "http://103.121.91.231:6588",
+  "API_CRAWL_DETAIL_PRODUCT": "/api/product/detail-public.json",
+  "db_folder": "2",
+  "KEY_TOKEN_API": "1372498309AAH0fVJfnZQFg5Qaqro47y1o5mIIcwVkR3k"
+}

@@ -1,0 +1,90 @@
+﻿@{
+    Layout = null;
+}
+@using Entities.Models
+@using Entities.ViewModels
+@model List<RolePermission>
+@{
+    var ListMenu = (List<MenuViewModel>)ViewBag.MenuList;
+    var ListPermission = (List<Permission>)ViewBag.PermissionList;
+    int RoleId = (int)ViewBag.RoleId;
+    string ArrayJsonUser = (string)ViewBag.UserList;
+}
+<div class="row">
+    <div class="col-md-4 mb20">
+        <div class="user-tag">
+            <h4 class="title">User được gán quyền</h4>
+            <input type="text" id="input-user-role-@RoleId" />
+        </div>
+    </div>
+    <div class="col-md-8 flex">
+        @foreach (var itemParent in ListMenu)
+        {
+            <div class="col-xl-4 col-md-6">
+                <h4 class="title">@itemParent.Parent.Name</h4>
+                @foreach (var itemChild in itemParent.ChildList)
+                {
+                    <ul class="user-hierarchy-ul">
+                        <li>
+                            <div>
+                                <a class="btn--toggle-permission"></a>
+                                @{
+                                    bool _IsActive = Model.Where(s => s.MenuId == itemChild.Id).Count() > 0 ? true : false;
+                                }
+                                <label class="check-list mb10 mr25">
+                                    <input type="checkbox" class="ckb-item-menu" @(_IsActive ? "checked=checked" : "") data-menuid="@itemChild.Id" />
+                                    <span class="checkmark"></span>
+                                    @itemChild.Name
+                                </label>
+                            </div>
+                            <div class="lever2">
+                                @foreach (var itemPermission in ListPermission)
+                                {
+                                    <label class="check-list mb10 mr25">
+                                        @{
+                                            var _MapItem = Model.Where(s => s.MenuId == itemChild.Id && s.PermissionId == itemPermission.Id).FirstOrDefault();
+                                        }
+                                        @if (_MapItem != null)
+                                        {
+                                            <input type="checkbox" class="ckb-role-permission" checked="checked" data-menuid="@itemChild.Id" data-param="@RoleId-@itemChild.Id-@itemPermission.Id">
+                                        }
+                                        else
+                                        {
+                                            <input type="checkbox" class="ckb-role-permission" data-menuid="@itemChild.Id" data-param="@RoleId-@itemChild.Id-@itemPermission.Id">
+                                        }
+                                        <span class="checkmark"></span>
+                                        @itemPermission.Name
+                                    </label>
+                                }
+                            </div>
+                        </li>
+                    </ul>
+                }
+            </div>
+        }
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        var _predata = JSON.parse('@Html.Raw(ArrayJsonUser)');
+        $('#input-user-role-@RoleId').tokenInput('/User/GetUserSuggestionList', {
+            prePopulate: _predata,
+            queryParam: "name",
+            hintText: "Nhập từ khóa tìm kiếm",
+            searchingText: "Đang tìm kiếm...",
+            searchDelay: 1000,
+            preventDuplicates: true,
+            minChars: 4,
+            noResultsText: "Không tìm thấy kết quả",
+            tokenLimit: 10,
+            theme: 'facebook',
+            onAdd: function (item) {
+                _role.OnUpdateUserRole('@RoleId',item.id,1);
+            },
+            onDelete: function (item) {
+                _role.OnUpdateUserRole('@RoleId',item.id,0);
+            }
+        });
+    });
+</script>

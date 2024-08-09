@@ -1,0 +1,107 @@
+﻿@{
+    Layout = null;
+}
+@using Utilities
+@using Entities.ViewModels
+@model List<CashbackViewModel>
+@{
+    var _UserLogin = (int)ViewBag.UserLogin;
+}
+
+<div class="title-cate flex">
+    <span>Hoàn tiền</span>
+</div>
+<div class="warp_padding20">
+    <div class="wrap_bg wrap_bg_no-padding mb20">
+        <div class="table-responsive table-default">
+            <table class="table table-nowrap text-center">
+                <thead>
+                    <tr style="background: #ECECEE;">
+                        <th>STT</th>
+                        <th>Castback Id</th>
+                        <th style="width: 180px;">Ngày hoàn tiền</th>
+                        <th style="width: 180px;">Số tiền hoàn trả</th>
+                        <th>Nhân viên hoàn</th>
+                        <th>Ghi chú</th>
+                        <th>Tác vụ</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td>
+                            <div class="datepicker-wrap" style="width:100%">
+                                <input type="hidden" id="model-cashback-id" />
+                                <input type="text" class="datepicker-input form-control" id="model-cashback-date" />
+                            </div>
+                        </td>
+                        <td>
+                            <div class="form-group mb0">
+                                <input type="text" class="form-control currency" id="model-cashback-amount" />
+                            </div>
+                        </td>
+                        <td></td>
+                        <td>
+                            <div class="form-group mb0">
+                                <input type="text" class="form-control" id="model-cashback-note" />
+                            </div>
+                        </td>
+                        <td>
+                            <a class="cur-pointer mr10" onclick="_cashback.Save()" title="Lưu"><i class="fa fa-save blue"></i></a>
+                            <a class="cur-pointer" onclick="_cashback.ResetForm();" title="Refresh"><i class="fa fa-refresh success"></i></a>
+                        </td>
+                    </tr>
+                    @if (Model != null && Model.Count > 0)
+                    {
+                        var count = 0;
+                        foreach (var item in Model)
+                        {
+                            count++;
+                            <tr>
+                                <td>@count</td>
+                                <td>@item.Id</td>
+                                <td>@item.CashbackDate.ToString("dd/MM/yyyy HH:mm")</td>
+                                <td>@StringHelpers.FormatCurrency(item.Amount)</td>
+                                <td>@item.UserName</td>
+                                <td>@item.Note</td>
+                                <td>
+                                    @if (item.UserId == _UserLogin)
+                                    {
+                                        <a class="cur-pointer mr10" onclick="_cashback.FillUpdateItem('@item.Id','@item.CashbackDate.ToString("dd/MM/yyyy HH:mm")','@item.Amount','@item.Note')">
+                                            <i class="fa fa-pencil blue"></i>
+                                        </a>
+                                        <a class="cur-pointer" onclick="_cashback.Delete('@item.Id')"><i class="fa fa-times red"></i></a>
+                                    }
+                                </td>
+                            </tr>
+                        }
+                        <tr style="background: #E1E8EA;">
+                            <td></td>
+                            <td style="padding: 20px 15px;">
+                                <strong>Tổng cộng:</strong>
+                            </td>
+                            <td></td>
+                            <td style="padding: 20px 15px;">
+                                <strong>@StringHelpers.FormatCurrency(Model.Sum(s => s.Amount))</strong>
+                            </td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        $('.datepicker-input').Zebra_DatePicker({
+            format: 'd/m/Y H:i',
+            onSelect: function () {
+                $(this).change();
+            }
+        });
+    });
+</script>

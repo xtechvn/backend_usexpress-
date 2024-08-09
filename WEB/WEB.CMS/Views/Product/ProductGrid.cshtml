@@ -1,0 +1,133 @@
+﻿@{
+    Layout = null;
+}
+
+@using Utilities
+@using Entities.ViewModels
+@model GenericViewModel<ProductViewModel>
+
+@if (Model != null)
+{
+    int SortField = (int)ViewBag.SortField;
+    int SortType = (int)ViewBag.SortType;
+
+    if (Model.ListData != null && Model.ListData.Count > 0)
+    {
+        long counter = (Model.CurrentPage - 1) * Model.PageSize;
+
+        <div class="table-responsive table-default">
+            <table class="table table-nowrap table-product table-product__v2">
+                <thead>
+                    <tr class="bg-main2">
+                        <th>STT</th>
+                        <th>Mã sản phẩm</th>
+                        <th>Tên sản phẩm</th>
+                        <th class="cur-pointer sortable" data-field="1">
+                            Giá về tay
+                            <i class="ml-2 fa @(SortField == 1 ? (SortType == 0 ? "fa-sort-up" : "fa-sort-down") : "fa-sort color-main2")"></i>
+                        </th>
+                        <th class="cur-pointer sortable" data-field="2">
+                            Đã mua
+                            <i class="ml-2 fa @(SortField == 2 ? (SortType == 0 ? "fa-sort-up" : "fa-sort-down") : "fa-sort color-main2")"></i>
+                        </th>
+                        <th class="cur-pointer sortable" data-field="3">
+                            Phí mua hộ
+                            <i class="ml-2 fa @(SortField == 3 ? (SortType == 0 ? "fa-sort-up" : "fa-sort-down") : "fa-sort color-main2")"></i>
+                        </th>
+                        <th>Ngành hàng</th>
+                        <th>Nhãn hàng</th>
+                        <th class="cur-pointer sortable mfp-hide" data-field="0">
+                            Ngày tạo
+                            <i class="ml-2 fa @(SortField == 0 ? (SortType == 0 ? "fa-sort-up" : "fa-sort-down") : "fa-sort color-main2")"></i>
+                        </th>
+                        <th class="text-right">Tác vụ</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.ListData)
+                    {
+                        counter++;
+                        <tr>
+                            <td>@counter</td>
+                            <td>@item.product_code</td>
+
+                            <td class="name_img">
+                                <div class="flex align-center">
+                                    <div class="ava tooltip-img">
+                                        <span class="thumb_img thumb_5x5">
+                                            <img src="@item.image_thumb">
+                                        </span>
+                                        <div class="tooltip-inner fade">
+                                            <img src="@item.image_thumb">
+                                        </div>
+                                    </div>
+                                    <div class="content content__product_name" title="@item.product_name">
+                                        @item.product_name
+                                        <p style=" font-size: 12px; color: blue; margin-bottom: 1px; "> Ngày tạo: @item.create_date.ToString("dd/MM/yyyy HH:mm")</p>
+                                        <p style=" font-size: 12px; color: blue; "> Ngày cập nhật: @item.update_last.ToString("dd/MM/yyyy HH:mm")</p>
+                                    </div>
+                                </div>
+                            </td>
+
+                            <td>
+                                @item.amount_vnd.ToString("N0")
+                                @if (item.discount > 0)
+                                {
+                                    <p style="font-size: 12px; color: red; margin-bottom: 1px;">Giảm @StringHelpers.FormatCurrency(item.discount) %</p>
+                                }
+                            </td>
+
+                            <td class="text-center">
+                                <a class="cur-pointer color-main2" title="Xem đơn hàng" target="_blank" href="/order?productcode=@item.product_code">@item.product_bought_quantity.ToString("N0")</a>
+                            </td>
+
+                            <td class="text-right">@item.shiping_fee.ToString("N0")</td>
+
+                            <td>@item.group_product_name</td>
+
+                            <td>
+                                @if (item.label_id == 1)
+                                {
+                                    <img src="~/images/icons/amzon.png" />
+                                }
+                                else if (item.label_id == 2)
+                                {
+                                    <img src="~/images/icons/Costco.png" />
+                                }
+                                else if (item.label_id == 3)
+                                {
+                                    <img src="~/images/icons/joma.png" />
+                                }
+                                else
+                                {
+                                    @item.label_name
+                                }
+                            </td>
+
+                            <td class="mfp-hide">@item.create_date.ToString("dd-MM-yyyy")</td>
+                            <td class="text-right">
+                                <a class="edit blue" href="@("/product/setupmanualv2?product_code="+ item.product_code+"&label_id="+item.label_id)">
+                                    <i class="fa fa-pencil"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+
+    @await Component.InvokeAsync("Paging", new
+    {
+        pageModel = new Paging()
+        {
+            TotalRecord = Model.TotalRecord,
+            TotalPage = Model.TotalPage,
+            CurrentPage = Model.CurrentPage,
+            PageSize = Model.PageSize,
+            RecordName = "sản phẩm",
+            PageAction = "productManager.OnPaging({0})"
+        }
+    })
+}
+

@@ -1,0 +1,131 @@
+﻿  <!--POPUP ĐĂNG NHẬP/ĐĂNG KÝ-->
+<div id="login-popup" class="login-popup white-popup mfp-hide">
+    <div class="content_poup">
+        <div class="flex">
+            <div class="tien_ich">
+                <ul>
+                    <li>
+                        <svg class="icon-us">
+                            <use xlink:href="/images/icons/icon.svg#like"></use>
+                        </svg>
+                        <h4>Chi phí minh bạch</h4>
+                    </li>
+                    <li>
+                        <svg class="icon-us">
+                            <use xlink:href="/images/icons/icon.svg#dam-bao"></use>
+                        </svg>
+                        <h4>Hàng hóa được đảm bảo</h4>
+                    </li>
+                    <li>
+                        <svg class="icon-us">
+                            <use xlink:href="/images/icons/icon.svg#date"></use>
+                        </svg>
+                        <h4>Giao hàng từ 10 - 15 ngày làm việc</h4>
+                    </li>
+                    <li>
+                        <svg class="icon-us">
+                            <use xlink:href="/images/icons/icon.svg#tietkiem"></use>
+                        </svg>
+                        <h4>Mua càng nhiều, tiết kiệm càng nhiều</h4>
+                    </li>
+                </ul>
+            </div>
+
+            @*BOX LOGIN-REGISTER*@
+            @await Html.PartialAsync("~/Views/Client/LoginRegister.cshtml")
+        </div>
+    </div>
+</div>
+<!--END POPUP ĐĂNG NHẬP/ĐĂNG KÝ-->
+<!--Góp ý giao diện -->
+<div id="back-version" class="notifi-popup white-popup popup-gopy  mfp-hide">
+    <div class="content_poup">
+        <div class="wrap-gopy">
+            <h2 class="title_form txt_20 mb20 color_green">Đóng góp ý kiến cho usexpress</h2>
+            <a class="item open-popup-link" href="#feedback_version">
+                <span class="ic"><img src="images/icons/ic-express.png" title="amz"></span>
+                <h4>Góp phần cải thiện phiên bản UsExpress mới</h4>
+                <p>Đóng góp ý kiến về trải nghiệm với phiên bản UsExpress mới</p>
+            </a>
+            <a class="item open-popup-link" href="#feedback_version">
+                <span class="ic"><img src="/images/icons/ic-error.png" title="amz"></span>
+                <h4>Đã có lỗi xảy ra</h4>
+                <p>Hãy cho chúng tôi biết về tính năng bị lỗi</p>
+            </a>
+            <div class="center mt30">
+                <button class="btn cancel agray btn_destroy" style="width: 250px;">Hủy bỏ</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*Góp phần cải thiện phiên bản UsExpress mới*@
+<div id="feedback_version" class="notifi-popup white-popup popup-gopy  mfp-hide">
+    <div class="content_poup">
+        <div class="wrap-gopy">
+            <h2 class="title_form txt_20 mb30 color_green">
+                <a href="#" class="back">
+                    <svg class="icon-us">
+                        <use xlink:href="/images/icons/icon.svg#Up"></use>
+                    </svg>
+                </a>
+                Góp phần cải thiện phiên bản UsExpress mới
+            </h2>
+
+            <div class="form form_default">
+                <div class="form-group block icon-visible">
+                    <div class="txt_16 bold mb10">Chúng tôi có thể cải thiện như thế nào?</div>
+                    <div class="relative">
+                        <svg class="icon-us">
+                            <use xlink:href="images/icons/icon.svg#help"></use>
+                        </svg>
+                        <select class="form-control select2" id="function_id">
+                            <option value="-1">Chọn tính năng</option>
+                            <option value="1">Trang chủ</option>
+                            <option value="2">Tìm kiếm sản phẩm</option>
+                            <option value="3">Thông tin sản phẩm</option>
+                            <option value="4">Giỏ hàng</option>
+                            <option value="5">Trang thanh toán</option>
+                            <option value="6">Đăng nhập/Đăng ký</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group block">
+                    <div class="txt_16 bold mb10">Chi tiết</div>
+                    <textarea class="form-control" id="feedback_version_new" placeholder="Nội dung góp ý cải thiện" style="height: 102px;"></textarea>
+                </div>
+                <div class="form-group block">
+                    <span id="error_survey_input" class="error text-danger txt_14" style="display:none;"></span>
+
+                </div>
+                <div class="upload-img mb30">
+                    <p>
+                        Nếu bạn có ý tưởng để cải thiện sản phẩm thì hãy cho chúng tôi biết nhé.
+                        UsExpress xin chân thành cảm ơn bạn đã góp ý cải tiến tính năng trên giao diện mới !
+                    </p>
+                </div>
+                <div class="control_btn2">
+                    <button class="btn cancel agray btn_destroy" style="width:170px">Hủy bỏ</button>
+                    <button class="btn confirm btn_send_feedback" style="width:205px">
+                        <svg class="icon-us">
+                            <use xlink:href="/images/icons/icon.svg#send"></use>
+                        </svg>
+                        Gửi góp ý
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--END Góp ý giao diện -->
+@*Thanks You !!!*@
+<div class="notifi-popup white-popup max-popup  mfp-hide" id="thanks_feedback">
+    <div class="content_poup center">
+        <p class="mb15"><img width="250" src="/images/icons/success.png"></p>
+        <p class="txt_18 mb20">Cám ơn bạn đã gửi góp ý cho Usexpress</p>
+        <div class="control_btn margin_center">
+            <button class="btn confirm btn_undo_version">Đóng</button>
+        </div>
+    </div>
+</div>
+@*End Thanks You !!!*@

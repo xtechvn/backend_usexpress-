@@ -1,0 +1,51 @@
+﻿
+@{
+    ViewData["Title"] = "Xác thực qua ứng dụng Authenticator - US Express CMS";
+    Layout = "~/Views/Shared/_AccountLayout.cshtml";
+}
+
+@model Entities.ViewModels.MFAAccountViewModel
+<style>
+    /* Chrome, Safari, Edge, Opera */
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    /* Firefox */
+    input[type=number] {
+        -moz-appearance: textfield;
+    }
+</style>
+<div class="login-popup">
+    <div class="content_lightbox">
+        <div class="head center">
+            <div class="mb5">Xác minh bảo mật</div>
+            <div class="txt_12" style="color: #707A8A;">
+                Để bảo mật cho tài khoản của bạn, hãy hoàn thành <br>
+                yêu cầu xác minh sau.
+            </div>
+            <a class="logo" href="#"><img src="~/images/graphics/logo.svg"></a>
+            @Html.ValidationSummary(true, "", new { @class = "text-danger text-center" })
+        </div>
+        <div class="form-default">
+            <form method="post" id="popup-gg-otp" asp-controller="Account" asp-action="Authenticate">
+                <input style="display:none;" name="MFA_token" value="@Html.Raw(Model.MFA_token)" />
+                <input style="display:none;" name="MFA_timenow" value="@DateTime.Now" />
+                <input style="display:none;" name="MFA_type" value="0" />
+                <input style="display:none;" name="ReturnUrl" value="@(Model.ReturnUrl==null? "/": Model.ReturnUrl)" />
+
+                <div class="form-group mb30">
+                    <input name="MFA_Code" type="number" class="form-control" placeholder="Mã xác minh từ Google Authenticator" style="font-size:20px" />
+                    <div class="txt_12 mt10" style="color: #707A8A;"> Hãy nhập mã xác minh 6 chữ số từ ứng dụng Google Authenticator. </div>
+                </div>
+                <div class="bottom-btn flex">
+                    <button class="btn btn-default send full" style="height:43px;" type="Submit">Gửi</button>
+                </div>
+            </form>
+        </div>  
+    </div>
+</div>
+
+

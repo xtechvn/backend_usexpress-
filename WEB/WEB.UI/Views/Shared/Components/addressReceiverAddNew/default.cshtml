@@ -1,0 +1,134 @@
+﻿@using Entities.ViewModels;
+@model AddressReceiverOrderViewModel
+
+    <form id="formAddressReceiver" class="content_poup"
+          asp-controller="Client"
+          asp-action="addNewAddress"
+          asp-antiforgery="true"
+          data-ajax="true"
+          data-ajax-method="post"
+          data-ajax-begin="beginReceiverAddress"
+          data-ajax-complete="completeReceiverAddress">
+
+        <input type="hidden" asp-for="Id" id="txt_address_id">
+        <input type="hidden" asp-for="ClientId" id="txt_client_id" >
+        <input type="hidden" asp-for="order_id">
+
+        <h2 class="title_form txt_22">Tạo địa chỉ giao hàng</h2>
+
+        <div class="bg_notifi3 mb10 error-client-summery hide"></div>
+
+        <div class="form form_default">
+            <div class="form-group icon-visible">
+                <svg class="icon-us">
+                    <use xlink:href="/images/icons/icon.svg#user"></use>
+                </svg>
+                <input type="text" asp-for="ReceiverName" class="form-control" id="txt_receiver_name" placeholder="Nhập họ và tên" name="ReceiverName" autocomplete="off">
+                <span asp-validation-for="ReceiverName" class="error text-danger"></span>
+            </div>
+
+            <div class="form-group icon-visible">
+                <svg class="icon-us">
+                    <use xlink:href="/images/icons/icon.svg#smartphone"></use>
+                </svg>
+                <input type="text" asp-for="Phone" class="form-control" placeholder="Nhập số điện thoại" name="Phone">
+                <span asp-validation-for="Phone" class="error text-danger"></span>
+            </div>
+
+            <div class="form-group icon-visible">
+                <svg class="icon-us">
+                    <use xlink:href="/images/icons/icon.svg#compass"></use>
+                </svg>
+
+                <select asp-for="ProvinceId" data-provinceid="@Model.ProvinceId" asp-items="@(new SelectList(Model.ProvinceListReceiver,"ProvinceId","Name"))" class="form-control select2" id="cbo_province">
+                    <option value="-1">Tỉnh/Thành</option>
+                </select>
+                <span asp-validation-for="ProvinceId" class="error text-danger"></span>
+
+
+            </div>
+            <div class="form-group icon-visible">
+                <svg class="icon-us">
+                    <use xlink:href="/images/icons/icon.svg#map"></use>
+                </svg>
+                <select asp-for="DistrictId" data-districtid="@Model.DistrictId" asp-items="@(new SelectList(Model.DistrictListReceiver,"DistrictId","Name"))" class="form-control select2" id="cbo_district">
+                    <option value="-1">Quận/Huyện</option>
+                </select>
+                <span asp-validation-for="DistrictId" class="error text-danger"></span>
+            </div>
+            <div class="form-group icon-visible">
+                <svg class="icon-us">
+                    <use xlink:href="/images/icons/icon.svg#vector"></use>
+                </svg>
+
+                <select asp-for="WardId" data-wardid="@Model.WardId" asp-items="@(new SelectList(Model.WardListReceiver,"WardId","Name"))" class="form-control select2" id="cbo_ward">
+                    <option value="-1">Phường/Xã</option>
+                </select>
+                <span asp-validation-for="WardId" class="error text-danger"></span>
+            </div>
+            <div class="form-group icon-visible">
+                <svg class="icon-us">
+                    <use xlink:href="/images/icons/icon.svg#address"></use>
+                </svg>
+                <input type="text" asp-for="Address" class="form-control" id="Address" placeholder="Địa chỉ giao hàng" name="Address">
+                <span asp-validation-for="Address" class="error text-danger"></span>
+            </div>
+
+            <label class="confir_res mt20 mb30 address_default">
+                Sử dụng địa chỉ này làm mặc định
+                <input type="checkbox" asp-for="IsActive" name="IsActive">
+                <span class="checkmark"></span>
+            </label>
+
+            <div class="control_btn">
+                <span class="btn cancel agray btn_destroy">Hủy bỏ</span>
+                <button class="btn confirm btn_add_new_address" type="submit">Thêm địa chỉ mới</button>
+            </div>
+        </div>
+    </form>
+
+
+<script type="text/javascript">
+
+    var form = $("#formAddressReceiver").closest("form");
+    form.removeData('validator');
+    form.removeData('unobtrusiveValidation');
+    $.validator.unobtrusive.parse(form);
+
+    $(document).ready(function () {
+        receiver.bin_province();
+
+        // payment: not edit
+        var url_current = document.URL;        
+        if ((url_current.indexOf('payment/checkout') >= 0) && ($('#IsActive').is(':checked'))) {
+            $("#IsActive").attr("disabled", true);
+        }
+       
+    })
+    $(".btn_destroy").click(function (e) {
+        $.magnificPopup.close();
+    });
+    $("#cbo_province").change(function (e) {
+        receiver.reset_location();
+        var id = ($(this).val());
+        $('#cbo_ward').find('option').remove().end().append('<option value="-1">Phường/Xã</option>').val('-1');
+        if (id == "-1") {
+            $('#cbo_district').find('option').remove().end().append('<option value="-1">Quận/Huyện</option>').val('-1');
+        } else {
+            receiver.bin_district(id);
+        }
+    });
+
+    $("#cbo_district").change(function (e) {
+        receiver.reset_location();
+        var id = ($(this).val());
+        $('#cbo_ward').find('option').remove().end().append('<option value="-1">Phường/Xã</option>').val('-1');
+        receiver.bin_ward(id);
+    });
+    $("#cbo_ward").change(function (e) {
+        receiver.reset_location();
+    });
+
+   
+</script>
+

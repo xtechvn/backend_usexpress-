@@ -1,0 +1,53 @@
+<div id="widget_01" class="widget_01">
+    <div class="box_pin">
+        <div class="container flex align-center space-between"><img src="{logo_png}" /><a id="btn_baogia" href="javascript:;"
+                class="bao_gia_css trigger disable-click" data-modal="item"> {html_text_on_loading} </a></div>
+    </div>
+    <div id="price_show_popup" class="modal-popup fade">
+        <div class="modal-popup-width"><a class="close-popup" href="javascript:;" style="margin-top: 8px;">×</a>
+            <div class="content_poup">
+                <div class="flex space-between">
+                    <div><strong>GIÁ SẢN PHẨM TRÊN {label_name}</strong></div>
+                    <div><strong id="product_amount">{html_text_on_loading}</strong></div>
+                </div>
+                <div class="flex space-between hide-when-out-stock">
+                    <div><strong>PHÍ MUA HỘ: </strong></div>
+                    <div><strong id="product_total_shipping_fee">{html_text_on_loading}</strong></div>
+                </div>
+                <ul class="hide-when-out-stock">
+                    <li class="flex space-between" >
+                        <div>Phí vận chuyển nội địa Mỹ:</div>
+                        <div id="product_fee_us_shipping_fee">{html_text_on_loading}</div>
+                    </li>
+                    <li class="flex space-between ">
+                        <div>Phí vận chuyển pound đầu tiên:</div>
+                        <div id="product_fee_first_pound">{html_text_on_loading}</div>
+                    </li>
+                    <li class="flex space-between">
+                        <div>Phí vận chuyển các pound tiếp theo: </div>
+                        <div id="product_fee_after_pound">{html_text_on_loading}</div>
+                    </li>
+                    <li class="flex space-between">
+                        <div>Phụ thu hàng hóa đặc biệt:</div>
+                        <div id="luxury_fee">{html_text_on_loading}</div>
+                    </li>
+                </ul>
+                <div class="flex space-between hide-when-out-stock">
+                    <div><strong>Tổng giá (đã bao gồm thuế, phí):</strong></div>
+                    <div><strong id="product_total_amount" class="color_green">{html_text_on_loading}</strong>
+                    </div>
+                </div>
+                <div class="flex space-between hide-when-out-stock">
+                    <div><strong>Giá về tay:</strong></div>
+                    <div><strong id="product_total_amount_vnd" class="red">{html_text_on_loading}</strong></div>
+                </div>
+                <p id="more_infomation" class="italic color_666 mt15 mb15">Giá trên là giá cuối cùng, bạn không cần phải
+                    trả bất kỳ khoản phí nào khác</p>
+                <div class="center"><button id="usexpress_order_confirm" class="btn bg-green usexpress_order_confirm" style="width:270px">
+                    <img src="{iccart_png}" /> Mua ngay</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal-backdrop close-popup"></div>

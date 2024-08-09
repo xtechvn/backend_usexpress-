@@ -1,0 +1,154 @@
+﻿@using Entities.ViewModels;
+@using Utilities.Contants;
+@model ProductViewModel
+
+
+@{
+    try
+    {
+        if (Model.list_variations != null)
+        {
+            if (Model.variation_name != null && Model.variation_name.Count > 0)
+            {
+                string size_img_current = string.Empty;
+                string color_img_current = string.Empty;
+                string variation_name_size_current = string.Empty;
+
+                string variation_name_current = string.Empty;
+                var variation_current = Model.list_variations.FirstOrDefault(x => x.selected);
+
+                int d = 0;
+                foreach (var item in Model.variation_name)
+                {
+                    bool is_has_image = false;
+                    int total_display_type = Model.dimensions_display_image.Count;
+
+                    if (d <= total_display_type - 1 && total_display_type > 0)
+                    {
+                        is_has_image = (Model.dimensions_display_image[d].ToString().IndexOf("IMAGE") >= 0);
+                    }
+
+                    if (variation_current == null)
+                    {
+                        continue;
+                    }
+
+                    if (is_has_image && Model.color_images != null)
+                    {
+
+                        color_img_current = variation_current == null ? "" : variation_current.dimensions[item].ToString();
+                        variation_name_current = variation_current == null ? "" : item.ToString();
+
+                        <div class="ct_color">
+                            <p>
+                                @variation_name_current:
+                                <strong>
+                                    @Html.Raw(variation_current.dimensions[item].ToString())
+                                </strong>
+                            </p>
+                            <div class="flex variation_color">
+                                @{
+                                    if (total_display_type > 1)
+                                    {
+
+                                        if (size_img_current == string.Empty && total_display_type > 1)
+                                        {
+                                            bool is_has_size = Model.dimensions_display_image.Count == (d + 1) ? false : (Model.dimensions_display_image[d + 1].ToString().IndexOf("TEXT") >= 0);
+                                            if (is_has_size) // size luon la text
+                                            {
+                                                variation_name_size_current = Model.variation_name[d + 1];
+                                                size_img_current = variation_current.dimensions[variation_name_size_current].ToString();
+                                            }
+                                        }
+
+                                        if (size_img_current != string.Empty)
+                                        {
+                                            //var group_item_variation = (from r in Model.list_variations
+                                            //                  group r by r.dimensions[item] into gr
+                                            //                  select new { obj_group_item = gr.ToList() }).ToList();
+
+
+
+                                            //var group_item_variation = (from r in Model.list_variations
+                                            //where r.dimensions[variation_name_size_current].ToString() == size_img_current
+                                            //select r).ToList();
+
+
+                                            foreach (var item_variation in Model.color_images)
+                                            {
+                                                <a style="cursor:pointer;" class="@Html.Raw(item_variation.product_code == variation_current.asin ? "active" : "disable")" data-asin="@item_variation.product_code">
+                                                    @if (item_variation != null)
+                                                    {
+                                                        <img src="@item_variation.obj_list_img_size[0].Thumb" alt="@item_variation.color_name">
+
+
+                                                        @if (item_variation.product_code == variation_current.asin.ToString())
+                                                        {
+                                                            <svg class="icon-us">
+                                                                <use xlink:href="/images/icons/icon.svg#check-box"></use>
+                                                            </svg>
+                                                        }
+                                                    }
+                                                </a>
+                                                //}
+                                            }
+                                        }
+                                    }
+                                    else
+                                    {
+                                        // ve het cac mau
+                                        foreach (var item_variation in Model.color_images)
+                                        {
+                                            <a style="cursor:pointer;" class="@Html.Raw(item_variation.color_name == variation_current.dimensions[item].ToString() ? "active" : "disable")" data-asin="@item_variation.product_code">
+                                                <img src="@item_variation.obj_list_img_size[0].Thumb" data-imglarger="@item_variation.obj_list_img_size[0].Larger" alt="@item_variation.color_name" data-asin="@item_variation.product_code">
+
+                                                @if (item_variation.color_name == variation_current.dimensions[item].ToString())
+                                                {
+                                                    <svg class="icon-us">
+                                                        <use xlink:href="/images/icons/icon.svg#check-box"></use>
+                                                    </svg>
+                                                }
+                                            </a>
+                                        }
+                                    }
+                                }
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        var variation = variation_current.dimensions.FirstOrDefault(x => x.Key == item);
+                        if (variation.Key != null)
+                        {
+                            <div class="ct_size">
+                                <p>@item.ToString(): <strong>@Html.Raw(variation_current.dimensions[item].ToString())</strong></p>
+                                @*<a class="table" href="">Bảng quy đổi kích cỡ</a>*@
+                                <div class="size">
+                                    @{
+                                        size_img_current = variation_current.dimensions[item].ToString();
+                                        variation_name_size_current = item;
+
+                                        var group_item_variation = (from r in Model.list_variations
+                                                                    group r by r.dimensions[item] into gr
+                                                                    select new { obj_group_item = gr.ToList() }).ToList();
+                                        foreach (var item_variation in group_item_variation)
+                                        {
+
+                                            <a style="cursor:pointer;" data-image="@is_has_image" data-asin="@item_variation.obj_group_item[0].asin" class="@Html.Raw(variation_current.dimensions[item].ToString() == item_variation.obj_group_item[0].dimensions[item].ToString() ? "active" : "disable")">@item_variation.obj_group_item[0].dimensions[item]</a>
+                                        }
+                                    }
+                                </div>
+                            </div>
+                        }
+                    }
+                    d += 1;
+                }
+            }
+        }
+    }
+    catch (Exception ex)
+    {
+        @*<hidden id="error_variation">@Html.Raw(ex.ToString())</hidden>*@
+    }
+}
+

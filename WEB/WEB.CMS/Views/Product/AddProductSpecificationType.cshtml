@@ -1,0 +1,21 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = null;
+}
+<div class="form-default">
+    <div class="form-group">
+        <label class="lbl">
+            Tên kiểu thông số mới
+            <sup class="red">*</sup>
+        </label>
+        <div class="wrap_input">
+            <input type="text" class="form-control" id="form_add_specificationtype_description" value="">
+        </div>
+    </div>
+    <div class="form-group align-right mt20 block">
+        <button type="button" class="btn btn-default bg-main" onclick="_setupmanualv2.AddProductSpecificationType()">Hoàn thành</button>
+        <button type="button" class="btn btn-default cancel" onclick="$.magnificPopup.close();"><i class="fa fa-minus-circle"></i>Bỏ qua</button>
+    </div>
+</div>

@@ -1,0 +1,82 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/LandingPage/BlackFriday2020/_LayoutBlackFridayDataFeed2020.cshtml";
+}
+
+
+
+
+@await Component.InvokeAsync("landingPage", new { view_comp = "/Views/Shared/Components/landingPage/blackFriday2020/producSales.cshtml", cache_name = "CAMPAIGN_1_FOLDER_278" })
+
+
+<section class="section bfday_section_s4 section_s4 clearfix">
+    <div class="container">
+        <h2 class="title-cate title-cate-bfday mb30">
+            Tất Cả Sản Phẩm
+        </h2>
+        <div class="tab-default tab-category tab_group_product tab-category">
+            <a class="btn active" href="#tab1" data-folderid="260">Điện tử công nghệ</a>
+            <a class="btn" href="#tab2">Thời trang</a>
+            <a class="btn" href="#tab3">Đồng hồ</a>
+            @*<a class="btn" href="#tab4">Gia dụng</a>*@
+            <a class="btn" href="#tab5">Sức khỏe</a>
+            <a class="btn" href="#tab6">Giày dép</a>
+            <a class="btn" href="#tab7">Túi ví</a>
+            <a class="btn" href="#tab8">Kính mắt</a>
+        </div>
+        <div class="tab-container">
+            <div id="tab1">
+                @await Component.InvokeAsync("landingPage", new { view_comp = "/Views/Shared/Components/landingPage/blackFriday2020/producMore.cshtml", cache_name = "CAMPAIGN_1_FOLDER_273" })
+            </div>
+            <div id="tab2" style="display: none;">
+                @await Component.InvokeAsync("landingPage", new { view_comp = "/Views/Shared/Components/landingPage/blackFriday2020/producMore.cshtml", cache_name = "CAMPAIGN_1_FOLDER_272" })
+            </div>
+            <div id="tab3" style="display: none;">
+                @await Component.InvokeAsync("landingPage", new { view_comp = "/Views/Shared/Components/landingPage/blackFriday2020/producMore.cshtml", cache_name = "CAMPAIGN_1_FOLDER_271" })
+            </div>
+            @*<div id="tab4" style="display: none;">
+                @await Component.InvokeAsync("landingPage", new { view_comp = "/Views/Shared/Components/landingPage/blackFriday2020/producMore.cshtml", cache_name = "CAMPAIGN_1_FOLDER_263" })
+            </div>*@
+            <div id="tab5" style="display: none;">
+                @await Component.InvokeAsync("landingPage", new { view_comp = "/Views/Shared/Components/landingPage/blackFriday2020/producMore.cshtml", cache_name = "CAMPAIGN_1_FOLDER_274" })
+            </div>
+            <div id="tab6" style="display: none;">
+                @await Component.InvokeAsync("landingPage", new { view_comp = "/Views/Shared/Components/landingPage/blackFriday2020/producMore.cshtml", cache_name = "CAMPAIGN_1_FOLDER_277" })
+            </div>
+            <div id="tab7" style="display: none;">
+                @await Component.InvokeAsync("landingPage", new { view_comp = "/Views/Shared/Components/landingPage/blackFriday2020/producMore.cshtml", cache_name = "CAMPAIGN_1_FOLDER_275" })
+            </div>
+            <div id="tab8" style="display: none;">
+                @await Component.InvokeAsync("landingPage", new { view_comp = "/Views/Shared/Components/landingPage/blackFriday2020/producMore.cshtml", cache_name = "CAMPAIGN_1_FOLDER_276" })
+            </div>
+        </div>
+        @*<div class="center mt20">
+            <a href="#" class="btn xem_them green">Xem thêm</a>
+        </div>*@
+    </div>
+</section>
+
+
+@*<script type="text/javascript">
+    $('.tab_group_product').click(function () {
+        var folder_id = $(this).data('folderid');
+        $('.tab-category').find('.active').removeClass('active');
+        $(this).addClass("active");
+        $.ajax({
+            url: "/Landing/group-list.json",
+            type: 'POST',
+            data: { folder_id: folder_id },
+            dataType: "json",
+            success: function (response) {
+                if (response.status == 0) {
+                    $(".group_product").html(response.render_product_list);
+                } else {
+                    $(".group_product").html("Sản phẩm đang trong quá trình cập nhật...");
+                }
+            }
+        })
+    });
+
+
+</script>*@

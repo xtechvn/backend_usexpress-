@@ -1,0 +1,37 @@
+﻿@using Entities.ViewModels.Product
+
+@{
+    Layout = null;
+}
+@model List<ProductBlackListViewModel>
+<div class="table-responsive table-default">
+    <table class="table table-nowrap">
+        <thead>
+            <tr class="bg-main2">
+                <th>Từ khóa / Mã sản phẩm</th>
+                <th>Chặn / Khóa theo</th>
+                <th>Nhãn hàng</th>
+                <th>Trạng thái</th>
+                <th>Ngày tạo</th>
+                <th>Tác vụ</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+             {
+            <tr>
+                <td class="blue">@item.keywords</td>
+                <td>@item.keyword_type_str</td>
+                <td>@item.label_name</td>
+                <td>@item.status_name.</td>
+                <td>@item.create_date_string</td>
+                <td>
+                    <a style="margin-right:7px;" class="edit blue" href="javascript:;" onclick="_product_configuration.Edit(@item.product_status, '@item.keywords',@item.keyword_type,@item.label_id,@item.product_status)"><i class="fa fa-pencil"></i></a>
+                    <a class="edit red" href="javascript:;" onclick="_product_configuration.Delete(@item.product_status, '@item.keywords',@item.keyword_type,@item.label_id)">x</a>
+                </td>
+            </tr>
+             }
+        </tbody>
+    </table>
+</div>
+
